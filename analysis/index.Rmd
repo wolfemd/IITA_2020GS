@@ -30,6 +30,6 @@ From Ismail Rabbi on 14 Sep. 2020:
 
 > We finished uploading to cassavabase the trials harvested so far. A few trials remain but we cant wait for them since flowering in Ubiaja is kicking in.
 
-```{r, layout="l-body-outset"}
-read_csv(here::here("data","2019_GS_PhenoUpload.csv")) %>% rmarkdown::paged_table()
+```{r, layout="l-body-outset", message=FALSE, warning=FALSE}
+rmarkdown::paged_table(readr::read_csv(here::here("data","2019_GS_PhenoUpload.csv")))
 ```
