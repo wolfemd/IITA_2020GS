@@ -200,13 +200,15 @@ curateTrialOneTrait<-function(Trait,TraitByTrialData,GID="GID"){
   return(out)
 }
 
-curateTrialsByTrait<-function(nestedTrialData,traits){
+curateTrialsByTrait<-function(nestedTrialData,traits,ncores=1){
+  require(furrr); options(mc.cores=ncores); plan(multiprocess)
   outdata<-nestedTrialData %>%
-    mutate(modelOutput=map2(Trait,TraitByTrialData,~curateTrialOneTrait(Trait = .x,TraitByTrialData = .y))) %>%
+    mutate(modelOutput=future_map2(Trait,TraitByTrialData,~curateTrialOneTrait(Trait = .x,TraitByTrialData = .y))) %>%
     dplyr::select(-TraitByTrialData) %>%
     unnest(modelOutput)
   return(outdata)
 }
+
 
 # Get BLUPs
 nestForMultiTrialAnalysis<-function(curatedTrialData){
