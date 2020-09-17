@@ -224,6 +224,14 @@ nestForMultiTrialAnalysis<-function(curatedTrialData){
 
 fitMultiTrialModel<-function(curatedTrialData,GID="GID"){
   require(lme4)
+  # remove BLUPs with NA, Inf or neg. WT or drgBLUP.
+  # Some of these show up from trials where model fit failed
+  curatedTrialData %<>%
+    filter(!is.na(drgBLUP),
+           !is.infinite(drgBLUP),
+           !is.na(WT),
+           WT>=0)
+
   modelFormula<-paste0("drgBLUP ~ (1|",GID,")")
   fit_model<-possibly(function(modelFormula,curatedTrialData){
     model_out<-lmer(as.formula(modelFormula),
