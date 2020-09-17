@@ -1,0 +1,202 @@
+---
+title: "Predict GEBV for NRCRI C2"
+author: "wolfemd"
+date: "2020-April-27"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = F, tidy = T)
+```
+
+# Previous step
+
+4. [Check prediction accuracy](04-CrossValidation.html): Evaluate prediction accuracy with cross-validation.
+
+# Objective
+
+**Current Step**  
+
+5. [Genomic prediction](05-GetGBLUPs.html): Predict _genomic_ BLUPs (GEBV and GETGV) for all selection candidates using all available data.
+
+```{bash, eval=F}
+# activate multithread OpenBLAS 
+export OMP_NUM_THREADS=56
+```
+
+# Set-up
+
+```{r, eval=F}
+library(tidyverse); library(magrittr); 
+source(here::here("code","gsFunctions.R"))
+
+A<-readRDS(file=here::here("output","Kinship_A_IITA_2020Sep16.rds"))
+D<-readRDS(file=here::here("output","Kinship_D_IITA_2020Sep16.rds"))
+AD<-readRDS(file=here::here("output","Kinship_AD_IITA_2020Sep16.rds"))
+
+blups<-readRDS(file=here::here("output","iita_blupsForModelTraining.rds")) %>% 
+  select(Trait,modelOutput) %>% 
+  unnest(modelOutput) %>% 
+  select(Trait,BLUPs) %>% 
+  unnest(BLUPs) %>% 
+  filter(GID %in% rownames(A)) %>% 
+  nest(TrainingData=-Trait)
+```
+
+# Prediction
+
+cbsurobbins (112 cores; 512GB) 
+
+Model A
+```{r, eval=F}
+options(future.globals.maxSize= 1500*1024^2)
+predModelA<-runGenomicPredictions(blups,modelType="A",grms=list(A=A),gid="GID",ncores=7)
+saveRDS(predModelA,file = here::here("output","genomicPredictions_ModelA_IITA_2020Sep16.rds"))
+```
+
+Model ADE
+```{r, eval=F}
+options(future.globals.maxSize= 3000*1024^2)
+predModelADE<-runGenomicPredictions(blups,modelType="ADE",grms=list(A=A,D=D,AD=AD),gid="GID",ncores=7)
+saveRDS(predModelADE,file = here::here("output","genomicPredictions_ModelADE_IITA_2020Sep16.rds"))
+```
+
+## Plot Predictions
+```{r}
+library(tidyverse); library(magrittr);
+predModelA<-readRDS(file = here::here("output","genomicPredictions_ModelA_IITA_2020Sep16.rds"))
+predModelADE<-readRDS(file = here::here("output","genomicPredictions_ModelADE_IITA_2020Sep16.rds"))
+```
+
+```{r}
+# predModelA %>% 
+#   dplyr::select(Trait,Dataset,genomicPredOut) %>% 
+#   unnest(genomicPredOut) %>% 
+#   select(-varcomps) %>% 
+#   unnest(gblups) %>% 
+#   select(-GETGV) %>% rename(GEBV_A=GEBV) %>% 
+#   left_join(predModelADE %>% 
+#   mutate(islgl=map_lgl(genomicPredOut,is.logical)) %>% 
+#   filter(islgl==FALSE) %>% 
+#   dplyr::select(Trait,Dataset,genomicPredOut) %>% 
+#   unnest(genomicPredOut) %>% 
+#   select(-varcomps) %>% 
+#   unnest(gblups) %>% 
+#   select(Trait,Dataset,GID,GEBV) %>% rename(GEBV_ADE=GEBV)) %>% 
+#   mutate(GeneticGroup=NA,
+#          GeneticGroup=ifelse(grepl("TMS18",GID,ignore.case = T),"TMS18",
+#                              ifelse(grepl("TMS15",GID,ignore.case = T),"TMS15",
+#                                     ifelse(grepl("TMS14",GID,ignore.case = T),"TMS14",
+#                                            ifelse(grepl("TMS13|2013_",GID,ignore.case = T),"TMS13","GGetc"))))) %>% 
+#   ggplot(.,aes(x=GEBV_A,y=GEBV_ADE,color=GeneticGroup)) + 
+#   geom_point() + theme_bw() + geom_abline(slope=1, color='darkred') + 
+#   facet_wrap(~Trait, scales = 'free') + 
+#   labs(title="Compare GEBV from A-only model to GEBV from A+D+E model")
+```
+```{r}
+# predModelADE %>% 
+#   mutate(islgl=map_lgl(genomicPredOut,is.logical)) %>% 
+#   filter(islgl==FALSE) %>% 
+#   dplyr::select(Trait,Dataset,genomicPredOut) %>% 
+#   unnest(genomicPredOut) %>% 
+#   select(-varcomps) %>% 
+#   unnest(gblups) %>% 
+#   select(Trait,Dataset,GID,GEBV,GETGV) %>% 
+#   mutate(GeneticGroup=NA,
+#          GeneticGroup=ifelse(grepl("TMS18",GID,ignore.case = T),"TMS18",
+#                              ifelse(grepl("TMS15",GID,ignore.case = T),"TMS15",
+#                                     ifelse(grepl("TMS14",GID,ignore.case = T),"TMS14",
+#                                            ifelse(grepl("TMS13|2013_",GID,ignore.case = T),"TMS13","GGetc"))))) %>% 
+#   ggplot(.,aes(x=GEBV,y=GETGV,color=GeneticGroup)) + 
+#   geom_point() + theme_bw() + geom_abline(slope=1, color='darkred') + 
+#   facet_wrap(~Trait, scales = 'free') +
+#   labs(title="Model: ADE - Compare GEBV to GETGV")
+```
+
+## Write GEBVs
+```{r}
+library(tidyverse); library(magrittr);
+predModelA<-readRDS(file = here::here("output","genomicPredictions_ModelA_IITA_2020Sep16.rds"))
+predModelADE<-readRDS(file = here::here("output","genomicPredictions_ModelADE_IITA_2020Sep16.rds"))
+traits<-c("MCMDS","DM","PLTHT","BRNHT1","BRLVLS","HI","logFYLD","logTOPYLD","logRTNO","TCHART","LCHROMO","ACHROMO","BCHROMO")
+```
+
+```{r predModelA}
+predModelA %>% 
+  dplyr::select(Trait,genomicPredOut) %>% 
+  unnest(genomicPredOut) %>% 
+  select(-varcomps) %>% 
+  unnest(gblups) %>% 
+  select(-GETGV) %>% 
+  spread(Trait,GEBV) %>% 
+  mutate(GeneticGroup=NA,
+         GeneticGroup=ifelse(grepl("TMS18",GID,ignore.case = T),"TMS18",
+                             ifelse(grepl("TMS15",GID,ignore.case = T),"TMS15",
+                                    ifelse(grepl("TMS14",GID,ignore.case = T),"TMS14",
+                                           ifelse(grepl("TMS13|2013_",GID,ignore.case = T),"TMS13","GGetc"))))) %>% 
+  select(GeneticGroup,GID,all_of(traits)) %>% arrange(desc(GeneticGroup)) %>% 
+  write.csv(., file = here::here("output","GEBV_IITA_ModelA_2020Sep16.csv"), row.names = F)
+  
+```
+```{r predModelADE}
+## Format and write GETGV
+predModelADE %>% 
+  dplyr::select(Trait,genomicPredOut) %>% 
+  unnest(genomicPredOut) %>% 
+  select(-varcomps) %>% 
+  unnest(gblups) %>% 
+  select(Trait,GID,GETGV) %>% 
+  spread(Trait,GETGV) %>% 
+  mutate(GeneticGroup=NA,
+         GeneticGroup=ifelse(grepl("TMS18",GID,ignore.case = T),"TMS18",
+                             ifelse(grepl("TMS15",GID,ignore.case = T),"TMS15",
+                                    ifelse(grepl("TMS14",GID,ignore.case = T),"TMS14",
+                                           ifelse(grepl("TMS13|2013_",GID,ignore.case = T),"TMS13","GGetc"))))) %>% 
+  select(GeneticGroup,GID,all_of(traits)) %>% arrange(desc(GeneticGroup)) %>% 
+  write.csv(., file = here::here("output","GETGV_IITA_ModelADE_2020Sep16.csv"), row.names = F)
+```
+
+```{r}
+gebv_vs_getgv<-predModelA %>% 
+  dplyr::select(Trait,genomicPredOut) %>% 
+  unnest(genomicPredOut) %>% 
+  select(-varcomps) %>% 
+  unnest(gblups) %>% 
+  select(-GETGV) %>% 
+  left_join(predModelADE %>% 
+              dplyr::select(Trait,genomicPredOut) %>% 
+              unnest(genomicPredOut) %>% 
+              select(-varcomps) %>% 
+              unnest(gblups) %>% 
+              select(Trait,GID,GETGV)) %>% 
+  mutate(GeneticGroup=NA,
+         GeneticGroup=ifelse(grepl("TMS18",GID,ignore.case = T),"TMS18",
+                             ifelse(grepl("TMS15",GID,ignore.case = T),"TMS15",
+                                    ifelse(grepl("TMS14",GID,ignore.case = T),"TMS14",
+                                           ifelse(grepl("TMS13|2013_",GID,ignore.case = T),"TMS13","GGetc")))))
+```
+
+
+```{r, fig.width=10, fig.height=10}
+gebv_vs_getgv %>% 
+  ggplot(.,aes(x=GEBV,y=GETGV,color=GeneticGroup)) + 
+  geom_point(alpha=0.7) + 
+  geom_abline(slope=1, color='darkred', linetype='dashed') + 
+  theme_bw() + 
+  facet_wrap(~Trait, ncol=3, scales='free') + 
+  scale_color_viridis_d()
+```
+
+# Next step
+
+6. [Estimate genetic gain](06-GetGainEst.html)
+
+```{bash, eval=F, include=F}
+rsync --update --archive --verbose /workdir/marnin/NRCRI_2020GS/ mw489@cbsulm13.biohpc.cornell.edu:/workdir/mw489/NRCRI_2020GS;
+rsync --update --archive --verbose /workdir/marnin/NRCRI_2020GS/ mw489@cbsulm15.biohpc.cornell.edu:/workdir/mw489/NRCRI_2020GS;
+rsync --update --archive --verbose /workdir/marnin/NRCRI_2020GS/ mw489@cbsulm18.biohpc.cornell.edu:/workdir/mw489/NRCRI_2020GS;
+
+rsync --update --archive --verbose /workdir/mw489/NRCRI_2020GS/ mw489@cbsurobbins.biohpc.cornell.edu:/workdir/marnin/NRCRI_2020GS;
+```

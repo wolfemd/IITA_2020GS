@@ -1,0 +1,176 @@
+---
+title: "Curate by trait-trial"
+author: "wolfemd"
+date: "2020-Sep-16"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = F, tidy = T)
+```
+
+# Previous step
+
+1. [Prepare a training dataset](01-cleanTPdata.html): Download data from DB, "Clean" and format DB data
+
+# Nest by trial
+
+Start with cleaned data from previous step.
+```{r}
+rm(list=ls())
+library(tidyverse); library(magrittr);
+dbdata<-readRDS(here::here("output","IITA_CleanedTrialData.rds"))
+```
+
+All downstream analyses in this step will by on a per-trial (location-year-studyName combination). 
+
+The `nestByTrials()` function converts a data.frame where each row is a **plot** to one where each row is a **trial**, with a list-type column **TrialData** containing the corresponding trial's plot-data.
+
+```{r}
+source(here::here("code","gsFunctions.R"))
+dbdata<-nestByTrials(dbdata)
+```
+```{r}
+dbdata %>% head %>% rmarkdown::paged_table()
+```
+
+```{r}
+dbdata$TrialData[[1]] %>% slice(1:20) %>% rmarkdown::paged_table()
+```
+
+# Detect experimental designs
+
+The next step is to check the experimental design of each trial. If you are absolutely certain of the usage of the design variables in your dataset, you might not need this step.
+
+Examples of reasons to do the step below:
+
+- Some trials appear to be complete blocked designs and the blockNumber is used instead of replicate, which is what most use.
+- Some complete block designs have nested, incomplete sub-blocks, others simply copy the "replicate" variable into the "blockNumber variable"
+- Some trials have only incomplete blocks _but_ the incomplete block info might be in the replicate _and/or_ the blockNumber column
+
+One reason it might be important to get this right is that the variance among complete blocks might not be the same among incomplete blocks. If we treat a mixture of complete and incomplete blocks as part of the same random-effect (replicated-within-trial), we assume they have the same variance.
+
+Also error variances might be heterogeneous among different trial-types (blocking scheme available) _and/or_ plot sizes (maxNOHAV).
+
+Detect designs
+```{r}
+dbdata<-detectExptDesigns(dbdata)
+```
+```{r}
+dbdata %>% 
+    count(programName,CompleteBlocks,IncompleteBlocks) %>% rmarkdown::paged_table()
+```
+## Output file
+```{r}
+saveRDS(dbdata,file=here::here("output","IITA_ExptDesignsDetected.rds"))
+```
+
+# Model by trait-trial
+
+**NOTICE:** Doing the next step on a server, too many traits and trials for laptop.
+
+
+The next step fits models to each trial (for each trait)
+
+```{r}
+rm(list=ls())
+library(tidyverse); library(magrittr);
+source(here::here("code","gsFunctions.R"))
+dbdata<-readRDS(here::here("output","IITA_ExptDesignsDetected.rds"))
+traits<-c("MCMDS","DM","PLTHT","BRNHT1","BRLVLS","HI","logFYLD","logTOPYLD","logRTNO","TCHART","LCHROMO","ACHROMO","BCHROMO")
+
+# Nest by trait-trial. 
+# This next function will structure input trial data by trait. 
+# This will facilitate looping downstream analyses over each trait for each trial.
+dbdata<-nestTrialsByTrait(dbdata,traits)
+```
+```{r}
+dbdata %>% head %>% rmarkdown::paged_table()
+```
+```{r}
+dbdata$TraitByTrialData[[1]] %>% head %>% rmarkdown::paged_table()
+```
+
+## Fit models
+```{r, eval=F}
+dbdata<-curateTrialsByTrait(dbdata,traits,ncores=20)
+```
+## Output file
+```{r, eval=F}
+saveRDS(dbdata,file=here::here("output","IITA_CuratedTrials.rds"))
+```
+
+## Plot Results
+```{r}
+library(tidyverse); library(magrittr); #library(plotly)
+dbdata<-readRDS(file=here::here("output","IITA_CuratedTrials.rds"))
+traits<-c("MCMDS","DM","PLTHT","BRNHT1","BRLVLS","HI","logFYLD","logTOPYLD","logRTNO","TCHART","LCHROMO","ACHROMO","BCHROMO")
+dbdata %<>% 
+  mutate(Trait=factor(Trait,levels=traits),
+         TrialType=factor(TrialType,levels=c("CrossingBlock","GeneticGain","CET","ExpCET","PYT","AYT","UYT","NCRP"))) 
+  
+```
+
+Heritabilities overall
+```{r, fig.width=8}
+dbdata %>% 
+  ggplot(.,aes(x=Trait,y=H2,fill=Trait)) + 
+  geom_boxplot(color='darkgray') + 
+  theme_bw() + 
+  scale_fill_viridis_d(option = 'magma') + 
+  theme(axis.text.x = element_text(face='bold',angle=90),
+        axis.title = element_text(face='bold',size=12),
+        plot.title = element_text(face='bold',size=14),
+        legend.position = 'none') + 
+  labs(x=NULL,y=expression("H"^"2"),title="Broad-sense Heritabilities across trials")
+```
+Residual variances, by TrialType and Trait
+```{r, fig.width=10,fig.height=10}
+dbdata %>%
+  select(studyYear:VarComps) %>% 
+  unnest(VarComps) %>% 
+  ggplot(.,aes(x=TrialType,y=Residual,fill=TrialType)) + 
+  geom_boxplot(color='darkgray') + 
+  theme_bw() + facet_wrap(~Trait,scales = 'free',nrow=3) +
+  scale_fill_viridis_d(option = 'inferno') + 
+  theme(axis.text.x = element_text(angle=90,face='bold'),
+        legend.position = 'none')
+```
+H2 by trait and trialtype.
+```{r, fig.width=10}
+dbdata %>%
+  select(studyYear:VarComps) %>% 
+  unnest(VarComps) %>% 
+  ggplot(.,aes(x=TrialType,y=H2,fill=TrialType)) + 
+  geom_boxplot(color='darkgray') + 
+  theme_bw() + facet_wrap(~Trait,scales = 'free',nrow=2) +
+  scale_fill_viridis_d(option = 'inferno') + 
+  theme(axis.text.x = element_text(angle=90,face='bold'),
+        legend.position = 'none')
+```
+Number of outliers detected and removed by trait-trialType.
+```{r, fig.width=10, fig.height=10}
+dbdata %>%
+  ggplot(.,aes(x=TrialType,y=Noutliers,fill=TrialType)) + 
+  geom_boxplot(color='darkgray') + 
+  theme_bw() + facet_wrap(~Trait,scales = 'free',nrow=4) +
+  scale_fill_viridis_d(option = 'inferno') + 
+  theme(axis.text.x = element_text(angle=90,face='bold'),
+        legend.position = 'none')
+```
+Missingness
+```{r, fig.width=10, fig.height=10}
+dbdata %>% 
+  ggplot(.,aes(x=TrialType,y=propMiss,fill=TrialType)) + 
+  geom_boxplot(color='darkgray') + 
+  theme_bw() + facet_wrap(~Trait,scales = 'free',nrow=3) +
+  scale_fill_viridis_d(option = 'inferno') + 
+  theme(axis.text.x = element_text(angle=90,face='bold'),
+        legend.position = 'none')
+```
+
+# Next step
+
+3. [Get BLUPs combining all trial data](03-GetBLUPs.html): Combine data from all trait-trials to get BLUPs for downstream genomic 

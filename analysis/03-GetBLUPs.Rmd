@@ -1,0 +1,77 @@
+---
+title: "Get BLUPs combining all trial data"
+author: "wolfemd"
+date: "2020-Sep-16"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = F, tidy = T)
+```
+
+# Previous step 
+
+2. [Curate by trait-trial](02-curateByTrial.html): Model each trait-trial separately, remove outliers, get BLUPs.
+
+# This step
+
+**Two-stage** genomic prediction refers to the following procedure:
+
+**Stage 1:** Fit a linear mixed model to the data *without* genomic data. Individuals (e.g. clones / accessions) are modeled as independent and identically distributed (*i.i.d.*) random effects. The BLUPs for this random effect represent the measurable total genetic values of each individual. All the experimental design variation, e.g. replication and blocking effects have been controlled for in the creation of our new response variable, the BLUPs from the gneotype random effect.
+
+**Stage 2:** Using a modified version of the BLUPs from step 1 as the response variable, fit a genomic prediction model, which now has reduced size because the number of observations is now the same as the number of individuals.
+
+**NOTE:** In the animal breeding literature **single-step** often refers to predictions that combine pedigree and marker information simultaneously. That *is not* our meaning here.
+
+The code below represents Stage I.
+
+# Set-up training datasets
+
+This next step fits models to each trait, combining curated data (BLUPs) from each trial, which we computed in the previous step.
+
+```{r}
+rm(list=ls())
+library(tidyverse); library(magrittr);
+source(here::here("code","gsFunctions.R"))
+dbdata<-readRDS(here::here("output","IITA_CuratedTrials.rds"))
+traits<-c("MCMDS","DM","PLTHT","BRNHT1","BRLVLS","HI","logFYLD","logTOPYLD","logRTNO","TCHART","LCHROMO","ACHROMO","BCHROMO")
+```
+
+Starting with the curated trial data (which correspond to per-trait, per-trial BLUPs) from the previous step.
+
+**Nest by trait.** Need to restructure the data from per-trial BLUPs by regrouping by trait. 
+
+```{r}
+dbdata<-nestForMultiTrialAnalysis(dbdata)
+```
+```{r, rows.print=13}
+dbdata %>% mutate(N_blups=map_dbl(MultiTrialTraitData,nrow)) %>% rmarkdown::paged_table()
+```
+# Model multiple trials
+
+Function `fitMultiTrialModel()` takes de-regressed BLUPs as response and corresponding weights on error variances are applied. Output includes BLUPs for each clone that combine data across trials and are suitable for downstream genomic prediction work.
+
+Apply the `fitMultiTrialModel()` to each chunk of trials (per trait) using the `purrr` function `map()`.
+
+```{r}
+dbdata %<>% 
+  mutate(modelOutput=map(MultiTrialTraitData,fitMultiTrialModel))
+```
+
+```{r, rows.print=13}
+dbdata %>% 
+  select(-MultiTrialTraitData) %>% 
+  unnest(modelOutput) %>% 
+  unnest(VarComps) %>% rmarkdown::paged_table()
+```
+
+## Output file
+```{r}
+saveRDS(dbdata,file=here::here("output","iita_blupsForModelTraining.rds"))
+```
+
+# Next step
+
+4. [Check prediction accuracy](04-CrossValidation.html): Evaluate prediction accuracy with cross-validation.

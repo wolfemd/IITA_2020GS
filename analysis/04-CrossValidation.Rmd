@@ -1,0 +1,115 @@
+---
+title: "Check prediction accuracy"
+author: "wolfemd"
+date: "2019-7-27"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = F, tidy = T, eval = F)
+```
+
+# Previous step 
+
+3. [Get BLUPs combining all trial data](03-GetBLUPs.html): Combine data from all trait-trials to get BLUPs for downstream genomic prediction.
+
+# Objective
+
+**Current Step:**  
+
+4. [Check prediction accuracy](04-CrossValidation.html): Evaluate prediction accuracy with cross-validation.
+
+5-fold cross-validation. Replicate 5-times. 
+
+3 genomic models:  
+
+1. Additive-only (**A**)
+2. Additive plus dominance (**AD**)
+3. Addtitive plus dominance plus epistasis (**ADE**)
+
+# Prep. genomic data 
+
+## Get SNP data from FTP
+
+The data for the next step can be found on the cassavabase FTP server [here](ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/).
+
+Can be loaded directly to R from FTP. 
+
+**NOTICE:** You need enough RAM and a stable network connection. I do the next steps, including cross-validation on a server with plenty of RAM and a good, stable network connection, rather than on my personal computer (a laptop with 16 GB RAM). 
+
+The outputs (kinship matrices and filtered snp dosages) of the steps below, which are too large for GitHub, can be found on the cassavabase FTP server [here](ftp://ftp.cassavabase.org/marnin_datasets/IITA_2020GS/).
+
+```{bash, eval=F}
+# activate multithread OpenBLAS for fast compute of SigmaM (genotypic var-covar matrix)
+export OMP_NUM_THREADS=56
+```
+
+```{r, eval=F}
+library(tidyverse); library(magrittr); 
+source(here::here("code","gsFunctions.R"))
+snps<-readRDS(file=url(paste0("ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/",
+                              "DosageMatrix_RefPanelAndGSprogeny_ReadyForGP_73019.rds")))
+blups<-readRDS(file=here::here("output","iita_blupsForModelTraining.rds"))
+
+blups %<>% 
+  select(Trait,modelOutput) %>% 
+  unnest(modelOutput) %>% 
+  select(Trait,BLUPs) %>% 
+  unnest(BLUPs)
+
+table(unique(blups$GID) %in% rownames(snps)) 
+# FALSE  TRUE 
+# 36837  7638 
+
+# keep only samples that are either geno+pheno or genotyped with TMS18 in the name.
+iitaSamples2keep<-union(unique(blups$GID) %>% .[.%in% rownames(snps)],
+                        rownames(snps) %>% grep("TMS18",.,value = T)) 
+length(iitaSamples2keep) # [1] 9061
+
+# subset BLUPs and snps
+blups %<>% 
+  filter(GID %in% iitaSamples2keep) %>% 
+  nest(TrainingData=-Trait)
+snps<-snps[iitaSamples2keep,]
+
+## MAF>1% filter
+snps %<>% maf_filter(.,0.01)
+dim(snps) # [1]  9061 68029
+```
+
+## Make Add, Dom and Epi kinships
+
+Going to use my own kinship function.
+
+Make the kinships. 
+
+Below e.g. `A*A` makes a matrix that approximates additive-by-additive epistasis relationships.
+```{r, eval=F}
+A<-kinship(snps,type="add")
+D<-kinship(snps,type="dom")
+AA<-A*A
+AD<-A*D
+DD<-D*D
+
+saveRDS(snps,file=here::here("output","DosageMatrix_IITA_2020Sep16."))
+saveRDS(A,file=here::here("output","Kinship_A_IITA_2020Sep16.rds"))
+saveRDS(D,file=here::here("output","Kinship_D_IITA_2020Sep16.rds"))
+saveRDS(AA,file=here::here("output","Kinship_AA_IITA_2020Sep16.rds"))
+saveRDS(AD,file=here::here("output","Kinship_AD_IITA_2020Sep16.rds"))
+saveRDS(DD,file=here::here("output","Kinship_DD_IITA2020Sep16.rds"))
+#rm(snps); gc()
+```
+
+**NOTICE:** The outputs (kinship matrices and filtered snp dosages) of the steps below, which are too large for GitHub, can be found on the cassavabase FTP server [here](ftp://ftp.cassavabase.org/marnin_datasets/IITA_2020GS/).
+
+
+# [SKIPPING BELOW FOR NOW] 
+
+# Cross-validation
+
+# Next step
+
+5. [Genomic prediction](05-GetGBLUPs.html): Predict _genomic_ BLUPs (GEBV and GETGV) for all selection candidates using all available data.
+
