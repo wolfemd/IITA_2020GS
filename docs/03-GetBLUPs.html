@@ -9,9 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="wolfemd" />
 
 
-<title>IITA Genomic Selection 2020</title>
+<title>Get BLUPs combining all trial data</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -466,8 +467,9 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">IITA Genomic Selection 2020</h1>
-<h4 class="date">2020-September</h4>
+<h1 class="title toc-ignore">Get BLUPs combining all trial data</h1>
+<h4 class="author">wolfemd</h4>
+<h4 class="date">2020-Sep-16</h4>
 
 </div>
 
@@ -638,7 +640,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/index.Rmd</code>) and HTML (<code>docs/index.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/03-GetBLUPs.Rmd</code>) and HTML (<code>docs/03-GetBLUPs.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -667,7 +669,7 @@ Message
 Rmd
 </td>
 <td>
-0368e9b
+7ea8b80
 </td>
 <td>
 wolfemd
@@ -676,75 +678,7 @@ wolfemd
 2020-09-17
 </td>
 <td>
-Start workflowr project.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-a83b1b4
-</td>
-<td>
-wolfemd
-</td>
-<td>
-2020-09-16
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-abbd4d6
-</td>
-<td>
-wolfemd
-</td>
-<td>
-2020-09-16
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-6f3349e
-</td>
-<td>
-wolfemd
-</td>
-<td>
-2020-09-16
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-cf3cce6
-</td>
-<td>
-wolfemd
-</td>
-<td>
-2020-09-15
-</td>
-<td>
-Start workflowr project.
+All steps including genomic predicting (excluding cross-validation),
 </td>
 </tr>
 </tbody>
@@ -754,34 +688,63 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<div id="summary" class="section level1">
-<h1>Summary</h1>
-<p>Objective of this analysis is to refresh the IITA genomic predictions for all available germplasm, but especially adding the 45 trials listed by Ismail Rabbi on Sep. 14, 2020 (printed below). Clones are already planted in a mixed crossing block in Ubiaja and the new set of GEBV and GETGV will be used for selecting parents and crosses.</p>
-<p>We may try optimal contributions. For now skip cross-validation.</p>
-</div>
-<div id="analysis-steps" class="section level1">
-<h1>Analysis Steps</h1>
-<ol style="list-style-type: decimal">
-<li><a href="01-cleanTPdata.html">Prepare a training dataset</a>: Download data from DB, “Clean” and format DB data.</li>
+<div id="previous-step" class="section level1">
+<h1>Previous step</h1>
+<ol start="2" style="list-style-type: decimal">
 <li><a href="02-curateByTrial.html">Curate by trait-trial</a>: Model each trait-trial separately, remove outliers, get BLUPs.</li>
-<li><a href="03-GetBLUPs.html">Get BLUPs combining all trial data</a>: Combine data from all trait-trials to get BLUPs for downstream genomic prediction.</li>
-<li><strong>SKIP FOR NOW</strong> <a href="04-CrossValidation.html">Check prediction accuracy</a>: Evaluate prediction accuracy with cross-validation.</li>
-<li><a href="05-GetGBLUPs.html">Genomic prediction</a>: Predict <em>genomic</em> BLUPs (GEBV and GETGV) for all selection candidates using all available data.</li>
-<li><strong>SKIP FOR NOW</strong> <a href="06-GetGainEst.html">Estimate genetic gain</a></li>
 </ol>
 </div>
-<div id="other-details" class="section level1">
-<h1>Other details</h1>
-<p>From Ismail Rabbi on 14 Sep. 2020:</p>
-<blockquote>
-<p>We finished uploading to cassavabase the trials harvested so far. A few trials remain but we cant wait for them since flowering in Ubiaja is kicking in.</p>
-</blockquote>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>rmarkdown<span class="op">::</span><span class="kw">paged_table</span>(readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;2019_GS_PhenoUpload.csv&quot;</span>)))</span></code></pre></div>
+<div id="this-step" class="section level1">
+<h1>This step</h1>
+<p><strong>Two-stage</strong> genomic prediction refers to the following procedure:</p>
+<p><strong>Stage 1:</strong> Fit a linear mixed model to the data <em>without</em> genomic data. Individuals (e.g. clones / accessions) are modeled as independent and identically distributed (<em>i.i.d.</em>) random effects. The BLUPs for this random effect represent the measurable total genetic values of each individual. All the experimental design variation, e.g. replication and blocking effects have been controlled for in the creation of our new response variable, the BLUPs from the gneotype random effect.</p>
+<p><strong>Stage 2:</strong> Using a modified version of the BLUPs from step 1 as the response variable, fit a genomic prediction model, which now has reduced size because the number of observations is now the same as the number of individuals.</p>
+<p><strong>NOTE:</strong> In the animal breeding literature <strong>single-step</strong> often refers to predictions that combine pedigree and marker information simultaneously. That <em>is not</em> our meaning here.</p>
+<p>The code below represents Stage I.</p>
+</div>
+<div id="set-up-training-datasets" class="section level1">
+<h1>Set-up training datasets</h1>
+<p>This next step fits models to each trait, combining curated data (BLUPs) from each trial, which we computed in the previous step.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(tidyverse); <span class="kw">library</span>(magrittr);</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">source</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;code&quot;</span>,<span class="st">&quot;gsFunctions.R&quot;</span>))</span>
+<span id="cb1-4"><a href="#cb1-4"></a>dbdata&lt;-<span class="kw">readRDS</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;IITA_CuratedTrials.rds&quot;</span>))</span>
+<span id="cb1-5"><a href="#cb1-5"></a>traits&lt;-<span class="kw">c</span>(<span class="st">&quot;MCMDS&quot;</span>,<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;PLTHT&quot;</span>,<span class="st">&quot;BRNHT1&quot;</span>,<span class="st">&quot;BRLVLS&quot;</span>,<span class="st">&quot;HI&quot;</span>,<span class="st">&quot;logFYLD&quot;</span>,<span class="st">&quot;logTOPYLD&quot;</span>,<span class="st">&quot;logRTNO&quot;</span>,<span class="st">&quot;TCHART&quot;</span>,<span class="st">&quot;LCHROMO&quot;</span>,<span class="st">&quot;ACHROMO&quot;</span>,<span class="st">&quot;BCHROMO&quot;</span>)</span></code></pre></div>
+<p>Starting with the curated trial data (which correspond to per-trait, per-trial BLUPs) from the previous step.</p>
+<p><strong>Nest by trait.</strong> Need to restructure the data from per-trial BLUPs by regrouping by trait.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>dbdata&lt;-<span class="kw">nestForMultiTrialAnalysis</span>(dbdata)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">N_blups=</span><span class="kw">map_dbl</span>(MultiTrialTraitData,nrow)) <span class="op">%&gt;%</span><span class="st"> </span>rmarkdown<span class="op">::</span><span class="kw">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["sno"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Trial_Name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Trial_Type"],"name":[3],"type":["chr"],"align":["left"]},{"label":["location"],"name":[4],"type":["chr"],"align":["left"]},{"label":["year"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["latitude"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["longitude"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["planting_date"],"name":[8],"type":["chr"],"align":["left"]},{"label":["harvesting_date"],"name":[9],"type":["chr"],"align":["left"]},{"label":["population"],"name":[10],"type":["chr"],"align":["left"]},{"label":["Experimental _Design"],"name":[11],"type":["chr"],"align":["left"]},{"label":["Cassavabase"],"name":[12],"type":["chr"],"align":["left"]}],"data":[{"1":"1","2":"19.GS.C1.C2.C3.AYT.42.AG","3":"AYT","4":"AG","5":"2019","6":"7.246878","7":"4.323690","8":"2019-July-09","9":"2020-July-02","10":"C1.C2.C3","11":"RCBD","12":"yes"},{"1":"2","2":"19.GS.C1.C2.C3.AYT.42.UB","3":"AYT","4":"UB","5":"2019","6":"6.645060","7":"6.413808","8":"2019-July-09","9":"2020-July-20","10":"C1.C2.C3","11":"RCBD","12":"yes"},{"1":"3","2":"19.GS.C2.UYT.36.setA.AB","3":"UYT","4":"AB","5":"2019","6":"9.076500","7":"7.398600","8":"2019-June-19","9":"2020-July-28","10":"C2","11":"Alpha","12":"yes"},{"1":"4","2":"19.GS.C2.UYT.36.setA.AG","3":"UYT","4":"AG","5":"2019","6":"7.246878","7":"4.323690","8":"2019-June-01","9":"2020-June-22","10":"C2","11":"Alpha","12":"yes"},{"1":"5","2":"19.GS.C2.UYT.36.setA.IB","3":"UYT","4":"IB","5":"2019","6":"7.493828","7":"3.900242","8":"2019-May-16","9":"2020-April-20","10":"C2","11":"Alpha","12":"yes"},{"1":"6","2":"19.GS.C2.UYT.36.setA.IK","3":"UYT","4":"IK","5":"2019","6":"6.849067","7":"3.698877","8":"2019-June-01","9":"2020-June-15","10":"C2","11":"Alpha","12":"yes"},{"1":"7","2":"19.GS.C2.UYT.36.setA.MK","3":"UYT","4":"MK","5":"2019","6":"9.355362","7":"5.017075","8":"2019-June-27","9":"2020-May-16","10":"C2","11":"Alpha","12":"yes"},{"1":"8","2":"19.GS.C2.UYT.36.setA.ON","3":"UYT","4":"ON","5":"2019","6":"4.705832","7":"7.174359","8":"2019-April-10","9":"2020-July-28","10":"C2","11":"Alpha","12":"yes"},{"1":"9","2":"19.GS.C2.UYT.36.setA.UB","3":"UYT","4":"UB","5":"2019","6":"6.645060","7":"6.413808","8":"2019-June-01","9":"2020-June-04","10":"C2","11":"Alpha","12":"yes"},{"1":"10","2":"19.GS.C2.UYT.36.setA.ZA","3":"UYT","4":"ZA","5":"2019","6":"11.085500","7":"7.719900","8":"2019-June-24","9":"2020-August-04","10":"C2","11":"Alpha","12":"yes"},{"1":"11","2":"19.GS.C2.UYT.36.setB.AB","3":"UYT","4":"AB","5":"2019","6":"9.076500","7":"7.398600","8":"2019-June-19","9":"2020-July-30","10":"C2","11":"Alpha","12":"yes"},{"1":"12","2":"19.GS.C2.UYT.36.setB.AG","3":"UYT","4":"AG","5":"2019","6":"7.246878","7":"4.323690","8":"2019-June-01","9":"2020-June-24","10":"C2","11":"Alpha","12":"yes"},{"1":"13","2":"19.GS.C2.UYT.36.setB.IB","3":"UYT","4":"IB","5":"2019","6":"7.493828","7":"3.900242","8":"2019-May-16","9":"2020-April-28","10":"C2","11":"Alpha","12":"yes"},{"1":"14","2":"19.GS.C2.UYT.36.setB.IK","3":"UYT","4":"IK","5":"2019","6":"6.849067","7":"3.698877","8":"2019-June-01","9":"2020-June-17","10":"C2","11":"Alpha","12":"yes"},{"1":"15","2":"19.GS.C2.UYT.36.setB.MK","3":"UYT","4":"MK","5":"2019","6":"9.355362","7":"5.017075","8":"2019-June-27","9":"2020-May-18","10":"C2","11":"Alpha","12":"yes"},{"1":"16","2":"19.GS.C2.UYT.36.setB.ON","3":"UYT","4":"ON","5":"2019","6":"4.705832","7":"7.174359","8":"2019-April-10","9":"2020-July-30","10":"C2","11":"Alpha","12":"yes"},{"1":"17","2":"19.GS.C2.UYT.36.setB.UB","3":"UYT","4":"UB","5":"2019","6":"6.645060","7":"6.413808","8":"2019-June-01","9":"2020-June-08","10":"C2","11":"Alpha","12":"yes"},{"1":"18","2":"19.GS.C2.UYT.36.setB.ZA","3":"UYT","4":"ZA","5":"2019","6":"11.085500","7":"7.719900","8":"2019-June-24","9":"2020-August-06","10":"C2","11":"Alpha","12":"yes"},{"1":"19","2":"19.GS.C3.AYT.20.EB.AG","3":"AYT","4":"AG","5":"2019","6":"7.246878","7":"4.323690","8":"2019-May-25","9":"2020-June-16","10":"C3","11":"RCBD","12":"yes"},{"1":"20","2":"19.GS.C3.AYT.20.EB.MK","3":"AYT","4":"MK","5":"2019","6":"9.355362","7":"5.017075","8":"2019-June-12","9":"2020-June-29","10":"C3","11":"RCBD","12":"yes"},{"1":"21","2":"19.GS.C3.AYT.20.EB.UB","3":"AYT","4":"UB","5":"2019","6":"6.645060","7":"6.413808","8":"2019-May-28","9":"2020-June-08","10":"C3","11":"RCBD","12":"yes"},{"1":"22","2":"19.GS.C3B.AYT.21.PD.AG","3":"AYT","4":"AG","5":"2019","6":"7.246878","7":"4.323690","8":"2019-May-25","9":"2020-June-18","10":"C3B","11":"RCBD","12":"yes"},{"1":"23","2":"19.GS.C3B.AYT.21.PD.MK","3":"AYT","4":"MK","5":"2019","6":"9.355362","7":"5.017075","8":"2019-June-12","9":"2020-May-14","10":"C3B","11":"RCBD","12":"yes"},{"1":"24","2":"19.GS.C3B.AYT.21.PD.UB","3":"AYT","4":"UB","5":"2019","6":"6.645060","7":"6.413808","8":"2019-May-28","9":"2020-June-09","10":"C3B","11":"RCBD","12":"yes"},{"1":"25","2":"19.GS.C3.UYT.28.AG","3":"UYT","4":"AG","5":"2019","6":"7.246878","7":"4.323690","8":"2019-September-22","9":"2020-September-22","10":"C3","11":"Alpha","12":"yes"},{"1":"26","2":"19.GS.C3.UYT.28.IK","3":"UYT","4":"IK","5":"2019","6":"6.849067","7":"3.698877","8":"2019-September-22","9":"2020-August-17","10":"C3","11":"Alpha","12":"yes"},{"1":"27","2":"19.GS.C4.AYT.30.IB","3":"AYT","4":"IB","5":"2019","6":"7.493828","7":"3.900242","8":"2019-September-09","9":"2020-August-18","10":"C4","11":"RCBD","12":"yes"},{"1":"28","2":"19.GS.C4.AYT.30.IK","3":"AYT","4":"IK","5":"2019","6":"6.849067","7":"3.698877","8":"2019-September-21","9":"2020-August-19","10":"C4","11":"RCBD","12":"yes"},{"1":"29","2":"19.GS.C4B.PYT.135.IK","3":"PYT","4":"IK","5":"2019","6":"6.849067","7":"3.698877","8":"2019-July-18","9":"2020-July-29","10":"C4B","11":"RCBD","12":"Yes"},{"1":"30","2":"19.GS.C4B.PYT.135.UB","3":"PYT","4":"UB","5":"2019","6":"6.645060","7":"6.413808","8":"2019-July-18","9":"2020-July-22","10":"C4B","11":"RCBD","12":"yes"},{"1":"31","2":"19.GS.C4B.PYT.78.AG","3":"PYT","4":"AG","5":"2019","6":"7.246878","7":"4.323690","8":"2019-July-16","9":"2020-May-19","10":"C4B","11":"RCBD","12":"yes"},{"1":"32","2":"19.GS.C4B.PYT.78.MK","3":"PYT","4":"MK","5":"2019","6":"9.355362","7":"5.017075","8":"2019-July-18","9":"2020-May-22","10":"C4B","11":"RCBD","12":"yes"},{"1":"33","2":"19.GS.C4B.PYT.88.AG","3":"PYT","4":"AG","5":"2019","6":"7.246878","7":"4.323690","8":"2019-July-16","9":"2020-May-18","10":"C4B","11":"RCBD","12":"yes"},{"1":"34","2":"19.GS.C4B.PYT.88.MK","3":"PYT","4":"MK","5":"2019","6":"9.355362","7":"5.017075","8":"2019-July-18","9":"2020-May-25","10":"C4B","11":"RCBD","12":"yes"},{"1":"35","2":"19.GS.C4.PYT.80.SETA.AG","3":"PYT","4":"AG","5":"2019","6":"7.246878","7":"4.323690","8":"2019-September-10","9":"2020-August-17","10":"C4","11":"RCBD","12":"yes"},{"1":"36","2":"19.GS.C4.PYT.80.SETA.IK","3":"PYT","4":"IK","5":"2019","6":"6.849067","7":"3.698877","8":"2019-September-10","9":"2020-August-18","10":"C4","11":"RCBD","12":"yes"},{"1":"37","2":"19.GS.C4.PYT.80.SETB.AG","3":"PYT","4":"AG","5":"2019","6":"7.246878","7":"4.323690","8":"2019-September-10","9":"2020-August-21","10":"C4","11":"RCBD","12":"yes"},{"1":"38","2":"19.GS.C4.PYT.80.SETB.IK","3":"PYT","4":"IK","5":"2019","6":"6.849067","7":"3.698877","8":"2019-September-10","9":"2020-August-20","10":"C4","11":"RCBD","12":"yes"},{"1":"39","2":"19NCRPAB","3":"NCRP","4":"AB","5":"2019","6":"9.076500","7":"7.398600","8":"2019-July-18","9":"2020-July-20","10":"NA","11":"Alpha","12":"yes"},{"1":"40","2":"19NCRPAG","3":"NCRP","4":"AG","5":"2019","6":"7.246878","7":"4.323690","8":"2019-June-02","9":"2020-July-27","10":"NA","11":"Alpha","12":"yes"},{"1":"41","2":"19NCRPIK","3":"NCRP","4":"IK","5":"2019","6":"6.849067","7":"3.698877","8":"2019-August-04","9":"2020-July-28","10":"NA","11":"Alpha","12":"yes"},{"1":"42","2":"19NCRPMK","3":"NCRP","4":"MK","5":"2019","6":"9.355362","7":"5.017075","8":"2019-July-22","9":"2020-July-20","10":"NA","11":"Alpha","12":"yes"},{"1":"43","2":"19NCRPON","3":"NCRP","4":"ON","5":"2019","6":"4.705832","7":"7.174359","8":"2019-May-25","9":"2020-July-28","10":"NA","11":"Alpha","12":"yes"},{"1":"44","2":"19NCRPUB","3":"NCRP","4":"UB","5":"2019","6":"6.645060","7":"6.413808","8":"2019-July-18","9":"2020-July-21","10":"NA","11":"Alpha","12":"yes"},{"1":"45","2":"19NCRPZA","3":"NCRP","4":"ZA","5":"2019","6":"11.085500","7":"7.719900","8":"2019-July-22","9":"2020-July-24","10":"NA","11":"Alpha","12":"yes"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["Trait"],"name":[1],"type":["chr"],"align":["left"]},{"label":["MultiTrialTraitData"],"name":[2],"type":["list"],"align":["right"]},{"label":["N_blups"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"MCMDS","2":"<tibble>","3":"85361"},{"1":"DM","2":"<tibble>","3":"65974"},{"1":"logFYLD","2":"<tibble>","3":"84224"},{"1":"logRTNO","2":"<tibble>","3":"85520"},{"1":"HI","2":"<tibble>","3":"70462"},{"1":"logTOPYLD","2":"<tibble>","3":"72059"},{"1":"TCHART","2":"<tibble>","3":"53751"},{"1":"PLTHT","2":"<tibble>","3":"11398"},{"1":"BRNHT1","2":"<tibble>","3":"20975"},{"1":"BRLVLS","2":"<tibble>","3":"9834"},{"1":"LCHROMO","2":"<tibble>","3":"19072"},{"1":"ACHROMO","2":"<tibble>","3":"18961"},{"1":"BCHROMO","2":"<tibble>","3":"19076"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[13],"max":[13]},"pages":{}}}
   </script>
 </div>
+</div>
+<div id="model-multiple-trials" class="section level1">
+<h1>Model multiple trials</h1>
+<p>Function <code>fitMultiTrialModel()</code> takes de-regressed BLUPs as response and corresponding weights on error variances are applied. Output includes BLUPs for each clone that combine data across trials and are suitable for downstream genomic prediction work.</p>
+<p>Apply the <code>fitMultiTrialModel()</code> to each chunk of trials (per trait) using the <code>purrr</code> function <code>map()</code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>dbdata <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">modelOutput=</span><span class="kw">map</span>(MultiTrialTraitData,fitMultiTrialModel))</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>MultiTrialTraitData) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="st">  </span><span class="kw">unnest</span>(modelOutput) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="st">  </span><span class="kw">unnest</span>(VarComps) <span class="op">%&gt;%</span><span class="st"> </span>rmarkdown<span class="op">::</span><span class="kw">paged_table</span>()</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Trait"],"name":[1],"type":["chr"],"align":["left"]},{"label":["H2"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["GID"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Residual"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["BLUPs"],"name":[5],"type":["list"],"align":["right"]},{"label":["Model"],"name":[6],"type":["chr"],"align":["left"]}],"data":[{"1":"MCMDS","2":"0.5713919","3":"3.524942e-01","4":"2.644103e-01","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"DM","2":"0.2503422","3":"5.743041e+00","4":"1.719772e+01","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"logFYLD","2":"0.1931811","3":"8.570054e-02","4":"3.579275e-01","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"logRTNO","2":"0.1748441","3":"4.807214e-02","4":"2.268708e-01","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"HI","2":"0.3229973","3":"5.440544e-03","4":"1.140339e-02","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"logTOPYLD","2":"0.2079038","3":"5.628792e-02","4":"2.144523e-01","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"TCHART","2":"0.3526037","3":"1.672788e-01","4":"3.071315e-01","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"PLTHT","2":"0.2260237","3":"3.643698e+02","4":"1.247717e+03","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"BRNHT1","2":"0.0850483","3":"4.776692e+01","4":"5.138777e+02","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"BRLVLS","2":"0.3619421","3":"3.575448e-01","4":"6.303060e-01","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"LCHROMO","2":"0.6835470","3":"2.056474e+01","4":"9.520592e+00","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"ACHROMO","2":"0.3451020","3":"4.572441e-01","4":"8.677096e-01","5":"<tibble>","6":"drgBLUP ~ (1|GID)"},{"1":"BCHROMO","2":"0.8823531","3":"2.954063e+01","4":"3.938745e+00","5":"<tibble>","6":"drgBLUP ~ (1|GID)"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[13],"max":[13]},"pages":{}}}
+  </script>
+</div>
+<div id="output-file" class="section level2">
+<h2>Output file</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">saveRDS</span>(dbdata,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;iita_blupsForModelTraining.rds&quot;</span>))</span></code></pre></div>
+</div>
+</div>
+<div id="next-step" class="section level1">
+<h1>Next step</h1>
+<ol start="4" style="list-style-type: decimal">
+<li><a href="04-CrossValidation.html">Check prediction accuracy</a>: Evaluate prediction accuracy with cross-validation.</li>
+</ol>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -789,7 +752,7 @@ Start workflowr project.
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
 <pre><code>R version 4.0.2 (2020-06-22)
 Platform: x86_64-apple-darwin17.0 (64-bit)
 Running under: macOS Mojave 10.14.6
@@ -805,18 +768,28 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
-[1] workflowr_1.6.2
+ [1] lme4_1.1-23     Matrix_1.2-18   magrittr_1.5    forcats_0.5.0  
+ [5] stringr_1.4.0   dplyr_1.0.2     purrr_0.3.4     readr_1.3.1    
+ [9] tidyr_1.1.2     tibble_3.0.3    ggplot2_3.3.2   tidyverse_1.3.0
+[13] workflowr_1.6.2
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.5      whisker_0.4     knitr_1.29      magrittr_1.5   
- [5] hms_0.5.3       here_0.1        R6_2.4.1        rlang_0.4.7    
- [9] stringr_1.4.0   tools_4.0.2     xfun_0.17       git2r_0.27.1   
-[13] htmltools_0.5.0 ellipsis_0.3.1  yaml_2.2.1      digest_0.6.25  
-[17] rprojroot_1.3-2 tibble_3.0.3    lifecycle_0.2.0 crayon_1.3.4   
-[21] readr_1.3.1     later_1.1.0.1   vctrs_0.3.4     promises_1.1.1 
-[25] fs_1.5.0        glue_1.4.2      evaluate_0.14   rmarkdown_2.3  
-[29] stringi_1.5.3   compiler_4.0.2  pillar_1.4.6    backports_1.1.9
-[33] jsonlite_1.7.1  httpuv_1.5.4    pkgconfig_2.0.3</code></pre>
+ [1] Rcpp_1.0.5       lubridate_1.7.9  here_0.1         lattice_0.20-41 
+ [5] assertthat_0.2.1 rprojroot_1.3-2  digest_0.6.25    R6_2.4.1        
+ [9] cellranger_1.1.0 backports_1.1.9  reprex_0.3.0     evaluate_0.14   
+[13] httr_1.4.2       pillar_1.4.6     rlang_0.4.7      readxl_1.3.1    
+[17] minqa_1.2.4      rstudioapi_0.11  nloptr_1.2.2.2   whisker_0.4     
+[21] blob_1.2.1       rmarkdown_2.3    splines_4.0.2    statmod_1.4.34  
+[25] munsell_0.5.0    broom_0.7.0      compiler_4.0.2   httpuv_1.5.4    
+[29] modelr_0.1.8     xfun_0.17        pkgconfig_2.0.3  htmltools_0.5.0 
+[33] tidyselect_1.1.0 fansi_0.4.1      crayon_1.3.4     dbplyr_1.4.4    
+[37] withr_2.2.0      later_1.1.0.1    MASS_7.3-53      grid_4.0.2      
+[41] nlme_3.1-149     jsonlite_1.7.1   gtable_0.3.0     lifecycle_0.2.0 
+[45] DBI_1.1.0        git2r_0.27.1     scales_1.1.1     cli_2.0.2       
+[49] stringi_1.5.3    fs_1.5.0         promises_1.1.1   xml2_1.3.2      
+[53] ellipsis_0.3.1   generics_0.0.2   vctrs_0.3.4      boot_1.3-25     
+[57] tools_4.0.2      glue_1.4.2       hms_0.5.3        yaml_2.2.1      
+[61] colorspace_1.4-1 rvest_0.3.6      knitr_1.29       haven_2.3.1     </code></pre>
 </div>
 </div>
 
