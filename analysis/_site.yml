@@ -13,7 +13,7 @@ navbar:
     href: 03-GetBLUPs.html
   # - text: Check prediction accuracy
   #   href: 04-CrossValidation.html
-  - text: Get GEBV for GS
+  - text: Genomic prediction
     href: 05-GetGEBVs.html
   - text: Get Gain Est.
     href: 06-GetGainEst.html

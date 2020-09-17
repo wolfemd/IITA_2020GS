@@ -20,11 +20,9 @@ We may try optimal contributions. For now skip cross-validation.
 3. [Get BLUPs combining all trial data](03-GetBLUPs.html): Combine data from all trait-trials to get BLUPs for downstream genomic prediction.
 4. **SKIP FOR NOW** [Check prediction accuracy](04-CrossValidation.html): Evaluate prediction accuracy with cross-validation.
 5. [Genomic prediction](05-GetGBLUPs.html): Predict _genomic_ BLUPs (GEBV and GETGV) for all selection candidates using all available data.
-6. [Estimate genetic gain](06-GetGainEst.html)
+6. **SKIP FOR NOW** [Estimate genetic gain](06-GetGainEst.html)
 
 # Other details
-
-Re-prediction of NRCRI germplasm. Updating available training data as of April 2020. Produce GEBV and GETGV. 
 
 From Ismail Rabbi on 14 Sep. 2020:  
 
