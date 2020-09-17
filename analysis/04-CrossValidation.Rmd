@@ -93,7 +93,7 @@ AA<-A*A
 AD<-A*D
 DD<-D*D
 
-saveRDS(snps,file=here::here("output","DosageMatrix_IITA_2020Sep16."))
+saveRDS(snps,file=here::here("output","DosageMatrix_IITA_2020Sep16.rds"))
 saveRDS(A,file=here::here("output","Kinship_A_IITA_2020Sep16.rds"))
 saveRDS(D,file=here::here("output","Kinship_D_IITA_2020Sep16.rds"))
 saveRDS(AA,file=here::here("output","Kinship_AA_IITA_2020Sep16.rds"))
