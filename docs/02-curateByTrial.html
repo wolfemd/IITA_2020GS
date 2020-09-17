@@ -27,6 +27,8 @@
 <script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -447,7 +449,7 @@ div.tocify {
   <a href="03-GetBLUPs.html">Get BLUPs</a>
 </li>
 <li>
-  <a href="05-GetGEBVs.html">Genomic prediction</a>
+  <a href="05-GetGBLUPs.html">Genomic prediction</a>
 </li>
 <li>
   <a href="06-GetGainEst.html">Get Gain Est.</a>
@@ -457,7 +459,13 @@ div.tocify {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/wolfemd/IITA_2020GS">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -585,16 +593,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong7ea8b80"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 7ea8b80 </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreef8ce3a388d9c5898427a07e5cdd3832960177a05targetblankf8ce3a3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/wolfemd/IITA_2020GS/tree/f8ce3a388d9c5898427a07e5cdd3832960177a05" target="_blank">f8ce3a3</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong7ea8b80" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreef8ce3a388d9c5898427a07e5cdd3832960177a05targetblankf8ce3a3a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version 7ea8b80. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/wolfemd/IITA_2020GS/tree/f8ce3a388d9c5898427a07e5cdd3832960177a05" target="_blank">f8ce3a3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -602,6 +610,7 @@ Note that you need to be careful to ensure that all relevant files for the analy
 <pre><code>
 Ignored files:
     Ignored:    .DS_Store
+    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/.DS_Store
     Ignored:    data/.DS_Store
@@ -666,10 +675,27 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/wolfemd/IITA_2020GS/7e156dd9d9c5f24a31704775dc9ac28f4caf7e3c/docs/02-curateByTrial.html" target="_blank">7e156dd</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-09-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
-7ea8b80
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/7ea8b809e8db0df70731be20004869bbce176891/analysis/02-curateByTrial.Rmd" target="_blank">7ea8b80</a>
 </td>
 <td>
 wolfemd
@@ -795,7 +821,45 @@ All steps including genomic predicting (excluding cross-validation),
 <span id="cb14-8"><a href="#cb14-8"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>,<span class="dt">size=</span><span class="dv">14</span>),</span>
 <span id="cb14-9"><a href="#cb14-9"></a>        <span class="dt">legend.position =</span> <span class="st">&#39;none&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb14-10"><a href="#cb14-10"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="ot">NULL</span>,<span class="dt">y=</span><span class="kw">expression</span>(<span class="st">&quot;H&quot;</span><span class="op">^</span><span class="st">&quot;2&quot;</span>),<span class="dt">title=</span><span class="st">&quot;Broad-sense Heritabilities across trials&quot;</span>)</span></code></pre></div>
-<p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-14-1.png" width="768" style="display: block; margin: auto;" /> Residual variances, by TrialType and Trait</p>
+<p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-14-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-14-1">
+Past versions of unnamed-chunk-14-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-14-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/7e156dd9d9c5f24a31704775dc9ac28f4caf7e3c/docs/figure/02-curateByTrial.Rmd/unnamed-chunk-14-1.png" target="_blank">7e156dd</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-09-17
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Residual variances, by TrialType and Trait</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>dbdata <span class="op">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2"></a><span class="st">  </span><span class="kw">select</span>(studyYear<span class="op">:</span>VarComps) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb15-3"><a href="#cb15-3"></a><span class="st">  </span><span class="kw">unnest</span>(VarComps) <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -805,7 +869,45 @@ All steps including genomic predicting (excluding cross-validation),
 <span id="cb15-7"><a href="#cb15-7"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&#39;inferno&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb15-8"><a href="#cb15-8"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>),</span>
 <span id="cb15-9"><a href="#cb15-9"></a>        <span class="dt">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
-<p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-15-1.png" width="960" style="display: block; margin: auto;" /> H2 by trait and trialtype.</p>
+<p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-15-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-15-1">
+Past versions of unnamed-chunk-15-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-15-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/7e156dd9d9c5f24a31704775dc9ac28f4caf7e3c/docs/figure/02-curateByTrial.Rmd/unnamed-chunk-15-1.png" target="_blank">7e156dd</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-09-17
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>H2 by trait and trialtype.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>dbdata <span class="op">%&gt;%</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="st">  </span><span class="kw">select</span>(studyYear<span class="op">:</span>VarComps) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="st">  </span><span class="kw">unnest</span>(VarComps) <span class="op">%&gt;%</span><span class="st"> </span></span>
@@ -815,7 +917,45 @@ All steps including genomic predicting (excluding cross-validation),
 <span id="cb16-7"><a href="#cb16-7"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&#39;inferno&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb16-8"><a href="#cb16-8"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>),</span>
 <span id="cb16-9"><a href="#cb16-9"></a>        <span class="dt">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
-<p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-16-1.png" width="960" style="display: block; margin: auto;" /> Number of outliers detected and removed by trait-trialType.</p>
+<p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-16-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-16-1">
+Past versions of unnamed-chunk-16-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-16-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/7e156dd9d9c5f24a31704775dc9ac28f4caf7e3c/docs/figure/02-curateByTrial.Rmd/unnamed-chunk-16-1.png" target="_blank">7e156dd</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-09-17
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Number of outliers detected and removed by trait-trialType.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>dbdata <span class="op">%&gt;%</span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="st">  </span><span class="kw">ggplot</span>(.,<span class="kw">aes</span>(<span class="dt">x=</span>TrialType,<span class="dt">y=</span>Noutliers,<span class="dt">fill=</span>TrialType)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb17-3"><a href="#cb17-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color=</span><span class="st">&#39;darkgray&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
@@ -823,7 +963,45 @@ All steps including genomic predicting (excluding cross-validation),
 <span id="cb17-5"><a href="#cb17-5"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&#39;inferno&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb17-6"><a href="#cb17-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>),</span>
 <span id="cb17-7"><a href="#cb17-7"></a>        <span class="dt">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
-<p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-17-1.png" width="960" style="display: block; margin: auto;" /> Missingness</p>
+<p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-17-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-17-1">
+Past versions of unnamed-chunk-17-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-17-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/7e156dd9d9c5f24a31704775dc9ac28f4caf7e3c/docs/figure/02-curateByTrial.Rmd/unnamed-chunk-17-1.png" target="_blank">7e156dd</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-09-17
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Missingness</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="st">  </span><span class="kw">ggplot</span>(.,<span class="kw">aes</span>(<span class="dt">x=</span>TrialType,<span class="dt">y=</span>propMiss,<span class="dt">fill=</span>TrialType)) <span class="op">+</span><span class="st"> </span></span>
 <span id="cb18-3"><a href="#cb18-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color=</span><span class="st">&#39;darkgray&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
@@ -832,6 +1010,43 @@ All steps including genomic predicting (excluding cross-validation),
 <span id="cb18-6"><a href="#cb18-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>),</span>
 <span id="cb18-7"><a href="#cb18-7"></a>        <span class="dt">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
 <p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-18-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-18-1">
+Past versions of unnamed-chunk-18-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-18-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/7e156dd9d9c5f24a31704775dc9ac28f4caf7e3c/docs/figure/02-curateByTrial.Rmd/unnamed-chunk-18-1.png" target="_blank">7e156dd</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-09-17
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>
 <div id="next-step" class="section level1">
