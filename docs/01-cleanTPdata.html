@@ -450,7 +450,7 @@ div.tocify {
   <a href="05-GetGBLUPs.html">Genomic prediction</a>
 </li>
 <li>
-  <a href="06-GetGainEst.html">Get Gain Est.</a>
+  <a href="06-Results.html">Results</a>
 </li>
 <li>
   <a href="license.html">License</a>
@@ -500,7 +500,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-09-17
+<strong>Last updated:</strong> 2020-09-21
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -591,16 +591,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreef8ce3a388d9c5898427a07e5cdd3832960177a05targetblankf8ce3a3a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/wolfemd/IITA_2020GS/tree/f8ce3a388d9c5898427a07e5cdd3832960177a05" target="_blank">f8ce3a3</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreec9388d1ad2cbc02ec69526f893a8cfd12922acf6targetblankc9388d1a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/wolfemd/IITA_2020GS/tree/c9388d1ad2cbc02ec69526f893a8cfd12922acf6" target="_blank">c9388d1</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreef8ce3a388d9c5898427a07e5cdd3832960177a05targetblankf8ce3a3a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreec9388d1ad2cbc02ec69526f893a8cfd12922acf6targetblankc9388d1a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/wolfemd/IITA_2020GS/tree/f8ce3a388d9c5898427a07e5cdd3832960177a05" target="_blank">f8ce3a3</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/wolfemd/IITA_2020GS/tree/c9388d1ad2cbc02ec69526f893a8cfd12922acf6" target="_blank">c9388d1</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -612,26 +612,17 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    analysis/.DS_Store
     Ignored:    data/.DS_Store
+    Ignored:    output/.DS_Store
 
 Untracked files:
-    Untracked:  data/2019_GS_PhenoUpload.csv
-    Untracked:  data/DCas19_4301_DArTseqLD_AllSites_AllChrom_raw_70919.samples
-    Untracked:  data/GBSdataMasterList_31818.csv
-    Untracked:  data/IITA_GBStoPhenoMaster_33018.csv
-    Untracked:  data/NRCRI_GBStoPhenoMaster_40318.csv
-    Untracked:  data/cassavabase_download_screen.png
-    Untracked:  data/chr1_RefPanelAndGSprogeny_ReadyForGP_72719.fam
-    Untracked:  data/dartOnlySamplesToImpute_72619.txt
-    Untracked:  output/GEBV_IITA_ModelA_2020Sep16.csv
-    Untracked:  output/GETGV_IITA_ModelADE_2020Sep16.csv
-    Untracked:  output/IITA_CuratedTrials.rds
-    Untracked:  output/IITA_ExptDesignsDetected.rds
-    Untracked:  output/all_iita_metadata.csv
-    Untracked:  output/genomicPredictions_ModelADE_IITA_2020Sep16.rds
-    Untracked:  output/genomicPredictions_ModelA_IITA_2020Sep16.rds
-    Untracked:  output/iita_blupsForModelTraining.rds
-    Untracked:  output/iita_trials_NOT_identifiable.csv
-    Untracked:  output/maxNOHAV_byStudy.csv
+    Untracked:  data/GEBV_IITA_OutliersRemovedTRUE_73119.csv
+    Untracked:  data/iita_blupsForCrossVal_outliersRemoved_73019.rds
+    Untracked:  output/DosageMatrix_IITA_2020Sep16.rds
+    Untracked:  output/Kinship_AA_IITA_2020Sep16.rds
+    Untracked:  output/Kinship_AD_IITA_2020Sep16.rds
+    Untracked:  output/Kinship_A_IITA_2020Sep16.rds
+    Untracked:  output/Kinship_DD_IITA2020Sep16.rds
+    Untracked:  output/Kinship_D_IITA_2020Sep16.rds
     Untracked:  workflowr_log.R
 
 </code></pre>
@@ -671,6 +662,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/wolfemd/IITA_2020GS/d6d72f8b5119abf30b151c22feb7f4c8c3a6bd23/docs/01-cleanTPdata.html" target="_blank">d6d72f8</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-09-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1193,8 +1201,8 @@ loaded via a namespace (and not attached):
 [37] digest_0.6.25    stringi_1.5.3    rprojroot_1.3-2  grid_4.0.2      
 [41] here_0.1         cli_2.0.2        tools_4.0.2      crayon_1.3.4    
 [45] whisker_0.4      pkgconfig_2.0.3  ellipsis_0.3.1   xml2_1.3.2      
-[49] reprex_0.3.0     lubridate_1.7.9  rstudioapi_0.11  assertthat_0.2.1
-[53] rmarkdown_2.3    httr_1.4.2       R6_2.4.1         git2r_0.27.1    
+[49] reprex_0.3.0     lubridate_1.7.9  assertthat_0.2.1 rmarkdown_2.3   
+[53] httr_1.4.2       rstudioapi_0.11  R6_2.4.1         git2r_0.27.1    
 [57] compiler_4.0.2  </code></pre>
 </div>
 </div>
