@@ -13,8 +13,8 @@ navbar:
     href: 03-GetBLUPs.html
   - text: Genomic prediction
     href: 05-GetGBLUPs.html
-  - text: Get Gain Est.
-    href: 06-GetGainEst.html
+  - text: Results
+    href: 06-Results.html
   - text: License
     href: license.html
   right:
