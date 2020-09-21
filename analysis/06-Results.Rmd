@@ -1,0 +1,44 @@
+---
+title: "Results"
+author: "wolfemd"
+date: "2020-Sep-21"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = F, tidy = T)
+```
+
+
+# Cross-validation accuracy
+
+Conducted 5-fold x 5-reps of cross-validation ([here](04-CrossValidation.html)). Three traits only, MCMDS, logFYLD, DM.
+
+
+```{r}
+library(tidyverse); library(magrittr);
+cvresults<-readRDS(here::here("output","cvresults_ModelA_chunk1.rds")) %>% 
+  bind_rows(readRDS(here::here("output","cvresults_ModelA_chunk2.rds"))) %>% 
+  bind_rows(readRDS(here::here("output","cvresults_ModelA_chunk3.rds"))) 
+cvresults %>% 
+  select(Trait,repeats,id,VersionOfBLUPs,accGEBV) %>% 
+  ggplot(.,aes(x=Trait,y=accGEBV,fill=VersionOfBLUPs)) + 
+  geom_boxplot() +
+  theme_bw() + 
+  scale_fill_viridis_d() + labs(title="Compare 3-stage and 2-stage prediction pipelines",subtitle="Model: Additive-only")
+```
+
+```{r}
+cvresults %>% 
+  select(Trait,repeats,id,VersionOfBLUPs,accGEBV) %>% 
+  spread(VersionOfBLUPs,accGEBV) %>% 
+  mutate(diffAcc=blups2stage-blups3stage) %>% 
+  ggplot(.,aes(x=Trait,y=diffAcc,fill=Trait)) + 
+  geom_hline(yintercept = 0, color='darkred') + 
+  geom_boxplot() +
+  theme_bw() + 
+  scale_fill_viridis_d() + labs(y="Accuracy Difference (2-stage minus 3-stage)",subtitle="Model: Additive-only")
+```
+

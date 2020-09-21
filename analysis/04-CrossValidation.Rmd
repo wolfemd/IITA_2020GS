@@ -1,7 +1,7 @@
 ---
 title: "Check prediction accuracy"
 author: "wolfemd"
-date: "2019-7-27"
+date: "2020-Sep-20"
 output: workflowr::wflow_html
 editor_options:
   chunk_output_type: inline
@@ -104,10 +104,247 @@ saveRDS(DD,file=here::here("output","Kinship_DD_IITA2020Sep16.rds"))
 
 **NOTICE:** The outputs (kinship matrices and filtered snp dosages) of the steps below, which are too large for GitHub, can be found on the cassavabase FTP server [here](ftp://ftp.cassavabase.org/marnin_datasets/IITA_2020GS/).
 
-
-# [SKIPPING BELOW FOR NOW] 
-
 # Cross-validation
+```{bash, eval=F}
+# activate multithread OpenBLAS for fast matrix algebra
+export OMP_NUM_THREADS=56
+```
+## Set-up CV folds
+```{r}
+library(tidyverse); library(magrittr);
+# BLUPs from the 3 stage procedure 
+# (representing stage 2 of 3) using the 2020 standard procedure
+blups_3stage_lmer<-readRDS(here::here("output","iita_blupsForModelTraining.rds"))
+
+# BLUPs from the 2 stage procedure
+# (stage 1 of 2) using the 2019 procedure
+blups_2stage_asreml<-readRDS(file=here::here("output","iita_blupsForModelTraining_twostage_asreml.rds"))
+
+# merge two sets of BLUPs
+blups<-blups_2stage_asreml %>% 
+  dplyr::select(Trait,blups) %>% 
+  rename(blups2stage=blups) %>% 
+  left_join(blups_3stage_lmer %>% 
+              dplyr::select(Trait,modelOutput) %>% 
+              unnest(modelOutput) %>% 
+              dplyr::select(Trait,BLUPs) %>% 
+              rename(blups3stage=BLUPs))
+rm(blups_2stage_asreml,blups_3stage_lmer)
+
+# read additive kinship matrix
+A<-readRDS(file=here::here("output","Kinship_A_IITA_2020Sep16.rds"))
+```
+
+Next, set-up a common set of train-test cross-validation folds to compare the two sets of BLUPs with.
+```{r}
+require(sommer); require(rsample)
+nrepeats<-5; nfolds<-5
+blups %<>% 
+  # operate on GID common to both sets of BLUPs
+  mutate(cvfolds=map2(blups2stage,blups3stage,
+                      # GIDs in both sets of BLUPs
+                      ~tibble(GID=unique(intersect(.x$GID,.y$GID)) %>% 
+                                # and genotyped (in kinship)
+                                .[. %in% rownames(A)])))
+# for each trait, set-up nrepeats of nfold CVs
+blups %<>% 
+  mutate(cvfolds=map(cvfolds,~tibble(repeats=1:nrepeats,
+                                     splits=rerun(nrepeats,vfold_cv(., v = nfolds))) %>% 
+                       unnest(splits))) %>% 
+  unnest(cvfolds)
+blups %<>% 
+  mutate(blups2stage=map(blups2stage,as.tibble)) %>% 
+  pivot_longer(cols = c(blups2stage,blups3stage), 
+               names_to = "VersionOfBLUPs", 
+               values_to = "TrainTestData")
+
+# decided to only do CV for 3 traits ("quick" test)
+blups %<>%
+  filter(Trait %in% c("MCMDS","DM","logFYLD")) 
+gc()
+
+blups %>% head
+```
+
+## Function to do CV
+```{r, eval=F}
+# function to predict train and test sets, calc accuracy
+fitModel<-possibly(function(splits,modelType,TrainTestData,grms,gid="GID"){
+  # test arguments for function
+  # ----------------------
+  #   splits<-blups$splits[[1]]
+  # TrainTestData<-blups$TrainTestData[[1]]
+  # modelType<-"A"
+  # grms=list(A=A)
+  # gid="GID"
+  # ----------------------
+  
+  starttime<-proc.time()[3]
+  # Set-up training set
+  trainingdata<-TrainTestData %>% 
+    filter(GID %in% training(splits)$GID)
+  # Subset kinship matrices
+  traintestgids<-union(trainingdata[[gid]],testing(splits)[[gid]])
+  A1<-grms[["A"]][traintestgids,traintestgids]
+  trainingdata[[paste0(gid,"a")]]<-factor(trainingdata[[gid]],levels=rownames(A1))
+  if(modelType %in% c("AD","ADE")){
+    D1<-grms[["D"]][traintestgids,traintestgids]
+    trainingdata[[paste0(gid,"d")]]<-factor(trainingdata[[gid]],levels=rownames(D1))
+    if(modelType=="ADE"){
+      AD1<-grms[["AD"]][traintestgids,traintestgids]
+      diag(AD1)<-diag(AD1)+1e-06
+      trainingdata[[paste0(gid,"ad")]]<-factor(trainingdata[[gid]],levels=rownames(AD1))
+    }
+  }
+  # Set-up random model statements
+  randFormula<-paste0("~vs(",gid,"a,Gu=A1)")
+  if(modelType %in% c("AD","ADE")){
+    randFormula<-paste0(randFormula,"+vs(",gid,"d,Gu=D1)")
+    if(modelType=="ADE"){
+      randFormula<-paste0(randFormula,"+vs(",gid,"ad,Gu=AD1)")
+    }
+  }
+  # Fit genomic prediction model
+  fit <- mmer(fixed = drgBLUP ~1,
+              random = as.formula(randFormula),
+              weights = WT,
+              data=trainingdata)
+  # Gather the BLUPs
+  gblups<-tibble(GID=as.character(names(fit$U[[paste0("u:",gid,"a")]]$drgBLUP)),
+                 GEBV=as.numeric(fit$U[[paste0("u:",gid,"a")]]$drgBLUP))
+  if(modelType %in% c("AD","ADE")){
+    gblups %<>% mutate(GEDD=as.numeric(fit$U[[paste0("u:",gid,"d")]]$drgBLUP))
+    if(modelType=="ADE"){
+      gblups %<>% 
+        mutate(GEEDad=as.numeric(fit$U[[paste0("u:",gid,"ad")]]$drgBLUP))
+    }
+  }
+  # Calc GETGVs
+  ## Note that for modelType=="A", GEBV==GETGV
+  gblups %<>%
+    mutate(GETGV=rowSums(.[,grepl("GE",colnames(.))]))
+  # Test set validation data
+  validationData<-TrainTestData %>%
+    dplyr::select(gid,BLUP) %>%
+    filter(GID %in% testing(splits)[[gid]])
+  # Measure accuracy in test set
+  ## cor(GEBV,BLUP)
+  ## cor(GETGV,BLUP)
+  accuracy<-gblups %>%
+    mutate(GETGV=rowSums(.[,grepl("GE",colnames(.))])) %>%
+    filter(GID %in% testing(splits)[[gid]]) %>%
+    left_join(validationData) %>%
+    summarize(accGEBV=cor(GEBV,BLUP, use = 'complete.obs'),
+              accGETGV=cor(GETGV,BLUP, use = 'complete.obs'))
+  computeTime<-proc.time()[3]-starttime
+  accuracy %<>% mutate(computeTime=computeTime)
+  return(accuracy)
+},otherwise = NA)
+```
+
+## Run CV - Model A
+```{r, eval=F}
+## Run models across all train-test splits
+## Parallelize
+ncores<-5
+require(furrr); plan(multiprocess); options(mc.cores=ncores); options(future.globals.maxSize= 1500*1024^2)
+
+## three chunks, three servers for speed
+
+### cbsulm15
+cv_1<-blups %>%
+  slice(1:50) %>% 
+  mutate(accuracy=future_map2(splits,TrainTestData,
+                              ~fitModel(splits=.x,
+                                        TrainTestData=.y,
+                                        modelType="A",
+                                        grms=list(A=A)),
+                              .progress = FALSE)) %>%
+  unnest(accuracy)
+saveRDS(cv_1 %>% dplyr::select(-TrainTestData),here::here("output","cvresults_ModelA_chunk1.rds"))
+
+### cbsulm16
+cv_2<-blups %>%
+  slice(51:100) %>% 
+  mutate(accuracy=future_map2(splits,TrainTestData,
+                              ~fitModel(splits=.x,
+                                        TrainTestData=.y,
+                                        modelType="A",
+                                        grms=list(A=A)),
+                              .progress = FALSE)) %>%
+  unnest(accuracy)
+saveRDS(cv_2 %>% dplyr::select(-TrainTestData),here::here("output","cvresults_ModelA_chunk2.rds"))
+
+### cbsulm17
+cv_3<-blups %>%
+  slice(101:150) %>% 
+  mutate(accuracy=future_map2(splits,TrainTestData,
+                              ~fitModel(splits=.x,
+                                        TrainTestData=.y,
+                                        modelType="A",
+                                        grms=list(A=A)),
+                              .progress = FALSE)) %>%
+  unnest(accuracy)
+saveRDS(cv_3 %>% dplyr::select(-TrainTestData),here::here("output","cvresults_ModelA_chunk3.rds"))
+
+# ~3 hrs
+```
+
+## Run CV - Model ADE
+
+Same R session as Model A... exact train-test folds not otherwise stored.
+
+```{r, eval=F}
+# read dominance and add-by-dom epistasis kinship matrices
+D<-readRDS(file=here::here("output","Kinship_D_IITA_2020Sep16.rds"))
+AD<-readRDS(file=here::here("output","Kinship_AD_IITA_2020Sep16.rds"))
+
+## Run models across all train-test splits
+## Parallelize
+ncores<-5
+require(furrr); plan(multiprocess); options(mc.cores=ncores); options(future.globals.maxSize= 3000*1024^2)
+
+## three chunks, three servers for speed
+
+### cbsulm15
+cv_1<-blups %>%
+  slice(1:50) %>% 
+  mutate(accuracy=future_map2(splits,TrainTestData,
+                              ~fitModel(splits=.x,
+                                        TrainTestData=.y,
+                                        modelType="ADE",
+                                        grms=list(A=A, D=D, AD=AD)),
+                              .progress = FALSE)) %>%
+  unnest(accuracy)
+saveRDS(cv_1 %>% dplyr::select(-TrainTestData),here::here("output","cvresults_ModelADE_chunk1.rds"))
+
+### cbsulm16
+cv_2<-blups %>%
+  slice(51:100) %>% 
+  mutate(accuracy=future_map2(splits,TrainTestData,
+                              ~fitModel(splits=.x,
+                                        TrainTestData=.y,
+                                        modelType="ADE",
+                                        grms=list(A=A, D=D, AD=AD)),
+                              .progress = FALSE)) %>%
+  unnest(accuracy)
+saveRDS(cv_2 %>% dplyr::select(-TrainTestData),here::here("output","cvresults_ModelADE_chunk2.rds"))
+
+### cbsulm17
+cv_3<-blups %>%
+  slice(101:150) %>% 
+  mutate(accuracy=future_map2(splits,TrainTestData,
+                              ~fitModel(splits=.x,
+                                        TrainTestData=.y,
+                                        modelType="ADE",
+                                        grms=list(A=A, D=D, AD=AD)),
+                              .progress = FALSE)) %>%
+  unnest(accuracy)
+saveRDS(cv_3 %>% dplyr::select(-TrainTestData),here::here("output","cvresults_ModelADE_chunk3.rds"))
+
+# 12:35pm
+```
+
 
 # Next step
 
