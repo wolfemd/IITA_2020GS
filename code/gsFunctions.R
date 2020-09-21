@@ -450,16 +450,28 @@ runGenomicPredictions<-function(blups,modelType,grms,ncores=1,gid="GID",...){
     fit <- mmer(fixed = drgBLUP ~1,
                 random = as.formula(randFormula),
                 weights = WT,
-                data=trainingdata)
+                data=trainingdata,getPEV = TRUE)
+
     # Gather the BLUPs
     gblups<-tibble(GID=as.character(names(fit$U[[paste0("u:",gid,"a")]]$drgBLUP)),
                    GEBV=as.numeric(fit$U[[paste0("u:",gid,"a")]]$drgBLUP))
+    pev<-diag((fit$PevU[["u:GIDa"]]$drgBLUP))
+    pev<-tibble(GID=names(pev),
+                PEVa=pev)
+    gblups %<>% left_join(pev)
     if(modelType %in% c("AD","ADE")){
       gblups %<>% mutate(GEDD=as.numeric(fit$U[[paste0("u:",gid,"d")]]$drgBLUP))
+      pev<-diag((fit$PevU[["u:GIDd"]]$drgBLUP))
+      pev<-tibble(GID=names(pev),
+                  PEVd=pev)
+      gblups %<>% left_join(pev)
+
       if(modelType=="ADE"){
-        gblups %<>% mutate(#GEEDaa=as.numeric(fit$U[[paste0("u:",gid,"aa")]]$drgBLUP),
-          GEEDad=as.numeric(fit$U[[paste0("u:",gid,"ad")]]$drgBLUP))
-        #GEEDdd=as.numeric(fit$U[[paste0("u:",gid,"dd")]]$drgBLUP))
+        gblups %<>% mutate(GEEDad=as.numeric(fit$U[[paste0("u:",gid,"ad")]]$drgBLUP))
+        pev<-diag((fit$PevU[["u:GIDad"]]$drgBLUP))
+        pev<-tibble(GID=names(pev),
+                    PEVad=pev)
+        gblups %<>% left_join(pev)
       }
     }
     # Calc GETGVs
