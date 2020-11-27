@@ -42,3 +42,119 @@ cvresults %>%
   scale_fill_viridis_d() + labs(y="Accuracy Difference (2-stage minus 3-stage)",subtitle="Model: Additive-only")
 ```
 
+# Genetic Gain
+
+```{r, fig.height=7, fig.width=5}
+library(tidyverse); library(magrittr)
+iita_gebvs<-read.csv(here::here("output","GEBV_IITA_ModelA_twostage_IITA_2020Sep21.csv"), stringsAsFactors = F)
+traits<-c("DM","logFYLD","logTOPYLD","MCMDS")
+iita_gebvs %>% 
+  select(GID,GeneticGroup,any_of(traits)) %>% 
+  pivot_longer(cols=any_of(traits),names_to = "Trait",values_to = "GEBV") %>% 
+  group_by(Trait,GeneticGroup) %>% 
+  summarize(meanGEBV=mean(GEBV),
+            stdErr=sd(GEBV)/sqrt(n()),
+            upperSE=meanGEBV+stdErr,
+            lowerSE=meanGEBV-stdErr) %>% 
+  ggplot(.,aes(x=GeneticGroup,y=meanGEBV,fill=Trait)) + 
+  geom_bar(stat = 'identity', color='gray60', size=1.25) + 
+  geom_linerange(aes(ymax=upperSE,
+                     ymin=lowerSE), color='gray60', size=1.25) + 
+  facet_wrap(~Trait,scales='free_y', ncol=1) + 
+  theme_bw() +
+  geom_hline(yintercept = 0, size=1.15, color='black') + 
+  theme(axis.text.x = element_text(face = 'bold',angle = 0, size=12),
+        axis.title.y = element_text(face = 'bold',size=14),
+        legend.position = 'none',
+        strip.background.x = element_blank(),
+        strip.text = element_text(face='bold',size=14)) + 
+  scale_fill_viridis_d() + 
+  labs(x=NULL,y="Mean GEBVs")
+```
+
+# Rate of gain
+
+```{r}
+library(tidyverse); library(magrittr);
+iita_gebvs<-read.csv(here::here("output","GEBV_IITA_ModelA_twostage_IITA_2020Sep21.csv"), stringsAsFactors = F)
+traits<-c("DM","logFYLD","logTOPYLD","MCMDS")
+
+ggcycletime<-readxl::read_xlsx(here::here("data","pedigreeGeneticGainCycleTime.xlsx"))
+table(ggcycletime$Accession %in% iita_gebvs$GID)
+```
+
+Need germplasmName field from raw trial data to match GEBV and cycle time
+```{r}
+library(tidyverse); library(magrittr);
+dbdata<-readRDS(here::here("output","IITA_ExptDesignsDetected.rds"))
+
+
+iita_gebvs %<>% 
+  left_join(dbdata %>% 
+  select(-MaxNOHAV) %>% unnest(TrialData) %>% 
+  distinct(germplasmName,GID)) %>% 
+  group_by(GID) %>% 
+  slice(1) %>% 
+  ungroup()
+table(ggcycletime$Accession %in% iita_gebvs$germplasmName)
+```
+
+```{r}
+iita_gebvs %<>% left_join(.,ggcycletime %>% rename(germplasmName=Accession))
+```
+
+```{r}
+iita_gebvs %<>% 
+  mutate(Year_Accession=case_when(grepl("2013_|TMS13",germplasmName)~2013,
+                                  grepl("TMS14",germplasmName)~2014,
+                                  grepl("TMS15",germplasmName)~2015,
+                                  grepl("TMS18",germplasmName)~2018,
+                                  !grepl("2013_|TMS13|TMS14|TMS15|TMS18",germplasmName)~Year_Accession)) 
+```
+
+
+```{r, fig.height=10, fig.width=10}
+iita_gebvs %>% 
+  select(germplasmName,GeneticGroup,Year_Accession,any_of(traits)) %>% 
+  pivot_longer(cols=any_of(traits),names_to = "Trait",values_to = "GEBV") %>% 
+  ggplot(.,aes(x=Year_Accession,y=GEBV,color=GeneticGroup)) + 
+  geom_point() + 
+  facet_wrap(~Trait,scales='free_y', ncol=1) + 
+  theme_bw() +
+#  geom_hline(yintercept = 0, size=1.15, color='black') + 
+  theme(axis.text.x = element_text(face = 'bold',angle = 0, size=12),
+        axis.title.y = element_text(face = 'bold',size=14),
+        #legend.position = 'none',
+        strip.background.x = element_blank(),
+        strip.text = element_text(face='bold',size=14)) + 
+  scale_color_viridis_d()
+#  labs(x=NULL,y="Mean GEBVs")
+
+```
+```{r, fig.height=10}
+iita_gebvs %>% 
+  select(germplasmName,GeneticGroup,Year_Accession,any_of(traits)) %>% 
+  mutate(GeneticGroup=ifelse(Year_Accession>=2013,"GS","PreGS")) %>% 
+  pivot_longer(cols=any_of(traits),names_to = "Trait",values_to = "GEBV") %>% 
+  group_by(Trait,GeneticGroup,Year_Accession) %>% 
+  summarize(meanGEBV=mean(GEBV),
+            Nclones=n(),
+            stdErr=sd(GEBV)/sqrt(n()),
+            upperSE=meanGEBV+stdErr,
+            lowerSE=meanGEBV-stdErr) %>% 
+  ggplot(.,aes(x=Year_Accession,y=meanGEBV,color=GeneticGroup,size=Nclones)) + 
+  geom_point(size=4) + geom_smooth(method=lm, se=TRUE) + 
+  geom_linerange(aes(ymax=upperSE,
+                     ymin=lowerSE), color='gray40', size=1) + 
+  facet_wrap(~Trait,scales='free_y', ncol=1) + 
+  theme_bw() +
+  theme(axis.text = element_text(face = 'bold',angle = 0, size=14),
+        axis.title = element_text(face = 'bold',size=16),
+        strip.background.x = element_blank(),
+        strip.text = element_text(face='bold',size=18)) + 
+  scale_color_viridis_d()
+
+```
+
+
+
