@@ -3,16 +3,34 @@ output_dir: ../docs
 navbar:
   title: IITA_2020GS
   left:
-  - text: Synopsis
+  - text: Home
     href: index.html
   - text: Data Cleaning
-    href: 01-cleanTPdata.html
+    menu:
+    - text: September2020
+      href: 01-cleanTPdata.html
+    - text: December2020
+      href: 07-cleanTPdata_Dec2020.html
   - text: Curate Data
-    href: 02-curateByTrial.html
+    menu:
+    - text: September2020
+      href: 02-curateByTrial.html
   - text: Get BLUPs
-    href: 03-GetBLUPs.html
+    menu:
+    - text: September2020
+      href: 03-GetBLUPs.html
+    - text: December2020
+      href: 08-GetBLUPs_Dec2020.html
+  - text: Cross validation
+    menu:
+    - text: September2020
+      href: 04-CrossValidation.html
   - text: Genomic prediction
-    href: 05-GetGBLUPs.html
+    menu:
+    - text: September2020
+      href: 05-GetGBLUPs.html
+    - text: December2020
+      href: 09-GetGBLUPs_Dec2020.html
   - text: Results
     href: 06-Results.html
   - text: License

@@ -13,7 +13,7 @@ Objective of this analysis is to refresh the IITA genomic predictions for all av
 
 We may try optimal contributions. For now skip cross-validation.
 
-# Analysis Steps
+# September 2020 Analyses
 
 1. [Prepare a training dataset](01-cleanTPdata.html): Download data from DB, "Clean" and format DB data.
 2. [Curate by trait-trial](02-curateByTrial.html): Model each trait-trial separately, remove outliers, get BLUPs.
@@ -23,6 +23,13 @@ We may try optimal contributions. For now skip cross-validation.
     * Compare versions of BLUPs in terms of prediction accuracy. Required custom cross-validation code to ensure common train-test folds compared across methods.
 5. [Genomic prediction](05-GetGBLUPs.html): Predict _genomic_ BLUPs (GEBV and GETGV) for all selection candidates using all available data.
 6. [Results](06-Results.html): New home for plots and other results.
+
+# December 2020 Analyses
+
+1. [Prepare a training dataset](07-cleanTPdata_Dec2020.html): Freshly download all 2018-2020 trials. Combine rest of data and re-run "cleaning" and formatting pipeline.
+2. [Get BLUPs combining all trial data](08-GetBLUPs_Dec2020.html): Detect experimental designs, Combine data from all trait-trials to get BLUPs for downstream genomic predictions. 
+3. [Genomic prediction](09-GetGBLUPs_Dec2020.html): Predict **GETGV** specifically, for all selection candidates using all available data.
+4. [Estimate rate of genetic gain](06-Results.html#rate_of_gain): 
 
 # Other details
 
