@@ -11,6 +11,8 @@ navbar:
       href: 01-cleanTPdata.html
     - text: December2020
       href: 07-cleanTPdata_Dec2020.html
+    - text: License
+      href: license.html
   - text: Curate Data
     menu:
     - text: September2020
@@ -21,11 +23,11 @@ navbar:
       href: 03-GetBLUPs.html
     - text: December2020
       href: 08-GetBLUPs_Dec2020.html
-  - text: Cross validation
+  - text: Cross-validation
     menu:
     - text: September2020
       href: 04-CrossValidation.html
-  - text: Genomic prediction
+  - text: Predictions
     menu:
     - text: September2020
       href: 05-GetGBLUPs.html
@@ -33,8 +35,6 @@ navbar:
       href: 09-GetGBLUPs_Dec2020.html
   - text: Results
     href: 06-Results.html
-  - text: License
-    href: license.html
   right:
   - icon: fa-github
     text: Source code

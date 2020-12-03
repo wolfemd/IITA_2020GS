@@ -383,6 +383,6 @@ mean_getgvs_whiteroots %>%
         axis.title = element_text(face = 'bold',size=16),
         strip.background.x = element_blank(),
         strip.text = element_text(face='bold',size=18)) + 
-  scale_color_viridis_d()
+  scale_color_viridis_d() + labs(title="Mean GETGV vs. Accession Year of White-rooted Clones Only")
 ```
 
