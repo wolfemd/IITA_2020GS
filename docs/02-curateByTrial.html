@@ -14,6 +14,7 @@
 
 <title>Curate by trait-trial</title>
 
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/darkly.min.css" rel="stylesheet" />
@@ -24,7 +25,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -39,21 +41,31 @@ div.section {
 </style>
 
 
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -73,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -437,19 +449,76 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Synopsis</a>
+  <a href="index.html">Home</a>
 </li>
-<li>
-  <a href="01-cleanTPdata.html">Data Cleaning</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Cleaning
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01-cleanTPdata.html">September2020</a>
+    </li>
+    <li>
+      <a href="07-cleanTPdata_Dec2020.html">December2020</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="02-curateByTrial.html">Curate Data</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Curate Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="02-curateByTrial.html">September2020</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="03-GetBLUPs.html">Get BLUPs</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Get BLUPs
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="03-GetBLUPs.html">September2020</a>
+    </li>
+    <li>
+      <a href="08-GetBLUPs_Dec2020.html">December2020</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="05-GetGBLUPs.html">Genomic prediction</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Cross validation
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="04-CrossValidation.html">September2020</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Genomic prediction
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="05-GetGBLUPs.html">September2020</a>
+    </li>
+    <li>
+      <a href="09-GetGBLUPs_Dec2020.html">December2020</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="06-Results.html">Results</a>
@@ -502,7 +571,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-09-21
+<strong>Last updated:</strong> 2020-12-03
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -593,16 +662,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreec9388d1ad2cbc02ec69526f893a8cfd12922acf6targetblankc9388d1a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/wolfemd/IITA_2020GS/tree/c9388d1ad2cbc02ec69526f893a8cfd12922acf6" target="_blank">c9388d1</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStree97186661d7fbde24222a9920b84382f9d91caed7targetblank9718666a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/wolfemd/IITA_2020GS/tree/97186661d7fbde24222a9920b84382f9d91caed7" target="_blank">9718666</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreec9388d1ad2cbc02ec69526f893a8cfd12922acf6targetblankc9388d1a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStree97186661d7fbde24222a9920b84382f9d91caed7targetblank9718666a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/wolfemd/IITA_2020GS/tree/c9388d1ad2cbc02ec69526f893a8cfd12922acf6" target="_blank">c9388d1</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/wolfemd/IITA_2020GS/tree/97186661d7fbde24222a9920b84382f9d91caed7" target="_blank">9718666</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -618,13 +687,30 @@ Ignored files:
 
 Untracked files:
     Untracked:  data/GEBV_IITA_OutliersRemovedTRUE_73119.csv
+    Untracked:  data/PedigreeGeneticGainCycleTime_aafolabi_01122020.csv
+    Untracked:  data/PedigreeGeneticGainCycleTime_aafolabi_01122020.xls
     Untracked:  data/iita_blupsForCrossVal_outliersRemoved_73019.rds
     Untracked:  output/DosageMatrix_IITA_2020Sep16.rds
+    Untracked:  output/GETGV_IITA_ModelADE_twostage_IITA_2020Dec03.csv
+    Untracked:  output/GETGV_IITA_ModelADE_twostage_IITA_2020Dec03_withAccessionYear.csv
+    Untracked:  output/IITA_CleanedTrialData_2020Dec03.rds
+    Untracked:  output/IITA_ExptDesignsDetected_2020Dec03.rds
     Untracked:  output/Kinship_AA_IITA_2020Sep16.rds
     Untracked:  output/Kinship_AD_IITA_2020Sep16.rds
     Untracked:  output/Kinship_A_IITA_2020Sep16.rds
     Untracked:  output/Kinship_DD_IITA2020Sep16.rds
     Untracked:  output/Kinship_D_IITA_2020Sep16.rds
+    Untracked:  output/all_iita_metadata_Dec2020.csv
+    Untracked:  output/cvresults_ModelADE_chunk1.rds
+    Untracked:  output/cvresults_ModelADE_chunk2.rds
+    Untracked:  output/cvresults_ModelADE_chunk3.rds
+    Untracked:  output/genomicPredictions_ModelADE_threestage_IITA_2020Sep21.rds
+    Untracked:  output/genomicPredictions_ModelADE_twostage_IITA_2020Dec03.rds
+    Untracked:  output/genomicPredictions_ModelA_threestage_IITA_2020Sep21.rds
+    Untracked:  output/iita_blupsForModelTraining_twostage_asreml_2020Dec03.rds
+    Untracked:  output/iita_trials_NOT_identifiable_Dec2020.csv
+    Untracked:  output/meanGETGVbyYear_IITA_2020Dec03.csv
+    Untracked:  output/trials_uploaded_by_Nharvested_15Sep2020.csv
     Untracked:  workflowr_log.R
 
 </code></pre>
@@ -664,6 +750,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/wolfemd/IITA_2020GS/d72a9ed1dc2a250fc62da2f8b06cdf3081252884/docs/02-curateByTrial.html" target="_blank">d72a9ed</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-09-21
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -731,20 +834,21 @@ All steps including genomic predicting (excluding cross-validation),
 <div id="nest-by-trial" class="section level1">
 <h1>Nest by trial</h1>
 <p>Start with cleaned data from previous step.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(tidyverse); <span class="kw">library</span>(magrittr);</span>
-<span id="cb1-3"><a href="#cb1-3"></a>dbdata&lt;-<span class="kw">readRDS</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;IITA_CleanedTrialData.rds&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;IITA_CleanedTrialData.rds&quot;</span>))</span></code></pre></div>
 <p>All downstream analyses in this step will by on a per-trial (location-year-studyName combination).</p>
 <p>The <code>nestByTrials()</code> function converts a data.frame where each row is a <strong>plot</strong> to one where each row is a <strong>trial</strong>, with a list-type column <strong>TrialData</strong> containing the corresponding trial’s plot-data.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">source</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;code&quot;</span>,<span class="st">&quot;gsFunctions.R&quot;</span>))</span>
-<span id="cb2-2"><a href="#cb2-2"></a>dbdata&lt;-<span class="kw">nestByTrials</span>(dbdata)</span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span>head <span class="op">%&gt;%</span><span class="st"> </span>rmarkdown<span class="op">::</span><span class="kw">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;gsFunctions.R&quot;</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> <span class="fu">nestByTrials</span>(dbdata)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["studyYear"],"name":[1],"type":["int"],"align":["right"]},{"label":["programName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["locationName"],"name":[3],"type":["chr"],"align":["left"]},{"label":["studyName"],"name":[4],"type":["chr"],"align":["left"]},{"label":["TrialType"],"name":[5],"type":["chr"],"align":["left"]},{"label":["TrialData"],"name":[6],"type":["list"],"align":["right"]}],"data":[{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"<tibble>"},{"1":"2000","2":"IITA","3":"Mokwa","4":"00ayt13FrMK","5":"AYT","6":"<tibble>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt13highyldIB","5":"AYT","6":"<tibble>"},{"1":"2000","2":"IITA","3":"Malam Madori","4":"00ayt17highyldMM","5":"AYT","6":"<tibble>"},{"1":"2000","2":"IITA","3":"Mokwa","4":"00AYT17MK","5":"AYT","6":"<tibble>"},{"1":"2000","2":"IITA","3":"Mokwa","4":"00ayt17ZaselMK","5":"AYT","6":"<tibble>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["studyYear"],"name":[1],"type":["int"],"align":["right"]},{"label":["programName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["locationName"],"name":[3],"type":["chr"],"align":["left"]},{"label":["studyName"],"name":[4],"type":["chr"],"align":["left"]},{"label":["TrialType"],"name":[5],"type":["chr"],"align":["left"]},{"label":["TrialData"],"name":[6],"type":["list"],"align":["right"]}],"data":[{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"<tbl_df[,46]>"},{"1":"2000","2":"IITA","3":"Mokwa","4":"00ayt13FrMK","5":"AYT","6":"<tbl_df[,46]>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt13highyldIB","5":"AYT","6":"<tbl_df[,46]>"},{"1":"2000","2":"IITA","3":"Malam Madori","4":"00ayt17highyldMM","5":"AYT","6":"<tbl_df[,46]>"},{"1":"2000","2":"IITA","3":"Mokwa","4":"00AYT17MK","5":"AYT","6":"<tbl_df[,46]>"},{"1":"2000","2":"IITA","3":"Mokwa","4":"00ayt17ZaselMK","5":"AYT","6":"<tbl_df[,46]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>dbdata<span class="op">$</span>TrialData[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>) <span class="op">%&gt;%</span><span class="st"> </span>rmarkdown<span class="op">::</span><span class="kw">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dbdata<span class="sc">$</span>TrialData[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>) <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["studyDesign"],"name":[1],"type":["chr"],"align":["left"]},{"label":["plotWidth"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["plotLength"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["fieldSize"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["plantingDate"],"name":[5],"type":["chr"],"align":["left"]},{"label":["harvestDate"],"name":[6],"type":["chr"],"align":["left"]},{"label":["germplasmName"],"name":[7],"type":["chr"],"align":["left"]},{"label":["observationUnitDbId"],"name":[8],"type":["int"],"align":["right"]},{"label":["replicate"],"name":[9],"type":["chr"],"align":["left"]},{"label":["blockNumber"],"name":[10],"type":["int"],"align":["right"]},{"label":["plotNumber"],"name":[11],"type":["int"],"align":["right"]},{"label":["rowNumber"],"name":[12],"type":["chr"],"align":["left"]},{"label":["colNumber"],"name":[13],"type":["int"],"align":["right"]},{"label":["entryType"],"name":[14],"type":["chr"],"align":["left"]},{"label":["trialType"],"name":[15],"type":["chr"],"align":["left"]},{"label":["plantsPerPlot"],"name":[16],"type":["int"],"align":["right"]},{"label":["numberBlocks"],"name":[17],"type":["int"],"align":["right"]},{"label":["numberReps"],"name":[18],"type":["int"],"align":["right"]},{"label":["CGM"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["CGMS1"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["CGMS2"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["DM"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["PLTHT"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["BRNHT1"],"name":[24],"type":["dbl"],"align":["right"]},{"label":["BRLVLS"],"name":[25],"type":["dbl"],"align":["right"]},{"label":["TCHART"],"name":[26],"type":["dbl"],"align":["right"]},{"label":["LCHROMO"],"name":[27],"type":["dbl"],"align":["right"]},{"label":["ACHROMO"],"name":[28],"type":["dbl"],"align":["right"]},{"label":["BCHROMO"],"name":[29],"type":["dbl"],"align":["right"]},{"label":["NOHAV"],"name":[30],"type":["dbl"],"align":["right"]},{"label":["HI"],"name":[31],"type":["dbl"],"align":["right"]},{"label":["PlotSpacing"],"name":[32],"type":["dbl"],"align":["right"]},{"label":["MaxNOHAV"],"name":[33],"type":["dbl"],"align":["right"]},{"label":["logFYLD"],"name":[34],"type":["dbl"],"align":["right"]},{"label":["logTOPYLD"],"name":[35],"type":["dbl"],"align":["right"]},{"label":["logRTNO"],"name":[36],"type":["dbl"],"align":["right"]},{"label":["PropNOHAV"],"name":[37],"type":["dbl"],"align":["right"]},{"label":["MCMDS"],"name":[38],"type":["dbl"],"align":["right"]},{"label":["FullSampleName"],"name":[39],"type":["chr"],"align":["left"]},{"label":["OrigKeyFile"],"name":[40],"type":["chr"],"align":["left"]},{"label":["OriginOfSample"],"name":[41],"type":["chr"],"align":["left"]},{"label":["GID"],"name":[42],"type":["chr"],"align":["left"]},{"label":["yearInLoc"],"name":[43],"type":["chr"],"align":["left"]},{"label":["trialInLocYr"],"name":[44],"type":["chr"],"align":["left"]},{"label":["repInTrial"],"name":[45],"type":["chr"],"align":["left"]},{"label":["blockInRep"],"name":[46],"type":["chr"],"align":["left"]}],"data":[{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA30572","8":"754507","9":"1","10":"1","11":"110","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"3","21":"5","22":"22.3","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"7","31":"NA","32":"1","33":"10","34":"2.4159138","35":"NA","36":"2.708050","37":"0.7","38":"2.000000","39":"I30572:250253643","40":"cassavaGBSkey_20160607","41":"IITA","42":"I30572:250253643","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_1","46":"IITA_Ibadan_2000_00ayt11interspecIB_1_1"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA8200058","8":"754525","9":"1","10":"1","11":"108","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"4","21":"5","22":"27.4","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"5","31":"NA","32":"1","33":"10","34":"2.1972246","35":"NA","36":"2.944439","37":"0.5","38":"1.333333","39":"I8200058:250304538","40":"cassavaGBSkey_20160607","41":"IITA","42":"I8200058:250304538","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_1","46":"IITA_Ibadan_2000_00ayt11interspecIB_1_1"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9102324","8":"754510","9":"1","10":"1","11":"111","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"2","22":"27.5","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"7","31":"NA","32":"1","33":"10","34":"2.1972246","35":"NA","36":"3.526361","37":"0.7","38":"1.000000","39":"I9102324:250090766","40":"cassavaGBSkey_20160607","41":"IITA","42":"I9102324:250090766","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_1","46":"IITA_Ibadan_2000_00ayt11interspecIB_1_1"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9810854","8":"754492","9":"1","10":"1","11":"107","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"2","22":"28.8","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"5","31":"NA","32":"1","33":"10","34":"1.8870696","35":"NA","36":"2.995732","37":"0.5","38":"2.666667","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA9810854","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_1","46":"IITA_Ibadan_2000_00ayt11interspecIB_1_1"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9810956","8":"754496","9":"1","10":"1","11":"101","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"2","22":"32.2","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"9","31":"NA","32":"1","33":"10","34":"1.6094379","35":"NA","36":"2.397895","37":"0.9","38":"2.000000","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA9810956","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_1","46":"IITA_Ibadan_2000_00ayt11interspecIB_1_1"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9811066","8":"754530","9":"1","10":"1","11":"105","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"3","22":"27.9","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"7","31":"NA","32":"1","33":"10","34":"1.9169226","35":"NA","36":"3.135494","37":"0.7","38":"1.000000","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA9811066","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_1","46":"IITA_Ibadan_2000_00ayt11interspecIB_1_1"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9811211","8":"754495","9":"1","10":"1","11":"102","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"4","22":"27.7","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"4","31":"NA","32":"1","33":"10","34":"1.6486586","35":"NA","36":"2.772589","37":"0.4","38":"3.000000","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA9811211","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_1","46":"IITA_Ibadan_2000_00ayt11interspecIB_1_1"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA98I0875","8":"754520","9":"1","10":"1","11":"109","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"3","21":"5","22":"24.7","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"7","31":"NA","32":"1","33":"10","34":"1.3862944","35":"NA","36":"2.708050","37":"0.7","38":"2.666667","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA98I0875","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_1","46":"IITA_Ibadan_2000_00ayt11interspecIB_1_1"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA981081","8":"754526","9":"1","10":"1","11":"104","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"3","21":"5","22":"29.8","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"10","31":"NA","32":"1","33":"10","34":"2.8213789","35":"NA","36":"4.007333","37":"1.0","38":"1.000000","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA981081","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_1","46":"IITA_Ibadan_2000_00ayt11interspecIB_1_1"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"TMEB117","8":"754516","9":"1","10":"1","11":"106","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"3","21":"5","22":"29.6","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"2","31":"NA","32":"1","33":"10","34":"0.6931472","35":"NA","36":"1.386294","37":"0.2","38":"3.666667","39":"TMEB117:250253666","40":"cassavaGBSkey_20160607","41":"IITA","42":"TMEB117:250253666","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_1","46":"IITA_Ibadan_2000_00ayt11interspecIB_1_1"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"TMEB1","8":"754519","9":"1","10":"1","11":"103","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"2","22":"30.2","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"4","31":"NA","32":"1","33":"10","34":"1.3862944","35":"NA","36":"2.708050","37":"0.4","38":"1.666667","39":"TMEB1:250253593","40":"cassavaGBSkey_20160607","41":"IITA","42":"TMEB1:250253593","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_1","46":"IITA_Ibadan_2000_00ayt11interspecIB_1_1"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA30572","8":"754499","9":"2","10":"2","11":"205","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"3","21":"5","22":"29.8","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"7","31":"NA","32":"1","33":"10","34":"2.3223877","35":"NA","36":"3.258097","37":"0.7","38":"2.000000","39":"I30572:250253643","40":"cassavaGBSkey_20160607","41":"IITA","42":"I30572:250253643","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_2","46":"IITA_Ibadan_2000_00ayt11interspecIB_2_2"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA8200058","8":"754497","9":"2","10":"2","11":"207","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"3","21":"5","22":"22.0","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"9","31":"NA","32":"1","33":"10","34":"2.9755296","35":"NA","36":"3.737670","37":"0.9","38":"1.000000","39":"I8200058:250304538","40":"cassavaGBSkey_20160607","41":"IITA","42":"I8200058:250304538","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_2","46":"IITA_Ibadan_2000_00ayt11interspecIB_2_2"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9102324","8":"754491","9":"2","10":"2","11":"210","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"3","22":"28.0","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"9","31":"NA","32":"1","33":"10","34":"3.0056826","35":"NA","36":"4.317488","37":"0.9","38":"1.000000","39":"I9102324:250090766","40":"cassavaGBSkey_20160607","41":"IITA","42":"I9102324:250090766","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_2","46":"IITA_Ibadan_2000_00ayt11interspecIB_2_2"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9810854","8":"754512","9":"2","10":"2","11":"211","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"2","22":"33.5","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"2","31":"NA","32":"1","33":"10","34":"0.8754687","35":"NA","36":"2.397895","37":"0.2","38":"2.666667","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA9810854","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_2","46":"IITA_Ibadan_2000_00ayt11interspecIB_2_2"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9810956","8":"754523","9":"2","10":"2","11":"204","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"3","21":"5","22":"27.9","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"8","31":"NA","32":"1","33":"10","34":"2.0794415","35":"NA","36":"3.258097","37":"0.8","38":"2.000000","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA9810956","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_2","46":"IITA_Ibadan_2000_00ayt11interspecIB_2_2"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9811066","8":"754494","9":"2","10":"2","11":"206","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"4","22":"24.3","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"8","31":"NA","32":"1","33":"10","34":"1.6094379","35":"NA","36":"3.258097","37":"0.8","38":"1.000000","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA9811066","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_2","46":"IITA_Ibadan_2000_00ayt11interspecIB_2_2"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9811211","8":"754522","9":"2","10":"2","11":"201","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"3","21":"5","22":"33.9","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"6","31":"NA","32":"1","33":"10","34":"1.8870696","35":"NA","36":"3.332205","37":"0.6","38":"2.666667","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA9811211","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_2","46":"IITA_Ibadan_2000_00ayt11interspecIB_2_2"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA98I0875","8":"754513","9":"2","10":"2","11":"202","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"4","22":"24.2","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"7","31":"NA","32":"1","33":"10","34":"1.7227666","35":"NA","36":"2.944439","37":"0.7","38":"2.333333","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA98I0875","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_2","46":"IITA_Ibadan_2000_00ayt11interspecIB_2_2"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA981081","8":"754505","9":"2","10":"2","11":"203","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"3","21":"5","22":"27.0","23":"NA","24":"NA","25":"NA","26":"NA","27":"NA","28":"NA","29":"NA","30":"10","31":"NA","32":"1","33":"10","34":"2.9444390","35":"NA","36":"3.737670","37":"1.0","38":"1.000000","39":"NA","40":"NA","41":"NA","42":"IITA-TMS-IBA981081","43":"IITA_Ibadan_2000","44":"IITA_Ibadan_2000_00ayt11interspecIB","45":"IITA_Ibadan_2000_00ayt11interspecIB_2","46":"IITA_Ibadan_2000_00ayt11interspecIB_2_2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -763,9 +867,8 @@ All steps including genomic predicting (excluding cross-validation),
 <p>One reason it might be important to get this right is that the variance among complete blocks might not be the same among incomplete blocks. If we treat a mixture of complete and incomplete blocks as part of the same random-effect (replicated-within-trial), we assume they have the same variance.</p>
 <p>Also error variances might be heterogeneous among different trial-types (blocking scheme available) <em>and/or</em> plot sizes (maxNOHAV).</p>
 <p>Detect designs</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>dbdata&lt;-<span class="kw">detectExptDesigns</span>(dbdata)</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="st">    </span><span class="kw">count</span>(programName,CompleteBlocks,IncompleteBlocks) <span class="op">%&gt;%</span><span class="st"> </span>rmarkdown<span class="op">::</span><span class="kw">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> <span class="fu">detectExptDesigns</span>(dbdata)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> <span class="fu">count</span>(programName, CompleteBlocks, IncompleteBlocks) <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["programName"],"name":[1],"type":["chr"],"align":["left"]},{"label":["CompleteBlocks"],"name":[2],"type":["lgl"],"align":["right"]},{"label":["IncompleteBlocks"],"name":[3],"type":["lgl"],"align":["right"]},{"label":["n"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"IITA","2":"FALSE","3":"FALSE","4":"93"},{"1":"IITA","2":"FALSE","3":"TRUE","4":"83"},{"1":"IITA","2":"TRUE","3":"FALSE","4":"1365"},{"1":"IITA","2":"TRUE","3":"TRUE","4":"248"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -773,30 +876,32 @@ All steps including genomic predicting (excluding cross-validation),
 </div>
 <div id="output-file" class="section level2">
 <h2>Output file</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">saveRDS</span>(dbdata,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;IITA_ExptDesignsDetected.rds&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(dbdata, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;IITA_ExptDesignsDetected.rds&quot;</span>))</span></code></pre></div>
 </div>
 </div>
 <div id="model-by-trait-trial" class="section level1">
 <h1>Model by trait-trial</h1>
 <p><strong>NOTICE:</strong> Doing the next step on a server, too many traits and trials for laptop.</p>
 <p>The next step fits models to each trial (for each trait)</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">library</span>(tidyverse); <span class="kw">library</span>(magrittr);</span>
-<span id="cb8-3"><a href="#cb8-3"></a><span class="kw">source</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;code&quot;</span>,<span class="st">&quot;gsFunctions.R&quot;</span>))</span>
-<span id="cb8-4"><a href="#cb8-4"></a>dbdata&lt;-<span class="kw">readRDS</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;IITA_ExptDesignsDetected.rds&quot;</span>))</span>
-<span id="cb8-5"><a href="#cb8-5"></a>traits&lt;-<span class="kw">c</span>(<span class="st">&quot;MCMDS&quot;</span>,<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;PLTHT&quot;</span>,<span class="st">&quot;BRNHT1&quot;</span>,<span class="st">&quot;BRLVLS&quot;</span>,<span class="st">&quot;HI&quot;</span>,<span class="st">&quot;logFYLD&quot;</span>,<span class="st">&quot;logTOPYLD&quot;</span>,<span class="st">&quot;logRTNO&quot;</span>,<span class="st">&quot;TCHART&quot;</span>,<span class="st">&quot;LCHROMO&quot;</span>,<span class="st">&quot;ACHROMO&quot;</span>,<span class="st">&quot;BCHROMO&quot;</span>)</span>
-<span id="cb8-6"><a href="#cb8-6"></a></span>
-<span id="cb8-7"><a href="#cb8-7"></a><span class="co"># Nest by trait-trial. </span></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co"># This next function will structure input trial data by trait. </span></span>
-<span id="cb8-9"><a href="#cb8-9"></a><span class="co"># This will facilitate looping downstream analyses over each trait for each trial.</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a>dbdata&lt;-<span class="kw">nestTrialsByTrait</span>(dbdata,traits)</span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span>head <span class="op">%&gt;%</span><span class="st"> </span>rmarkdown<span class="op">::</span><span class="kw">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;gsFunctions.R&quot;</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;IITA_ExptDesignsDetected.rds&quot;</span>))</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>traits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;MCMDS&quot;</span>, <span class="st">&quot;DM&quot;</span>, <span class="st">&quot;PLTHT&quot;</span>, <span class="st">&quot;BRNHT1&quot;</span>, <span class="st">&quot;BRLVLS&quot;</span>, <span class="st">&quot;HI&quot;</span>, <span class="st">&quot;logFYLD&quot;</span>, <span class="st">&quot;logTOPYLD&quot;</span>, </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;logRTNO&quot;</span>, <span class="st">&quot;TCHART&quot;</span>, <span class="st">&quot;LCHROMO&quot;</span>, <span class="st">&quot;ACHROMO&quot;</span>, <span class="st">&quot;BCHROMO&quot;</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Nest by trait-trial.  This next function will structure input trial data by</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># trait.  This will facilitate looping downstream analyses over each trait for</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># each trial.</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> <span class="fu">nestTrialsByTrait</span>(dbdata, traits)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["studyYear"],"name":[1],"type":["int"],"align":["right"]},{"label":["programName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["locationName"],"name":[3],"type":["chr"],"align":["left"]},{"label":["studyName"],"name":[4],"type":["chr"],"align":["left"]},{"label":["TrialType"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Trait"],"name":[6],"type":["chr"],"align":["left"]},{"label":["TraitByTrialData"],"name":[7],"type":["list"],"align":["right"]}],"data":[{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"MCMDS","7":"<tibble>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"DM","7":"<tibble>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"PLTHT","7":"<tibble>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"BRNHT1","7":"<tibble>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"BRLVLS","7":"<tibble>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"HI","7":"<tibble>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["studyYear"],"name":[1],"type":["int"],"align":["right"]},{"label":["programName"],"name":[2],"type":["chr"],"align":["left"]},{"label":["locationName"],"name":[3],"type":["chr"],"align":["left"]},{"label":["studyName"],"name":[4],"type":["chr"],"align":["left"]},{"label":["TrialType"],"name":[5],"type":["chr"],"align":["left"]},{"label":["Trait"],"name":[6],"type":["chr"],"align":["left"]},{"label":["TraitByTrialData"],"name":[7],"type":["list"],"align":["right"]}],"data":[{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"MCMDS","7":"<tbl_df[,46]>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"DM","7":"<tbl_df[,46]>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"PLTHT","7":"<tbl_df[,46]>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"BRNHT1","7":"<tbl_df[,46]>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"BRLVLS","7":"<tbl_df[,46]>"},{"1":"2000","2":"IITA","3":"Ibadan","4":"00ayt11interspecIB","5":"AYT","6":"HI","7":"<tbl_df[,46]>"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>dbdata<span class="op">$</span>TraitByTrialData[[<span class="dv">1</span>]] <span class="op">%&gt;%</span><span class="st"> </span>head <span class="op">%&gt;%</span><span class="st"> </span>rmarkdown<span class="op">::</span><span class="kw">paged_table</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dbdata<span class="sc">$</span>TraitByTrialData[[<span class="dv">1</span>]] <span class="sc">%&gt;%</span> head <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":["studyDesign"],"name":[1],"type":["chr"],"align":["left"]},{"label":["plotWidth"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["plotLength"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["fieldSize"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["plantingDate"],"name":[5],"type":["chr"],"align":["left"]},{"label":["harvestDate"],"name":[6],"type":["chr"],"align":["left"]},{"label":["germplasmName"],"name":[7],"type":["chr"],"align":["left"]},{"label":["observationUnitDbId"],"name":[8],"type":["int"],"align":["right"]},{"label":["replicate"],"name":[9],"type":["chr"],"align":["left"]},{"label":["blockNumber"],"name":[10],"type":["int"],"align":["right"]},{"label":["plotNumber"],"name":[11],"type":["int"],"align":["right"]},{"label":["rowNumber"],"name":[12],"type":["chr"],"align":["left"]},{"label":["colNumber"],"name":[13],"type":["int"],"align":["right"]},{"label":["entryType"],"name":[14],"type":["chr"],"align":["left"]},{"label":["trialType"],"name":[15],"type":["chr"],"align":["left"]},{"label":["plantsPerPlot"],"name":[16],"type":["int"],"align":["right"]},{"label":["numberBlocks"],"name":[17],"type":["int"],"align":["right"]},{"label":["numberReps"],"name":[18],"type":["int"],"align":["right"]},{"label":["CGM"],"name":[19],"type":["dbl"],"align":["right"]},{"label":["CGMS1"],"name":[20],"type":["dbl"],"align":["right"]},{"label":["CGMS2"],"name":[21],"type":["dbl"],"align":["right"]},{"label":["NOHAV"],"name":[22],"type":["dbl"],"align":["right"]},{"label":["PlotSpacing"],"name":[23],"type":["dbl"],"align":["right"]},{"label":["MaxNOHAV"],"name":[24],"type":["dbl"],"align":["right"]},{"label":["PropNOHAV"],"name":[25],"type":["dbl"],"align":["right"]},{"label":["FullSampleName"],"name":[26],"type":["chr"],"align":["left"]},{"label":["OrigKeyFile"],"name":[27],"type":["chr"],"align":["left"]},{"label":["OriginOfSample"],"name":[28],"type":["chr"],"align":["left"]},{"label":["GID"],"name":[29],"type":["chr"],"align":["left"]},{"label":["yearInLoc"],"name":[30],"type":["chr"],"align":["left"]},{"label":["trialInLocYr"],"name":[31],"type":["chr"],"align":["left"]},{"label":["repInTrial"],"name":[32],"type":["chr"],"align":["left"]},{"label":["blockInRep"],"name":[33],"type":["chr"],"align":["left"]},{"label":["Nobs"],"name":[34],"type":["dbl"],"align":["right"]},{"label":["Nrep"],"name":[35],"type":["dbl"],"align":["right"]},{"label":["Nblock"],"name":[36],"type":["dbl"],"align":["right"]},{"label":["Nclone"],"name":[37],"type":["dbl"],"align":["right"]},{"label":["medObsPerClone"],"name":[38],"type":["dbl"],"align":["right"]},{"label":["medObsPerRep"],"name":[39],"type":["dbl"],"align":["right"]},{"label":["CompleteBlocks"],"name":[40],"type":["lgl"],"align":["right"]},{"label":["medBlocksPerClone"],"name":[41],"type":["dbl"],"align":["right"]},{"label":["repsEqualBlocks"],"name":[42],"type":["lgl"],"align":["right"]},{"label":["NrepEqualNblock"],"name":[43],"type":["lgl"],"align":["right"]},{"label":["medObsPerBlockInRep"],"name":[44],"type":["dbl"],"align":["right"]},{"label":["IncompleteBlocks"],"name":[45],"type":["lgl"],"align":["right"]},{"label":["TraitValue"],"name":[46],"type":["dbl"],"align":["right"]}],"data":[{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA30572","8":"754507","9":"1","10":"1","11":"110","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"3","21":"5","22":"7","23":"1","24":"10","25":"0.7","26":"I30572:250253643","27":"cassavaGBSkey_20160607","28":"IITA","29":"I30572:250253643","30":"IITA_Ibadan_2000","31":"IITA_Ibadan_2000_00ayt11interspecIB","32":"IITA_Ibadan_2000_00ayt11interspecIB_1","33":"IITA_Ibadan_2000_00ayt11interspecIB_1_1","34":"42","35":"4","36":"4","37":"11","38":"4","39":"10.5","40":"TRUE","41":"4","42":"TRUE","43":"TRUE","44":"10.5","45":"FALSE","46":"2.000000"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA8200058","8":"754525","9":"1","10":"1","11":"108","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"4","21":"5","22":"5","23":"1","24":"10","25":"0.5","26":"I8200058:250304538","27":"cassavaGBSkey_20160607","28":"IITA","29":"I8200058:250304538","30":"IITA_Ibadan_2000","31":"IITA_Ibadan_2000_00ayt11interspecIB","32":"IITA_Ibadan_2000_00ayt11interspecIB_1","33":"IITA_Ibadan_2000_00ayt11interspecIB_1_1","34":"42","35":"4","36":"4","37":"11","38":"4","39":"10.5","40":"TRUE","41":"4","42":"TRUE","43":"TRUE","44":"10.5","45":"FALSE","46":"1.333333"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9102324","8":"754510","9":"1","10":"1","11":"111","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"2","22":"7","23":"1","24":"10","25":"0.7","26":"I9102324:250090766","27":"cassavaGBSkey_20160607","28":"IITA","29":"I9102324:250090766","30":"IITA_Ibadan_2000","31":"IITA_Ibadan_2000_00ayt11interspecIB","32":"IITA_Ibadan_2000_00ayt11interspecIB_1","33":"IITA_Ibadan_2000_00ayt11interspecIB_1_1","34":"42","35":"4","36":"4","37":"11","38":"4","39":"10.5","40":"TRUE","41":"4","42":"TRUE","43":"TRUE","44":"10.5","45":"FALSE","46":"1.000000"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9810854","8":"754492","9":"1","10":"1","11":"107","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"2","22":"5","23":"1","24":"10","25":"0.5","26":"NA","27":"NA","28":"NA","29":"IITA-TMS-IBA9810854","30":"IITA_Ibadan_2000","31":"IITA_Ibadan_2000_00ayt11interspecIB","32":"IITA_Ibadan_2000_00ayt11interspecIB_1","33":"IITA_Ibadan_2000_00ayt11interspecIB_1_1","34":"42","35":"4","36":"4","37":"11","38":"4","39":"10.5","40":"TRUE","41":"4","42":"TRUE","43":"TRUE","44":"10.5","45":"FALSE","46":"2.666667"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9810956","8":"754496","9":"1","10":"1","11":"101","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"2","22":"9","23":"1","24":"10","25":"0.9","26":"NA","27":"NA","28":"NA","29":"IITA-TMS-IBA9810956","30":"IITA_Ibadan_2000","31":"IITA_Ibadan_2000_00ayt11interspecIB","32":"IITA_Ibadan_2000_00ayt11interspecIB_1","33":"IITA_Ibadan_2000_00ayt11interspecIB_1_1","34":"42","35":"4","36":"4","37":"11","38":"4","39":"10.5","40":"TRUE","41":"4","42":"TRUE","43":"TRUE","44":"10.5","45":"FALSE","46":"2.000000"},{"1":"RCBD","2":"NA","3":"NA","4":"NA","5":"2000-April-11","6":"2001-June-13","7":"IITA-TMS-IBA9811066","8":"754530","9":"1","10":"1","11":"105","12":"NA","13":"NA","14":"test","15":"NA","16":"NA","17":"NA","18":"NA","19":"NA","20":"2","21":"3","22":"7","23":"1","24":"10","25":"0.7","26":"NA","27":"NA","28":"NA","29":"IITA-TMS-IBA9811066","30":"IITA_Ibadan_2000","31":"IITA_Ibadan_2000_00ayt11interspecIB","32":"IITA_Ibadan_2000_00ayt11interspecIB_1","33":"IITA_Ibadan_2000_00ayt11interspecIB_1_1","34":"42","35":"4","36":"4","37":"11","38":"4","39":"10.5","40":"TRUE","41":"4","42":"TRUE","43":"TRUE","44":"10.5","45":"FALSE","46":"1.000000"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
@@ -804,31 +909,26 @@ All steps including genomic predicting (excluding cross-validation),
 </div>
 <div id="fit-models" class="section level2">
 <h2>Fit models</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>dbdata&lt;-<span class="kw">curateTrialsByTrait</span>(dbdata,traits,<span class="dt">ncores=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> <span class="fu">curateTrialsByTrait</span>(dbdata, traits, <span class="at">ncores =</span> <span class="dv">20</span>)</span></code></pre></div>
 </div>
 <div id="output-file-1" class="section level2">
 <h2>Output file</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw">saveRDS</span>(dbdata,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;IITA_CuratedTrials.rds&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(dbdata, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;IITA_CuratedTrials.rds&quot;</span>))</span></code></pre></div>
 </div>
 <div id="plot-results" class="section level2">
 <h2>Plot Results</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw">library</span>(tidyverse); <span class="kw">library</span>(magrittr); <span class="co">#library(plotly)</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>dbdata&lt;-<span class="kw">readRDS</span>(<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;IITA_CuratedTrials.rds&quot;</span>))</span>
-<span id="cb13-3"><a href="#cb13-3"></a>traits&lt;-<span class="kw">c</span>(<span class="st">&quot;MCMDS&quot;</span>,<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;PLTHT&quot;</span>,<span class="st">&quot;BRNHT1&quot;</span>,<span class="st">&quot;BRLVLS&quot;</span>,<span class="st">&quot;HI&quot;</span>,<span class="st">&quot;logFYLD&quot;</span>,<span class="st">&quot;logTOPYLD&quot;</span>,<span class="st">&quot;logRTNO&quot;</span>,<span class="st">&quot;TCHART&quot;</span>,<span class="st">&quot;LCHROMO&quot;</span>,<span class="st">&quot;ACHROMO&quot;</span>,<span class="st">&quot;BCHROMO&quot;</span>)</span>
-<span id="cb13-4"><a href="#cb13-4"></a>dbdata <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
-<span id="cb13-5"><a href="#cb13-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Trait=</span><span class="kw">factor</span>(Trait,<span class="dt">levels=</span>traits),</span>
-<span id="cb13-6"><a href="#cb13-6"></a>         <span class="dt">TrialType=</span><span class="kw">factor</span>(TrialType,<span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;CrossingBlock&quot;</span>,<span class="st">&quot;GeneticGain&quot;</span>,<span class="st">&quot;CET&quot;</span>,<span class="st">&quot;ExpCET&quot;</span>,<span class="st">&quot;PYT&quot;</span>,<span class="st">&quot;AYT&quot;</span>,<span class="st">&quot;UYT&quot;</span>,<span class="st">&quot;NCRP&quot;</span>))) </span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(magrittr); <span class="co">#library(plotly)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dbdata<span class="ot">&lt;-</span><span class="fu">readRDS</span>(<span class="at">file=</span>here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;IITA_CuratedTrials.rds&quot;</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>traits<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;MCMDS&quot;</span>,<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;PLTHT&quot;</span>,<span class="st">&quot;BRNHT1&quot;</span>,<span class="st">&quot;BRLVLS&quot;</span>,<span class="st">&quot;HI&quot;</span>,<span class="st">&quot;logFYLD&quot;</span>,<span class="st">&quot;logTOPYLD&quot;</span>,<span class="st">&quot;logRTNO&quot;</span>,<span class="st">&quot;TCHART&quot;</span>,<span class="st">&quot;LCHROMO&quot;</span>,<span class="st">&quot;ACHROMO&quot;</span>,<span class="st">&quot;BCHROMO&quot;</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Trait=</span><span class="fu">factor</span>(Trait,<span class="at">levels=</span>traits),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">TrialType=</span><span class="fu">factor</span>(TrialType,<span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;CrossingBlock&quot;</span>,<span class="st">&quot;GeneticGain&quot;</span>,<span class="st">&quot;CET&quot;</span>,<span class="st">&quot;ExpCET&quot;</span>,<span class="st">&quot;PYT&quot;</span>,<span class="st">&quot;AYT&quot;</span>,<span class="st">&quot;UYT&quot;</span>,<span class="st">&quot;NCRP&quot;</span>))) </span></code></pre></div>
 <p>Heritabilities overall</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="st">  </span><span class="kw">ggplot</span>(.,<span class="kw">aes</span>(<span class="dt">x=</span>Trait,<span class="dt">y=</span>H2,<span class="dt">fill=</span>Trait)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color=</span><span class="st">&#39;darkgray&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&#39;magma&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>,<span class="dt">angle=</span><span class="dv">90</span>),</span>
-<span id="cb14-7"><a href="#cb14-7"></a>        <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>,<span class="dt">size=</span><span class="dv">12</span>),</span>
-<span id="cb14-8"><a href="#cb14-8"></a>        <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>,<span class="dt">size=</span><span class="dv">14</span>),</span>
-<span id="cb14-9"><a href="#cb14-9"></a>        <span class="dt">legend.position =</span> <span class="st">&#39;none&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb14-10"><a href="#cb14-10"></a><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x=</span><span class="ot">NULL</span>,<span class="dt">y=</span><span class="kw">expression</span>(<span class="st">&quot;H&quot;</span><span class="op">^</span><span class="st">&quot;2&quot;</span>),<span class="dt">title=</span><span class="st">&quot;Broad-sense Heritabilities across trials&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> Trait, <span class="at">y =</span> H2, <span class="at">fill =</span> Trait)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">color =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;magma&quot;</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">angle =</span> <span class="dv">90</span>), <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">12</span>), <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">14</span>), <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="fu">expression</span>(<span class="st">&quot;H&quot;</span><span class="sc">^</span><span class="st">&quot;2&quot;</span>), </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Broad-sense Heritabilities across trials&quot;</span>)</span></code></pre></div>
 <p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-14-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-14-1">
@@ -868,15 +968,10 @@ wolfemd
 </div>
 </div>
 <p>Residual variances, by TrialType and Trait</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>dbdata <span class="op">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="st">  </span><span class="kw">select</span>(studyYear<span class="op">:</span>VarComps) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="st">  </span><span class="kw">unnest</span>(VarComps) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="st">  </span><span class="kw">ggplot</span>(.,<span class="kw">aes</span>(<span class="dt">x=</span>TrialType,<span class="dt">y=</span>Residual,<span class="dt">fill=</span>TrialType)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color=</span><span class="st">&#39;darkgray&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Trait,<span class="dt">scales =</span> <span class="st">&#39;free&#39;</span>,<span class="dt">nrow=</span><span class="dv">3</span>) <span class="op">+</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&#39;inferno&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>),</span>
-<span id="cb15-9"><a href="#cb15-9"></a>        <span class="dt">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> <span class="fu">select</span>(studyYear<span class="sc">:</span>VarComps) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(VarComps) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> TrialType, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> Residual, <span class="at">fill =</span> TrialType)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">color =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>Trait, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">nrow =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;inferno&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>), <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-15-1.png" width="960" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-15-1">
@@ -916,15 +1011,10 @@ wolfemd
 </div>
 </div>
 <p>H2 by trait and trialtype.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>dbdata <span class="op">%&gt;%</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a><span class="st">  </span><span class="kw">select</span>(studyYear<span class="op">:</span>VarComps) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb16-3"><a href="#cb16-3"></a><span class="st">  </span><span class="kw">unnest</span>(VarComps) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb16-4"><a href="#cb16-4"></a><span class="st">  </span><span class="kw">ggplot</span>(.,<span class="kw">aes</span>(<span class="dt">x=</span>TrialType,<span class="dt">y=</span>H2,<span class="dt">fill=</span>TrialType)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb16-5"><a href="#cb16-5"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color=</span><span class="st">&#39;darkgray&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb16-6"><a href="#cb16-6"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Trait,<span class="dt">scales =</span> <span class="st">&#39;free&#39;</span>,<span class="dt">nrow=</span><span class="dv">2</span>) <span class="op">+</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&#39;inferno&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb16-8"><a href="#cb16-8"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>),</span>
-<span id="cb16-9"><a href="#cb16-9"></a>        <span class="dt">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> <span class="fu">select</span>(studyYear<span class="sc">:</span>VarComps) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(VarComps) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> TrialType, </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> H2, <span class="at">fill =</span> TrialType)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">color =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>Trait, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;inferno&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>), <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-16-1.png" width="960" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-16-1">
@@ -964,13 +1054,9 @@ wolfemd
 </div>
 </div>
 <p>Number of outliers detected and removed by trait-trialType.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>dbdata <span class="op">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="st">  </span><span class="kw">ggplot</span>(.,<span class="kw">aes</span>(<span class="dt">x=</span>TrialType,<span class="dt">y=</span>Noutliers,<span class="dt">fill=</span>TrialType)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color=</span><span class="st">&#39;darkgray&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb17-4"><a href="#cb17-4"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Trait,<span class="dt">scales =</span> <span class="st">&#39;free&#39;</span>,<span class="dt">nrow=</span><span class="dv">4</span>) <span class="op">+</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&#39;inferno&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb17-6"><a href="#cb17-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>),</span>
-<span id="cb17-7"><a href="#cb17-7"></a>        <span class="dt">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> TrialType, <span class="at">y =</span> Noutliers, <span class="at">fill =</span> TrialType)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">color =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Trait, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">nrow =</span> <span class="dv">4</span>) <span class="sc">+</span> <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;inferno&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>), <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-17-1.png" width="960" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-17-1">
@@ -1010,13 +1096,9 @@ wolfemd
 </div>
 </div>
 <p>Missingness</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="st">  </span><span class="kw">ggplot</span>(.,<span class="kw">aes</span>(<span class="dt">x=</span>TrialType,<span class="dt">y=</span>propMiss,<span class="dt">fill=</span>TrialType)) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">color=</span><span class="st">&#39;darkgray&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span><span class="kw">facet_wrap</span>(<span class="op">~</span>Trait,<span class="dt">scales =</span> <span class="st">&#39;free&#39;</span>,<span class="dt">nrow=</span><span class="dv">3</span>) <span class="op">+</span></span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="st">  </span><span class="kw">scale_fill_viridis_d</span>(<span class="dt">option =</span> <span class="st">&#39;inferno&#39;</span>) <span class="op">+</span><span class="st"> </span></span>
-<span id="cb18-6"><a href="#cb18-6"></a><span class="st">  </span><span class="kw">theme</span>(<span class="dt">axis.text.x =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>,<span class="dt">face=</span><span class="st">&#39;bold&#39;</span>),</span>
-<span id="cb18-7"><a href="#cb18-7"></a>        <span class="dt">legend.position =</span> <span class="st">&#39;none&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> TrialType, <span class="at">y =</span> propMiss, <span class="at">fill =</span> TrialType)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">color =</span> <span class="st">&quot;darkgray&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>Trait, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>, <span class="at">nrow =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">&quot;inferno&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">face =</span> <span class="st">&quot;bold&quot;</span>), <span class="at">legend.position =</span> <span class="st">&quot;none&quot;</span>)</span></code></pre></div>
 <p><img src="figure/02-curateByTrial.Rmd/unnamed-chunk-18-1.png" width="960" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-18-1">
@@ -1069,10 +1151,10 @@ wolfemd
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <pre><code>R version 4.0.2 (2020-06-22)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Mojave 10.14.6
+Running under: macOS Catalina 10.15.7
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -1085,26 +1167,26 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] magrittr_1.5    forcats_0.5.0   stringr_1.4.0   dplyr_1.0.2    
- [5] purrr_0.3.4     readr_1.3.1     tidyr_1.1.2     tibble_3.0.3   
+ [1] magrittr_2.0.1  forcats_0.5.0   stringr_1.4.0   dplyr_1.0.2    
+ [5] purrr_0.3.4     readr_1.4.0     tidyr_1.1.2     tibble_3.0.4   
  [9] ggplot2_3.3.2   tidyverse_1.3.0 workflowr_1.6.2
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.0  xfun_0.17         haven_2.3.1       colorspace_1.4-1 
- [5] vctrs_0.3.4       generics_0.0.2    viridisLite_0.3.0 htmltools_0.5.0  
- [9] yaml_2.2.1        blob_1.2.1        rlang_0.4.7       later_1.1.0.1    
-[13] pillar_1.4.6      withr_2.2.0       glue_1.4.2        DBI_1.1.0        
-[17] dbplyr_1.4.4      modelr_0.1.8      readxl_1.3.1      lifecycle_0.2.0  
-[21] munsell_0.5.0     gtable_0.3.0      cellranger_1.1.0  rvest_0.3.6      
-[25] evaluate_0.14     labeling_0.3      knitr_1.29        httpuv_1.5.4     
-[29] fansi_0.4.1       broom_0.7.0       Rcpp_1.0.5        promises_1.1.1   
-[33] backports_1.1.9   scales_1.1.1      jsonlite_1.7.1    farver_2.0.3     
-[37] fs_1.5.0          hms_0.5.3         digest_0.6.25     stringi_1.5.3    
-[41] rprojroot_1.3-2   grid_4.0.2        here_0.1          cli_2.0.2        
-[45] tools_4.0.2       crayon_1.3.4      whisker_0.4       pkgconfig_2.0.3  
-[49] ellipsis_0.3.1    xml2_1.3.2        reprex_0.3.0      lubridate_1.7.9  
-[53] assertthat_0.2.1  rmarkdown_2.3     httr_1.4.2        rstudioapi_0.11  
-[57] R6_2.4.1          git2r_0.27.1      compiler_4.0.2   </code></pre>
+ [1] tidyselect_1.1.0  xfun_0.19         haven_2.3.1       colorspace_2.0-0 
+ [5] vctrs_0.3.5       generics_0.1.0    viridisLite_0.3.0 htmltools_0.5.0  
+ [9] yaml_2.2.1        rlang_0.4.9       later_1.1.0.1     pillar_1.4.7     
+[13] withr_2.3.0       glue_1.4.2        DBI_1.1.0         dbplyr_2.0.0     
+[17] modelr_0.1.8      readxl_1.3.1      lifecycle_0.2.0   munsell_0.5.0    
+[21] gtable_0.3.0      cellranger_1.1.0  rvest_0.3.6       evaluate_0.14    
+[25] labeling_0.4.2    knitr_1.30        ps_1.4.0          httpuv_1.5.4     
+[29] fansi_0.4.1       broom_0.7.2       Rcpp_1.0.5        promises_1.1.1   
+[33] backports_1.2.0   scales_1.1.1      formatR_1.7       jsonlite_1.7.1   
+[37] farver_2.0.3      fs_1.5.0          hms_0.5.3         digest_0.6.27    
+[41] stringi_1.5.3     rprojroot_2.0.2   grid_4.0.2        here_1.0.0       
+[45] cli_2.2.0         tools_4.0.2       crayon_1.3.4      whisker_0.4      
+[49] pkgconfig_2.0.3   ellipsis_0.3.1    xml2_1.3.2        reprex_0.3.0     
+[53] lubridate_1.7.9.2 rstudioapi_0.13   assertthat_0.2.1  rmarkdown_2.5    
+[57] httr_1.4.2        R6_2.5.0          git2r_0.27.1      compiler_4.0.2   </code></pre>
 </div>
 </div>
 
@@ -1122,6 +1204,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+
+
 </div>
 </div>
 
@@ -1131,7 +1215,7 @@ footer is added to webpages before the MathJax javascript. -->
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

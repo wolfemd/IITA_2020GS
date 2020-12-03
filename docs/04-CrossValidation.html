@@ -14,6 +14,7 @@
 
 <title>Check prediction accuracy</title>
 
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/darkly.min.css" rel="stylesheet" />
@@ -24,7 +25,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -37,21 +39,31 @@ div.section {
 </style>
 
 
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -71,7 +83,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -435,19 +447,76 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Synopsis</a>
+  <a href="index.html">Home</a>
 </li>
-<li>
-  <a href="01-cleanTPdata.html">Data Cleaning</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Cleaning
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01-cleanTPdata.html">September2020</a>
+    </li>
+    <li>
+      <a href="07-cleanTPdata_Dec2020.html">December2020</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="02-curateByTrial.html">Curate Data</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Curate Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="02-curateByTrial.html">September2020</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="03-GetBLUPs.html">Get BLUPs</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Get BLUPs
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="03-GetBLUPs.html">September2020</a>
+    </li>
+    <li>
+      <a href="08-GetBLUPs_Dec2020.html">December2020</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="05-GetGBLUPs.html">Genomic prediction</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Cross validation
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="04-CrossValidation.html">September2020</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Genomic prediction
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="05-GetGBLUPs.html">September2020</a>
+    </li>
+    <li>
+      <a href="09-GetGBLUPs_Dec2020.html">December2020</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="06-Results.html">Results</a>
@@ -500,7 +569,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-09-21
+<strong>Last updated:</strong> 2020-12-03
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -591,16 +660,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreec9388d1ad2cbc02ec69526f893a8cfd12922acf6targetblankc9388d1a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/wolfemd/IITA_2020GS/tree/c9388d1ad2cbc02ec69526f893a8cfd12922acf6" target="_blank">c9388d1</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStree97186661d7fbde24222a9920b84382f9d91caed7targetblank9718666a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/wolfemd/IITA_2020GS/tree/97186661d7fbde24222a9920b84382f9d91caed7" target="_blank">9718666</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreec9388d1ad2cbc02ec69526f893a8cfd12922acf6targetblankc9388d1a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStree97186661d7fbde24222a9920b84382f9d91caed7targetblank9718666a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/wolfemd/IITA_2020GS/tree/c9388d1ad2cbc02ec69526f893a8cfd12922acf6" target="_blank">c9388d1</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/wolfemd/IITA_2020GS/tree/97186661d7fbde24222a9920b84382f9d91caed7" target="_blank">9718666</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -616,15 +685,35 @@ Ignored files:
 
 Untracked files:
     Untracked:  data/GEBV_IITA_OutliersRemovedTRUE_73119.csv
+    Untracked:  data/PedigreeGeneticGainCycleTime_aafolabi_01122020.csv
+    Untracked:  data/PedigreeGeneticGainCycleTime_aafolabi_01122020.xls
     Untracked:  data/iita_blupsForCrossVal_outliersRemoved_73019.rds
     Untracked:  output/DosageMatrix_IITA_2020Sep16.rds
+    Untracked:  output/GETGV_IITA_ModelADE_twostage_IITA_2020Dec03.csv
+    Untracked:  output/GETGV_IITA_ModelADE_twostage_IITA_2020Dec03_withAccessionYear.csv
+    Untracked:  output/IITA_CleanedTrialData_2020Dec03.rds
+    Untracked:  output/IITA_ExptDesignsDetected_2020Dec03.rds
     Untracked:  output/Kinship_AA_IITA_2020Sep16.rds
     Untracked:  output/Kinship_AD_IITA_2020Sep16.rds
     Untracked:  output/Kinship_A_IITA_2020Sep16.rds
     Untracked:  output/Kinship_DD_IITA2020Sep16.rds
     Untracked:  output/Kinship_D_IITA_2020Sep16.rds
+    Untracked:  output/all_iita_metadata_Dec2020.csv
+    Untracked:  output/cvresults_ModelADE_chunk1.rds
     Untracked:  output/cvresults_ModelADE_chunk2.rds
+    Untracked:  output/cvresults_ModelADE_chunk3.rds
+    Untracked:  output/genomicPredictions_ModelADE_threestage_IITA_2020Sep21.rds
+    Untracked:  output/genomicPredictions_ModelADE_twostage_IITA_2020Dec03.rds
+    Untracked:  output/genomicPredictions_ModelA_threestage_IITA_2020Sep21.rds
+    Untracked:  output/iita_blupsForModelTraining_twostage_asreml_2020Dec03.rds
+    Untracked:  output/iita_trials_NOT_identifiable_Dec2020.csv
+    Untracked:  output/meanGETGVbyYear_IITA_2020Dec03.csv
+    Untracked:  output/trials_uploaded_by_Nharvested_15Sep2020.csv
     Untracked:  workflowr_log.R
+
+Unstaged changes:
+    Modified:   output/IITA_ExptDesignsDetected.rds
+    Modified:   output/iita_blupsForModelTraining.rds
 
 </code></pre>
 <p>
@@ -663,6 +752,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/wolfemd/IITA_2020GS/d72a9ed1dc2a250fc62da2f8b06cdf3081252884/docs/04-CrossValidation.html" target="_blank">d72a9ed</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-09-21
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -817,290 +923,233 @@ All steps including genomic predicting (excluding cross-validation),
 <p>Can be loaded directly to R from FTP.</p>
 <p><strong>NOTICE:</strong> You need enough RAM and a stable network connection. I do the next steps, including cross-validation on a server with plenty of RAM and a good, stable network connection, rather than on my personal computer (a laptop with 16 GB RAM).</p>
 <p>The outputs (kinship matrices and filtered snp dosages) of the steps below, which are too large for GitHub, can be found on the cassavabase FTP server <a href="ftp://ftp.cassavabase.org/marnin_datasets/IITA_2020GS/">here</a>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># activate multithread OpenBLAS for fast compute of SigmaM (genotypic var-covar matrix)</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="bu">export</span> <span class="va">OMP_NUM_THREADS=</span>56</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">library</span>(tidyverse); <span class="kw">library</span>(magrittr); </span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">source</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;code&quot;</span>,<span class="st">&quot;gsFunctions.R&quot;</span>))</span>
-<span id="cb2-3"><a href="#cb2-3"></a>snps&lt;-<span class="kw">readRDS</span>(<span class="dt">file=</span><span class="kw">url</span>(<span class="kw">paste0</span>(<span class="st">&quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/&quot;</span>,</span>
-<span id="cb2-4"><a href="#cb2-4"></a>                              <span class="st">&quot;DosageMatrix_RefPanelAndGSprogeny_ReadyForGP_73019.rds&quot;</span>)))</span>
-<span id="cb2-5"><a href="#cb2-5"></a>blups&lt;-<span class="kw">readRDS</span>(<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;iita_blupsForModelTraining.rds&quot;</span>))</span>
-<span id="cb2-6"><a href="#cb2-6"></a></span>
-<span id="cb2-7"><a href="#cb2-7"></a>blups <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="st">  </span><span class="kw">select</span>(Trait,modelOutput) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="st">  </span><span class="kw">unnest</span>(modelOutput) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="st">  </span><span class="kw">select</span>(Trait,BLUPs) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-11"><a href="#cb2-11"></a><span class="st">  </span><span class="kw">unnest</span>(BLUPs)</span>
-<span id="cb2-12"><a href="#cb2-12"></a></span>
-<span id="cb2-13"><a href="#cb2-13"></a><span class="kw">table</span>(<span class="kw">unique</span>(blups<span class="op">$</span>GID) <span class="op">%in%</span><span class="st"> </span><span class="kw">rownames</span>(snps)) </span>
-<span id="cb2-14"><a href="#cb2-14"></a><span class="co"># FALSE  TRUE </span></span>
-<span id="cb2-15"><a href="#cb2-15"></a><span class="co"># 36837  7638 </span></span>
-<span id="cb2-16"><a href="#cb2-16"></a></span>
-<span id="cb2-17"><a href="#cb2-17"></a><span class="co"># keep only samples that are either geno+pheno or genotyped with TMS18 in the name.</span></span>
-<span id="cb2-18"><a href="#cb2-18"></a>iitaSamples2keep&lt;-<span class="kw">union</span>(<span class="kw">unique</span>(blups<span class="op">$</span>GID) <span class="op">%&gt;%</span><span class="st"> </span>.[.<span class="op">%in%</span><span class="st"> </span><span class="kw">rownames</span>(snps)],</span>
-<span id="cb2-19"><a href="#cb2-19"></a>                        <span class="kw">rownames</span>(snps) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">grep</span>(<span class="st">&quot;TMS18&quot;</span>,.,<span class="dt">value =</span> T)) </span>
-<span id="cb2-20"><a href="#cb2-20"></a><span class="kw">length</span>(iitaSamples2keep) <span class="co"># [1] 9061</span></span>
-<span id="cb2-21"><a href="#cb2-21"></a></span>
-<span id="cb2-22"><a href="#cb2-22"></a><span class="co"># subset BLUPs and snps</span></span>
-<span id="cb2-23"><a href="#cb2-23"></a>blups <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
-<span id="cb2-24"><a href="#cb2-24"></a><span class="st">  </span><span class="kw">filter</span>(GID <span class="op">%in%</span><span class="st"> </span>iitaSamples2keep) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb2-25"><a href="#cb2-25"></a><span class="st">  </span><span class="kw">nest</span>(<span class="dt">TrainingData=</span><span class="op">-</span>Trait)</span>
-<span id="cb2-26"><a href="#cb2-26"></a>snps&lt;-snps[iitaSamples2keep,]</span>
-<span id="cb2-27"><a href="#cb2-27"></a></span>
-<span id="cb2-28"><a href="#cb2-28"></a><span class="co">## MAF&gt;1% filter</span></span>
-<span id="cb2-29"><a href="#cb2-29"></a>snps <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="kw">maf_filter</span>(.,<span class="fl">0.01</span>)</span>
-<span id="cb2-30"><a href="#cb2-30"></a><span class="kw">dim</span>(snps) <span class="co"># [1]  9061 68029</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># activate multithread OpenBLAS for fast compute of SigmaM (genotypic var-covar matrix)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OMP_NUM_THREADS=</span>56</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;gsFunctions.R&quot;</span>))</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>snps <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> <span class="fu">url</span>(<span class="fu">paste0</span>(<span class="st">&quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/&quot;</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;DosageMatrix_RefPanelAndGSprogeny_ReadyForGP_73019.rds&quot;</span>)))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>blups <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;iita_blupsForModelTraining.rds&quot;</span>))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>blups <span class="sc">%&lt;&gt;%</span> <span class="fu">select</span>(Trait, modelOutput) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(modelOutput) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Trait, BLUPs) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">unnest</span>(BLUPs)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">unique</span>(blups<span class="sc">$</span>GID) <span class="sc">%in%</span> <span class="fu">rownames</span>(snps))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># FALSE TRUE 36837 7638</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># keep only samples that are either geno+pheno or genotyped with TMS18 in the</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># name.</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>iitaSamples2keep <span class="ot">&lt;-</span> <span class="fu">union</span>(<span class="fu">unique</span>(blups<span class="sc">$</span>GID) <span class="sc">%&gt;%</span> .[. <span class="sc">%in%</span> <span class="fu">rownames</span>(snps)], <span class="fu">rownames</span>(snps) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">grep</span>(<span class="st">&quot;TMS18&quot;</span>, ., <span class="at">value =</span> T))</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(iitaSamples2keep)  <span class="co"># [1] 9061</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># subset BLUPs and snps</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>blups <span class="sc">%&lt;&gt;%</span> <span class="fu">filter</span>(GID <span class="sc">%in%</span> iitaSamples2keep) <span class="sc">%&gt;%</span> <span class="fu">nest</span>(<span class="at">TrainingData =</span> <span class="sc">-</span>Trait)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>snps <span class="ot">&lt;-</span> snps[iitaSamples2keep, ]</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="do">## MAF&gt;1% filter</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>snps <span class="sc">%&lt;&gt;%</span> <span class="fu">maf_filter</span>(., <span class="fl">0.01</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(snps)  <span class="co"># [1]  9061 68029</span></span></code></pre></div>
 </div>
 <div id="make-add-dom-and-epi-kinships" class="section level2">
 <h2>Make Add, Dom and Epi kinships</h2>
 <p>Going to use my own kinship function.</p>
 <p>Make the kinships.</p>
 <p>Below e.g. <code>A*A</code> makes a matrix that approximates additive-by-additive epistasis relationships.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>A&lt;-<span class="kw">kinship</span>(snps,<span class="dt">type=</span><span class="st">&quot;add&quot;</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>D&lt;-<span class="kw">kinship</span>(snps,<span class="dt">type=</span><span class="st">&quot;dom&quot;</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a>AA&lt;-A<span class="op">*</span>A</span>
-<span id="cb3-4"><a href="#cb3-4"></a>AD&lt;-A<span class="op">*</span>D</span>
-<span id="cb3-5"><a href="#cb3-5"></a>DD&lt;-D<span class="op">*</span>D</span>
-<span id="cb3-6"><a href="#cb3-6"></a></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="kw">saveRDS</span>(snps,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;DosageMatrix_IITA_2020Sep16.rds&quot;</span>))</span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">saveRDS</span>(A,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;Kinship_A_IITA_2020Sep16.rds&quot;</span>))</span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="kw">saveRDS</span>(D,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;Kinship_D_IITA_2020Sep16.rds&quot;</span>))</span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="kw">saveRDS</span>(AA,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;Kinship_AA_IITA_2020Sep16.rds&quot;</span>))</span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">saveRDS</span>(AD,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;Kinship_AD_IITA_2020Sep16.rds&quot;</span>))</span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="kw">saveRDS</span>(DD,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;Kinship_DD_IITA2020Sep16.rds&quot;</span>))</span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#rm(snps); gc()</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">kinship</span>(snps, <span class="at">type =</span> <span class="st">&quot;add&quot;</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">kinship</span>(snps, <span class="at">type =</span> <span class="st">&quot;dom&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>AA <span class="ot">&lt;-</span> A <span class="sc">*</span> A</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>AD <span class="ot">&lt;-</span> A <span class="sc">*</span> D</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>DD <span class="ot">&lt;-</span> D <span class="sc">*</span> D</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(snps, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;DosageMatrix_IITA_2020Sep16.rds&quot;</span>))</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(A, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;Kinship_A_IITA_2020Sep16.rds&quot;</span>))</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(D, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;Kinship_D_IITA_2020Sep16.rds&quot;</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(AA, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;Kinship_AA_IITA_2020Sep16.rds&quot;</span>))</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(AD, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;Kinship_AD_IITA_2020Sep16.rds&quot;</span>))</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(DD, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;Kinship_DD_IITA2020Sep16.rds&quot;</span>))</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># rm(snps); gc()</span></span></code></pre></div>
 <p><strong>NOTICE:</strong> The outputs (kinship matrices and filtered snp dosages) of the steps below, which are too large for GitHub, can be found on the cassavabase FTP server <a href="ftp://ftp.cassavabase.org/marnin_datasets/IITA_2020GS/">here</a>.</p>
 </div>
 </div>
 <div id="cross-validation" class="section level1">
 <h1>Cross-validation</h1>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># activate multithread OpenBLAS for fast matrix algebra</span></span>
-<span id="cb4-2"><a href="#cb4-2"></a><span class="bu">export</span> <span class="va">OMP_NUM_THREADS=</span>56</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># activate multithread OpenBLAS for fast matrix algebra</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OMP_NUM_THREADS=</span>56</span></code></pre></div>
 <div id="set-up-cv-folds" class="section level2">
 <h2>Set-up CV folds</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">library</span>(tidyverse); <span class="kw">library</span>(magrittr);</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co"># BLUPs from the 3 stage procedure </span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co"># (representing stage 2 of 3) using the 2020 standard procedure</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>blups_3stage_lmer&lt;-<span class="kw">readRDS</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;iita_blupsForModelTraining.rds&quot;</span>))</span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co"># BLUPs from the 2 stage procedure</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># (stage 1 of 2) using the 2019 procedure</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>blups_2stage_asreml&lt;-<span class="kw">readRDS</span>(<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;iita_blupsForModelTraining_twostage_asreml.rds&quot;</span>))</span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># merge two sets of BLUPs</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>blups&lt;-blups_2stage_asreml <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="st">  </span>dplyr<span class="op">::</span><span class="kw">select</span>(Trait,blups) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">blups2stage=</span>blups) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="st">  </span><span class="kw">left_join</span>(blups_3stage_lmer <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="st">              </span>dplyr<span class="op">::</span><span class="kw">select</span>(Trait,modelOutput) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="st">              </span><span class="kw">unnest</span>(modelOutput) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-17"><a href="#cb5-17"></a><span class="st">              </span>dplyr<span class="op">::</span><span class="kw">select</span>(Trait,BLUPs) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb5-18"><a href="#cb5-18"></a><span class="st">              </span><span class="kw">rename</span>(<span class="dt">blups3stage=</span>BLUPs))</span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="kw">rm</span>(blups_2stage_asreml,blups_3stage_lmer)</span>
-<span id="cb5-20"><a href="#cb5-20"></a></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="co"># read additive kinship matrix</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a>A&lt;-<span class="kw">readRDS</span>(<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;Kinship_A_IITA_2020Sep16.rds&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># BLUPs from the 3 stage procedure (representing stage 2 of 3) using the 2020</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># standard procedure</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>blups_3stage_lmer <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;iita_blupsForModelTraining.rds&quot;</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># BLUPs from the 2 stage procedure (stage 1 of 2) using the 2019 procedure</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>blups_2stage_asreml <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;iita_blupsForModelTraining_twostage_asreml.rds&quot;</span>))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># merge two sets of BLUPs</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>blups <span class="ot">&lt;-</span> blups_2stage_asreml <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(Trait, blups) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">blups2stage =</span> blups) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(blups_3stage_lmer <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(Trait, modelOutput) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(modelOutput) <span class="sc">%&gt;%</span> </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        dplyr<span class="sc">::</span><span class="fu">select</span>(Trait, BLUPs) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">blups3stage =</span> BLUPs))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(blups_2stage_asreml, blups_3stage_lmer)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># read additive kinship matrix</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;Kinship_A_IITA_2020Sep16.rds&quot;</span>))</span></code></pre></div>
 <p>Next, set-up a common set of train-test cross-validation folds to compare the two sets of BLUPs with.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">require</span>(sommer); <span class="kw">require</span>(rsample)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>nrepeats&lt;-<span class="dv">5</span>; nfolds&lt;-<span class="dv">5</span></span>
-<span id="cb6-3"><a href="#cb6-3"></a>blups <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="st">  </span><span class="co"># operate on GID common to both sets of BLUPs</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cvfolds=</span><span class="kw">map2</span>(blups2stage,blups3stage,</span>
-<span id="cb6-6"><a href="#cb6-6"></a>                      <span class="co"># GIDs in both sets of BLUPs</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a>                      <span class="op">~</span><span class="kw">tibble</span>(<span class="dt">GID=</span><span class="kw">unique</span>(<span class="kw">intersect</span>(.x<span class="op">$</span>GID,.y<span class="op">$</span>GID)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="st">                                </span><span class="co"># and genotyped (in kinship)</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="st">                                </span>.[. <span class="op">%in%</span><span class="st"> </span><span class="kw">rownames</span>(A)])))</span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># for each trait, set-up nrepeats of nfold CVs</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a>blups <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
-<span id="cb6-12"><a href="#cb6-12"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cvfolds=</span><span class="kw">map</span>(cvfolds,<span class="op">~</span><span class="kw">tibble</span>(<span class="dt">repeats=</span><span class="dv">1</span><span class="op">:</span>nrepeats,</span>
-<span id="cb6-13"><a href="#cb6-13"></a>                                     <span class="dt">splits=</span><span class="kw">rerun</span>(nrepeats,<span class="kw">vfold_cv</span>(., <span class="dt">v =</span> nfolds))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="st">                       </span><span class="kw">unnest</span>(splits))) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb6-15"><a href="#cb6-15"></a><span class="st">  </span><span class="kw">unnest</span>(cvfolds)</span>
-<span id="cb6-16"><a href="#cb6-16"></a>blups <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
-<span id="cb6-17"><a href="#cb6-17"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">blups2stage=</span><span class="kw">map</span>(blups2stage,as.tibble)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb6-18"><a href="#cb6-18"></a><span class="st">  </span><span class="kw">pivot_longer</span>(<span class="dt">cols =</span> <span class="kw">c</span>(blups2stage,blups3stage), </span>
-<span id="cb6-19"><a href="#cb6-19"></a>               <span class="dt">names_to =</span> <span class="st">&quot;VersionOfBLUPs&quot;</span>, </span>
-<span id="cb6-20"><a href="#cb6-20"></a>               <span class="dt">values_to =</span> <span class="st">&quot;TrainTestData&quot;</span>)</span>
-<span id="cb6-21"><a href="#cb6-21"></a></span>
-<span id="cb6-22"><a href="#cb6-22"></a><span class="co"># decided to only do CV for 3 traits (&quot;quick&quot; test)</span></span>
-<span id="cb6-23"><a href="#cb6-23"></a>blups <span class="op">%&lt;&gt;%</span></span>
-<span id="cb6-24"><a href="#cb6-24"></a><span class="st">  </span><span class="kw">filter</span>(Trait <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;MCMDS&quot;</span>,<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;logFYLD&quot;</span>)) </span>
-<span id="cb6-25"><a href="#cb6-25"></a><span class="kw">gc</span>()</span>
-<span id="cb6-26"><a href="#cb6-26"></a></span>
-<span id="cb6-27"><a href="#cb6-27"></a>blups <span class="op">%&gt;%</span><span class="st"> </span>head</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(sommer); <span class="fu">require</span>(rsample)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>nrepeats<span class="ot">&lt;-</span><span class="dv">5</span>; nfolds<span class="ot">&lt;-</span><span class="dv">5</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>blups <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># operate on GID common to both sets of BLUPs</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cvfolds=</span><span class="fu">map2</span>(blups2stage,blups3stage,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                      <span class="co"># GIDs in both sets of BLUPs</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                      <span class="sc">~</span><span class="fu">tibble</span>(<span class="at">GID=</span><span class="fu">unique</span>(<span class="fu">intersect</span>(.x<span class="sc">$</span>GID,.y<span class="sc">$</span>GID)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># and genotyped (in kinship)</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>                                .[. <span class="sc">%in%</span> <span class="fu">rownames</span>(A)])))</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># for each trait, set-up nrepeats of nfold CVs</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>blups <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cvfolds=</span><span class="fu">map</span>(cvfolds,<span class="sc">~</span><span class="fu">tibble</span>(<span class="at">repeats=</span><span class="dv">1</span><span class="sc">:</span>nrepeats,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">splits=</span><span class="fu">rerun</span>(nrepeats,<span class="fu">vfold_cv</span>(., <span class="at">v =</span> nfolds))) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">unnest</span>(splits))) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(cvfolds)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>blups <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">blups2stage=</span><span class="fu">map</span>(blups2stage,as.tibble)) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(blups2stage,blups3stage), </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;VersionOfBLUPs&quot;</span>, </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;TrainTestData&quot;</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="co"># decided to only do CV for 3 traits (&quot;quick&quot; test)</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>blups <span class="sc">%&lt;&gt;%</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Trait <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;MCMDS&quot;</span>,<span class="st">&quot;DM&quot;</span>,<span class="st">&quot;logFYLD&quot;</span>)) </span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="fu">gc</span>()</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>blups <span class="sc">%&gt;%</span> head</span></code></pre></div>
 </div>
 <div id="function-to-do-cv" class="section level2">
 <h2>Function to do CV</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># function to predict train and test sets, calc accuracy</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>fitModel&lt;-<span class="kw">possibly</span>(<span class="cf">function</span>(splits,modelType,TrainTestData,grms,<span class="dt">gid=</span><span class="st">&quot;GID&quot;</span>){</span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="co"># test arguments for function</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="co"># ----------------------</span></span>
-<span id="cb7-5"><a href="#cb7-5"></a>  <span class="co">#   splits&lt;-blups$splits[[1]]</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>  <span class="co"># TrainTestData&lt;-blups$TrainTestData[[1]]</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>  <span class="co"># modelType&lt;-&quot;A&quot;</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>  <span class="co"># grms=list(A=A)</span></span>
-<span id="cb7-9"><a href="#cb7-9"></a>  <span class="co"># gid=&quot;GID&quot;</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a>  <span class="co"># ----------------------</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a>  </span>
-<span id="cb7-12"><a href="#cb7-12"></a>  starttime&lt;-<span class="kw">proc.time</span>()[<span class="dv">3</span>]</span>
-<span id="cb7-13"><a href="#cb7-13"></a>  <span class="co"># Set-up training set</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a>  trainingdata&lt;-TrainTestData <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb7-15"><a href="#cb7-15"></a><span class="st">    </span><span class="kw">filter</span>(GID <span class="op">%in%</span><span class="st"> </span><span class="kw">training</span>(splits)<span class="op">$</span>GID)</span>
-<span id="cb7-16"><a href="#cb7-16"></a>  <span class="co"># Subset kinship matrices</span></span>
-<span id="cb7-17"><a href="#cb7-17"></a>  traintestgids&lt;-<span class="kw">union</span>(trainingdata[[gid]],<span class="kw">testing</span>(splits)[[gid]])</span>
-<span id="cb7-18"><a href="#cb7-18"></a>  A1&lt;-grms[[<span class="st">&quot;A&quot;</span>]][traintestgids,traintestgids]</span>
-<span id="cb7-19"><a href="#cb7-19"></a>  trainingdata[[<span class="kw">paste0</span>(gid,<span class="st">&quot;a&quot;</span>)]]&lt;-<span class="kw">factor</span>(trainingdata[[gid]],<span class="dt">levels=</span><span class="kw">rownames</span>(A1))</span>
-<span id="cb7-20"><a href="#cb7-20"></a>  <span class="cf">if</span>(modelType <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;AD&quot;</span>,<span class="st">&quot;ADE&quot;</span>)){</span>
-<span id="cb7-21"><a href="#cb7-21"></a>    D1&lt;-grms[[<span class="st">&quot;D&quot;</span>]][traintestgids,traintestgids]</span>
-<span id="cb7-22"><a href="#cb7-22"></a>    trainingdata[[<span class="kw">paste0</span>(gid,<span class="st">&quot;d&quot;</span>)]]&lt;-<span class="kw">factor</span>(trainingdata[[gid]],<span class="dt">levels=</span><span class="kw">rownames</span>(D1))</span>
-<span id="cb7-23"><a href="#cb7-23"></a>    <span class="cf">if</span>(modelType<span class="op">==</span><span class="st">&quot;ADE&quot;</span>){</span>
-<span id="cb7-24"><a href="#cb7-24"></a>      AD1&lt;-grms[[<span class="st">&quot;AD&quot;</span>]][traintestgids,traintestgids]</span>
-<span id="cb7-25"><a href="#cb7-25"></a>      <span class="kw">diag</span>(AD1)&lt;-<span class="kw">diag</span>(AD1)<span class="op">+</span><span class="fl">1e-06</span></span>
-<span id="cb7-26"><a href="#cb7-26"></a>      trainingdata[[<span class="kw">paste0</span>(gid,<span class="st">&quot;ad&quot;</span>)]]&lt;-<span class="kw">factor</span>(trainingdata[[gid]],<span class="dt">levels=</span><span class="kw">rownames</span>(AD1))</span>
-<span id="cb7-27"><a href="#cb7-27"></a>    }</span>
-<span id="cb7-28"><a href="#cb7-28"></a>  }</span>
-<span id="cb7-29"><a href="#cb7-29"></a>  <span class="co"># Set-up random model statements</span></span>
-<span id="cb7-30"><a href="#cb7-30"></a>  randFormula&lt;-<span class="kw">paste0</span>(<span class="st">&quot;~vs(&quot;</span>,gid,<span class="st">&quot;a,Gu=A1)&quot;</span>)</span>
-<span id="cb7-31"><a href="#cb7-31"></a>  <span class="cf">if</span>(modelType <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;AD&quot;</span>,<span class="st">&quot;ADE&quot;</span>)){</span>
-<span id="cb7-32"><a href="#cb7-32"></a>    randFormula&lt;-<span class="kw">paste0</span>(randFormula,<span class="st">&quot;+vs(&quot;</span>,gid,<span class="st">&quot;d,Gu=D1)&quot;</span>)</span>
-<span id="cb7-33"><a href="#cb7-33"></a>    <span class="cf">if</span>(modelType<span class="op">==</span><span class="st">&quot;ADE&quot;</span>){</span>
-<span id="cb7-34"><a href="#cb7-34"></a>      randFormula&lt;-<span class="kw">paste0</span>(randFormula,<span class="st">&quot;+vs(&quot;</span>,gid,<span class="st">&quot;ad,Gu=AD1)&quot;</span>)</span>
-<span id="cb7-35"><a href="#cb7-35"></a>    }</span>
-<span id="cb7-36"><a href="#cb7-36"></a>  }</span>
-<span id="cb7-37"><a href="#cb7-37"></a>  <span class="co"># Fit genomic prediction model</span></span>
-<span id="cb7-38"><a href="#cb7-38"></a>  fit &lt;-<span class="st"> </span><span class="kw">mmer</span>(<span class="dt">fixed =</span> drgBLUP <span class="op">~</span><span class="dv">1</span>,</span>
-<span id="cb7-39"><a href="#cb7-39"></a>              <span class="dt">random =</span> <span class="kw">as.formula</span>(randFormula),</span>
-<span id="cb7-40"><a href="#cb7-40"></a>              <span class="dt">weights =</span> WT,</span>
-<span id="cb7-41"><a href="#cb7-41"></a>              <span class="dt">data=</span>trainingdata)</span>
-<span id="cb7-42"><a href="#cb7-42"></a>  <span class="co"># Gather the BLUPs</span></span>
-<span id="cb7-43"><a href="#cb7-43"></a>  gblups&lt;-<span class="kw">tibble</span>(<span class="dt">GID=</span><span class="kw">as.character</span>(<span class="kw">names</span>(fit<span class="op">$</span>U[[<span class="kw">paste0</span>(<span class="st">&quot;u:&quot;</span>,gid,<span class="st">&quot;a&quot;</span>)]]<span class="op">$</span>drgBLUP)),</span>
-<span id="cb7-44"><a href="#cb7-44"></a>                 <span class="dt">GEBV=</span><span class="kw">as.numeric</span>(fit<span class="op">$</span>U[[<span class="kw">paste0</span>(<span class="st">&quot;u:&quot;</span>,gid,<span class="st">&quot;a&quot;</span>)]]<span class="op">$</span>drgBLUP))</span>
-<span id="cb7-45"><a href="#cb7-45"></a>  <span class="cf">if</span>(modelType <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;AD&quot;</span>,<span class="st">&quot;ADE&quot;</span>)){</span>
-<span id="cb7-46"><a href="#cb7-46"></a>    gblups <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">GEDD=</span><span class="kw">as.numeric</span>(fit<span class="op">$</span>U[[<span class="kw">paste0</span>(<span class="st">&quot;u:&quot;</span>,gid,<span class="st">&quot;d&quot;</span>)]]<span class="op">$</span>drgBLUP))</span>
-<span id="cb7-47"><a href="#cb7-47"></a>    <span class="cf">if</span>(modelType<span class="op">==</span><span class="st">&quot;ADE&quot;</span>){</span>
-<span id="cb7-48"><a href="#cb7-48"></a>      gblups <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
-<span id="cb7-49"><a href="#cb7-49"></a><span class="st">        </span><span class="kw">mutate</span>(<span class="dt">GEEDad=</span><span class="kw">as.numeric</span>(fit<span class="op">$</span>U[[<span class="kw">paste0</span>(<span class="st">&quot;u:&quot;</span>,gid,<span class="st">&quot;ad&quot;</span>)]]<span class="op">$</span>drgBLUP))</span>
-<span id="cb7-50"><a href="#cb7-50"></a>    }</span>
-<span id="cb7-51"><a href="#cb7-51"></a>  }</span>
-<span id="cb7-52"><a href="#cb7-52"></a>  <span class="co"># Calc GETGVs</span></span>
-<span id="cb7-53"><a href="#cb7-53"></a>  <span class="co">## Note that for modelType==&quot;A&quot;, GEBV==GETGV</span></span>
-<span id="cb7-54"><a href="#cb7-54"></a>  gblups <span class="op">%&lt;&gt;%</span></span>
-<span id="cb7-55"><a href="#cb7-55"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">GETGV=</span><span class="kw">rowSums</span>(.[,<span class="kw">grepl</span>(<span class="st">&quot;GE&quot;</span>,<span class="kw">colnames</span>(.))]))</span>
-<span id="cb7-56"><a href="#cb7-56"></a>  <span class="co"># Test set validation data</span></span>
-<span id="cb7-57"><a href="#cb7-57"></a>  validationData&lt;-TrainTestData <span class="op">%&gt;%</span></span>
-<span id="cb7-58"><a href="#cb7-58"></a><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">select</span>(gid,BLUP) <span class="op">%&gt;%</span></span>
-<span id="cb7-59"><a href="#cb7-59"></a><span class="st">    </span><span class="kw">filter</span>(GID <span class="op">%in%</span><span class="st"> </span><span class="kw">testing</span>(splits)[[gid]])</span>
-<span id="cb7-60"><a href="#cb7-60"></a>  <span class="co"># Measure accuracy in test set</span></span>
-<span id="cb7-61"><a href="#cb7-61"></a>  <span class="co">## cor(GEBV,BLUP)</span></span>
-<span id="cb7-62"><a href="#cb7-62"></a>  <span class="co">## cor(GETGV,BLUP)</span></span>
-<span id="cb7-63"><a href="#cb7-63"></a>  accuracy&lt;-gblups <span class="op">%&gt;%</span></span>
-<span id="cb7-64"><a href="#cb7-64"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">GETGV=</span><span class="kw">rowSums</span>(.[,<span class="kw">grepl</span>(<span class="st">&quot;GE&quot;</span>,<span class="kw">colnames</span>(.))])) <span class="op">%&gt;%</span></span>
-<span id="cb7-65"><a href="#cb7-65"></a><span class="st">    </span><span class="kw">filter</span>(GID <span class="op">%in%</span><span class="st"> </span><span class="kw">testing</span>(splits)[[gid]]) <span class="op">%&gt;%</span></span>
-<span id="cb7-66"><a href="#cb7-66"></a><span class="st">    </span><span class="kw">left_join</span>(validationData) <span class="op">%&gt;%</span></span>
-<span id="cb7-67"><a href="#cb7-67"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">accGEBV=</span><span class="kw">cor</span>(GEBV,BLUP, <span class="dt">use =</span> <span class="st">&#39;complete.obs&#39;</span>),</span>
-<span id="cb7-68"><a href="#cb7-68"></a>              <span class="dt">accGETGV=</span><span class="kw">cor</span>(GETGV,BLUP, <span class="dt">use =</span> <span class="st">&#39;complete.obs&#39;</span>))</span>
-<span id="cb7-69"><a href="#cb7-69"></a>  computeTime&lt;-<span class="kw">proc.time</span>()[<span class="dv">3</span>]<span class="op">-</span>starttime</span>
-<span id="cb7-70"><a href="#cb7-70"></a>  accuracy <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">computeTime=</span>computeTime)</span>
-<span id="cb7-71"><a href="#cb7-71"></a>  <span class="kw">return</span>(accuracy)</span>
-<span id="cb7-72"><a href="#cb7-72"></a>},<span class="dt">otherwise =</span> <span class="ot">NA</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function to predict train and test sets, calc accuracy</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fitModel <span class="ot">&lt;-</span> <span class="fu">possibly</span>(<span class="cf">function</span>(splits, modelType, TrainTestData, grms, <span class="at">gid =</span> <span class="st">&quot;GID&quot;</span>) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># test arguments for function ---------------------- splits&lt;-blups$splits[[1]]</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># TrainTestData&lt;-blups$TrainTestData[[1]] modelType&lt;-&#39;A&#39; grms=list(A=A) gid=&#39;GID&#39;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ----------------------</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    starttime <span class="ot">&lt;-</span> <span class="fu">proc.time</span>()[<span class="dv">3</span>]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set-up training set</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    trainingdata <span class="ot">&lt;-</span> TrainTestData <span class="sc">%&gt;%</span> <span class="fu">filter</span>(GID <span class="sc">%in%</span> <span class="fu">training</span>(splits)<span class="sc">$</span>GID)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Subset kinship matrices</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    traintestgids <span class="ot">&lt;-</span> <span class="fu">union</span>(trainingdata[[gid]], <span class="fu">testing</span>(splits)[[gid]])</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    A1 <span class="ot">&lt;-</span> grms[[<span class="st">&quot;A&quot;</span>]][traintestgids, traintestgids]</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    trainingdata[[<span class="fu">paste0</span>(gid, <span class="st">&quot;a&quot;</span>)]] <span class="ot">&lt;-</span> <span class="fu">factor</span>(trainingdata[[gid]], <span class="at">levels =</span> <span class="fu">rownames</span>(A1))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (modelType <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;AD&quot;</span>, <span class="st">&quot;ADE&quot;</span>)) {</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        D1 <span class="ot">&lt;-</span> grms[[<span class="st">&quot;D&quot;</span>]][traintestgids, traintestgids]</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        trainingdata[[<span class="fu">paste0</span>(gid, <span class="st">&quot;d&quot;</span>)]] <span class="ot">&lt;-</span> <span class="fu">factor</span>(trainingdata[[gid]], <span class="at">levels =</span> <span class="fu">rownames</span>(D1))</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (modelType <span class="sc">==</span> <span class="st">&quot;ADE&quot;</span>) {</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>            AD1 <span class="ot">&lt;-</span> grms[[<span class="st">&quot;AD&quot;</span>]][traintestgids, traintestgids]</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">diag</span>(AD1) <span class="ot">&lt;-</span> <span class="fu">diag</span>(AD1) <span class="sc">+</span> <span class="fl">1e-06</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>            trainingdata[[<span class="fu">paste0</span>(gid, <span class="st">&quot;ad&quot;</span>)]] <span class="ot">&lt;-</span> <span class="fu">factor</span>(trainingdata[[gid]], <span class="at">levels =</span> <span class="fu">rownames</span>(AD1))</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set-up random model statements</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    randFormula <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;~vs(&quot;</span>, gid, <span class="st">&quot;a,Gu=A1)&quot;</span>)</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (modelType <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;AD&quot;</span>, <span class="st">&quot;ADE&quot;</span>)) {</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>        randFormula <span class="ot">&lt;-</span> <span class="fu">paste0</span>(randFormula, <span class="st">&quot;+vs(&quot;</span>, gid, <span class="st">&quot;d,Gu=D1)&quot;</span>)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (modelType <span class="sc">==</span> <span class="st">&quot;ADE&quot;</span>) {</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>            randFormula <span class="ot">&lt;-</span> <span class="fu">paste0</span>(randFormula, <span class="st">&quot;+vs(&quot;</span>, gid, <span class="st">&quot;ad,Gu=AD1)&quot;</span>)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Fit genomic prediction model</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>    fit <span class="ot">&lt;-</span> <span class="fu">mmer</span>(<span class="at">fixed =</span> drgBLUP <span class="sc">~</span> <span class="dv">1</span>, <span class="at">random =</span> <span class="fu">as.formula</span>(randFormula), <span class="at">weights =</span> WT, </span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> trainingdata)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Gather the BLUPs</span></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    gblups <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">GID =</span> <span class="fu">as.character</span>(<span class="fu">names</span>(fit<span class="sc">$</span>U[[<span class="fu">paste0</span>(<span class="st">&quot;u:&quot;</span>, gid, <span class="st">&quot;a&quot;</span>)]]<span class="sc">$</span>drgBLUP)), </span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>        <span class="at">GEBV =</span> <span class="fu">as.numeric</span>(fit<span class="sc">$</span>U[[<span class="fu">paste0</span>(<span class="st">&quot;u:&quot;</span>, gid, <span class="st">&quot;a&quot;</span>)]]<span class="sc">$</span>drgBLUP))</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (modelType <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;AD&quot;</span>, <span class="st">&quot;ADE&quot;</span>)) {</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>        gblups <span class="sc">%&lt;&gt;%</span> <span class="fu">mutate</span>(<span class="at">GEDD =</span> <span class="fu">as.numeric</span>(fit<span class="sc">$</span>U[[<span class="fu">paste0</span>(<span class="st">&quot;u:&quot;</span>, gid, <span class="st">&quot;d&quot;</span>)]]<span class="sc">$</span>drgBLUP))</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (modelType <span class="sc">==</span> <span class="st">&quot;ADE&quot;</span>) {</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>            gblups <span class="sc">%&lt;&gt;%</span> <span class="fu">mutate</span>(<span class="at">GEEDad =</span> <span class="fu">as.numeric</span>(fit<span class="sc">$</span>U[[<span class="fu">paste0</span>(<span class="st">&quot;u:&quot;</span>, gid, <span class="st">&quot;ad&quot;</span>)]]<span class="sc">$</span>drgBLUP))</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calc GETGVs Note that for modelType==&#39;A&#39;, GEBV==GETGV</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    gblups <span class="sc">%&lt;&gt;%</span> <span class="fu">mutate</span>(<span class="at">GETGV =</span> <span class="fu">rowSums</span>(.[, <span class="fu">grepl</span>(<span class="st">&quot;GE&quot;</span>, <span class="fu">colnames</span>(.))]))</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Test set validation data</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    validationData <span class="ot">&lt;-</span> TrainTestData <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(gid, BLUP) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(GID <span class="sc">%in%</span> </span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>        <span class="fu">testing</span>(splits)[[gid]])</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Measure accuracy in test set cor(GEBV,BLUP) cor(GETGV,BLUP)</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a>    accuracy <span class="ot">&lt;-</span> gblups <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">GETGV =</span> <span class="fu">rowSums</span>(.[, <span class="fu">grepl</span>(<span class="st">&quot;GE&quot;</span>, <span class="fu">colnames</span>(.))])) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(GID <span class="sc">%in%</span> <span class="fu">testing</span>(splits)[[gid]]) <span class="sc">%&gt;%</span> <span class="fu">left_join</span>(validationData) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>        <span class="fu">summarize</span>(<span class="at">accGEBV =</span> <span class="fu">cor</span>(GEBV, BLUP, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>), <span class="at">accGETGV =</span> <span class="fu">cor</span>(GETGV, </span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>            BLUP, <span class="at">use =</span> <span class="st">&quot;complete.obs&quot;</span>))</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>    computeTime <span class="ot">&lt;-</span> <span class="fu">proc.time</span>()[<span class="dv">3</span>] <span class="sc">-</span> starttime</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>    accuracy <span class="sc">%&lt;&gt;%</span> <span class="fu">mutate</span>(<span class="at">computeTime =</span> computeTime)</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(accuracy)</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>}, <span class="at">otherwise =</span> <span class="cn">NA</span>)</span></code></pre></div>
 </div>
 <div id="run-cv---model-a" class="section level2">
 <h2>Run CV - Model A</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">## Run models across all train-test splits</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="co">## Parallelize</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>ncores&lt;-<span class="dv">5</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a><span class="kw">require</span>(furrr); <span class="kw">plan</span>(multiprocess); <span class="kw">options</span>(<span class="dt">mc.cores=</span>ncores); <span class="kw">options</span>(<span class="dt">future.globals.maxSize=</span> <span class="dv">1500</span><span class="op">*</span><span class="dv">1024</span><span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb8-5"><a href="#cb8-5"></a></span>
-<span id="cb8-6"><a href="#cb8-6"></a><span class="co">## three chunks, three servers for speed</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a></span>
-<span id="cb8-8"><a href="#cb8-8"></a><span class="co">### cbsulm15</span></span>
-<span id="cb8-9"><a href="#cb8-9"></a>cv_<span class="dv">1</span>&lt;-blups <span class="op">%&gt;%</span></span>
-<span id="cb8-10"><a href="#cb8-10"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb8-11"><a href="#cb8-11"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy=</span><span class="kw">future_map2</span>(splits,TrainTestData,</span>
-<span id="cb8-12"><a href="#cb8-12"></a>                              <span class="op">~</span><span class="kw">fitModel</span>(<span class="dt">splits=</span>.x,</span>
-<span id="cb8-13"><a href="#cb8-13"></a>                                        <span class="dt">TrainTestData=</span>.y,</span>
-<span id="cb8-14"><a href="#cb8-14"></a>                                        <span class="dt">modelType=</span><span class="st">&quot;A&quot;</span>,</span>
-<span id="cb8-15"><a href="#cb8-15"></a>                                        <span class="dt">grms=</span><span class="kw">list</span>(<span class="dt">A=</span>A)),</span>
-<span id="cb8-16"><a href="#cb8-16"></a>                              <span class="dt">.progress =</span> <span class="ot">FALSE</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb8-17"><a href="#cb8-17"></a><span class="st">  </span><span class="kw">unnest</span>(accuracy)</span>
-<span id="cb8-18"><a href="#cb8-18"></a><span class="kw">saveRDS</span>(cv_<span class="dv">1</span> <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>TrainTestData),here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;cvresults_ModelA_chunk1.rds&quot;</span>))</span>
-<span id="cb8-19"><a href="#cb8-19"></a></span>
-<span id="cb8-20"><a href="#cb8-20"></a><span class="co">### cbsulm16</span></span>
-<span id="cb8-21"><a href="#cb8-21"></a>cv_<span class="dv">2</span>&lt;-blups <span class="op">%&gt;%</span></span>
-<span id="cb8-22"><a href="#cb8-22"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">51</span><span class="op">:</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb8-23"><a href="#cb8-23"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy=</span><span class="kw">future_map2</span>(splits,TrainTestData,</span>
-<span id="cb8-24"><a href="#cb8-24"></a>                              <span class="op">~</span><span class="kw">fitModel</span>(<span class="dt">splits=</span>.x,</span>
-<span id="cb8-25"><a href="#cb8-25"></a>                                        <span class="dt">TrainTestData=</span>.y,</span>
-<span id="cb8-26"><a href="#cb8-26"></a>                                        <span class="dt">modelType=</span><span class="st">&quot;A&quot;</span>,</span>
-<span id="cb8-27"><a href="#cb8-27"></a>                                        <span class="dt">grms=</span><span class="kw">list</span>(<span class="dt">A=</span>A)),</span>
-<span id="cb8-28"><a href="#cb8-28"></a>                              <span class="dt">.progress =</span> <span class="ot">FALSE</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb8-29"><a href="#cb8-29"></a><span class="st">  </span><span class="kw">unnest</span>(accuracy)</span>
-<span id="cb8-30"><a href="#cb8-30"></a><span class="kw">saveRDS</span>(cv_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>TrainTestData),here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;cvresults_ModelA_chunk2.rds&quot;</span>))</span>
-<span id="cb8-31"><a href="#cb8-31"></a></span>
-<span id="cb8-32"><a href="#cb8-32"></a><span class="co">### cbsulm17</span></span>
-<span id="cb8-33"><a href="#cb8-33"></a>cv_<span class="dv">3</span>&lt;-blups <span class="op">%&gt;%</span></span>
-<span id="cb8-34"><a href="#cb8-34"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">101</span><span class="op">:</span><span class="dv">150</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb8-35"><a href="#cb8-35"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy=</span><span class="kw">future_map2</span>(splits,TrainTestData,</span>
-<span id="cb8-36"><a href="#cb8-36"></a>                              <span class="op">~</span><span class="kw">fitModel</span>(<span class="dt">splits=</span>.x,</span>
-<span id="cb8-37"><a href="#cb8-37"></a>                                        <span class="dt">TrainTestData=</span>.y,</span>
-<span id="cb8-38"><a href="#cb8-38"></a>                                        <span class="dt">modelType=</span><span class="st">&quot;A&quot;</span>,</span>
-<span id="cb8-39"><a href="#cb8-39"></a>                                        <span class="dt">grms=</span><span class="kw">list</span>(<span class="dt">A=</span>A)),</span>
-<span id="cb8-40"><a href="#cb8-40"></a>                              <span class="dt">.progress =</span> <span class="ot">FALSE</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb8-41"><a href="#cb8-41"></a><span class="st">  </span><span class="kw">unnest</span>(accuracy)</span>
-<span id="cb8-42"><a href="#cb8-42"></a><span class="kw">saveRDS</span>(cv_<span class="dv">3</span> <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>TrainTestData),here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;cvresults_ModelA_chunk3.rds&quot;</span>))</span>
-<span id="cb8-43"><a href="#cb8-43"></a></span>
-<span id="cb8-44"><a href="#cb8-44"></a><span class="co"># ~3 hrs</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Run models across all train-test splits Parallelize</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ncores <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(furrr)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multiprocess)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> ncores)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">future.globals.maxSize =</span> <span class="dv">1500</span> <span class="sc">*</span> <span class="dv">1024</span><span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="do">## three chunks, three servers for speed</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="do">### cbsulm15</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>cv_1 <span class="ot">&lt;-</span> blups <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">accuracy =</span> <span class="fu">future_map2</span>(splits, TrainTestData, </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span><span class="fu">fitModel</span>(<span class="at">splits =</span> .x, <span class="at">TrainTestData =</span> .y, <span class="at">modelType =</span> <span class="st">&quot;A&quot;</span>, <span class="at">grms =</span> <span class="fu">list</span>(<span class="at">A =</span> A)), </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">.progress =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(accuracy)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(cv_1 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>TrainTestData), here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;cvresults_ModelA_chunk1.rds&quot;</span>))</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="do">### cbsulm16</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>cv_2 <span class="ot">&lt;-</span> blups <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">accuracy =</span> <span class="fu">future_map2</span>(splits, TrainTestData, </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span><span class="fu">fitModel</span>(<span class="at">splits =</span> .x, <span class="at">TrainTestData =</span> .y, <span class="at">modelType =</span> <span class="st">&quot;A&quot;</span>, <span class="at">grms =</span> <span class="fu">list</span>(<span class="at">A =</span> A)), </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">.progress =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(accuracy)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(cv_2 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>TrainTestData), here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;cvresults_ModelA_chunk2.rds&quot;</span>))</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="do">### cbsulm17</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>cv_3 <span class="ot">&lt;-</span> blups <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">101</span><span class="sc">:</span><span class="dv">150</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">accuracy =</span> <span class="fu">future_map2</span>(splits, TrainTestData, </span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span><span class="fu">fitModel</span>(<span class="at">splits =</span> .x, <span class="at">TrainTestData =</span> .y, <span class="at">modelType =</span> <span class="st">&quot;A&quot;</span>, <span class="at">grms =</span> <span class="fu">list</span>(<span class="at">A =</span> A)), </span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">.progress =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(accuracy)</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(cv_3 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>TrainTestData), here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;cvresults_ModelA_chunk3.rds&quot;</span>))</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co"># ~3 hrs</span></span></code></pre></div>
 </div>
 <div id="run-cv---model-ade" class="section level2">
 <h2>Run CV - Model ADE</h2>
 <p>Same R session as Model A… exact train-test folds not otherwise stored.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># read dominance and add-by-dom epistasis kinship matrices</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>D&lt;-<span class="kw">readRDS</span>(<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;Kinship_D_IITA_2020Sep16.rds&quot;</span>))</span>
-<span id="cb9-3"><a href="#cb9-3"></a>AD&lt;-<span class="kw">readRDS</span>(<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;Kinship_AD_IITA_2020Sep16.rds&quot;</span>))</span>
-<span id="cb9-4"><a href="#cb9-4"></a></span>
-<span id="cb9-5"><a href="#cb9-5"></a><span class="co">## Run models across all train-test splits</span></span>
-<span id="cb9-6"><a href="#cb9-6"></a><span class="co">## Parallelize</span></span>
-<span id="cb9-7"><a href="#cb9-7"></a>ncores&lt;-<span class="dv">5</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a><span class="kw">require</span>(furrr); <span class="kw">plan</span>(multiprocess); <span class="kw">options</span>(<span class="dt">mc.cores=</span>ncores); <span class="kw">options</span>(<span class="dt">future.globals.maxSize=</span> <span class="dv">3000</span><span class="op">*</span><span class="dv">1024</span><span class="op">^</span><span class="dv">2</span>)</span>
-<span id="cb9-9"><a href="#cb9-9"></a></span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co">## three chunks, three servers for speed</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a></span>
-<span id="cb9-12"><a href="#cb9-12"></a><span class="co">### cbsulm15</span></span>
-<span id="cb9-13"><a href="#cb9-13"></a>cv_<span class="dv">1</span>&lt;-blups <span class="op">%&gt;%</span></span>
-<span id="cb9-14"><a href="#cb9-14"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">50</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb9-15"><a href="#cb9-15"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy=</span><span class="kw">future_map2</span>(splits,TrainTestData,</span>
-<span id="cb9-16"><a href="#cb9-16"></a>                              <span class="op">~</span><span class="kw">fitModel</span>(<span class="dt">splits=</span>.x,</span>
-<span id="cb9-17"><a href="#cb9-17"></a>                                        <span class="dt">TrainTestData=</span>.y,</span>
-<span id="cb9-18"><a href="#cb9-18"></a>                                        <span class="dt">modelType=</span><span class="st">&quot;ADE&quot;</span>,</span>
-<span id="cb9-19"><a href="#cb9-19"></a>                                        <span class="dt">grms=</span><span class="kw">list</span>(<span class="dt">A=</span>A, <span class="dt">D=</span>D, <span class="dt">AD=</span>AD)),</span>
-<span id="cb9-20"><a href="#cb9-20"></a>                              <span class="dt">.progress =</span> <span class="ot">FALSE</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb9-21"><a href="#cb9-21"></a><span class="st">  </span><span class="kw">unnest</span>(accuracy)</span>
-<span id="cb9-22"><a href="#cb9-22"></a><span class="kw">saveRDS</span>(cv_<span class="dv">1</span> <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>TrainTestData),here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;cvresults_ModelADE_chunk1.rds&quot;</span>))</span>
-<span id="cb9-23"><a href="#cb9-23"></a></span>
-<span id="cb9-24"><a href="#cb9-24"></a><span class="co">### cbsulm16</span></span>
-<span id="cb9-25"><a href="#cb9-25"></a>cv_<span class="dv">2</span>&lt;-blups <span class="op">%&gt;%</span></span>
-<span id="cb9-26"><a href="#cb9-26"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">51</span><span class="op">:</span><span class="dv">100</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb9-27"><a href="#cb9-27"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy=</span><span class="kw">future_map2</span>(splits,TrainTestData,</span>
-<span id="cb9-28"><a href="#cb9-28"></a>                              <span class="op">~</span><span class="kw">fitModel</span>(<span class="dt">splits=</span>.x,</span>
-<span id="cb9-29"><a href="#cb9-29"></a>                                        <span class="dt">TrainTestData=</span>.y,</span>
-<span id="cb9-30"><a href="#cb9-30"></a>                                        <span class="dt">modelType=</span><span class="st">&quot;ADE&quot;</span>,</span>
-<span id="cb9-31"><a href="#cb9-31"></a>                                        <span class="dt">grms=</span><span class="kw">list</span>(<span class="dt">A=</span>A, <span class="dt">D=</span>D, <span class="dt">AD=</span>AD)),</span>
-<span id="cb9-32"><a href="#cb9-32"></a>                              <span class="dt">.progress =</span> <span class="ot">FALSE</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb9-33"><a href="#cb9-33"></a><span class="st">  </span><span class="kw">unnest</span>(accuracy)</span>
-<span id="cb9-34"><a href="#cb9-34"></a><span class="kw">saveRDS</span>(cv_<span class="dv">2</span> <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>TrainTestData),here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;cvresults_ModelADE_chunk2.rds&quot;</span>))</span>
-<span id="cb9-35"><a href="#cb9-35"></a></span>
-<span id="cb9-36"><a href="#cb9-36"></a><span class="co">### cbsulm17</span></span>
-<span id="cb9-37"><a href="#cb9-37"></a>cv_<span class="dv">3</span>&lt;-blups <span class="op">%&gt;%</span></span>
-<span id="cb9-38"><a href="#cb9-38"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">101</span><span class="op">:</span><span class="dv">150</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb9-39"><a href="#cb9-39"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">accuracy=</span><span class="kw">future_map2</span>(splits,TrainTestData,</span>
-<span id="cb9-40"><a href="#cb9-40"></a>                              <span class="op">~</span><span class="kw">fitModel</span>(<span class="dt">splits=</span>.x,</span>
-<span id="cb9-41"><a href="#cb9-41"></a>                                        <span class="dt">TrainTestData=</span>.y,</span>
-<span id="cb9-42"><a href="#cb9-42"></a>                                        <span class="dt">modelType=</span><span class="st">&quot;ADE&quot;</span>,</span>
-<span id="cb9-43"><a href="#cb9-43"></a>                                        <span class="dt">grms=</span><span class="kw">list</span>(<span class="dt">A=</span>A, <span class="dt">D=</span>D, <span class="dt">AD=</span>AD)),</span>
-<span id="cb9-44"><a href="#cb9-44"></a>                              <span class="dt">.progress =</span> <span class="ot">FALSE</span>)) <span class="op">%&gt;%</span></span>
-<span id="cb9-45"><a href="#cb9-45"></a><span class="st">  </span><span class="kw">unnest</span>(accuracy)</span>
-<span id="cb9-46"><a href="#cb9-46"></a><span class="kw">saveRDS</span>(cv_<span class="dv">3</span> <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>TrainTestData),here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;cvresults_ModelADE_chunk3.rds&quot;</span>))</span>
-<span id="cb9-47"><a href="#cb9-47"></a></span>
-<span id="cb9-48"><a href="#cb9-48"></a><span class="co"># 12:35pm</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read dominance and add-by-dom epistasis kinship matrices</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;Kinship_D_IITA_2020Sep16.rds&quot;</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>AD <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;Kinship_AD_IITA_2020Sep16.rds&quot;</span>))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Run models across all train-test splits Parallelize</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ncores <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(furrr)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plan</span>(multiprocess)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> ncores)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">future.globals.maxSize =</span> <span class="dv">3000</span> <span class="sc">*</span> <span class="dv">1024</span><span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="do">## three chunks, three servers for speed</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="do">### cbsulm15</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>cv_1 <span class="ot">&lt;-</span> blups <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">50</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">accuracy =</span> <span class="fu">future_map2</span>(splits, TrainTestData, </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span><span class="fu">fitModel</span>(<span class="at">splits =</span> .x, <span class="at">TrainTestData =</span> .y, <span class="at">modelType =</span> <span class="st">&quot;ADE&quot;</span>, <span class="at">grms =</span> <span class="fu">list</span>(<span class="at">A =</span> A, </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">D =</span> D, <span class="at">AD =</span> AD)), <span class="at">.progress =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(accuracy)</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(cv_1 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>TrainTestData), here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;cvresults_ModelADE_chunk1.rds&quot;</span>))</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="do">### cbsulm16</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>cv_2 <span class="ot">&lt;-</span> blups <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">51</span><span class="sc">:</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">accuracy =</span> <span class="fu">future_map2</span>(splits, TrainTestData, </span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span><span class="fu">fitModel</span>(<span class="at">splits =</span> .x, <span class="at">TrainTestData =</span> .y, <span class="at">modelType =</span> <span class="st">&quot;ADE&quot;</span>, <span class="at">grms =</span> <span class="fu">list</span>(<span class="at">A =</span> A, </span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">D =</span> D, <span class="at">AD =</span> AD)), <span class="at">.progress =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(accuracy)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(cv_2 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>TrainTestData), here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;cvresults_ModelADE_chunk2.rds&quot;</span>))</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="do">### cbsulm17</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>cv_3 <span class="ot">&lt;-</span> blups <span class="sc">%&gt;%</span> <span class="fu">slice</span>(<span class="dv">101</span><span class="sc">:</span><span class="dv">150</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">accuracy =</span> <span class="fu">future_map2</span>(splits, TrainTestData, </span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="sc">~</span><span class="fu">fitModel</span>(<span class="at">splits =</span> .x, <span class="at">TrainTestData =</span> .y, <span class="at">modelType =</span> <span class="st">&quot;ADE&quot;</span>, <span class="at">grms =</span> <span class="fu">list</span>(<span class="at">A =</span> A, </span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">D =</span> D, <span class="at">AD =</span> AD)), <span class="at">.progress =</span> <span class="cn">FALSE</span>)) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(accuracy)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(cv_3 <span class="sc">%&gt;%</span> dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span>TrainTestData), here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;cvresults_ModelADE_chunk3.rds&quot;</span>))</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="co"># 12:35pm</span></span></code></pre></div>
 </div>
 </div>
 <div id="next-step" class="section level1">
@@ -1115,7 +1164,7 @@ All steps including genomic predicting (excluding cross-validation),
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 </div>
 </div>
 
@@ -1133,6 +1182,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+
+
 </div>
 </div>
 
@@ -1142,7 +1193,7 @@ footer is added to webpages before the MathJax javascript. -->
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();

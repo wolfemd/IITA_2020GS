@@ -14,6 +14,7 @@
 
 <title>Review and QC of IITA training data</title>
 
+<script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/darkly.min.css" rel="stylesheet" />
@@ -24,7 +25,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<script src="site_libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -37,21 +39,31 @@ div.section {
 </style>
 
 
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -71,7 +83,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {  background-color: #f8f8f8; }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -435,19 +447,76 @@ div.tocify {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Synopsis</a>
+  <a href="index.html">Home</a>
 </li>
-<li>
-  <a href="01-cleanTPdata.html">Data Cleaning</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Data Cleaning
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01-cleanTPdata.html">September2020</a>
+    </li>
+    <li>
+      <a href="07-cleanTPdata_Dec2020.html">December2020</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="02-curateByTrial.html">Curate Data</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Curate Data
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="02-curateByTrial.html">September2020</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="03-GetBLUPs.html">Get BLUPs</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Get BLUPs
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="03-GetBLUPs.html">September2020</a>
+    </li>
+    <li>
+      <a href="08-GetBLUPs_Dec2020.html">December2020</a>
+    </li>
+  </ul>
 </li>
-<li>
-  <a href="05-GetGBLUPs.html">Genomic prediction</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Cross validation
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="04-CrossValidation.html">September2020</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Genomic prediction
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="05-GetGBLUPs.html">September2020</a>
+    </li>
+    <li>
+      <a href="09-GetGBLUPs_Dec2020.html">December2020</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="06-Results.html">Results</a>
@@ -500,7 +569,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-09-21
+<strong>Last updated:</strong> 2020-12-03
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -591,16 +660,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreec9388d1ad2cbc02ec69526f893a8cfd12922acf6targetblankc9388d1a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/wolfemd/IITA_2020GS/tree/c9388d1ad2cbc02ec69526f893a8cfd12922acf6" target="_blank">c9388d1</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStree97186661d7fbde24222a9920b84382f9d91caed7targetblank9718666a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/wolfemd/IITA_2020GS/tree/97186661d7fbde24222a9920b84382f9d91caed7" target="_blank">9718666</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStreec9388d1ad2cbc02ec69526f893a8cfd12922acf6targetblankc9388d1a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStree97186661d7fbde24222a9920b84382f9d91caed7targetblank9718666a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/wolfemd/IITA_2020GS/tree/c9388d1ad2cbc02ec69526f893a8cfd12922acf6" target="_blank">c9388d1</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/wolfemd/IITA_2020GS/tree/97186661d7fbde24222a9920b84382f9d91caed7" target="_blank">9718666</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -616,14 +685,34 @@ Ignored files:
 
 Untracked files:
     Untracked:  data/GEBV_IITA_OutliersRemovedTRUE_73119.csv
+    Untracked:  data/PedigreeGeneticGainCycleTime_aafolabi_01122020.csv
+    Untracked:  data/PedigreeGeneticGainCycleTime_aafolabi_01122020.xls
     Untracked:  data/iita_blupsForCrossVal_outliersRemoved_73019.rds
     Untracked:  output/DosageMatrix_IITA_2020Sep16.rds
+    Untracked:  output/GETGV_IITA_ModelADE_twostage_IITA_2020Dec03.csv
+    Untracked:  output/GETGV_IITA_ModelADE_twostage_IITA_2020Dec03_withAccessionYear.csv
+    Untracked:  output/IITA_CleanedTrialData_2020Dec03.rds
+    Untracked:  output/IITA_ExptDesignsDetected_2020Dec03.rds
     Untracked:  output/Kinship_AA_IITA_2020Sep16.rds
     Untracked:  output/Kinship_AD_IITA_2020Sep16.rds
     Untracked:  output/Kinship_A_IITA_2020Sep16.rds
     Untracked:  output/Kinship_DD_IITA2020Sep16.rds
     Untracked:  output/Kinship_D_IITA_2020Sep16.rds
+    Untracked:  output/all_iita_metadata_Dec2020.csv
+    Untracked:  output/cvresults_ModelADE_chunk1.rds
+    Untracked:  output/cvresults_ModelADE_chunk2.rds
+    Untracked:  output/cvresults_ModelADE_chunk3.rds
+    Untracked:  output/genomicPredictions_ModelADE_threestage_IITA_2020Sep21.rds
+    Untracked:  output/genomicPredictions_ModelADE_twostage_IITA_2020Dec03.rds
+    Untracked:  output/genomicPredictions_ModelA_threestage_IITA_2020Sep21.rds
+    Untracked:  output/iita_blupsForModelTraining_twostage_asreml_2020Dec03.rds
+    Untracked:  output/iita_trials_NOT_identifiable_Dec2020.csv
+    Untracked:  output/meanGETGVbyYear_IITA_2020Dec03.csv
+    Untracked:  output/trials_uploaded_by_Nharvested_15Sep2020.csv
     Untracked:  workflowr_log.R
+
+Unstaged changes:
+    Modified:   output/maxNOHAV_byStudy.csv
 
 </code></pre>
 <p>
@@ -662,6 +751,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/wolfemd/IITA_2020GS/d72a9ed1dc2a250fc62da2f8b06cdf3081252884/docs/01-cleanTPdata.html" target="_blank">d72a9ed</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-09-21
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -744,20 +850,24 @@ Download and cleaning step completed.
 </div>
 <div id="read-in-trial-data" class="section level2">
 <h2>Read-in trial data</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(tidyverse); <span class="kw">library</span>(magrittr);</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">source</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;code&quot;</span>,<span class="st">&quot;gsFunctions.R&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;gsFunctions.R&quot;</span>))</span></code></pre></div>
 <p>Read DB data directly from the Cassavabase FTP server.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># dbdata19&lt;-readDBdata(phenotypeFile = &quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_72419/2019-07-24T144915phenotype_download.csv&quot;,</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#                      metadataFile = &quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_72419/2019-07-24T144144metadata_download.csv&quot;)</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># dbdata20&lt;-readDBdata(phenotypeFile = &quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_2020Sep15/2020-09-15T175322phenotype_download.csv&quot;,</span></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#                      metadataFile = &quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_2020Sep15/2020-09-15T175517metadata_download.csv&quot;)</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="kw">nrow</span>(dbdata19) <span class="co"># [1] 463841 plots</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="kw">nrow</span>(dbdata20) <span class="co"># [1] 176787 plots</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dbdata19&lt;-readDBdata(phenotypeFile =</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_72419/2019-07-24T144915phenotype_download.csv&#39;,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># metadataFile =</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_72419/2019-07-24T144144metadata_download.csv&#39;)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dbdata20&lt;-readDBdata(phenotypeFile =</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_2020Sep15/2020-09-15T175322phenotype_download.csv&#39;,</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># metadataFile =</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_2020Sep15/2020-09-15T175517metadata_download.csv&#39;)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dbdata19)  <span class="co"># [1] 463841 plots</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dbdata20)  <span class="co"># [1] 176787 plots</span></span></code></pre></div>
 <p>Check for overlapping trials between the two flatfiles.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">table</span>(<span class="kw">unique</span>(dbdata20<span class="op">$</span>studyName) <span class="op">%in%</span><span class="st"> </span><span class="kw">unique</span>(dbdata19<span class="op">$</span>studyName))</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># FALSE  TRUE </span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#   174   197</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">unique</span>(dbdata20<span class="sc">$</span>studyName) <span class="sc">%in%</span> <span class="fu">unique</span>(dbdata19<span class="sc">$</span>studyName))</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># FALSE TRUE 174 197</span></span></code></pre></div>
 <p>A quick visual inspection revealed that phenotypes were definitely added to trials <em>after</em> download last year.</p>
 <p>More exciting, I see that e.g. Chromometer data have trait-ontology terms now. They didn’t last year! Furthermore, based on the cassavabase website right now, many IITA trials at least back till 2014 have had their chromometer data go “live”. So…. I think this justifies download an entirely fresh flatfile of <em>ALL</em> IITA trials. Make sure to capture all traits.</p>
 </div>
@@ -776,37 +886,31 @@ Download and cleaning step completed.
 <h2>Join metadata files</h2>
 <p><strong>Possible database bug?</strong> The entire &gt;500Mb phenotype dataset for IITA downloaded without a problem. However, I’m getting an “server error” message trying to download the corresponding meta-data in one chunk.</p>
 <p><strong>Solution:</strong> combine meta-data downloaded for “all” trials in July 2019, with meta-data download for the 2018-2020 period done Sep. 15, 2020. Feed joined file to <code>readDBdata()</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>metadata19&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_72419/2019-07-24T144144metadata_download.csv&quot;</span>, </span>
-<span id="cb4-2"><a href="#cb4-2"></a>                     <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;#VALUE!&quot;</span>,<span class="ot">NA</span>,<span class="st">&quot;.&quot;</span>,<span class="st">&quot;&quot;</span>,<span class="st">&quot; &quot;</span>,<span class="st">&quot;-&quot;</span>,<span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>),</span>
-<span id="cb4-3"><a href="#cb4-3"></a>                     <span class="dt">stringsAsFactors =</span> F)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>metadata20&lt;-<span class="kw">read.csv</span>(<span class="st">&quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_2020Sep15/2020-09-15T175517metadata_download.csv&quot;</span>, </span>
-<span id="cb4-5"><a href="#cb4-5"></a>                     <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;#VALUE!&quot;</span>,<span class="ot">NA</span>,<span class="st">&quot;.&quot;</span>,<span class="st">&quot;&quot;</span>,<span class="st">&quot; &quot;</span>,<span class="st">&quot;-&quot;</span>,<span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">&quot;</span>),</span>
-<span id="cb4-6"><a href="#cb4-6"></a>                     <span class="dt">stringsAsFactors =</span> F)</span>
-<span id="cb4-7"><a href="#cb4-7"></a>metadata19 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="st">  </span><span class="co"># remove lines for trials in the 2020 download</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="st">  </span><span class="kw">filter</span>(studyName <span class="op">%in%</span><span class="st"> </span>metadata20<span class="op">$</span>studyName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="st">  </span><span class="kw">bind_rows</span>(metadata20) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="st">  </span><span class="co"># ensure no duplicate lines</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="st">  </span>distinct <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="st">  </span><span class="co"># write to disk</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="st">  </span><span class="kw">write.csv</span>(.,here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;all_iita_metadata.csv&quot;</span>),<span class="dt">row.names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>metadata19 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_72419/2019-07-24T144144metadata_download.csv&quot;</span>, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;#VALUE!&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;.&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot; &quot;</span>, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span>), <span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>metadata20 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_2020Sep15/2020-09-15T175517metadata_download.csv&quot;</span>, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;#VALUE!&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;.&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="st">&quot; &quot;</span>, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;</span><span class="sc">\&quot;</span><span class="st">&quot;</span>), <span class="at">stringsAsFactors =</span> F)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>metadata19 <span class="sc">%&gt;%</span> <span class="co"># remove lines for trials in the 2020 download</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(studyName <span class="sc">%in%</span> metadata20<span class="sc">$</span>studyName) <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(metadata20) <span class="sc">%&gt;%</span> <span class="co"># ensure no duplicate lines</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>distinct <span class="sc">%&gt;%</span> <span class="co"># write to disk</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(., here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;all_iita_metadata.csv&quot;</span>), <span class="at">row.names =</span> F)</span></code></pre></div>
 </div>
 </div>
 <div id="read-in-trial-data-1" class="section level1">
 <h1>Read-in trial data</h1>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">library</span>(tidyverse); <span class="kw">library</span>(magrittr);</span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">source</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;code&quot;</span>,<span class="st">&quot;gsFunctions.R&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;code&quot;</span>, <span class="st">&quot;gsFunctions.R&quot;</span>))</span></code></pre></div>
 <p>Read DB data directly from the Cassavabase FTP server.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>dbdata&lt;-<span class="kw">readDBdata</span>(<span class="dt">phenotypeFile =</span> <span class="st">&quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_2020Sep15/2020-09-15T185453phenotype_download.csv&quot;</span>,</span>
-<span id="cb6-2"><a href="#cb6-2"></a>                   <span class="dt">metadataFile =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;all_iita_metadata.csv&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> <span class="fu">readDBdata</span>(<span class="at">phenotypeFile =</span> <span class="st">&quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/DatabaseDownload_2020Sep15/2020-09-15T185453phenotype_download.csv&quot;</span>, </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">metadataFile =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;all_iita_metadata.csv&quot;</span>))</span></code></pre></div>
 </div>
 <div id="group-and-select-trials-to-analyze" class="section level1">
 <h1>Group and select trials to analyze</h1>
 <p>Make TrialType Variable</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>dbdata&lt;-<span class="kw">makeTrialTypeVar</span>(dbdata) </span>
-<span id="cb7-2"><a href="#cb7-2"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="st">  </span><span class="kw">count</span>(TrialType)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> <span class="fu">makeTrialTypeVar</span>(dbdata)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> <span class="fu">count</span>(TrialType)</span></code></pre></div>
 <pre><code>       TrialType      n
 1            AYT  51641
 2            CET  70402
@@ -823,14 +927,12 @@ Download and cleaning step completed.
 <h2>Trials NOT included</h2>
 <p>Looking at the <strong>studyName</strong>’s of trials getting NA for TrialType, which can’t be classified at present.</p>
 <p>Here is the list of trials I am <em>not</em> including.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="kw">is.na</span>(TrialType)) <span class="op">%$%</span><span class="st"> </span><span class="kw">unique</span>(studyName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb9-2"><a href="#cb9-2"></a><span class="st">  </span><span class="kw">write.csv</span>(.,<span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;iita_trials_NOT_identifiable.csv&quot;</span>), <span class="dt">row.names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(TrialType)) <span class="sc">%$%</span> <span class="fu">unique</span>(studyName) <span class="sc">%&gt;%</span> <span class="fu">write.csv</span>(., <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;iita_trials_NOT_identifiable.csv&quot;</span>), <span class="at">row.names =</span> F)</span></code></pre></div>
 <p>Wrote to disk a CSV in the <code>output/</code> sub-directory.</p>
 <p>Should any of these trials have been included?</p>
 <p>Especially the following new trials (post 2018)?</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="st">  </span><span class="kw">filter</span>(<span class="kw">is.na</span>(TrialType),</span>
-<span id="cb10-3"><a href="#cb10-3"></a>         <span class="kw">as.numeric</span>(studyYear)<span class="op">&gt;</span><span class="dv">2018</span>) <span class="op">%$%</span><span class="st"> </span><span class="kw">unique</span>(studyName)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(TrialType), <span class="fu">as.numeric</span>(studyYear) <span class="sc">&gt;</span> <span class="dv">2018</span>) <span class="sc">%$%</span> <span class="fu">unique</span>(studyName)</span></code></pre></div>
 <pre><code> [1] &quot;18Hawaii_Parents&quot;          &quot;19CB1IB&quot;                  
  [3] &quot;19CVS12Chitala&quot;            &quot;19CVS12Mkondezi&quot;          
  [5] &quot;19flowexpPGR22UB&quot;          &quot;19flowexpRedLight22UB&quot;    
@@ -850,42 +952,33 @@ Download and cleaning step completed.
 </div>
 <div id="remove-unclassified-trials" class="section level2">
 <h2>Remove unclassified trials</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>dbdata <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="st">    </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(TrialType)) </span>
-<span id="cb12-3"><a href="#cb12-3"></a>dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="st">    </span><span class="kw">group_by</span>(programName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">N=</span><span class="kw">n</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&lt;&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(TrialType))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(programName) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">N =</span> <span class="fu">n</span>())</span></code></pre></div>
 <pre><code># A tibble: 1 x 2
   programName      N
   &lt;chr&gt;        &lt;int&gt;
 1 IITA        469274</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">#   469274 plots (~155K are seedling nurseries which will be excluded from most analyses)</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 469274 plots (~155K are seedling nurseries which will be excluded from most</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># analyses)</span></span></code></pre></div>
 </div>
 </div>
 <div id="traits-and-traitabbreviations" class="section level1">
 <h1>Traits and TraitAbbreviations</h1>
 <p>Making a table of abbreviations for renaming. Since July 2019 version: added chromometer traits (L, a, b) and added branching levels count (BRLVLS) at IYR’s request.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>traitabbrevs&lt;-<span class="kw">tribble</span>(<span class="op">~</span>TraitAbbrev,<span class="op">~</span>TraitName,</span>
-<span id="cb15-2"><a href="#cb15-2"></a>        <span class="st">&quot;CMD1S&quot;</span>,<span class="st">&quot;cassava.mosaic.disease.severity.1.month.evaluation.CO_334.0000191&quot;</span>,</span>
-<span id="cb15-3"><a href="#cb15-3"></a>        <span class="st">&quot;CMD3S&quot;</span>,<span class="st">&quot;cassava.mosaic.disease.severity.3.month.evaluation.CO_334.0000192&quot;</span>,</span>
-<span id="cb15-4"><a href="#cb15-4"></a>        <span class="st">&quot;CMD6S&quot;</span>,<span class="st">&quot;cassava.mosaic.disease.severity.6.month.evaluation.CO_334.0000194&quot;</span>,</span>
-<span id="cb15-5"><a href="#cb15-5"></a>        <span class="st">&quot;CMD9S&quot;</span>,<span class="st">&quot;cassava.mosaic.disease.severity.9.month.evaluation.CO_334.0000193&quot;</span>,</span>
-<span id="cb15-6"><a href="#cb15-6"></a>        <span class="st">&quot;CGM&quot;</span>,<span class="st">&quot;Cassava.green.mite.severity.CO_334.0000033&quot;</span>,</span>
-<span id="cb15-7"><a href="#cb15-7"></a>        <span class="st">&quot;CGMS1&quot;</span>,<span class="st">&quot;cassava.green.mite.severity.first.evaluation.CO_334.0000189&quot;</span>,</span>
-<span id="cb15-8"><a href="#cb15-8"></a>        <span class="st">&quot;CGMS2&quot;</span>,<span class="st">&quot;cassava.green.mite.severity.second.evaluation.CO_334.0000190&quot;</span>,</span>
-<span id="cb15-9"><a href="#cb15-9"></a>        <span class="st">&quot;DM&quot;</span>,<span class="st">&quot;dry.matter.content.percentage.CO_334.0000092&quot;</span>,</span>
-<span id="cb15-10"><a href="#cb15-10"></a>        <span class="st">&quot;PLTHT&quot;</span>,<span class="st">&quot;plant.height.measurement.in.cm.CO_334.0000018&quot;</span>,</span>
-<span id="cb15-11"><a href="#cb15-11"></a>        <span class="st">&quot;BRNHT1&quot;</span>,<span class="st">&quot;first.apical.branch.height.measurement.in.cm.CO_334.0000106&quot;</span>,</span>
-<span id="cb15-12"><a href="#cb15-12"></a>        <span class="st">&quot;BRLVLS&quot;</span>,<span class="st">&quot;branching.level.counting.CO_334.0000079&quot;</span>,</span>
-<span id="cb15-13"><a href="#cb15-13"></a>        <span class="st">&quot;SHTWT&quot;</span>,<span class="st">&quot;fresh.shoot.weight.measurement.in.kg.per.plot.CO_334.0000016&quot;</span>,</span>
-<span id="cb15-14"><a href="#cb15-14"></a>        <span class="st">&quot;RTWT&quot;</span>,<span class="st">&quot;fresh.storage.root.weight.per.plot.CO_334.0000012&quot;</span>,</span>
-<span id="cb15-15"><a href="#cb15-15"></a>        <span class="st">&quot;RTNO&quot;</span>,<span class="st">&quot;root.number.counting.CO_334.0000011&quot;</span>,</span>
-<span id="cb15-16"><a href="#cb15-16"></a>        <span class="st">&quot;TCHART&quot;</span>,<span class="st">&quot;total.carotenoid.by.chart.1.8.CO_334.0000161&quot;</span>,</span>
-<span id="cb15-17"><a href="#cb15-17"></a>        <span class="st">&quot;LCHROMO&quot;</span>,<span class="st">&quot;L.chromometer.value.CO_334.0002065&quot;</span>,</span>
-<span id="cb15-18"><a href="#cb15-18"></a>        <span class="st">&quot;ACHROMO&quot;</span>,<span class="st">&quot;a.chromometer.value.CO_334.0002066&quot;</span>,</span>
-<span id="cb15-19"><a href="#cb15-19"></a>        <span class="st">&quot;BCHROMO&quot;</span>,<span class="st">&quot;b.chromometer.value.CO_334.0002064&quot;</span>,</span>
-<span id="cb15-20"><a href="#cb15-20"></a>        <span class="st">&quot;NOHAV&quot;</span>,<span class="st">&quot;plant.stands.harvested.counting.CO_334.0000010&quot;</span>)</span>
-<span id="cb15-21"><a href="#cb15-21"></a>traitabbrevs</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>traitabbrevs <span class="ot">&lt;-</span> <span class="fu">tribble</span>(<span class="sc">~</span>TraitAbbrev, <span class="sc">~</span>TraitName, <span class="st">&quot;CMD1S&quot;</span>, <span class="st">&quot;cassava.mosaic.disease.severity.1.month.evaluation.CO_334.0000191&quot;</span>, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;CMD3S&quot;</span>, <span class="st">&quot;cassava.mosaic.disease.severity.3.month.evaluation.CO_334.0000192&quot;</span>, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;CMD6S&quot;</span>, <span class="st">&quot;cassava.mosaic.disease.severity.6.month.evaluation.CO_334.0000194&quot;</span>, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;CMD9S&quot;</span>, <span class="st">&quot;cassava.mosaic.disease.severity.9.month.evaluation.CO_334.0000193&quot;</span>, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;CGM&quot;</span>, <span class="st">&quot;Cassava.green.mite.severity.CO_334.0000033&quot;</span>, <span class="st">&quot;CGMS1&quot;</span>, <span class="st">&quot;cassava.green.mite.severity.first.evaluation.CO_334.0000189&quot;</span>, </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;CGMS2&quot;</span>, <span class="st">&quot;cassava.green.mite.severity.second.evaluation.CO_334.0000190&quot;</span>, <span class="st">&quot;DM&quot;</span>, </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;dry.matter.content.percentage.CO_334.0000092&quot;</span>, <span class="st">&quot;PLTHT&quot;</span>, <span class="st">&quot;plant.height.measurement.in.cm.CO_334.0000018&quot;</span>, </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;BRNHT1&quot;</span>, <span class="st">&quot;first.apical.branch.height.measurement.in.cm.CO_334.0000106&quot;</span>, <span class="st">&quot;BRLVLS&quot;</span>, </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;branching.level.counting.CO_334.0000079&quot;</span>, <span class="st">&quot;SHTWT&quot;</span>, <span class="st">&quot;fresh.shoot.weight.measurement.in.kg.per.plot.CO_334.0000016&quot;</span>, </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;RTWT&quot;</span>, <span class="st">&quot;fresh.storage.root.weight.per.plot.CO_334.0000012&quot;</span>, <span class="st">&quot;RTNO&quot;</span>, <span class="st">&quot;root.number.counting.CO_334.0000011&quot;</span>, </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;TCHART&quot;</span>, <span class="st">&quot;total.carotenoid.by.chart.1.8.CO_334.0000161&quot;</span>, <span class="st">&quot;LCHROMO&quot;</span>, <span class="st">&quot;L.chromometer.value.CO_334.0002065&quot;</span>, </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;ACHROMO&quot;</span>, <span class="st">&quot;a.chromometer.value.CO_334.0002066&quot;</span>, <span class="st">&quot;BCHROMO&quot;</span>, <span class="st">&quot;b.chromometer.value.CO_334.0002064&quot;</span>, </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;NOHAV&quot;</span>, <span class="st">&quot;plant.stands.harvested.counting.CO_334.0000010&quot;</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>traitabbrevs</span></code></pre></div>
 <pre><code># A tibble: 19 x 2
    TraitAbbrev TraitName                                                        
    &lt;chr&gt;       &lt;chr&gt;                                                            
@@ -909,33 +1002,26 @@ Download and cleaning step completed.
 18 BCHROMO     b.chromometer.value.CO_334.0002064                               
 19 NOHAV       plant.stands.harvested.counting.CO_334.0000010                   </code></pre>
 <p>Run function <code>renameAndSelectCols()</code> to rename columns and remove everything unecessary</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>dbdata&lt;-<span class="kw">renameAndSelectCols</span>(traitabbrevs,<span class="dt">indata=</span>dbdata,<span class="dt">customColsToKeep =</span> <span class="st">&quot;TrialType&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> <span class="fu">renameAndSelectCols</span>(traitabbrevs, <span class="at">indata =</span> dbdata, <span class="at">customColsToKeep =</span> <span class="st">&quot;TrialType&quot;</span>)</span></code></pre></div>
 </div>
 <div id="qc-trait-values" class="section level1">
 <h1>QC Trait values</h1>
 <p>Standard code, recycled… should be a function?</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>dbdata&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CMD1S=</span><span class="kw">ifelse</span>(CMD1S<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CMD1S<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CMD1S),</span>
-<span id="cb18-3"><a href="#cb18-3"></a>         <span class="dt">CMD3S=</span><span class="kw">ifelse</span>(CMD3S<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CMD3S<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CMD3S),</span>
-<span id="cb18-4"><a href="#cb18-4"></a>         <span class="dt">CMD6S=</span><span class="kw">ifelse</span>(CMD6S<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CMD1S<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CMD6S),</span>
-<span id="cb18-5"><a href="#cb18-5"></a>         <span class="dt">CMD9S=</span><span class="kw">ifelse</span>(CMD9S<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CMD1S<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CMD9S),</span>
-<span id="cb18-6"><a href="#cb18-6"></a>         <span class="dt">CGM=</span><span class="kw">ifelse</span>(CGM<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CGM<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CGM),</span>
-<span id="cb18-7"><a href="#cb18-7"></a>         <span class="dt">CGMS1=</span><span class="kw">ifelse</span>(CGMS1<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CGMS1<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CGMS1),</span>
-<span id="cb18-8"><a href="#cb18-8"></a>         <span class="dt">CGMS2=</span><span class="kw">ifelse</span>(CGMS2<span class="op">&lt;</span><span class="dv">1</span> <span class="op">|</span><span class="st"> </span>CGMS2<span class="op">&gt;</span><span class="dv">5</span>,<span class="ot">NA</span>,CGMS2),</span>
-<span id="cb18-9"><a href="#cb18-9"></a>         <span class="dt">DM=</span><span class="kw">ifelse</span>(DM<span class="op">&gt;</span><span class="dv">100</span> <span class="op">|</span><span class="st"> </span>DM<span class="op">&lt;=</span><span class="dv">0</span>,<span class="ot">NA</span>,DM),</span>
-<span id="cb18-10"><a href="#cb18-10"></a>         <span class="dt">RTWT=</span><span class="kw">ifelse</span>(RTWT<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>NOHAV<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span><span class="kw">is.na</span>(NOHAV),<span class="ot">NA</span>,RTWT),</span>
-<span id="cb18-11"><a href="#cb18-11"></a>         <span class="dt">SHTWT=</span><span class="kw">ifelse</span>(SHTWT<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>NOHAV<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span><span class="kw">is.na</span>(NOHAV),<span class="ot">NA</span>,SHTWT),</span>
-<span id="cb18-12"><a href="#cb18-12"></a>         <span class="dt">RTNO=</span><span class="kw">ifelse</span>(RTNO<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span>NOHAV<span class="op">==</span><span class="dv">0</span> <span class="op">|</span><span class="st"> </span><span class="kw">is.na</span>(NOHAV),<span class="ot">NA</span>,RTNO),</span>
-<span id="cb18-13"><a href="#cb18-13"></a>         <span class="dt">NOHAV=</span><span class="kw">ifelse</span>(NOHAV<span class="op">==</span><span class="dv">0</span>,<span class="ot">NA</span>,NOHAV),</span>
-<span id="cb18-14"><a href="#cb18-14"></a>         <span class="dt">NOHAV=</span><span class="kw">ifelse</span>(NOHAV<span class="op">&gt;</span><span class="dv">42</span>,<span class="ot">NA</span>,NOHAV),</span>
-<span id="cb18-15"><a href="#cb18-15"></a>         <span class="dt">RTNO=</span><span class="kw">ifelse</span>(<span class="op">!</span>RTNO <span class="op">%in%</span><span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10000</span>,<span class="ot">NA</span>,RTNO))</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> dbdata <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">CMD1S =</span> <span class="fu">ifelse</span>(CMD1S <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">|</span> CMD1S <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="cn">NA</span>, CMD1S), <span class="at">CMD3S =</span> <span class="fu">ifelse</span>(CMD3S <span class="sc">&lt;</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span> <span class="sc">|</span> CMD3S <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="cn">NA</span>, CMD3S), <span class="at">CMD6S =</span> <span class="fu">ifelse</span>(CMD6S <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">|</span> CMD1S <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="cn">NA</span>, CMD6S), </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">CMD9S =</span> <span class="fu">ifelse</span>(CMD9S <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">|</span> CMD1S <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="cn">NA</span>, CMD9S), <span class="at">CGM =</span> <span class="fu">ifelse</span>(CGM <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">|</span> CGM <span class="sc">&gt;</span> </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>        <span class="dv">5</span>, <span class="cn">NA</span>, CGM), <span class="at">CGMS1 =</span> <span class="fu">ifelse</span>(CGMS1 <span class="sc">&lt;</span> <span class="dv">1</span> <span class="sc">|</span> CGMS1 <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="cn">NA</span>, CGMS1), <span class="at">CGMS2 =</span> <span class="fu">ifelse</span>(CGMS2 <span class="sc">&lt;</span> </span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1</span> <span class="sc">|</span> CGMS2 <span class="sc">&gt;</span> <span class="dv">5</span>, <span class="cn">NA</span>, CGMS2), <span class="at">DM =</span> <span class="fu">ifelse</span>(DM <span class="sc">&gt;</span> <span class="dv">100</span> <span class="sc">|</span> DM <span class="sc">&lt;=</span> <span class="dv">0</span>, <span class="cn">NA</span>, DM), <span class="at">RTWT =</span> <span class="fu">ifelse</span>(RTWT <span class="sc">==</span> </span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="dv">0</span> <span class="sc">|</span> NOHAV <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> <span class="fu">is.na</span>(NOHAV), <span class="cn">NA</span>, RTWT), <span class="at">SHTWT =</span> <span class="fu">ifelse</span>(SHTWT <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> NOHAV <span class="sc">==</span> </span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="dv">0</span> <span class="sc">|</span> <span class="fu">is.na</span>(NOHAV), <span class="cn">NA</span>, SHTWT), <span class="at">RTNO =</span> <span class="fu">ifelse</span>(RTNO <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> NOHAV <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> <span class="fu">is.na</span>(NOHAV), </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>        <span class="cn">NA</span>, RTNO), <span class="at">NOHAV =</span> <span class="fu">ifelse</span>(NOHAV <span class="sc">==</span> <span class="dv">0</span>, <span class="cn">NA</span>, NOHAV), <span class="at">NOHAV =</span> <span class="fu">ifelse</span>(NOHAV <span class="sc">&gt;</span> </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        <span class="dv">42</span>, <span class="cn">NA</span>, NOHAV), <span class="at">RTNO =</span> <span class="fu">ifelse</span>(<span class="sc">!</span>RTNO <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000</span>, <span class="cn">NA</span>, RTNO))</span></code></pre></div>
 </div>
 <div id="post-qc-traits" class="section level1">
 <h1>Post-QC traits</h1>
 <div id="harvest-index" class="section level2">
 <h2>Harvest index</h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>dbdata&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb19-2"><a href="#cb19-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">HI=</span>RTWT<span class="op">/</span>(RTWT<span class="op">+</span>SHTWT))</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> dbdata <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">HI =</span> RTWT<span class="sc">/</span>(RTWT <span class="sc">+</span> SHTWT))</span></code></pre></div>
 </div>
 <div id="unit-area-traits" class="section level2">
 <h2>Unit area traits</h2>
@@ -945,38 +1031,29 @@ Download and cleaning step completed.
 <li><strong>PlotSpacing:</strong> Area in <span class="math inline">\(m^2\)</span> per plant. plotWidth and plotLength metadata would hypothetically provide this info, but is missing for vast majority of trials. Therefore, use info from Fola.</li>
 <li><strong>maxNOHAV:</strong> Instead of ExpectedNOHAV. Need to know the max number of plants in the area harvested. For some trials, only the inner (or “net”) plot is harvested, therefore the PlantsPerPlot meta-variable will not suffice. Besides, the PlantsPerPlot information is missing for the vast majority of trials. Instead, use observed max(NOHAV) for each trial. We use this plus the PlotSpacing to calc. the area over which the RTWT was measured. During analysis, variation in the actual number of plants harvested will be accounted for.</li>
 </ol>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>dbdata&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb20-2"><a href="#cb20-2"></a><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">PlotSpacing=</span><span class="kw">ifelse</span>(programName<span class="op">!=</span><span class="st">&quot;IITA&quot;</span>,<span class="dv">1</span>,</span>
-<span id="cb20-3"><a href="#cb20-3"></a>                              <span class="kw">ifelse</span>(studyYear<span class="op">&lt;</span><span class="dv">2013</span>,<span class="dv">1</span>,</span>
-<span id="cb20-4"><a href="#cb20-4"></a>                              <span class="kw">ifelse</span>(TrialType <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;CET&quot;</span>,<span class="st">&quot;GeneticGain&quot;</span>,<span class="st">&quot;ExpCET&quot;</span>),<span class="dv">1</span>,<span class="fl">0.8</span>))))</span>
-<span id="cb20-5"><a href="#cb20-5"></a>maxNOHAV_byStudy&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb20-6"><a href="#cb20-6"></a><span class="st">  </span><span class="kw">group_by</span>(programName,locationName,studyYear,studyName,studyDesign) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb20-7"><a href="#cb20-7"></a><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">MaxNOHAV=</span><span class="kw">max</span>(NOHAV, <span class="dt">na.rm=</span>T)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb20-8"><a href="#cb20-8"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb20-9"><a href="#cb20-9"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">MaxNOHAV=</span><span class="kw">ifelse</span>(MaxNOHAV<span class="op">==</span><span class="st">&quot;-Inf&quot;</span>,<span class="ot">NA</span>,MaxNOHAV))</span>
-<span id="cb20-10"><a href="#cb20-10"></a></span>
-<span id="cb20-11"><a href="#cb20-11"></a><span class="kw">write.csv</span>(maxNOHAV_byStudy <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">arrange</span>(studyYear),<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;maxNOHAV_byStudy.csv&quot;</span>), <span class="dt">row.names =</span> F)</span></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="co"># I log transform yield traits </span></span>
-<span id="cb21-2"><a href="#cb21-2"></a><span class="co"># to satisfy homoskedastic residuals assumption </span></span>
-<span id="cb21-3"><a href="#cb21-3"></a><span class="co"># of linear mixed models</span></span>
-<span id="cb21-4"><a href="#cb21-4"></a>dbdata&lt;-<span class="kw">left_join</span>(dbdata,maxNOHAV_byStudy) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb21-5"><a href="#cb21-5"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">RTWT=</span><span class="kw">ifelse</span>(NOHAV<span class="op">&gt;</span>MaxNOHAV,<span class="ot">NA</span>,RTWT),</span>
-<span id="cb21-6"><a href="#cb21-6"></a>         <span class="dt">SHTWT=</span><span class="kw">ifelse</span>(NOHAV<span class="op">&gt;</span>MaxNOHAV,<span class="ot">NA</span>,SHTWT),</span>
-<span id="cb21-7"><a href="#cb21-7"></a>         <span class="dt">RTNO=</span><span class="kw">ifelse</span>(NOHAV<span class="op">&gt;</span>MaxNOHAV,<span class="ot">NA</span>,RTNO),</span>
-<span id="cb21-8"><a href="#cb21-8"></a>         <span class="dt">HI=</span><span class="kw">ifelse</span>(NOHAV<span class="op">&gt;</span>MaxNOHAV,<span class="ot">NA</span>,HI),</span>
-<span id="cb21-9"><a href="#cb21-9"></a>         <span class="dt">logFYLD=</span><span class="kw">log</span>(RTWT<span class="op">/</span>(MaxNOHAV<span class="op">*</span>PlotSpacing)<span class="op">*</span><span class="dv">10</span>),</span>
-<span id="cb21-10"><a href="#cb21-10"></a>         <span class="dt">logTOPYLD=</span><span class="kw">log</span>(SHTWT<span class="op">/</span>(MaxNOHAV<span class="op">*</span>PlotSpacing)<span class="op">*</span><span class="dv">10</span>),</span>
-<span id="cb21-11"><a href="#cb21-11"></a>         <span class="dt">logRTNO=</span><span class="kw">log</span>(RTNO),</span>
-<span id="cb21-12"><a href="#cb21-12"></a>         <span class="dt">PropNOHAV=</span>NOHAV<span class="op">/</span>MaxNOHAV) </span>
-<span id="cb21-13"><a href="#cb21-13"></a></span>
-<span id="cb21-14"><a href="#cb21-14"></a><span class="co"># remove non transformed / per-plot (instead of per area) traits</span></span>
-<span id="cb21-15"><a href="#cb21-15"></a>dbdata <span class="op">%&lt;&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>RTWT,<span class="op">-</span>SHTWT,<span class="op">-</span>RTNO)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> dbdata <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">PlotSpacing =</span> <span class="fu">ifelse</span>(programName <span class="sc">!=</span> <span class="st">&quot;IITA&quot;</span>, <span class="dv">1</span>, <span class="fu">ifelse</span>(studyYear <span class="sc">&lt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">2013</span>, <span class="dv">1</span>, <span class="fu">ifelse</span>(TrialType <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;CET&quot;</span>, <span class="st">&quot;GeneticGain&quot;</span>, <span class="st">&quot;ExpCET&quot;</span>), <span class="dv">1</span>, <span class="fl">0.8</span>))))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>maxNOHAV_byStudy <span class="ot">&lt;-</span> dbdata <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(programName, locationName, studyYear, studyName, </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    studyDesign) <span class="sc">%&gt;%</span> <span class="fu">summarize</span>(<span class="at">MaxNOHAV =</span> <span class="fu">max</span>(NOHAV, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">MaxNOHAV =</span> <span class="fu">ifelse</span>(MaxNOHAV <span class="sc">==</span> <span class="st">&quot;-Inf&quot;</span>, <span class="cn">NA</span>, MaxNOHAV))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(maxNOHAV_byStudy <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(studyYear), <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;maxNOHAV_byStudy.csv&quot;</span>), </span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># I log transform yield traits to satisfy homoskedastic residuals assumption of</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># linear mixed models</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> <span class="fu">left_join</span>(dbdata, maxNOHAV_byStudy) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">RTWT =</span> <span class="fu">ifelse</span>(NOHAV <span class="sc">&gt;</span> MaxNOHAV, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="cn">NA</span>, RTWT), <span class="at">SHTWT =</span> <span class="fu">ifelse</span>(NOHAV <span class="sc">&gt;</span> MaxNOHAV, <span class="cn">NA</span>, SHTWT), <span class="at">RTNO =</span> <span class="fu">ifelse</span>(NOHAV <span class="sc">&gt;</span> </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    MaxNOHAV, <span class="cn">NA</span>, RTNO), <span class="at">HI =</span> <span class="fu">ifelse</span>(NOHAV <span class="sc">&gt;</span> MaxNOHAV, <span class="cn">NA</span>, HI), <span class="at">logFYLD =</span> <span class="fu">log</span>(RTWT<span class="sc">/</span>(MaxNOHAV <span class="sc">*</span> </span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    PlotSpacing) <span class="sc">*</span> <span class="dv">10</span>), <span class="at">logTOPYLD =</span> <span class="fu">log</span>(SHTWT<span class="sc">/</span>(MaxNOHAV <span class="sc">*</span> PlotSpacing) <span class="sc">*</span> <span class="dv">10</span>), <span class="at">logRTNO =</span> <span class="fu">log</span>(RTNO), </span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">PropNOHAV =</span> NOHAV<span class="sc">/</span>MaxNOHAV)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># remove non transformed / per-plot (instead of per area) traits</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&lt;&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>RTWT, <span class="sc">-</span>SHTWT, <span class="sc">-</span>RTNO)</span></code></pre></div>
 </div>
 <div id="season-wide-mean-cmds" class="section level2">
 <h2>Season-wide mean CMDS</h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>dbdata&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">MCMDS=</span><span class="kw">rowMeans</span>(.[,<span class="kw">c</span>(<span class="st">&quot;CMD1S&quot;</span>,<span class="st">&quot;CMD3S&quot;</span>,<span class="st">&quot;CMD6S&quot;</span>,<span class="st">&quot;CMD9S&quot;</span>)], <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>CMD1S,<span class="op">-</span>CMD3S,<span class="op">-</span>CMD6S,<span class="op">-</span>CMD9S)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> dbdata <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">MCMDS =</span> <span class="fu">rowMeans</span>(.[, <span class="fu">c</span>(<span class="st">&quot;CMD1S&quot;</span>, <span class="st">&quot;CMD3S&quot;</span>, <span class="st">&quot;CMD6S&quot;</span>, <span class="st">&quot;CMD9S&quot;</span>)], </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>CMD1S, <span class="sc">-</span>CMD3S, <span class="sc">-</span>CMD6S, <span class="sc">-</span>CMD9S)</span></code></pre></div>
 </div>
 </div>
 <div id="user-input-assign-genos-to-phenos" class="section level1">
@@ -984,177 +1061,170 @@ Download and cleaning step completed.
 <p>This step is mostly copy-pasted from previous processing of IITA-specific data.</p>
 <p>Uses 3 flat files, which are available e.g. <a href="ftp://ftp.cassavabase.org/marnin_datasets/NRCRI_2020GS/data/">here</a>. Specifically, <code>IITA_GBStoPhenoMaster_33018.csv</code>, <code>GBSdataMasterList_31818.csv</code> and <code>NRCRI_GBStoPhenoMaster_40318.csv</code>. I copy them to the <code>data/</code> sub-directory for the current analysis.</p>
 <p>In addition, DArT-only samples are now expected to also have phenotypes. Therefore, checking for matches in new flatfiles, deposited in the <code>data/</code> (see code below).</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">library</span>(tidyverse); <span class="kw">library</span>(magrittr)</span>
-<span id="cb23-2"><a href="#cb23-2"></a>gbs2phenoMaster&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="st">  </span><span class="kw">select</span>(germplasmName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-4"><a href="#cb23-4"></a><span class="st">  </span>distinct <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">read.csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;NRCRI_GBStoPhenoMaster_40318.csv&quot;</span>), </span>
-<span id="cb23-6"><a href="#cb23-6"></a>                     <span class="dt">stringsAsFactors =</span> F)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-7"><a href="#cb23-7"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">FullSampleName=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;C2a&quot;</span>,germplasmName,<span class="dt">ignore.case =</span> T) <span class="op">&amp;</span><span class="st"> </span></span>
-<span id="cb23-8"><a href="#cb23-8"></a><span class="st">                                 </span><span class="kw">is.na</span>(FullSampleName),germplasmName,FullSampleName)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-9"><a href="#cb23-9"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(FullSampleName)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-10"><a href="#cb23-10"></a><span class="st">  </span><span class="kw">select</span>(germplasmName,FullSampleName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-11"><a href="#cb23-11"></a><span class="st">  </span><span class="kw">bind_rows</span>(dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-12"><a href="#cb23-12"></a><span class="st">              </span><span class="kw">select</span>(germplasmName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-13"><a href="#cb23-13"></a><span class="st">              </span>distinct <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-14"><a href="#cb23-14"></a><span class="st">              </span><span class="kw">left_join</span>(<span class="kw">read.csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;IITA_GBStoPhenoMaster_33018.csv&quot;</span>), </span>
-<span id="cb23-15"><a href="#cb23-15"></a>                                 <span class="dt">stringsAsFactors =</span> F)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-16"><a href="#cb23-16"></a><span class="st">              </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(FullSampleName)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-17"><a href="#cb23-17"></a><span class="st">              </span><span class="kw">select</span>(germplasmName,FullSampleName)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-18"><a href="#cb23-18"></a><span class="st">  </span><span class="kw">bind_rows</span>(dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-19"><a href="#cb23-19"></a><span class="st">              </span><span class="kw">select</span>(germplasmName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-20"><a href="#cb23-20"></a><span class="st">              </span>distinct <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-21"><a href="#cb23-21"></a><span class="st">              </span><span class="kw">left_join</span>(<span class="kw">read.csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;GBSdataMasterList_31818.csv&quot;</span>), </span>
-<span id="cb23-22"><a href="#cb23-22"></a>                                 <span class="dt">stringsAsFactors =</span> F) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-23"><a href="#cb23-23"></a><span class="st">                          </span><span class="kw">select</span>(DNASample,FullSampleName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-24"><a href="#cb23-24"></a><span class="st">                          </span><span class="kw">rename</span>(<span class="dt">germplasmName=</span>DNASample)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-25"><a href="#cb23-25"></a><span class="st">              </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(FullSampleName)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-26"><a href="#cb23-26"></a><span class="st">              </span><span class="kw">select</span>(germplasmName,FullSampleName)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-27"><a href="#cb23-27"></a><span class="st">  </span><span class="kw">bind_rows</span>(dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-28"><a href="#cb23-28"></a><span class="st">              </span><span class="kw">select</span>(germplasmName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-29"><a href="#cb23-29"></a><span class="st">              </span>distinct <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-30"><a href="#cb23-30"></a><span class="st">              </span><span class="kw">mutate</span>(<span class="dt">germplasmSynonyms=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;^UG&quot;</span>,germplasmName,<span class="dt">ignore.case =</span> T),</span>
-<span id="cb23-31"><a href="#cb23-31"></a>                                              <span class="kw">gsub</span>(<span class="st">&quot;UG&quot;</span>,<span class="st">&quot;Ug&quot;</span>,germplasmName),germplasmName)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-32"><a href="#cb23-32"></a><span class="st">              </span><span class="kw">left_join</span>(<span class="kw">read.csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;GBSdataMasterList_31818.csv&quot;</span>), </span>
-<span id="cb23-33"><a href="#cb23-33"></a>                                 <span class="dt">stringsAsFactors =</span> F) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-34"><a href="#cb23-34"></a><span class="st">                          </span><span class="kw">select</span>(DNASample,FullSampleName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-35"><a href="#cb23-35"></a><span class="st">                          </span><span class="kw">rename</span>(<span class="dt">germplasmSynonyms=</span>DNASample)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-36"><a href="#cb23-36"></a><span class="st">              </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(FullSampleName)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-37"><a href="#cb23-37"></a><span class="st">              </span><span class="kw">select</span>(germplasmName,FullSampleName)) <span class="op">%&gt;%</span><span class="st">  </span></span>
-<span id="cb23-38"><a href="#cb23-38"></a><span class="st">  </span><span class="kw">bind_rows</span>(dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-39"><a href="#cb23-39"></a><span class="st">              </span><span class="kw">select</span>(germplasmName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-40"><a href="#cb23-40"></a><span class="st">              </span>distinct <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-41"><a href="#cb23-41"></a><span class="st">              </span><span class="kw">mutate</span>(<span class="dt">germplasmSynonyms=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;^TZ&quot;</span>,germplasmName,</span>
-<span id="cb23-42"><a href="#cb23-42"></a>                                                    <span class="dt">ignore.case =</span> T),</span>
-<span id="cb23-43"><a href="#cb23-43"></a>                                              <span class="kw">gsub</span>(<span class="st">&quot;TZ&quot;</span>,<span class="st">&quot;&quot;</span>,germplasmName),germplasmName)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-44"><a href="#cb23-44"></a><span class="st">              </span><span class="kw">left_join</span>(<span class="kw">read.csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;GBSdataMasterList_31818.csv&quot;</span>), </span>
-<span id="cb23-45"><a href="#cb23-45"></a>                                 <span class="dt">stringsAsFactors =</span> F) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-46"><a href="#cb23-46"></a><span class="st">                          </span><span class="kw">select</span>(DNASample,FullSampleName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-47"><a href="#cb23-47"></a><span class="st">                          </span><span class="kw">rename</span>(<span class="dt">germplasmSynonyms=</span>DNASample)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-48"><a href="#cb23-48"></a><span class="st">              </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(FullSampleName)) <span class="op">%&gt;%</span></span>
-<span id="cb23-49"><a href="#cb23-49"></a><span class="st">              </span><span class="kw">select</span>(germplasmName,FullSampleName)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-50"><a href="#cb23-50"></a><span class="st">  </span>distinct <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-51"><a href="#cb23-51"></a><span class="st">  </span><span class="kw">left_join</span>(<span class="kw">read.csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;GBSdataMasterList_31818.csv&quot;</span>), </span>
-<span id="cb23-52"><a href="#cb23-52"></a>                     <span class="dt">stringsAsFactors =</span> F) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-53"><a href="#cb23-53"></a><span class="st">              </span><span class="kw">select</span>(FullSampleName,OrigKeyFile,Institute) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-54"><a href="#cb23-54"></a><span class="st">              </span><span class="kw">rename</span>(<span class="dt">OriginOfSample=</span>Institute)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-55"><a href="#cb23-55"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">OrigKeyFile=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;C2a&quot;</span>,germplasmName,<span class="dt">ignore.case =</span> T),</span>
-<span id="cb23-56"><a href="#cb23-56"></a>                            <span class="kw">ifelse</span>(<span class="kw">is.na</span>(OrigKeyFile),<span class="st">&quot;LavalGBS&quot;</span>,OrigKeyFile),</span>
-<span id="cb23-57"><a href="#cb23-57"></a>                            OrigKeyFile),</span>
-<span id="cb23-58"><a href="#cb23-58"></a>         <span class="dt">OriginOfSample=</span><span class="kw">ifelse</span>(<span class="kw">grepl</span>(<span class="st">&quot;C2a&quot;</span>,germplasmName,<span class="dt">ignore.case =</span> T),</span>
-<span id="cb23-59"><a href="#cb23-59"></a>                               <span class="kw">ifelse</span>(<span class="kw">is.na</span>(OriginOfSample),<span class="st">&quot;NRCRI&quot;</span>,OriginOfSample),</span>
-<span id="cb23-60"><a href="#cb23-60"></a>                               OriginOfSample))</span>
-<span id="cb23-61"><a href="#cb23-61"></a><span class="co">## NEW: check for germName-DArT name matches</span></span>
-<span id="cb23-62"><a href="#cb23-62"></a>germNamesWithoutGBSgenos&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-63"><a href="#cb23-63"></a><span class="st">  </span><span class="kw">select</span>(programName,germplasmName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-64"><a href="#cb23-64"></a><span class="st">  </span>distinct <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-65"><a href="#cb23-65"></a><span class="st">  </span><span class="kw">left_join</span>(gbs2phenoMaster) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-66"><a href="#cb23-66"></a><span class="st">  </span><span class="kw">filter</span>(<span class="kw">is.na</span>(FullSampleName)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-67"><a href="#cb23-67"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>FullSampleName)</span>
-<span id="cb23-68"><a href="#cb23-68"></a></span>
-<span id="cb23-69"><a href="#cb23-69"></a>germNamesWithDArT&lt;-germNamesWithoutGBSgenos <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-70"><a href="#cb23-70"></a><span class="st">  </span><span class="kw">inner_join</span>(<span class="kw">read.table</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;chr1_RefPanelAndGSprogeny_ReadyForGP_72719.fam&quot;</span>), <span class="dt">header =</span> F, <span class="dt">stringsAsFactors =</span> F)<span class="op">$</span>V2 <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-71"><a href="#cb23-71"></a><span class="st">               </span><span class="kw">grep</span>(<span class="st">&quot;TMS16|TMS17|TMS18|TMS19|TMS20&quot;</span>,.,<span class="dt">value =</span> T, <span class="dt">ignore.case =</span> T) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-72"><a href="#cb23-72"></a><span class="st">               </span><span class="kw">tibble</span>(<span class="dt">dartName=</span>.) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-73"><a href="#cb23-73"></a><span class="st">               </span><span class="kw">separate</span>(dartName,<span class="kw">c</span>(<span class="st">&quot;germplasmName&quot;</span>,<span class="st">&quot;dartID&quot;</span>),<span class="st">&quot;_&quot;</span>,<span class="dt">extra =</span> <span class="st">&#39;merge&#39;</span>,<span class="dt">remove =</span> F)) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-74"><a href="#cb23-74"></a><span class="st">  </span><span class="kw">group_by</span>(germplasmName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-75"><a href="#cb23-75"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-76"><a href="#cb23-76"></a><span class="st">  </span><span class="kw">ungroup</span>() <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-77"><a href="#cb23-77"></a><span class="st">  </span><span class="kw">rename</span>(<span class="dt">FullSampleName=</span>dartName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-78"><a href="#cb23-78"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">OrigKeyFile=</span><span class="st">&quot;DArTseqLD&quot;</span>, <span class="dt">OriginOfSample=</span><span class="st">&quot;IITA&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb23-79"><a href="#cb23-79"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>dartID)</span>
-<span id="cb23-80"><a href="#cb23-80"></a><span class="kw">print</span>(<span class="kw">paste0</span>(<span class="kw">nrow</span>(germNamesWithDArT),<span class="st">&quot; germNames with DArT-only genos&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse); <span class="fu">library</span>(magrittr)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>gbs2phenoMaster<span class="ot">&lt;-</span>dbdata <span class="sc">%&gt;%</span> </span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(germplasmName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  distinct <span class="sc">%&gt;%</span> </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;NRCRI_GBStoPhenoMaster_40318.csv&quot;</span>), </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">stringsAsFactors =</span> F)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">FullSampleName=</span><span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">&quot;C2a&quot;</span>,germplasmName,<span class="at">ignore.case =</span> T) <span class="sc">&amp;</span> </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">is.na</span>(FullSampleName),germplasmName,FullSampleName)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(FullSampleName)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(germplasmName,FullSampleName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(dbdata <span class="sc">%&gt;%</span> </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(germplasmName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>              distinct <span class="sc">%&gt;%</span> </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>              <span class="fu">left_join</span>(<span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;IITA_GBStoPhenoMaster_33018.csv&quot;</span>), </span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">stringsAsFactors =</span> F)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>              <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(FullSampleName)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(germplasmName,FullSampleName)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(dbdata <span class="sc">%&gt;%</span> </span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(germplasmName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>              distinct <span class="sc">%&gt;%</span> </span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>              <span class="fu">left_join</span>(<span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;GBSdataMasterList_31818.csv&quot;</span>), </span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">stringsAsFactors =</span> F) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">select</span>(DNASample,FullSampleName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">rename</span>(<span class="at">germplasmName=</span>DNASample)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>              <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(FullSampleName)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(germplasmName,FullSampleName)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(dbdata <span class="sc">%&gt;%</span> </span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(germplasmName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>              distinct <span class="sc">%&gt;%</span> </span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">germplasmSynonyms=</span><span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">&quot;^UG&quot;</span>,germplasmName,<span class="at">ignore.case =</span> T),</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>                                              <span class="fu">gsub</span>(<span class="st">&quot;UG&quot;</span>,<span class="st">&quot;Ug&quot;</span>,germplasmName),germplasmName)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>              <span class="fu">left_join</span>(<span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;GBSdataMasterList_31818.csv&quot;</span>), </span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">stringsAsFactors =</span> F) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">select</span>(DNASample,FullSampleName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">rename</span>(<span class="at">germplasmSynonyms=</span>DNASample)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>              <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(FullSampleName)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(germplasmName,FullSampleName)) <span class="sc">%&gt;%</span>  </span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(dbdata <span class="sc">%&gt;%</span> </span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(germplasmName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>              distinct <span class="sc">%&gt;%</span> </span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>              <span class="fu">mutate</span>(<span class="at">germplasmSynonyms=</span><span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">&quot;^TZ&quot;</span>,germplasmName,</span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">ignore.case =</span> T),</span>
+<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>                                              <span class="fu">gsub</span>(<span class="st">&quot;TZ&quot;</span>,<span class="st">&quot;&quot;</span>,germplasmName),germplasmName)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a>              <span class="fu">left_join</span>(<span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;GBSdataMasterList_31818.csv&quot;</span>), </span>
+<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">stringsAsFactors =</span> F) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">select</span>(DNASample,FullSampleName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">rename</span>(<span class="at">germplasmSynonyms=</span>DNASample)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a>              <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(FullSampleName)) <span class="sc">%&gt;%</span></span>
+<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(germplasmName,FullSampleName)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a>  distinct <span class="sc">%&gt;%</span> </span>
+<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(<span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;GBSdataMasterList_31818.csv&quot;</span>), </span>
+<span id="cb23-52"><a href="#cb23-52" aria-hidden="true" tabindex="-1"></a>                     <span class="at">stringsAsFactors =</span> F) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-53"><a href="#cb23-53" aria-hidden="true" tabindex="-1"></a>              <span class="fu">select</span>(FullSampleName,OrigKeyFile,Institute) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-54"><a href="#cb23-54" aria-hidden="true" tabindex="-1"></a>              <span class="fu">rename</span>(<span class="at">OriginOfSample=</span>Institute)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-55"><a href="#cb23-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">OrigKeyFile=</span><span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">&quot;C2a&quot;</span>,germplasmName,<span class="at">ignore.case =</span> T),</span>
+<span id="cb23-56"><a href="#cb23-56" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">ifelse</span>(<span class="fu">is.na</span>(OrigKeyFile),<span class="st">&quot;LavalGBS&quot;</span>,OrigKeyFile),</span>
+<span id="cb23-57"><a href="#cb23-57" aria-hidden="true" tabindex="-1"></a>                            OrigKeyFile),</span>
+<span id="cb23-58"><a href="#cb23-58" aria-hidden="true" tabindex="-1"></a>         <span class="at">OriginOfSample=</span><span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">&quot;C2a&quot;</span>,germplasmName,<span class="at">ignore.case =</span> T),</span>
+<span id="cb23-59"><a href="#cb23-59" aria-hidden="true" tabindex="-1"></a>                               <span class="fu">ifelse</span>(<span class="fu">is.na</span>(OriginOfSample),<span class="st">&quot;NRCRI&quot;</span>,OriginOfSample),</span>
+<span id="cb23-60"><a href="#cb23-60" aria-hidden="true" tabindex="-1"></a>                               OriginOfSample))</span>
+<span id="cb23-61"><a href="#cb23-61" aria-hidden="true" tabindex="-1"></a><span class="do">## NEW: check for germName-DArT name matches</span></span>
+<span id="cb23-62"><a href="#cb23-62" aria-hidden="true" tabindex="-1"></a>germNamesWithoutGBSgenos<span class="ot">&lt;-</span>dbdata <span class="sc">%&gt;%</span> </span>
+<span id="cb23-63"><a href="#cb23-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(programName,germplasmName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-64"><a href="#cb23-64" aria-hidden="true" tabindex="-1"></a>  distinct <span class="sc">%&gt;%</span> </span>
+<span id="cb23-65"><a href="#cb23-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gbs2phenoMaster) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-66"><a href="#cb23-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(FullSampleName)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-67"><a href="#cb23-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>FullSampleName)</span>
+<span id="cb23-68"><a href="#cb23-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-69"><a href="#cb23-69" aria-hidden="true" tabindex="-1"></a>germNamesWithDArT<span class="ot">&lt;-</span>germNamesWithoutGBSgenos <span class="sc">%&gt;%</span> </span>
+<span id="cb23-70"><a href="#cb23-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(<span class="fu">read.table</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data&quot;</span>,<span class="st">&quot;chr1_RefPanelAndGSprogeny_ReadyForGP_72719.fam&quot;</span>), <span class="at">header =</span> F, <span class="at">stringsAsFactors =</span> F)<span class="sc">$</span>V2 <span class="sc">%&gt;%</span> </span>
+<span id="cb23-71"><a href="#cb23-71" aria-hidden="true" tabindex="-1"></a>               <span class="fu">grep</span>(<span class="st">&quot;TMS16|TMS17|TMS18|TMS19|TMS20&quot;</span>,.,<span class="at">value =</span> T, <span class="at">ignore.case =</span> T) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-72"><a href="#cb23-72" aria-hidden="true" tabindex="-1"></a>               <span class="fu">tibble</span>(<span class="at">dartName=</span>.) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-73"><a href="#cb23-73" aria-hidden="true" tabindex="-1"></a>               <span class="fu">separate</span>(dartName,<span class="fu">c</span>(<span class="st">&quot;germplasmName&quot;</span>,<span class="st">&quot;dartID&quot;</span>),<span class="st">&quot;_&quot;</span>,<span class="at">extra =</span> <span class="st">&#39;merge&#39;</span>,<span class="at">remove =</span> F)) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-74"><a href="#cb23-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(germplasmName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-75"><a href="#cb23-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-76"><a href="#cb23-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb23-77"><a href="#cb23-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">FullSampleName=</span>dartName) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-78"><a href="#cb23-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">OrigKeyFile=</span><span class="st">&quot;DArTseqLD&quot;</span>, <span class="at">OriginOfSample=</span><span class="st">&quot;IITA&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb23-79"><a href="#cb23-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>dartID)</span>
+<span id="cb23-80"><a href="#cb23-80" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="fu">nrow</span>(germNamesWithDArT),<span class="st">&quot; germNames with DArT-only genos&quot;</span>))</span></code></pre></div>
 <pre><code>[1] &quot;2401 germNames with DArT-only genos&quot;</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="co"># [1] &quot;2401 germNames with DArT-only genos&quot;</span></span>
-<span id="cb25-2"><a href="#cb25-2"></a></span>
-<span id="cb25-3"><a href="#cb25-3"></a></span>
-<span id="cb25-4"><a href="#cb25-4"></a><span class="co"># first, filter to just program-DNAorigin matches</span></span>
-<span id="cb25-5"><a href="#cb25-5"></a>germNamesWithGenos&lt;-dbdata <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb25-6"><a href="#cb25-6"></a><span class="st">  </span><span class="kw">select</span>(programName,germplasmName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb25-7"><a href="#cb25-7"></a><span class="st">  </span>distinct <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb25-8"><a href="#cb25-8"></a><span class="st">  </span><span class="kw">left_join</span>(gbs2phenoMaster) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb25-9"><a href="#cb25-9"></a><span class="st">  </span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(FullSampleName))</span>
-<span id="cb25-10"><a href="#cb25-10"></a><span class="kw">print</span>(<span class="kw">paste0</span>(<span class="kw">nrow</span>(germNamesWithGenos),<span class="st">&quot; germNames with GBS genos&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] &quot;2401 germNames with DArT-only genos&quot;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># first, filter to just program-DNAorigin matches</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>germNamesWithGenos<span class="ot">&lt;-</span>dbdata <span class="sc">%&gt;%</span> </span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(programName,germplasmName) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  distinct <span class="sc">%&gt;%</span> </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gbs2phenoMaster) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(FullSampleName))</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="fu">nrow</span>(germNamesWithGenos),<span class="st">&quot; germNames with GBS genos&quot;</span>))</span></code></pre></div>
 <pre><code>[1] &quot;9323 germNames with GBS genos&quot;</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># [1] &quot;9323 germNames with GBS genos&quot;</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a></span>
-<span id="cb27-3"><a href="#cb27-3"></a><span class="co"># program-germNames with locally sourced GBS samples</span></span>
-<span id="cb27-4"><a href="#cb27-4"></a>germNamesWithGenos_HasLocalSourcedGBS&lt;-germNamesWithGenos <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb27-5"><a href="#cb27-5"></a><span class="st">  </span><span class="kw">filter</span>(programName<span class="op">==</span>OriginOfSample) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb27-6"><a href="#cb27-6"></a><span class="st">  </span><span class="kw">select</span>(programName,germplasmName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb27-7"><a href="#cb27-7"></a><span class="st">  </span><span class="kw">semi_join</span>(germNamesWithGenos,.) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb27-8"><a href="#cb27-8"></a><span class="st">  </span><span class="kw">group_by</span>(programName,germplasmName) <span class="op">%&gt;%</span><span class="st"> </span><span class="co"># select one DNA per germplasmName per program</span></span>
-<span id="cb27-9"><a href="#cb27-9"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ungroup</span>() </span>
-<span id="cb27-10"><a href="#cb27-10"></a><span class="kw">print</span>(<span class="kw">paste0</span>(<span class="kw">nrow</span>(germNamesWithGenos_HasLocalSourcedGBS),<span class="st">&quot; germNames with local GBS genos&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] &quot;9323 germNames with GBS genos&quot;</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># program-germNames with locally sourced GBS samples</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>germNamesWithGenos_HasLocalSourcedGBS<span class="ot">&lt;-</span>germNamesWithGenos <span class="sc">%&gt;%</span> </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(programName<span class="sc">==</span>OriginOfSample) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(programName,germplasmName) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(germNamesWithGenos,.) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(programName,germplasmName) <span class="sc">%&gt;%</span> <span class="co"># select one DNA per germplasmName per program</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>() </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="fu">nrow</span>(germNamesWithGenos_HasLocalSourcedGBS),<span class="st">&quot; germNames with local GBS genos&quot;</span>))</span></code></pre></div>
 <pre><code>[1] &quot;8257 germNames with local GBS genos&quot;</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># [1] &quot;8257 germNames with local GBS genos&quot;</span></span>
-<span id="cb29-2"><a href="#cb29-2"></a></span>
-<span id="cb29-3"><a href="#cb29-3"></a><span class="co"># the rest (program-germNames) with GBS but coming from a different breeding program</span></span>
-<span id="cb29-4"><a href="#cb29-4"></a>germNamesWithGenos_NoLocalSourcedGBS&lt;-germNamesWithGenos <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb29-5"><a href="#cb29-5"></a><span class="st">  </span><span class="kw">filter</span>(programName<span class="op">==</span>OriginOfSample) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb29-6"><a href="#cb29-6"></a><span class="st">  </span><span class="kw">select</span>(programName,germplasmName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb29-7"><a href="#cb29-7"></a><span class="st">  </span><span class="kw">anti_join</span>(germNamesWithGenos,.) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb29-8"><a href="#cb29-8"></a><span class="st">  </span><span class="co"># select one DNA per germplasmName per program</span></span>
-<span id="cb29-9"><a href="#cb29-9"></a><span class="st">  </span><span class="kw">group_by</span>(programName,germplasmName) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb29-10"><a href="#cb29-10"></a><span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">ungroup</span>() </span>
-<span id="cb29-11"><a href="#cb29-11"></a><span class="kw">print</span>(<span class="kw">paste0</span>(<span class="kw">nrow</span>(germNamesWithGenos_NoLocalSourcedGBS),<span class="st">&quot; germNames without local GBS genos&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] &quot;8257 germNames with local GBS genos&quot;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the rest (program-germNames) with GBS but coming from a different breeding program</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>germNamesWithGenos_NoLocalSourcedGBS<span class="ot">&lt;-</span>germNamesWithGenos <span class="sc">%&gt;%</span> </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(programName<span class="sc">==</span>OriginOfSample) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(programName,germplasmName) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(germNamesWithGenos,.) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># select one DNA per germplasmName per program</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(programName,germplasmName) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">ungroup</span>() </span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="fu">nrow</span>(germNamesWithGenos_NoLocalSourcedGBS),<span class="st">&quot; germNames without local GBS genos&quot;</span>))</span></code></pre></div>
 <pre><code>[1] &quot;167 germNames without local GBS genos&quot;</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="co"># [1] &quot;167 germNames without local GBS genos&quot;</span></span>
-<span id="cb31-2"><a href="#cb31-2"></a></span>
-<span id="cb31-3"><a href="#cb31-3"></a>genosForPhenos&lt;-<span class="kw">bind_rows</span>(germNamesWithGenos_HasLocalSourcedGBS,</span>
-<span id="cb31-4"><a href="#cb31-4"></a>                        germNamesWithGenos_NoLocalSourcedGBS) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb31-5"><a href="#cb31-5"></a><span class="st">  </span><span class="kw">bind_rows</span>(germNamesWithDArT)</span>
-<span id="cb31-6"><a href="#cb31-6"></a></span>
-<span id="cb31-7"><a href="#cb31-7"></a><span class="kw">print</span>(<span class="kw">paste0</span>(<span class="kw">nrow</span>(genosForPhenos),<span class="st">&quot; total germNames with genos either GBS or DArT&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] &quot;167 germNames without local GBS genos&quot;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>genosForPhenos<span class="ot">&lt;-</span><span class="fu">bind_rows</span>(germNamesWithGenos_HasLocalSourcedGBS,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                        germNamesWithGenos_NoLocalSourcedGBS) <span class="sc">%&gt;%</span> </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(germNamesWithDArT)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="fu">nrow</span>(genosForPhenos),<span class="st">&quot; total germNames with genos either GBS or DArT&quot;</span>))</span></code></pre></div>
 <pre><code>[1] &quot;10825 total germNames with genos either GBS or DArT&quot;</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># [1] &quot;10825 total germNames with genos either GBS or DArT&quot;</span></span>
-<span id="cb33-2"><a href="#cb33-2"></a></span>
-<span id="cb33-3"><a href="#cb33-3"></a>dbdata <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
-<span id="cb33-4"><a href="#cb33-4"></a><span class="st">    </span><span class="kw">left_join</span>(genosForPhenos) </span>
-<span id="cb33-5"><a href="#cb33-5"></a></span>
-<span id="cb33-6"><a href="#cb33-6"></a><span class="co"># Create a new identifier, GID</span></span>
-<span id="cb33-7"><a href="#cb33-7"></a><span class="co">## Equals the value SNP data name (FullSampleName) </span></span>
-<span id="cb33-8"><a href="#cb33-8"></a><span class="co">## else germplasmName if no SNP data</span></span>
-<span id="cb33-9"><a href="#cb33-9"></a>dbdata <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
-<span id="cb33-10"><a href="#cb33-10"></a><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">GID=</span><span class="kw">ifelse</span>(<span class="kw">is.na</span>(FullSampleName),germplasmName,FullSampleName))</span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co">#  going to check against SNP data</span></span>
-<span id="cb34-2"><a href="#cb34-2"></a><span class="co"># snps&lt;-readRDS(file=url(paste0(&quot;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/&quot;,</span></span>
-<span id="cb34-3"><a href="#cb34-3"></a><span class="co">#                               &quot;DosageMatrix_RefPanelAndGSprogeny_ReadyForGP_73019.rds&quot;)))</span></span>
-<span id="cb34-4"><a href="#cb34-4"></a><span class="co"># rownames_snps&lt;-rownames(snps); rm(snps); gc()</span></span>
-<span id="cb34-5"><a href="#cb34-5"></a><span class="co"># # current matches to SNP data</span></span>
-<span id="cb34-6"><a href="#cb34-6"></a><span class="co"># dbdata %&gt;% </span></span>
-<span id="cb34-7"><a href="#cb34-7"></a><span class="co">#   distinct(GID,germplasmName,FullSampleName) %&gt;% </span></span>
-<span id="cb34-8"><a href="#cb34-8"></a><span class="co">#   semi_join(tibble(GID=rownames_snps)) %&gt;% nrow() # 10707</span></span>
-<span id="cb34-9"><a href="#cb34-9"></a><span class="co"># dbdata %&gt;% </span></span>
-<span id="cb34-10"><a href="#cb34-10"></a><span class="co">#   distinct(GID,germplasmName,FullSampleName) %&gt;% </span></span>
-<span id="cb34-11"><a href="#cb34-11"></a><span class="co">#   semi_join(tibble(GID=rownames_snps)) %&gt;% </span></span>
-<span id="cb34-12"><a href="#cb34-12"></a><span class="co">#   filter(grepl(&quot;TMS13|2013_&quot;,GID,ignore.case = F)) %&gt;% nrow() # 2424 TMS13</span></span>
-<span id="cb34-13"><a href="#cb34-13"></a><span class="co"># dbdata %&gt;% </span></span>
-<span id="cb34-14"><a href="#cb34-14"></a><span class="co">#   distinct(GID,germplasmName,FullSampleName) %&gt;% </span></span>
-<span id="cb34-15"><a href="#cb34-15"></a><span class="co">#   semi_join(tibble(GID=rownames_snps)) %&gt;% </span></span>
-<span id="cb34-16"><a href="#cb34-16"></a><span class="co">#   filter(grepl(&quot;TMS14&quot;,GID,ignore.case = F)) %&gt;% nrow() # 2236 TMS14</span></span>
-<span id="cb34-17"><a href="#cb34-17"></a><span class="co"># dbdata %&gt;% </span></span>
-<span id="cb34-18"><a href="#cb34-18"></a><span class="co">#   distinct(GID,germplasmName,FullSampleName) %&gt;% </span></span>
-<span id="cb34-19"><a href="#cb34-19"></a><span class="co">#   semi_join(tibble(GID=rownames_snps)) %&gt;% </span></span>
-<span id="cb34-20"><a href="#cb34-20"></a><span class="co">#   filter(grepl(&quot;TMS15&quot;,GID,ignore.case = F)) %&gt;% nrow() # 2287 TMS15</span></span>
-<span id="cb34-21"><a href="#cb34-21"></a><span class="co"># dbdata %&gt;% </span></span>
-<span id="cb34-22"><a href="#cb34-22"></a><span class="co">#   distinct(GID,germplasmName,FullSampleName) %&gt;% </span></span>
-<span id="cb34-23"><a href="#cb34-23"></a><span class="co">#   semi_join(tibble(GID=rownames_snps)) %&gt;% </span></span>
-<span id="cb34-24"><a href="#cb34-24"></a><span class="co">#   filter(grepl(&quot;TMS18&quot;,GID,ignore.case = F)) %&gt;% nrow() # 2401 TMS18</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># [1] &quot;10825 total germNames with genos either GBS or DArT&quot;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">left_join</span>(genosForPhenos) </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new identifier, GID</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Equals the value SNP data name (FullSampleName) </span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="do">## else germplasmName if no SNP data</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&lt;&gt;%</span> </span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">GID=</span><span class="fu">ifelse</span>(<span class="fu">is.na</span>(FullSampleName),germplasmName,FullSampleName))</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># going to check against SNP data</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># snps&lt;-readRDS(file=url(paste0(&#39;ftp://ftp.cassavabase.org/marnin_datasets/NGC_BigData/&#39;,</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># &#39;DosageMatrix_RefPanelAndGSprogeny_ReadyForGP_73019.rds&#39;)))</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># rownames_snps&lt;-rownames(snps); rm(snps); gc() # current matches to SNP data</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co"># dbdata %&gt;% distinct(GID,germplasmName,FullSampleName) %&gt;%</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># semi_join(tibble(GID=rownames_snps)) %&gt;% nrow() # 10707 dbdata %&gt;%</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># distinct(GID,germplasmName,FullSampleName) %&gt;%</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># semi_join(tibble(GID=rownames_snps)) %&gt;%</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># filter(grepl(&#39;TMS13|2013_&#39;,GID,ignore.case = F)) %&gt;% nrow() # 2424 TMS13 dbdata</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co"># %&gt;% distinct(GID,germplasmName,FullSampleName) %&gt;%</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co"># semi_join(tibble(GID=rownames_snps)) %&gt;% filter(grepl(&#39;TMS14&#39;,GID,ignore.case =</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co"># F)) %&gt;% nrow() # 2236 TMS14 dbdata %&gt;%</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co"># distinct(GID,germplasmName,FullSampleName) %&gt;%</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="co"># semi_join(tibble(GID=rownames_snps)) %&gt;% filter(grepl(&#39;TMS15&#39;,GID,ignore.case =</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co"># F)) %&gt;% nrow() # 2287 TMS15 dbdata %&gt;%</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co"># distinct(GID,germplasmName,FullSampleName) %&gt;%</span></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co"># semi_join(tibble(GID=rownames_snps)) %&gt;% filter(grepl(&#39;TMS18&#39;,GID,ignore.case =</span></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co"># F)) %&gt;% nrow() # 2401 TMS18</span></span></code></pre></div>
 </div>
 <div id="user-input-choose-locations" class="section level1">
 <h1>[User input] Choose locations</h1>
 <p><em>WARNING: User input required!</em> If I had preselected locations before downloading, this wouldn’t have been necessary.</p>
 <p>Based on previous locations used for IITA analysis, but adding based on list of locations used in IYR’s trial list <code>data/2019_GS_PhenoUpload.csv</code>: “Ago-Owu” wasn’t used last year.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>dbdata <span class="op">%&lt;&gt;%</span><span class="st"> </span></span>
-<span id="cb35-2"><a href="#cb35-2"></a><span class="st">  </span><span class="kw">filter</span>(locationName <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Abuja&quot;</span>,<span class="st">&quot;Ago-Owu&quot;</span>,<span class="st">&quot;Ibadan&quot;</span>,<span class="st">&quot;Ikenne&quot;</span>,<span class="st">&quot;Ilorin&quot;</span>,<span class="st">&quot;Jos&quot;</span>,<span class="st">&quot;Kano&quot;</span>,</span>
-<span id="cb35-3"><a href="#cb35-3"></a>                             <span class="st">&quot;Malam Madori&quot;</span>,<span class="st">&quot;Mokwa&quot;</span>,<span class="st">&quot;Ubiaja&quot;</span>,<span class="st">&quot;Umudike&quot;</span>,<span class="st">&quot;Warri&quot;</span>,<span class="st">&quot;Zaria&quot;</span>))</span>
-<span id="cb35-4"><a href="#cb35-4"></a><span class="kw">nrow</span>(dbdata) <span class="co"># [1] 427294</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>dbdata <span class="sc">%&lt;&gt;%</span> <span class="fu">filter</span>(locationName <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Abuja&quot;</span>, <span class="st">&quot;Ago-Owu&quot;</span>, <span class="st">&quot;Ibadan&quot;</span>, <span class="st">&quot;Ikenne&quot;</span>, <span class="st">&quot;Ilorin&quot;</span>, </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Jos&quot;</span>, <span class="st">&quot;Kano&quot;</span>, <span class="st">&quot;Malam Madori&quot;</span>, <span class="st">&quot;Mokwa&quot;</span>, <span class="st">&quot;Ubiaja&quot;</span>, <span class="st">&quot;Umudike&quot;</span>, <span class="st">&quot;Warri&quot;</span>, <span class="st">&quot;Zaria&quot;</span>))</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dbdata)  <span class="co"># [1] 427294</span></span></code></pre></div>
 <pre><code>[1] 427294</code></pre>
 </div>
 <div id="output-cleaned-file" class="section level1">
 <h1>Output “cleaned” file</h1>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">saveRDS</span>(dbdata,<span class="dt">file=</span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;output&quot;</span>,<span class="st">&quot;IITA_CleanedTrialData.rds&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(dbdata, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;IITA_CleanedTrialData.rds&quot;</span>))</span></code></pre></div>
 </div>
 <div id="next-step" class="section level1">
 <h1>Next step</h1>
@@ -1168,10 +1238,10 @@ Download and cleaning step completed.
 </button>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="kw">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <pre><code>R version 4.0.2 (2020-06-22)
 Platform: x86_64-apple-darwin17.0 (64-bit)
-Running under: macOS Mojave 10.14.6
+Running under: macOS Catalina 10.15.7
 
 Matrix products: default
 BLAS:   /Library/Frameworks/R.framework/Versions/4.0/Resources/lib/libRblas.dylib
@@ -1184,26 +1254,26 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] magrittr_1.5    forcats_0.5.0   stringr_1.4.0   dplyr_1.0.2    
- [5] purrr_0.3.4     readr_1.3.1     tidyr_1.1.2     tibble_3.0.3   
+ [1] magrittr_2.0.1  forcats_0.5.0   stringr_1.4.0   dplyr_1.0.2    
+ [5] purrr_0.3.4     readr_1.4.0     tidyr_1.1.2     tibble_3.0.4   
  [9] ggplot2_3.3.2   tidyverse_1.3.0 workflowr_1.6.2
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.1.0 xfun_0.17        haven_2.3.1      colorspace_1.4-1
- [5] vctrs_0.3.4      generics_0.0.2   htmltools_0.5.0  yaml_2.2.1      
- [9] utf8_1.1.4       blob_1.2.1       rlang_0.4.7      later_1.1.0.1   
-[13] pillar_1.4.6     withr_2.2.0      glue_1.4.2       DBI_1.1.0       
-[17] dbplyr_1.4.4     modelr_0.1.8     readxl_1.3.1     lifecycle_0.2.0 
-[21] munsell_0.5.0    gtable_0.3.0     cellranger_1.1.0 rvest_0.3.6     
-[25] evaluate_0.14    knitr_1.29       httpuv_1.5.4     fansi_0.4.1     
-[29] broom_0.7.0      Rcpp_1.0.5       promises_1.1.1   backports_1.1.9 
-[33] scales_1.1.1     jsonlite_1.7.1   fs_1.5.0         hms_0.5.3       
-[37] digest_0.6.25    stringi_1.5.3    rprojroot_1.3-2  grid_4.0.2      
-[41] here_0.1         cli_2.0.2        tools_4.0.2      crayon_1.3.4    
-[45] whisker_0.4      pkgconfig_2.0.3  ellipsis_0.3.1   xml2_1.3.2      
-[49] reprex_0.3.0     lubridate_1.7.9  assertthat_0.2.1 rmarkdown_2.3   
-[53] httr_1.4.2       rstudioapi_0.11  R6_2.4.1         git2r_0.27.1    
-[57] compiler_4.0.2  </code></pre>
+ [1] tidyselect_1.1.0  xfun_0.19         haven_2.3.1       colorspace_2.0-0 
+ [5] vctrs_0.3.5       generics_0.1.0    htmltools_0.5.0   yaml_2.2.1       
+ [9] utf8_1.1.4        rlang_0.4.9       later_1.1.0.1     pillar_1.4.7     
+[13] withr_2.3.0       glue_1.4.2        DBI_1.1.0         dbplyr_2.0.0     
+[17] modelr_0.1.8      readxl_1.3.1      lifecycle_0.2.0   munsell_0.5.0    
+[21] gtable_0.3.0      cellranger_1.1.0  rvest_0.3.6       evaluate_0.14    
+[25] knitr_1.30        ps_1.4.0          httpuv_1.5.4      fansi_0.4.1      
+[29] broom_0.7.2       Rcpp_1.0.5        promises_1.1.1    backports_1.2.0  
+[33] scales_1.1.1      formatR_1.7       jsonlite_1.7.1    fs_1.5.0         
+[37] hms_0.5.3         digest_0.6.27     stringi_1.5.3     rprojroot_2.0.2  
+[41] grid_4.0.2        here_1.0.0        cli_2.2.0         tools_4.0.2      
+[45] crayon_1.3.4      whisker_0.4       pkgconfig_2.0.3   ellipsis_0.3.1   
+[49] xml2_1.3.2        reprex_0.3.0      lubridate_1.7.9.2 rstudioapi_0.13  
+[53] assertthat_0.2.1  rmarkdown_2.5     httr_1.4.2        R6_2.5.0         
+[57] git2r_0.27.1      compiler_4.0.2   </code></pre>
 </div>
 </div>
 
@@ -1221,6 +1291,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+
+
 </div>
 </div>
 
@@ -1230,7 +1302,7 @@ footer is added to webpages before the MathJax javascript. -->
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
