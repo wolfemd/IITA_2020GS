@@ -1,8 +1,10 @@
 ---
 title: "Results"
-author: "wolfemd"
-date: "2020-Sep-21"
-output: workflowr::wflow_html
+author: "Marnin Wolfe"
+date: "2020-Dec-03"
+output: 
+  workflowr::wflow_html:
+    code_folding: hide
 editor_options:
   chunk_output_type: inline
 ---
@@ -16,34 +18,69 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = F, tidy = T)
 
 Conducted 5-fold x 5-reps of cross-validation ([here](04-CrossValidation.html)). Three traits only, MCMDS, logFYLD, DM.
 
-
 ```{r}
 library(tidyverse); library(magrittr);
 cvresults<-readRDS(here::here("output","cvresults_ModelA_chunk1.rds")) %>% 
   bind_rows(readRDS(here::here("output","cvresults_ModelA_chunk2.rds"))) %>% 
-  bind_rows(readRDS(here::here("output","cvresults_ModelA_chunk3.rds"))) 
+  bind_rows(readRDS(here::here("output","cvresults_ModelA_chunk3.rds"))) %>% 
+  mutate(Model="A") %>% 
+  bind_rows(readRDS(here::here("output","cvresults_ModelADE_chunk1.rds")) %>% 
+             bind_rows(readRDS(here::here("output","cvresults_ModelADE_chunk2.rds"))) %>% 
+             bind_rows(readRDS(here::here("output","cvresults_ModelADE_chunk3.rds"))) %>% 
+             mutate(Model="ADE"))
+```
+```{r}
 cvresults %>% 
-  select(Trait,repeats,id,VersionOfBLUPs,accGEBV) %>% 
-  ggplot(.,aes(x=Trait,y=accGEBV,fill=VersionOfBLUPs)) + 
+  select(Trait,repeats,id,VersionOfBLUPs,accGEBV,Model) %>% 
+  ggplot(.,aes(x=Model,y=accGEBV,fill=VersionOfBLUPs)) + 
   geom_boxplot() +
-  theme_bw() + 
-  scale_fill_viridis_d() + labs(title="Compare 3-stage and 2-stage prediction pipelines",subtitle="Model: Additive-only")
+  theme_bw() + facet_wrap(~Trait, scales = 'free') + 
+  scale_fill_viridis_d() + labs(title="GEBV: Compare 3-stage and 2-stage prediction pipelines")
+```
+```{r}
+cvresults %>% 
+  select(Trait,repeats,id,VersionOfBLUPs,accGETGV,Model) %>% 
+  ggplot(.,aes(x=Model,y=accGETGV,fill=VersionOfBLUPs)) + 
+  geom_boxplot() +
+  theme_bw() + facet_wrap(~Trait, scales = 'free') + 
+  scale_fill_viridis_d() + labs(title="GETGV: Compare 3-stage and 2-stage prediction pipelines")
 ```
 
 ```{r}
 cvresults %>% 
-  select(Trait,repeats,id,VersionOfBLUPs,accGEBV) %>% 
+  select(Trait,Model,repeats,id,VersionOfBLUPs,accGEBV) %>% 
   spread(VersionOfBLUPs,accGEBV) %>% 
   mutate(diffAcc=blups2stage-blups3stage) %>% 
-  ggplot(.,aes(x=Trait,y=diffAcc,fill=Trait)) + 
+  ggplot(.,aes(x=Model,y=diffAcc,fill=Trait)) + 
   geom_hline(yintercept = 0, color='darkred') + 
   geom_boxplot() +
-  theme_bw() + 
-  scale_fill_viridis_d() + labs(y="Accuracy Difference (2-stage minus 3-stage)",subtitle="Model: Additive-only")
+  theme_bw() + facet_wrap(~Trait,scales='free') + 
+  scale_fill_viridis_d() + labs(y="Accuracy Difference (2-stage minus 3-stage)",title="GEBV")
+```
+```{r}
+cvresults %>% 
+  select(Trait,Model,repeats,id,VersionOfBLUPs,accGETGV) %>% 
+  spread(VersionOfBLUPs,accGETGV) %>% 
+  mutate(diffAcc=blups2stage-blups3stage) %>% 
+  ggplot(.,aes(x=Model,y=diffAcc,fill=Trait)) + 
+  geom_hline(yintercept = 0, color='darkred') + 
+  geom_boxplot() +
+  theme_bw() + facet_wrap(~Trait,scales='free') + 
+  scale_fill_viridis_d() + labs(y="Accuracy Difference (2-stage minus 3-stage)",title="GETGV")
+```
+
+```{r}
+cvresults %>% filter(VersionOfBLUPs=="blups2stage") %>% 
+  select(Trait,repeats,id,VersionOfBLUPs,accGETGV,Model) %>% 
+  ggplot(.,aes(x=Trait,y=accGETGV,fill=Model)) + 
+  geom_boxplot(color='gray60', notch=T) +
+  theme_bw() + facet_wrap(~Trait, scales = 'free') + 
+  scale_fill_viridis_d() + labs(title="Compare accuracy: models A vs. ADE")
 ```
 
 # Genetic Gain
 
+## September 2020
 ```{r, fig.height=7, fig.width=5}
 library(tidyverse); library(magrittr)
 iita_gebvs<-read.csv(here::here("output","GEBV_IITA_ModelA_twostage_IITA_2020Sep21.csv"), stringsAsFactors = F)
@@ -72,14 +109,27 @@ iita_gebvs %>%
   labs(x=NULL,y="Mean GEBVs")
 ```
 
-# Rate of gain
+# Rate of gain {#rate_of_gain}
+
+List of trials from 2020 to Prasad and Ismail... should I download fresh data?
+```{r, eval = F}
+dbdata<-readRDS(here::here("output","IITA_CleanedTrialData.rds"))
+trialsHarvested2019to2020<-dbdata %>% 
+  filter(studyYear>=2019) %>% 
+  group_by(studyYear,locationName,studyName,plantingDate,harvestDate) %>% 
+  summarize(Nhav=sum(!is.na(NOHAV)))
+trialsHarvested2019to2020 %>% write.csv(.,file=here::here("output","trials_uploaded_by_Nharvested_15Sep2020.csv"), row.names=F)
+```
+
+
+## September 2020 GEBV
 
 ```{r}
 library(tidyverse); library(magrittr);
 iita_gebvs<-read.csv(here::here("output","GEBV_IITA_ModelA_twostage_IITA_2020Sep21.csv"), stringsAsFactors = F)
 traits<-c("DM","logFYLD","logTOPYLD","MCMDS")
 
-ggcycletime<-readxl::read_xlsx(here::here("data","pedigreeGeneticGainCycleTime.xlsx"))
+ggcycletime<-readxl::read_xls(here::here("data","PedigreeGeneticGainCycleTime_aafolabi_01122020.xls"))
 table(ggcycletime$Accession %in% iita_gebvs$GID)
 ```
 
@@ -87,8 +137,6 @@ Need germplasmName field from raw trial data to match GEBV and cycle time
 ```{r}
 library(tidyverse); library(magrittr);
 dbdata<-readRDS(here::here("output","IITA_ExptDesignsDetected.rds"))
-
-
 iita_gebvs %<>% 
   left_join(dbdata %>% 
   select(-MaxNOHAV) %>% unnest(TrialData) %>% 
@@ -100,7 +148,8 @@ table(ggcycletime$Accession %in% iita_gebvs$germplasmName)
 ```
 
 ```{r}
-iita_gebvs %<>% left_join(.,ggcycletime %>% rename(germplasmName=Accession))
+table(ggcycletime$Year_Accession)
+iita_gebvs %<>% left_join(.,ggcycletime %>% rename(germplasmName=Accession) %>% mutate(Year_Accession=as.numeric(Year_Accession)))
 ```
 
 ```{r}
@@ -112,22 +161,27 @@ iita_gebvs %<>%
                                   !grepl("2013_|TMS13|TMS14|TMS15|TMS18",germplasmName)~Year_Accession)) 
 ```
 
+```{r, fig.width=10, fig.height=5}
+iita_gebvs %>% 
+  ggplot(.,aes(x=TCHART,y=BCHROMO)) + geom_hex() +
+  theme_bw() + facet_wrap(~GeneticGroup, nrow=1) + theme(legend.position = 'none')
+```
 
 ```{r, fig.height=10, fig.width=10}
-iita_gebvs %>% 
-  select(germplasmName,GeneticGroup,Year_Accession,any_of(traits)) %>% 
-  pivot_longer(cols=any_of(traits),names_to = "Trait",values_to = "GEBV") %>% 
-  ggplot(.,aes(x=Year_Accession,y=GEBV,color=GeneticGroup)) + 
-  geom_point() + 
-  facet_wrap(~Trait,scales='free_y', ncol=1) + 
-  theme_bw() +
-#  geom_hline(yintercept = 0, size=1.15, color='black') + 
-  theme(axis.text.x = element_text(face = 'bold',angle = 0, size=12),
-        axis.title.y = element_text(face = 'bold',size=14),
-        #legend.position = 'none',
-        strip.background.x = element_blank(),
-        strip.text = element_text(face='bold',size=14)) + 
-  scale_color_viridis_d()
+# iita_gebvs %>% 
+#   select(germplasmName,GeneticGroup,Year_Accession,any_of(traits)) %>% 
+#   pivot_longer(cols=any_of(traits),names_to = "Trait",values_to = "GEBV") %>% 
+#   ggplot(.,aes(x=Year_Accession,y=GEBV,color=GeneticGroup)) + 
+#   geom_point() + 
+#   facet_wrap(~Trait,scales='free_y', ncol=1) + 
+#   theme_bw() +
+# #  geom_hline(yintercept = 0, size=1.15, color='black') + 
+#   theme(axis.text.x = element_text(face = 'bold',angle = 0, size=12),
+#         axis.title.y = element_text(face = 'bold',size=14),
+#         #legend.position = 'none',
+#         strip.background.x = element_blank(),
+#         strip.text = element_text(face='bold',size=14)) + 
+#   scale_color_viridis_d()
 #  labs(x=NULL,y="Mean GEBVs")
 
 ```
@@ -156,5 +210,179 @@ iita_gebvs %>%
 
 ```
 
+```{r, fig.height=10, fig.width=8}
+iita_gebvs %>% 
+  select(germplasmName,GeneticGroup,Year_Accession,any_of(c(traits,"TCHART","BCHROMO"))) %>% 
+  mutate(GeneticGroup=ifelse(Year_Accession>=2013,"GS","PreGS")) %>% 
+  pivot_longer(cols=any_of(c(traits,"TCHART","BCHROMO")),names_to = "Trait",values_to = "GEBV") %>% 
+  mutate(Trait=factor(Trait,c(traits,"TCHART","BCHROMO"))) %>% 
+  group_by(Trait,GeneticGroup,Year_Accession) %>% 
+  summarize(meanGEBV=mean(GEBV),
+            Nclones=n(),
+            stdErr=sd(GEBV)/sqrt(n()),
+            upperSE=meanGEBV+stdErr,
+            lowerSE=meanGEBV-stdErr) %>% 
+  ggplot(.,aes(x=Year_Accession,y=meanGEBV,color=GeneticGroup,size=Nclones)) + 
+  geom_point(size=4) + geom_smooth(method=lm, se=TRUE) + 
+  geom_linerange(aes(ymax=upperSE,
+                     ymin=lowerSE), color='gray40', size=1) + 
+  facet_wrap(~Trait,scales='free_y', ncol=1) + 
+  theme_bw() +
+  theme(axis.text = element_text(face = 'bold',angle = 0, size=14),
+        axis.title = element_text(face = 'bold',size=16),
+        strip.background.x = element_blank(),
+        strip.text = element_text(face='bold',size=18)) + 
+  scale_color_viridis_d()
+```
 
+```{r, fig.height=10, fig.width=8}
+iita_gebvs %>% 
+  select(germplasmName,GeneticGroup,Year_Accession,any_of(c(traits,"TCHART","BCHROMO"))) %>% 
+  mutate(GeneticGroup=ifelse(Year_Accession>=2013,"GS","PreGS")) %>% 
+  filter(BCHROMO<5,TCHART<0.5) %>% 
+  pivot_longer(cols=any_of(c(traits,"TCHART","BCHROMO")),names_to = "Trait",values_to = "GEBV") %>% 
+  mutate(Trait=factor(Trait,c(traits,"TCHART","BCHROMO"))) %>% 
+  group_by(Trait,GeneticGroup,Year_Accession) %>% 
+  summarize(meanGEBV=mean(GEBV),
+            Nclones=n(),
+            stdErr=sd(GEBV)/sqrt(n()),
+            upperSE=meanGEBV+stdErr,
+            lowerSE=meanGEBV-stdErr) %>% 
+  ggplot(.,aes(x=Year_Accession,y=meanGEBV,color=GeneticGroup,size=Nclones)) + 
+  geom_point(size=4) + geom_smooth(method=lm, se=TRUE) + 
+  geom_linerange(aes(ymax=upperSE,
+                     ymin=lowerSE), color='gray40', size=1) + 
+  facet_wrap(~Trait,scales='free_y', ncol=1) + 
+  theme_bw() +
+  theme(axis.text = element_text(face = 'bold',angle = 0, size=14),
+        axis.title = element_text(face = 'bold',size=16),
+        strip.background.x = element_blank(),
+        strip.text = element_text(face='bold',size=18)) + 
+  scale_color_viridis_d()
+```
+
+## December 2020 GETGV
+
+```{r}
+library(tidyverse); library(magrittr);
+iita_getgvs<-read.csv(here::here("output","GETGV_IITA_ModelADE_twostage_IITA_2020Dec03.csv"), stringsAsFactors = F)
+#traits<-c("DM","logFYLD","logTOPYLD","MCMDS")
+traits<-c("MCMDS","DM","PLTHT","BRNHT1","BRLVLS","HI",
+          "logDYLD", # <-- logDYLD now included. 
+          "logFYLD","logTOPYLD","logRTNO","TCHART","LCHROMO","ACHROMO","BCHROMO")
+
+ggcycletime<-readxl::read_xls(here::here("data","PedigreeGeneticGainCycleTime_aafolabi_01122020.xls"))
+# table(ggcycletime$Accession %in% iita_getgvs$GID)
+# FALSE 
+#   807 
+# Need germplasmName field from raw trial data to match GEBV and cycle time
+dbdata<-readRDS(here::here("output","IITA_ExptDesignsDetected_2020Dec03.rds"))
+iita_getgvs %<>% 
+  left_join(dbdata %>% 
+  select(-MaxNOHAV) %>% unnest(TrialData) %>% 
+  distinct(germplasmName,GID)) %>% 
+  group_by(GID) %>% 
+  slice(1) %>% 
+  ungroup()
+rm(dbdata)
+# table(ggcycletime$Accession %in% iita_getgvs$germplasmName)
+# FALSE  TRUE 
+#   193   614 
+
+# table(ggcycletime$Year_Accession)
+iita_getgvs %<>% 
+  left_join(.,ggcycletime %>% 
+              rename(germplasmName=Accession) %>% 
+              mutate(Year_Accession=as.numeric(Year_Accession)))
+iita_getgvs %<>% 
+  mutate(Year_Accession=case_when(grepl("2013_|TMS13",germplasmName)~2013,
+                                  grepl("TMS14",germplasmName)~2014,
+                                  grepl("TMS15",germplasmName)~2015,
+                                  grepl("TMS18",germplasmName)~2018,
+                                  !grepl("2013_|TMS13|TMS14|TMS15|TMS18",germplasmName)~Year_Accession)) 
+
+write.csv(iita_getgvs, file = here::here("output","GETGV_IITA_ModelADE_twostage_IITA_2020Dec03_withAccessionYear.csv"), row.names = F)
+
+```
+
+### What is yellow?
+```{r, fig.width=10, fig.height=5}
+iita_getgvs %>% 
+  ggplot(.,aes(x=TCHART,y=BCHROMO)) + geom_hex() +
+  theme_bw() + facet_wrap(~GeneticGroup, nrow=1) + theme(legend.position = 'none') + 
+  geom_vline(xintercept = 0.5) + geom_hline(yintercept = 5) + 
+  labs(title="Arbitrary suggested cut-offs for `white` rooted GETGVs", subtitle = "horiz. and vert. lines")
+```
+### Mean GETGV-by-Year
+```{r}
+mean_getgvs<-iita_getgvs %>% 
+  select(germplasmName,GeneticGroup,Year_Accession,any_of(traits)) %>% 
+  mutate(GeneticGroup=ifelse(Year_Accession>=2013,"GS","PreGS")) %>% 
+  pivot_longer(cols=any_of(traits),names_to = "Trait",values_to = "GETGV") %>% 
+  group_by(Trait,GeneticGroup,Year_Accession) %>% 
+  summarize(meanGETGV=mean(GETGV),
+            Nclones=n(),
+            stdErr=sd(GETGV)/sqrt(n()),
+            upperSE=meanGETGV+stdErr,
+            lowerSE=meanGETGV-stdErr) %>% 
+  ungroup()
+
+write.csv(mean_getgvs, file = here::here("output","meanGETGVbyYear_IITA_2020Dec03.csv"), row.names = F)
+```
+
+```{r}
+#traits<-c("logDYLD","logFYLD","MCMDS","DM","TCHART","BCHROMO")
+traits<-c("logDYLD","logFYLD","MCMDS","DM","TCHART","BCHROMO",
+          "PLTHT","BRNHT1","BRLVLS","HI","logTOPYLD","logRTNO","LCHROMO","ACHROMO")
+
+```
+
+### Plot all germplasm vs. year
+```{r, fig.height=10, fig.width=12}
+mean_getgvs %>% 
+  mutate(Trait=factor(Trait,traits)) %>% 
+  ggplot(.,aes(x=Year_Accession,y=meanGETGV,color=GeneticGroup,size=Nclones)) + 
+  geom_point(size=4) + geom_smooth(method=lm, se=TRUE) + 
+  geom_linerange(aes(ymax=upperSE,
+                     ymin=lowerSE), color='gray40', size=1) + 
+  facet_wrap(~Trait,scales='free_y', ncol=2) + 
+  theme_bw() +
+  theme(axis.text = element_text(face = 'bold',angle = 0, size=14),
+        axis.title = element_text(face = 'bold',size=16),
+        strip.background.x = element_blank(),
+        strip.text = element_text(face='bold',size=18)) + 
+  scale_color_viridis_d()
+```
+
+### Plot "white" germplasm vs. year
+
+```{r}
+mean_getgvs_whiteroots<-iita_getgvs %>% 
+  select(germplasmName,GeneticGroup,Year_Accession,any_of(traits)) %>% 
+  mutate(GeneticGroup=ifelse(Year_Accession>=2013,"GS","PreGS")) %>% 
+  filter(BCHROMO<=5, TCHART<=0.5) %>% 
+  pivot_longer(cols=any_of(traits),names_to = "Trait",values_to = "GETGV") %>% 
+  group_by(Trait,GeneticGroup,Year_Accession) %>% 
+  summarize(meanGETGV=mean(GETGV),
+            Nclones=n(),
+            stdErr=sd(GETGV)/sqrt(n()),
+            upperSE=meanGETGV+stdErr,
+            lowerSE=meanGETGV-stdErr) %>% 
+  ungroup()
+```
+```{r, fig.height=10, fig.width=12}
+mean_getgvs_whiteroots %>% 
+  mutate(Trait=factor(Trait,traits)) %>% 
+  ggplot(.,aes(x=Year_Accession,y=meanGETGV,color=GeneticGroup,size=Nclones)) + 
+  geom_point(size=4) + geom_smooth(method=lm, se=TRUE) + 
+  geom_linerange(aes(ymax=upperSE,
+                     ymin=lowerSE), color='gray40', size=1) + 
+  facet_wrap(~Trait,scales='free_y', ncol=2) + 
+  theme_bw() +
+  theme(axis.text = element_text(face = 'bold',angle = 0, size=14),
+        axis.title = element_text(face = 'bold',size=16),
+        strip.background.x = element_blank(),
+        strip.text = element_text(face='bold',size=18)) + 
+  scale_color_viridis_d()
+```
 

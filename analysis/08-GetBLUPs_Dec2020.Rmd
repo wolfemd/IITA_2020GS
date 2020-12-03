@@ -1,0 +1,209 @@
+---
+title: "Get BLUPs combining all trial data"
+author: "Marnin Wolfe"
+date: "2020-Dec-03"
+output: 
+  workflowr::wflow_html:
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = F, tidy = T)
+```
+
+# Previous step 
+
+1. [Prepare a training dataset](07-cleanTPdata_Dec2020.html): Freshly download all 2018-2020 trials. Combine rest of data and re-run "cleaning" and formatting pipeline.
+
+# Detect experimental designs
+
+```{r}
+rm(list=ls())
+library(tidyverse); library(magrittr);
+dbdata<-readRDS(here::here("output","IITA_CleanedTrialData_2020Dec03.rds"))
+source(here::here("code","gsFunctions.R"))
+dbdata<-nestByTrials(dbdata)
+```
+
+
+The next step is to check the experimental design of each trial. If you are absolutely certain of the usage of the design variables in your dataset, you might not need this step.
+
+Examples of reasons to do the step below:
+
+- Some trials appear to be complete blocked designs and the blockNumber is used instead of replicate, which is what most use.
+- Some complete block designs have nested, incomplete sub-blocks, others simply copy the "replicate" variable into the "blockNumber variable"
+- Some trials have only incomplete blocks _but_ the incomplete block info might be in the replicate _and/or_ the blockNumber column
+
+One reason it might be important to get this right is that the variance among complete blocks might not be the same among incomplete blocks. If we treat a mixture of complete and incomplete blocks as part of the same random-effect (replicated-within-trial), we assume they have the same variance.
+
+Also error variances might be heterogeneous among different trial-types (blocking scheme available) _and/or_ plot sizes (maxNOHAV).
+
+Detect designs
+```{r}
+dbdata<-detectExptDesigns(dbdata)
+```
+```{r}
+dbdata %>% 
+    count(programName,CompleteBlocks,IncompleteBlocks) %>% rmarkdown::paged_table()
+```
+## --> Save output file
+```{r}
+saveRDS(dbdata,file=here::here("output","IITA_ExptDesignsDetected_2020Dec03.rds"))
+```
+
+
+# Get multi-trial BLUPs from raw data (two-stage)
+
+Two-stage procedure: 
+
+1. Fit mixed-model to multi-trial dataset and extract BLUPs, de-regressed BLUPs and weights. Include two rounds of outlier removal.
+2. Genomic prediction with drg-BLUPs from multi-trial analysis as input. 
+
+**Work below represents Stage 1 of the Two-stage procedure.**
+
+
+## Set-up training datasets
+```{bash, eval=F}
+# activate multithread OpenBLAS for fast matrix algebra
+export OMP_NUM_THREADS=56
+```
+```{r}
+rm(list=ls())
+library(tidyverse); library(magrittr);
+#source(here::here("code","gsFunctions.R"))
+dbdata<-readRDS(here::here("output","IITA_ExptDesignsDetected_2020Dec03.rds"))
+traits<-c("MCMDS","DM","PLTHT","BRNHT1","BRLVLS","HI",
+          "logDYLD", # <-- logDYLD now included. 
+          "logFYLD","logTOPYLD","logRTNO","TCHART","LCHROMO","ACHROMO","BCHROMO")
+```
+**Nest by trait.** Need to restructure the data from per-trial by regrouping by trait. 
+```{r}
+dbdata %<>% 
+  dplyr::select(-MaxNOHAV) %>% 
+  unnest(TrialData) %>% 
+  dplyr::select(programName,locationName,studyYear,TrialType,studyName,
+         CompleteBlocks,IncompleteBlocks,
+         yearInLoc,trialInLocYr,repInTrial,blockInRep,observationUnitDbId,
+         germplasmName,FullSampleName,GID,all_of(traits),PropNOHAV) %>% 
+  mutate(IncompleteBlocks=ifelse(IncompleteBlocks==TRUE,"Yes","No"),
+         CompleteBlocks=ifelse(CompleteBlocks==TRUE,"Yes","No")) %>% 
+  pivot_longer(cols = all_of(traits), names_to = "Trait", values_to = "Value") %>% 
+  filter(!is.na(Value),
+         !is.na(GID)) %>% 
+  nest(MultiTrialTraitData=c(-Trait))
+```
+
+To fit the mixed-model I used last year, I am again resorting to `asreml`. I fit random effects for rep and block only where complete and incomplete blocks, respectively are indicated in the trial design variables. `sommer` should be able to fit the same model via the `at()` function, _but_ I am having trouble with it _and_ `sommer` is much slower even without a dense covariance (i.e. a kinship), compared to `lme4::lmer()` or `asreml()`. 
+
+```{r}
+dbdata %<>% 
+  mutate(fixedFormula=ifelse(Trait %in% c("logFYLD","logRTNO","logTOPYLD"),"Value ~ yearInLoc","Value ~ yearInLoc + PropNOHAV"),
+         randFormula=paste0("~idv(GID) + idv(trialInLocYr) + at(CompleteBlocks,'Yes'):repInTrial ",
+                            "+ at(IncompleteBlocks,'Yes'):blockInRep"))
+dbdata %>% 
+  mutate(Nobs=map_dbl(MultiTrialTraitData,nrow)) %>% 
+  select(Trait,Nobs,fixedFormula,randFormula) %>% 
+  rmarkdown::paged_table()
+```
+
+```{r}
+# randFormula<-paste0("~vs(GID) + vs(trialInLocYr) + vs(at(CompleteBlocks,'Yes'),repInTrial) + vs(at(IncompleteBlocks,'Yes'),blockInRep)")
+# library(sommer)
+# fit <- mmer(fixed = Value ~ 1 + yearInLoc,
+#             random = as.formula(randFormula),
+#             data=trainingdata,
+#             getPEV=TRUE)
+```
+
+## Function to run asreml
+
+Includes rounds of outlier removal and re-fitting.
+
+```{r, eval=F}
+fitASfunc<-function(fixedFormula,randFormula,MultiTrialTraitData,...){
+  # test arguments for function
+  # ----------------------
+  # MultiTrialTraitData<-dbdata$MultiTrialTraitData[[7]]
+  # #Trait<-dbdata$Trait[[3]]
+  # fixedFormula<-dbdata$fixedFormula[[7]]
+  # randFormula<-dbdata$randFormula[[7]]
+  # test<-fitASfunc(fixedFormula,randFormula,MultiTrialTraitData)
+  # ----------------------
+  require(asreml); 
+  fixedFormula<-as.formula(fixedFormula)
+  randFormula<-as.formula(randFormula)
+  # fit asreml 
+  out<-asreml(fixed = fixedFormula,
+              random = randFormula,
+              data = MultiTrialTraitData, 
+              maxiter = 40, workspace=800e6, na.method.X = "omit")
+  #### extract residuals - Round 1
+  
+  outliers1<-which(abs(scale(out$residuals))>3.3)
+  
+  if(length(outliers1)>0){
+    
+    x<-MultiTrialTraitData[-outliers1,]
+    # re-fit
+    out<-asreml(fixed = fixedFormula,
+                random = randFormula,
+                data = x, 
+                maxiter = 40, workspace=800e6, na.method.X = "omit")
+    #### extract residuals - Round 2
+    outliers2<-which(abs(scale(out$residuals))>3.3)
+    if(length(outliers2)>0){
+      #### remove outliers
+      x<-x[-outliers2,]
+      # final re-fit
+      out<-asreml(fixed = fixedFormula,
+                  random = randFormula,
+                  data = x, maxiter = 40,workspace=800e6, na.method.X = "omit")
+    }
+  }
+  if(length(outliers1)==0){ outliers1<-NULL }
+  if(length(outliers2)==0){ outliers2<-NULL }
+  
+  ll<-summary(out,all=T)$loglik
+  varcomp<-summary(out,all=T)$varcomp
+  Vg<-varcomp["GID!GID.var","component"]
+  Ve<-varcomp["R!variance","component"]
+  H2=Vg/(Vg+Ve)
+  blups<-summary(out,all=T)$coef.random %>%
+    as.data.frame %>%
+    rownames_to_column(var = "GID") %>%
+    dplyr::select(GID,solution,`std error`) %>%
+    filter(grepl("GID",GID)) %>%
+    rename(BLUP=solution) %>%
+    mutate(GID=gsub("GID_","",GID),
+           PEV=`std error`^2, # asreml specific
+           REL=1-(PEV/Vg), # Reliability
+           drgBLUP=BLUP/REL, # deregressed BLUP
+           WT=(1-H2)/((0.1 + (1-REL)/REL)*H2)) # weight for use in Stage 2
+  out<-tibble(loglik=ll,Vg,Ve,H2,
+              blups=list(blups),
+              varcomp=list(varcomp),
+              outliers1=list(outliers1),
+              outliers2=list(outliers2))
+  return(out) }
+```
+
+## Run asreml
+```{r, eval=F}
+library(furrr); options(mc.cores=14); plan(multiprocess)
+library(asreml)
+dbdata %<>% 
+  mutate(fitAS=future_pmap(.,fitASfunc))
+dbdata %<>%
+  select(-fixedFormula,-randFormula,-MultiTrialTraitData) %>%
+  unnest(fitAS)
+```
+
+## Output file
+```{r, eval=F}
+saveRDS(dbdata,file=here::here("output","iita_blupsForModelTraining_twostage_asreml_2020Dec03.rds"))
+```
+
+# Next step
+
+3. [Genomic prediction](09-GetGBLUPs_Dec2020.html): Predict **GETGV** specifically, for all selection candidates using all available data.

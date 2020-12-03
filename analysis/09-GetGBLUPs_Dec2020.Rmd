@@ -1,0 +1,88 @@
+---
+title: "Genomic predictions"
+author: "Marnin Wolfe"
+date: "2020-Dec-03"
+output: 
+  workflowr::wflow_html:
+editor_options:
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = F, tidy = T)
+```
+
+# Previous step
+
+2. [Get BLUPs combining all trial data](08-GetBLUPs_Dec2020.html): Detect experimental designs, Combine data from all trait-trials to get BLUPs for downstream genomic predictions. 
+
+# Current Step
+
+3. [Genomic prediction](09-GetGBLUPs_Dec2020.html): Predict **GETGV** specifically, for all selection candidates using all available data.
+
+# Prediction using two-stages
+
+## Set-up
+```{bash, eval=F}
+# activate multithread OpenBLAS 
+export OMP_NUM_THREADS=44
+```
+
+```{r, eval=F}
+library(tidyverse); library(magrittr); 
+source(here::here("code","gsFunctions.R"))
+
+A<-readRDS(file=here::here("output","Kinship_A_IITA_2020Sep16.rds"))
+D<-readRDS(file=here::here("output","Kinship_D_IITA_2020Sep16.rds"))
+AD<-readRDS(file=here::here("output","Kinship_AD_IITA_2020Sep16.rds"))
+
+# BLUPs from the 2 stage procedure
+# (stage 1 of 2) using the 2019 procedure
+blups<-readRDS(file=here::here("output","iita_blupsForModelTraining_twostage_asreml_2020Dec03.rds")) %>% 
+  dplyr::select(Trait,blups) %>% 
+  unnest(blups) %>% 
+  filter(GID %in% rownames(A)) %>% 
+  nest(TrainingData=-Trait)
+```
+
+## Prediction
+
+cbsurobbins (112 cores; 512GB) 
+
+Model ADE
+```{r, eval=F}
+options(future.globals.maxSize= 3000*1024^2)
+predModelADE<-runGenomicPredictions(blups,modelType="ADE",grms=list(A=A,D=D,AD=AD),gid="GID",ncores=14)
+saveRDS(predModelADE,file = here::here("output","genomicPredictions_ModelADE_twostage_IITA_2020Dec03.rds"))
+```
+
+## Write GEBVs
+```{r, eval=F}
+library(tidyverse); library(magrittr);
+predModelADE<-readRDS(file = here::here("output","genomicPredictions_ModelADE_twostage_IITA_2020Dec03.rds"))
+traits<-c("MCMDS","DM","PLTHT","BRNHT1","BRLVLS","HI",
+          "logDYLD", # <-- logDYLD now included. 
+          "logFYLD","logTOPYLD","logRTNO","TCHART","LCHROMO","ACHROMO","BCHROMO")
+```
+
+```{r, eval=F}
+## Format and write GETGV
+predModelADE %>% 
+  dplyr::select(Trait,genomicPredOut) %>% 
+  unnest(genomicPredOut) %>% 
+  select(-varcomps) %>% 
+  unnest(gblups) %>% 
+  select(Trait,GID,GETGV) %>% 
+  spread(Trait,GETGV) %>% 
+  mutate(GeneticGroup=NA,
+         GeneticGroup=ifelse(grepl("TMS18",GID,ignore.case = T),"TMS18",
+                             ifelse(grepl("TMS15",GID,ignore.case = T),"TMS15",
+                                    ifelse(grepl("TMS14",GID,ignore.case = T),"TMS14",
+                                           ifelse(grepl("TMS13|2013_",GID,ignore.case = T),"TMS13","GGetc"))))) %>% 
+  select(GeneticGroup,GID,any_of(traits)) %>% arrange(desc(GeneticGroup)) %>% 
+  write.csv(., file = here::here("output","GETGV_IITA_ModelADE_twostage_IITA_2020Dec03.csv"), row.names = F)
+```
+
+# Next step
+
+6. [Results](06-Results.html#rate_of_gain)
