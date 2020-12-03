@@ -1,10 +1,13 @@
 ---
 title: "IITA Genomic Selection 2020"
 site: workflowr::wflow_site
-date: "2020-September"
-output: workflowr::wflow_html
+date: "2020-December"
+author: "Marnin Wolfe"
+output:
+  workflowr::wflow_html:
+    toc: false
 editor_options:
-  chunk_output_type: inline
+  chunk_output_type: console
 ---
 
 # Summary
