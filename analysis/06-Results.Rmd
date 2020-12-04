@@ -273,13 +273,13 @@ model_rawgetgvs %<>%
 
 Basic summary of linear models
 
-```{r, rows.print=32}
+```{r}
 model_rawgetgvs %>% rmarkdown::paged_table()
 ```
 
 Compare slope estimates between "eras"
 
-```{r, rows.print=16}
+```{r}
 model_rawgetgvs %>% 
   select(Dataset,GeneticGroup,Trait,YearAccessionEst) %>% 
   spread(GeneticGroup,YearAccessionEst) %>% 
@@ -321,7 +321,7 @@ trainingdata_summary<-dbdata %>%
 
 Print a summary of the raw plots and resulting BLUPs that went into the GETGV .
 
-```{r, rows.print=8, cols.print=14}
+```{r}
 trainingdata_summary %>% rmarkdown::paged_table()
 ```
 
@@ -426,13 +426,13 @@ model_meangetgvs %<>%
 
 Basic summary of linear models
 
-```{r, rows.print=32}
+```{r}
 model_meangetgvs %>% rmarkdown::paged_table()
 ```
 
 Compare slope estimates between "eras"
 
-```{r, rows.print=16}
+```{r}
 model_meangetgvs %>% 
   select(Dataset,GeneticGroup,Trait,YearAccessionEst) %>% 
   spread(GeneticGroup,YearAccessionEst) %>% 
