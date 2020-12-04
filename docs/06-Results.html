@@ -28,6 +28,8 @@
 <script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
@@ -681,16 +683,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStree79b643061e984a9ea95e9093d55c8a3dbc7df5fbtargetblank79b6430a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/wolfemd/IITA_2020GS/tree/79b643061e984a9ea95e9093d55c8a3dbc7df5fb" target="_blank">79b6430</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStree698c5fbf294d1f0b9390a86374309619f5f197eftargetblank698c5fba"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/wolfemd/IITA_2020GS/tree/698c5fbf294d1f0b9390a86374309619f5f197ef" target="_blank">698c5fb</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStree79b643061e984a9ea95e9093d55c8a3dbc7df5fbtargetblank79b6430a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomwolfemdIITA2020GStree698c5fbf294d1f0b9390a86374309619f5f197eftargetblank698c5fba" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/wolfemd/IITA_2020GS/tree/79b643061e984a9ea95e9093d55c8a3dbc7df5fb" target="_blank">79b6430</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/wolfemd/IITA_2020GS/tree/698c5fbf294d1f0b9390a86374309619f5f197ef" target="_blank">698c5fb</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -723,15 +725,11 @@ Untracked files:
     Untracked:  output/genomicPredictions_ModelADE_twostage_IITA_2020Dec03.rds
     Untracked:  output/genomicPredictions_ModelA_threestage_IITA_2020Sep21.rds
     Untracked:  output/iita_blupsForModelTraining_twostage_asreml_2020Dec03.rds
-    Untracked:  output/model_rawgetgvs_vs_year.csv
-    Untracked:  output/training_data_summary.csv
     Untracked:  workflowr_log.R
 
 Unstaged changes:
     Modified:   output/IITA_ExptDesignsDetected.rds
     Modified:   output/iita_blupsForModelTraining.rds
-    Modified:   output/maxNOHAV_byStudy.csv
-    Modified:   output/meanGETGVbyYear_IITA_2020Dec03.csv
 
 </code></pre>
 <p>
@@ -770,6 +768,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/698c5fbf294d1f0b9390a86374309619f5f197ef/analysis/06-Results.Rmd" target="_blank">698c5fb</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-12-04
+</td>
+<td>
+Making the tables not suck.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/wolfemd/IITA_2020GS/4ac9fe338107729bfe9f4d1a7f5a8f8794a17717/docs/06-Results.html" target="_blank">4ac9fe3</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-12-04
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1300,7 +1332,7 @@ wolfemd
 <span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(iita_getgvs, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;GETGV_IITA_ModelADE_twostage_IITA_2020Dec03_withAccessionYear.csv&quot;</span>), </span>
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> F)</span></code></pre></div>
-<p>Key output is a file <code>output/GETGV_IITA_ModelADE_twostage_IITA_2020Dec03_withAccessionYear.csv</code> for use in downstream analyses.</p>
+<p>Key output is a file <strong><code>output/GETGV_IITA_ModelADE_twostage_IITA_2020Dec03_withAccessionYear.csv</code></strong> for use in downstream analyses.</p>
 </div>
 <div id="what-is-yellow" class="section level2">
 <h2>What is yellow?</h2>
@@ -1325,6 +1357,43 @@ wolfemd
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Histogram of GETGV for chromometer B-value&quot;</span>,</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Cut-offs for `white` roots == 1&quot;</span>)</span></code></pre></div>
 <p><img src="figure/06-Results.Rmd/unnamed-chunk-12-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-12-1">
+Past versions of unnamed-chunk-12-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-12-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/4ac9fe338107729bfe9f4d1a7f5a8f8794a17717/docs/figure/06-Results.Rmd/unnamed-chunk-12-1.png" target="_blank">4ac9fe3</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-12-04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="subset-years" class="section level2">
 <h2>Subset years</h2>
@@ -1362,421 +1431,20 @@ wolfemd
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    estimate))) <span class="sc">%&gt;%</span> <span class="fu">unnest</span>(out) <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">InterceptEst =</span> <span class="st">`</span><span class="at">(Intercept)</span><span class="st">`</span>, <span class="at">YearAccessionEst =</span> Year_Accession) <span class="sc">%&gt;%</span> </span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Dataset, GeneticGroup, Trait, r.squared, nobs, InterceptEst, YearAccessionEst)</span></code></pre></div>
 <p>Basic summary of linear models</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>model_rawgetgvs <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Dataset</th>
-<th align="left">GeneticGroup</th>
-<th align="left">Trait</th>
-<th align="right">r.squared</th>
-<th align="right">nobs</th>
-<th align="right">InterceptEst</th>
-<th align="right">YearAccessionEst</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">logDYLD</td>
-<td align="right">0.0597436</td>
-<td align="right">7800</td>
-<td align="right">-32.8435514</td>
-<td align="right">0.0163021</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">logFYLD</td>
-<td align="right">0.0397470</td>
-<td align="right">7800</td>
-<td align="right">-34.8372928</td>
-<td align="right">0.0172871</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">MCMDS</td>
-<td align="right">0.0286617</td>
-<td align="right">7800</td>
-<td align="right">72.9953447</td>
-<td align="right">-0.0362284</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">DM</td>
-<td align="right">0.0211352</td>
-<td align="right">7800</td>
-<td align="right">-369.5705222</td>
-<td align="right">0.1834374</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">BCHROMO</td>
-<td align="right">0.0101789</td>
-<td align="right">7800</td>
-<td align="right">476.2108691</td>
-<td align="right">-0.2364140</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">BRLVLS</td>
-<td align="right">0.0031576</td>
-<td align="right">7800</td>
-<td align="right">17.9085113</td>
-<td align="right">-0.0088801</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">HI</td>
-<td align="right">0.0183721</td>
-<td align="right">7800</td>
-<td align="right">-5.9819828</td>
-<td align="right">0.0029696</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.0067462</td>
-<td align="right">7800</td>
-<td align="right">-11.6739546</td>
-<td align="right">0.0057907</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">logDYLD</td>
-<td align="right">0.0012828</td>
-<td align="right">449</td>
-<td align="right">-1.4315074</td>
-<td align="right">0.0007455</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">logFYLD</td>
-<td align="right">0.0260293</td>
-<td align="right">449</td>
-<td align="right">-8.3406627</td>
-<td align="right">0.0042546</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">MCMDS</td>
-<td align="right">0.1126616</td>
-<td align="right">449</td>
-<td align="right">46.7030870</td>
-<td align="right">-0.0234186</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">DM</td>
-<td align="right">0.0154354</td>
-<td align="right">449</td>
-<td align="right">108.7297796</td>
-<td align="right">-0.0545255</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">BCHROMO</td>
-<td align="right">0.0162609</td>
-<td align="right">449</td>
-<td align="right">-210.7971127</td>
-<td align="right">0.1052991</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">BRLVLS</td>
-<td align="right">0.0046733</td>
-<td align="right">449</td>
-<td align="right">-5.6464989</td>
-<td align="right">0.0027723</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">HI</td>
-<td align="right">0.0068318</td>
-<td align="right">449</td>
-<td align="right">-1.1127692</td>
-<td align="right">0.0005626</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.0162925</td>
-<td align="right">449</td>
-<td align="right">-5.6193029</td>
-<td align="right">0.0028573</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">logDYLD</td>
-<td align="right">0.0588583</td>
-<td align="right">5568</td>
-<td align="right">-31.6705409</td>
-<td align="right">0.0157311</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">logFYLD</td>
-<td align="right">0.0531070</td>
-<td align="right">5568</td>
-<td align="right">-40.9607249</td>
-<td align="right">0.0203292</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">MCMDS</td>
-<td align="right">0.0394175</td>
-<td align="right">5568</td>
-<td align="right">85.9181834</td>
-<td align="right">-0.0426380</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">DM</td>
-<td align="right">0.0200139</td>
-<td align="right">5568</td>
-<td align="right">-335.9238243</td>
-<td align="right">0.1670061</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">BCHROMO</td>
-<td align="right">0.0010279</td>
-<td align="right">5568</td>
-<td align="right">44.6226969</td>
-<td align="right">-0.0235684</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">BRLVLS</td>
-<td align="right">0.0022178</td>
-<td align="right">5568</td>
-<td align="right">-13.5887498</td>
-<td align="right">0.0067111</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">HI</td>
-<td align="right">0.0220050</td>
-<td align="right">5568</td>
-<td align="right">-6.3856958</td>
-<td align="right">0.0031721</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.0169639</td>
-<td align="right">5568</td>
-<td align="right">-18.5792266</td>
-<td align="right">0.0092126</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">logDYLD</td>
-<td align="right">0.0048734</td>
-<td align="right">346</td>
-<td align="right">-2.4268634</td>
-<td align="right">0.0012559</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">logFYLD</td>
-<td align="right">0.0296757</td>
-<td align="right">346</td>
-<td align="right">-8.2106463</td>
-<td align="right">0.0041973</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">MCMDS</td>
-<td align="right">0.1264779</td>
-<td align="right">346</td>
-<td align="right">45.9661526</td>
-<td align="right">-0.0230526</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">DM</td>
-<td align="right">0.0042269</td>
-<td align="right">346</td>
-<td align="right">51.5416200</td>
-<td align="right">-0.0256549</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">BCHROMO</td>
-<td align="right">0.0004246</td>
-<td align="right">346</td>
-<td align="right">-11.4927840</td>
-<td align="right">0.0042290</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">BRLVLS</td>
-<td align="right">0.0002161</td>
-<td align="right">346</td>
-<td align="right">0.8557676</td>
-<td align="right">-0.0005100</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">HI</td>
-<td align="right">0.0105153</td>
-<td align="right">346</td>
-<td align="right">-1.2969781</td>
-<td align="right">0.0006570</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.0146826</td>
-<td align="right">346</td>
-<td align="right">-4.9844269</td>
-<td align="right">0.0025395</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>model_rawgetgvs <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Dataset"],"name":[1],"type":["chr"],"align":["left"]},{"label":["GeneticGroup"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Trait"],"name":[3],"type":["chr"],"align":["left"]},{"label":["r.squared"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["nobs"],"name":[5],"type":["int"],"align":["right"]},{"label":["InterceptEst"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["YearAccessionEst"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"AllGermplasm","2":"GS","3":"logDYLD","4":"0.0597436075","5":"7800","6":"-32.8435514","7":"0.0163021282"},{"1":"AllGermplasm","2":"GS","3":"logFYLD","4":"0.0397470279","5":"7800","6":"-34.8372928","7":"0.0172870776"},{"1":"AllGermplasm","2":"GS","3":"MCMDS","4":"0.0286617299","5":"7800","6":"72.9953447","7":"-0.0362283848"},{"1":"AllGermplasm","2":"GS","3":"DM","4":"0.0211351821","5":"7800","6":"-369.5705222","7":"0.1834373805"},{"1":"AllGermplasm","2":"GS","3":"BCHROMO","4":"0.0101788744","5":"7800","6":"476.2108691","7":"-0.2364140079"},{"1":"AllGermplasm","2":"GS","3":"BRLVLS","4":"0.0031576027","5":"7800","6":"17.9085113","7":"-0.0088801011"},{"1":"AllGermplasm","2":"GS","3":"HI","4":"0.0183721247","5":"7800","6":"-5.9819828","7":"0.0029695800"},{"1":"AllGermplasm","2":"GS","3":"logTOPYLD","4":"0.0067462491","5":"7800","6":"-11.6739546","7":"0.0057906568"},{"1":"AllGermplasm","2":"PreGS","3":"logDYLD","4":"0.0012828449","5":"449","6":"-1.4315074","7":"0.0007454866"},{"1":"AllGermplasm","2":"PreGS","3":"logFYLD","4":"0.0260292839","5":"449","6":"-8.3406627","7":"0.0042545909"},{"1":"AllGermplasm","2":"PreGS","3":"MCMDS","4":"0.1126615664","5":"449","6":"46.7030870","7":"-0.0234185573"},{"1":"AllGermplasm","2":"PreGS","3":"DM","4":"0.0154353578","5":"449","6":"108.7297796","7":"-0.0545255180"},{"1":"AllGermplasm","2":"PreGS","3":"BCHROMO","4":"0.0162609158","5":"449","6":"-210.7971127","7":"0.1052990829"},{"1":"AllGermplasm","2":"PreGS","3":"BRLVLS","4":"0.0046732521","5":"449","6":"-5.6464989","7":"0.0027723099"},{"1":"AllGermplasm","2":"PreGS","3":"HI","4":"0.0068318230","5":"449","6":"-1.1127692","7":"0.0005625920"},{"1":"AllGermplasm","2":"PreGS","3":"logTOPYLD","4":"0.0162925022","5":"449","6":"-5.6193029","7":"0.0028572571"},{"1":"WhiteRootClones","2":"GS","3":"logDYLD","4":"0.0588583174","5":"5568","6":"-31.6705409","7":"0.0157310781"},{"1":"WhiteRootClones","2":"GS","3":"logFYLD","4":"0.0531070368","5":"5568","6":"-40.9607249","7":"0.0203292287"},{"1":"WhiteRootClones","2":"GS","3":"MCMDS","4":"0.0394174647","5":"5568","6":"85.9181834","7":"-0.0426380401"},{"1":"WhiteRootClones","2":"GS","3":"DM","4":"0.0200139377","5":"5568","6":"-335.9238243","7":"0.1670060973"},{"1":"WhiteRootClones","2":"GS","3":"BCHROMO","4":"0.0010278627","5":"5568","6":"44.6226969","7":"-0.0235684363"},{"1":"WhiteRootClones","2":"GS","3":"BRLVLS","4":"0.0022178199","5":"5568","6":"-13.5887498","7":"0.0067110872"},{"1":"WhiteRootClones","2":"GS","3":"HI","4":"0.0220049593","5":"5568","6":"-6.3856958","7":"0.0031721146"},{"1":"WhiteRootClones","2":"GS","3":"logTOPYLD","4":"0.0169638654","5":"5568","6":"-18.5792266","7":"0.0092126256"},{"1":"WhiteRootClones","2":"PreGS","3":"logDYLD","4":"0.0048734176","5":"346","6":"-2.4268634","7":"0.0012558511"},{"1":"WhiteRootClones","2":"PreGS","3":"logFYLD","4":"0.0296757098","5":"346","6":"-8.2106463","7":"0.0041972917"},{"1":"WhiteRootClones","2":"PreGS","3":"MCMDS","4":"0.1264778781","5":"346","6":"45.9661526","7":"-0.0230525728"},{"1":"WhiteRootClones","2":"PreGS","3":"DM","4":"0.0042268845","5":"346","6":"51.5416200","7":"-0.0256549155"},{"1":"WhiteRootClones","2":"PreGS","3":"BCHROMO","4":"0.0004246238","5":"346","6":"-11.4927840","7":"0.0042290422"},{"1":"WhiteRootClones","2":"PreGS","3":"BRLVLS","4":"0.0002161231","5":"346","6":"0.8557676","7":"-0.0005100311"},{"1":"WhiteRootClones","2":"PreGS","3":"HI","4":"0.0105153099","5":"346","6":"-1.2969781","7":"0.0006569989"},{"1":"WhiteRootClones","2":"PreGS","3":"logTOPYLD","4":"0.0146826285","5":"346","6":"-4.9844269","7":"0.0025394758"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[32],"max":[32]},"pages":{}}}
+  </script>
+</div>
 <p>Compare slope estimates between “eras”</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model_rawgetgvs <span class="sc">%&gt;%</span> <span class="fu">select</span>(Dataset, GeneticGroup, Trait, YearAccessionEst) <span class="sc">%&gt;%</span> <span class="fu">spread</span>(GeneticGroup, </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    YearAccessionEst) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Dataset</th>
-<th align="left">Trait</th>
-<th align="right">GS</th>
-<th align="right">PreGS</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">BCHROMO</td>
-<td align="right">-0.2364140</td>
-<td align="right">0.1052991</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">BRLVLS</td>
-<td align="right">-0.0088801</td>
-<td align="right">0.0027723</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">DM</td>
-<td align="right">0.1834374</td>
-<td align="right">-0.0545255</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">HI</td>
-<td align="right">0.0029696</td>
-<td align="right">0.0005626</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">logDYLD</td>
-<td align="right">0.0163021</td>
-<td align="right">0.0007455</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">logFYLD</td>
-<td align="right">0.0172871</td>
-<td align="right">0.0042546</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.0057907</td>
-<td align="right">0.0028573</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">MCMDS</td>
-<td align="right">-0.0362284</td>
-<td align="right">-0.0234186</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">BCHROMO</td>
-<td align="right">-0.0235684</td>
-<td align="right">0.0042290</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">BRLVLS</td>
-<td align="right">0.0067111</td>
-<td align="right">-0.0005100</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">DM</td>
-<td align="right">0.1670061</td>
-<td align="right">-0.0256549</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">HI</td>
-<td align="right">0.0031721</td>
-<td align="right">0.0006570</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">logDYLD</td>
-<td align="right">0.0157311</td>
-<td align="right">0.0012559</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">logFYLD</td>
-<td align="right">0.0203292</td>
-<td align="right">0.0041973</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.0092126</td>
-<td align="right">0.0025395</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">MCMDS</td>
-<td align="right">-0.0426380</td>
-<td align="right">-0.0230526</td>
-</tr>
-</tbody>
-</table>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    YearAccessionEst) <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Dataset"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Trait"],"name":[2],"type":["chr"],"align":["left"]},{"label":["GS"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["PreGS"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"AllGermplasm","2":"BCHROMO","3":"-0.236414008","4":"0.1052990829"},{"1":"AllGermplasm","2":"BRLVLS","3":"-0.008880101","4":"0.0027723099"},{"1":"AllGermplasm","2":"DM","3":"0.183437381","4":"-0.0545255180"},{"1":"AllGermplasm","2":"HI","3":"0.002969580","4":"0.0005625920"},{"1":"AllGermplasm","2":"logDYLD","3":"0.016302128","4":"0.0007454866"},{"1":"AllGermplasm","2":"logFYLD","3":"0.017287078","4":"0.0042545909"},{"1":"AllGermplasm","2":"logTOPYLD","3":"0.005790657","4":"0.0028572571"},{"1":"AllGermplasm","2":"MCMDS","3":"-0.036228385","4":"-0.0234185573"},{"1":"WhiteRootClones","2":"BCHROMO","3":"-0.023568436","4":"0.0042290422"},{"1":"WhiteRootClones","2":"BRLVLS","3":"0.006711087","4":"-0.0005100311"},{"1":"WhiteRootClones","2":"DM","3":"0.167006097","4":"-0.0256549155"},{"1":"WhiteRootClones","2":"HI","3":"0.003172115","4":"0.0006569989"},{"1":"WhiteRootClones","2":"logDYLD","3":"0.015731078","4":"0.0012558511"},{"1":"WhiteRootClones","2":"logFYLD","3":"0.020329229","4":"0.0041972917"},{"1":"WhiteRootClones","2":"logTOPYLD","3":"0.009212626","4":"0.0025394758"},{"1":"WhiteRootClones","2":"MCMDS","3":"-0.042638040","4":"-0.0230525728"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[16],"max":[16]},"pages":{}}}
+  </script>
+</div>
 <p>Add some summary of the raw data that went into the GETGV analyzed above.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize the raw plot data</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>dbdata <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;IITA_ExptDesignsDetected_2020Dec03.rds&quot;</span>)) <span class="sc">%&gt;%</span> </span>
@@ -1798,175 +1466,14 @@ wolfemd
 <span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Trait <span class="sc">%in%</span> traits) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">NclonesWithBLUPs =</span> <span class="fu">map_dbl</span>(blups, nrow)) <span class="sc">%&gt;%</span> </span>
 <span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Trait, NclonesWithBLUPs, Vg, Ve, H2))</span></code></pre></div>
 <p>Print a summary of the raw plots and resulting BLUPs that went into the GETGV .</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>trainingdata_summary <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<table style="width:100%;">
-<colgroup>
-<col width="5%" />
-<col width="6%" />
-<col width="11%" />
-<col width="10%" />
-<col width="6%" />
-<col width="7%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="9%" />
-<col width="6%" />
-<col width="6%" />
-<col width="5%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">Trait</th>
-<th align="right">NplotsTotal</th>
-<th align="right">Nplots_CrossingBlock</th>
-<th align="right">Nplots_GeneticGain</th>
-<th align="right">Nplots_CET</th>
-<th align="right">Nplots_ExpCET</th>
-<th align="right">Nplots_PYT</th>
-<th align="right">Nplots_AYT</th>
-<th align="right">Nplots_UYT</th>
-<th align="right">Nplots_NCRP</th>
-<th align="right">NclonesWithBLUPs</th>
-<th align="right">Vg</th>
-<th align="right">Ve</th>
-<th align="right">H2</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">logDYLD</td>
-<td align="right">137340</td>
-<td align="right">580</td>
-<td align="right">24951</td>
-<td align="right">20345</td>
-<td align="right">799</td>
-<td align="right">26599</td>
-<td align="right">26943</td>
-<td align="right">35510</td>
-<td align="right">1613</td>
-<td align="right">26173</td>
-<td align="right">0.1561461</td>
-<td align="right">0.2208620</td>
-<td align="right">0.4141718</td>
-</tr>
-<tr class="even">
-<td align="left">logFYLD</td>
-<td align="right">191052</td>
-<td align="right">830</td>
-<td align="right">41182</td>
-<td align="right">29673</td>
-<td align="right">1092</td>
-<td align="right">31783</td>
-<td align="right">35446</td>
-<td align="right">49013</td>
-<td align="right">2033</td>
-<td align="right">35224</td>
-<td align="right">0.3704443</td>
-<td align="right">0.2922750</td>
-<td align="right">0.5589762</td>
-</tr>
-<tr class="odd">
-<td align="left">MCMDS</td>
-<td align="right">199457</td>
-<td align="right">1246</td>
-<td align="right">11830</td>
-<td align="right">41441</td>
-<td align="right">1216</td>
-<td align="right">37252</td>
-<td align="right">40377</td>
-<td align="right">51985</td>
-<td align="right">2163</td>
-<td align="right">36292</td>
-<td align="right">0.6562184</td>
-<td align="right">0.1518826</td>
-<td align="right">0.8120500</td>
-</tr>
-<tr class="even">
-<td align="left">DM</td>
-<td align="right">144694</td>
-<td align="right">593</td>
-<td align="right">25879</td>
-<td align="right">21044</td>
-<td align="right">800</td>
-<td align="right">28190</td>
-<td align="right">28196</td>
-<td align="right">38086</td>
-<td align="right">1618</td>
-<td align="right">26487</td>
-<td align="right">9.9466254</td>
-<td align="right">13.9393974</td>
-<td align="right">0.4164203</td>
-</tr>
-<tr class="odd">
-<td align="left">HI</td>
-<td align="right">155652</td>
-<td align="right">825</td>
-<td align="right">34146</td>
-<td align="right">24210</td>
-<td align="right">1092</td>
-<td align="right">27752</td>
-<td align="right">28606</td>
-<td align="right">37394</td>
-<td align="right">1627</td>
-<td align="right">29237</td>
-<td align="right">0.0089967</td>
-<td align="right">0.0088168</td>
-<td align="right">0.5050513</td>
-</tr>
-<tr class="even">
-<td align="left">logTOPYLD</td>
-<td align="right">158719</td>
-<td align="right">851</td>
-<td align="right">34489</td>
-<td align="right">25058</td>
-<td align="right">1109</td>
-<td align="right">28027</td>
-<td align="right">29108</td>
-<td align="right">38448</td>
-<td align="right">1629</td>
-<td align="right">29899</td>
-<td align="right">0.1788046</td>
-<td align="right">0.2290638</td>
-<td align="right">0.4383879</td>
-</tr>
-<tr class="odd">
-<td align="left">BRLVLS</td>
-<td align="right">18551</td>
-<td align="right">275</td>
-<td align="right">1019</td>
-<td align="right">5358</td>
-<td align="right">438</td>
-<td align="right">4444</td>
-<td align="right">3260</td>
-<td align="right">3485</td>
-<td align="right">272</td>
-<td align="right">5990</td>
-<td align="right">0.4297302</td>
-<td align="right">0.5008366</td>
-<td align="right">0.4617941</td>
-</tr>
-<tr class="even">
-<td align="left">BCHROMO</td>
-<td align="right">33611</td>
-<td align="right">242</td>
-<td align="right">3046</td>
-<td align="right">8385</td>
-<td align="right">1308</td>
-<td align="right">8753</td>
-<td align="right">5527</td>
-<td align="right">4219</td>
-<td align="right">566</td>
-<td align="right">8549</td>
-<td align="right">52.0688764</td>
-<td align="right">1.5419750</td>
-<td align="right">0.9712376</td>
-</tr>
-</tbody>
-</table>
-<p>Write model summaries to disk: <code>output/model_rawgetgvs_vs_year.csv</code>.</p>
-<p>Write training data summary to disk: <code>output/training_data_summary.csv</code></p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>trainingdata_summary <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Trait"],"name":[1],"type":["chr"],"align":["left"]},{"label":["NplotsTotal"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Nplots_CrossingBlock"],"name":[3],"type":["int"],"align":["right"]},{"label":["Nplots_GeneticGain"],"name":[4],"type":["int"],"align":["right"]},{"label":["Nplots_CET"],"name":[5],"type":["int"],"align":["right"]},{"label":["Nplots_ExpCET"],"name":[6],"type":["int"],"align":["right"]},{"label":["Nplots_PYT"],"name":[7],"type":["int"],"align":["right"]},{"label":["Nplots_AYT"],"name":[8],"type":["int"],"align":["right"]},{"label":["Nplots_UYT"],"name":[9],"type":["int"],"align":["right"]},{"label":["Nplots_NCRP"],"name":[10],"type":["int"],"align":["right"]},{"label":["NclonesWithBLUPs"],"name":[11],"type":["dbl"],"align":["right"]},{"label":["Vg"],"name":[12],"type":["dbl"],"align":["right"]},{"label":["Ve"],"name":[13],"type":["dbl"],"align":["right"]},{"label":["H2"],"name":[14],"type":["dbl"],"align":["right"]}],"data":[{"1":"logDYLD","2":"137340","3":"580","4":"24951","5":"20345","6":"799","7":"26599","8":"26943","9":"35510","10":"1613","11":"26173","12":"0.156146097","13":"0.22086197","14":"0.4141718"},{"1":"logFYLD","2":"191052","3":"830","4":"41182","5":"29673","6":"1092","7":"31783","8":"35446","9":"49013","10":"2033","11":"35224","12":"0.370444302","13":"0.29227498","14":"0.5589762"},{"1":"MCMDS","2":"199457","3":"1246","4":"11830","5":"41441","6":"1216","7":"37252","8":"40377","9":"51985","10":"2163","11":"36292","12":"0.656218417","13":"0.15188257","14":"0.8120500"},{"1":"DM","2":"144694","3":"593","4":"25879","5":"21044","6":"800","7":"28190","8":"28196","9":"38086","10":"1618","11":"26487","12":"9.946625382","13":"13.93939740","14":"0.4164203"},{"1":"HI","2":"155652","3":"825","4":"34146","5":"24210","6":"1092","7":"27752","8":"28606","9":"37394","10":"1627","11":"29237","12":"0.008996721","13":"0.00881676","14":"0.5050513"},{"1":"logTOPYLD","2":"158719","3":"851","4":"34489","5":"25058","6":"1109","7":"28027","8":"29108","9":"38448","10":"1629","11":"29899","12":"0.178804577","13":"0.22906383","14":"0.4383879"},{"1":"BRLVLS","2":"18551","3":"275","4":"1019","5":"5358","6":"438","7":"4444","8":"3260","9":"3485","10":"272","11":"5990","12":"0.429730238","13":"0.50083657","14":"0.4617941"},{"1":"BCHROMO","2":"33611","3":"242","4":"3046","5":"8385","6":"1308","7":"8753","8":"5527","9":"4219","10":"566","11":"8549","12":"52.068876415","13":"1.54197496","14":"0.9712376"}],"options":{"columns":{"min":{},"max":[14]},"rows":{"min":[8],"max":[8]},"pages":{}}}
+  </script>
+</div>
+<p>Write model summaries to disk: <strong><code>output/model_rawgetgvs_vs_year.csv</code></strong>.</p>
+<p>Write training data summary to disk: <strong><code>output/training_data_summary.csv</code></strong></p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(trainingdata_summary, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;training_data_summary.csv&quot;</span>), </span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> F)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(model_rawgetgvs, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;model_rawgetgvs_vs_year.csv&quot;</span>), </span>
@@ -1983,6 +1490,43 @@ wolfemd
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Regression of raw GETGV vs. Year_Accession by &#39;era&#39; [GS vs. PreGS]&quot;</span>, </span>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="st">&quot;All Germplasm&quot;</span>)</span></code></pre></div>
 <p><img src="figure/06-Results.Rmd/unnamed-chunk-23-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-23-1">
+Past versions of unnamed-chunk-23-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-23-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/4ac9fe338107729bfe9f4d1a7f5a8f8794a17717/docs/figure/06-Results.Rmd/unnamed-chunk-23-1.png" target="_blank">4ac9fe3</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-12-04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>iita_getgvs <span class="sc">%&gt;%</span> <span class="fu">select</span>(GeneticGroup, GID, Year_Accession, <span class="fu">all_of</span>(traits)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(BCHROMO <span class="sc">&lt;=</span> </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">all_of</span>(traits), <span class="at">names_to =</span> <span class="st">&quot;Trait&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;GETGV&quot;</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Trait =</span> <span class="fu">factor</span>(Trait, traits)) <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> Year_Accession, <span class="at">y =</span> GETGV, </span>
@@ -2015,6 +1559,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/4ac9fe338107729bfe9f4d1a7f5a8f8794a17717/docs/figure/06-Results.Rmd/unnamed-chunk-24-1.png" target="_blank">4ac9fe3</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-12-04
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/wolfemd/IITA_2020GS/blob/7bae38d5844283cc815df0153bb89605e9ab8eb0/docs/figure/06-Results.Rmd/unnamed-chunk-24-1.png" target="_blank">7bae38d</a>
@@ -2068,422 +1623,21 @@ wolfemd
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">YearAccessionEst =</span> Year_Accession) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Dataset, GeneticGroup, Trait, r.squared, </span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    nobs, InterceptEst, YearAccessionEst)</span></code></pre></div>
 <p>Basic summary of linear models</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>model_meangetgvs <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Dataset</th>
-<th align="left">GeneticGroup</th>
-<th align="left">Trait</th>
-<th align="right">r.squared</th>
-<th align="right">nobs</th>
-<th align="right">InterceptEst</th>
-<th align="right">YearAccessionEst</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">BCHROMO</td>
-<td align="right">0.8532004</td>
-<td align="right">4</td>
-<td align="right">471.9497093</td>
-<td align="right">-0.2343083</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">BCHROMO</td>
-<td align="right">0.0429321</td>
-<td align="right">28</td>
-<td align="right">-113.5633194</td>
-<td align="right">0.0566350</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">BRLVLS</td>
-<td align="right">0.1280562</td>
-<td align="right">4</td>
-<td align="right">18.1115255</td>
-<td align="right">-0.0089737</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">BRLVLS</td>
-<td align="right">0.0312191</td>
-<td align="right">28</td>
-<td align="right">-3.9254210</td>
-<td align="right">0.0019110</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">DM</td>
-<td align="right">0.8480500</td>
-<td align="right">4</td>
-<td align="right">-367.8607283</td>
-<td align="right">0.1825682</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">DM</td>
-<td align="right">0.0026520</td>
-<td align="right">28</td>
-<td align="right">12.8247623</td>
-<td align="right">-0.0064715</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">HI</td>
-<td align="right">0.9169543</td>
-<td align="right">4</td>
-<td align="right">-5.9505790</td>
-<td align="right">0.0029538</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">HI</td>
-<td align="right">0.0339995</td>
-<td align="right">28</td>
-<td align="right">-0.6821122</td>
-<td align="right">0.0003487</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">logDYLD</td>
-<td align="right">0.9673037</td>
-<td align="right">4</td>
-<td align="right">-32.7297867</td>
-<td align="right">0.0162452</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">logDYLD</td>
-<td align="right">0.0746435</td>
-<td align="right">28</td>
-<td align="right">-3.9716902</td>
-<td align="right">0.0020204</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">logFYLD</td>
-<td align="right">0.7654132</td>
-<td align="right">4</td>
-<td align="right">-34.9962751</td>
-<td align="right">0.0173632</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">logFYLD</td>
-<td align="right">0.2111658</td>
-<td align="right">28</td>
-<td align="right">-10.0364112</td>
-<td align="right">0.0051028</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.4333553</td>
-<td align="right">4</td>
-<td align="right">-11.9159076</td>
-<td align="right">0.0059094</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.1574272</td>
-<td align="right">28</td>
-<td align="right">-6.9318689</td>
-<td align="right">0.0035059</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">GS</td>
-<td align="left">MCMDS</td>
-<td align="right">0.7196770</td>
-<td align="right">4</td>
-<td align="right">72.2250873</td>
-<td align="right">-0.0358507</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">PreGS</td>
-<td align="left">MCMDS</td>
-<td align="right">0.4968339</td>
-<td align="right">28</td>
-<td align="right">48.0679272</td>
-<td align="right">-0.0240747</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">BCHROMO</td>
-<td align="right">0.0579712</td>
-<td align="right">4</td>
-<td align="right">39.1769308</td>
-<td align="right">-0.0208431</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">BCHROMO</td>
-<td align="right">0.0573489</td>
-<td align="right">27</td>
-<td align="right">37.3227110</td>
-<td align="right">-0.0201925</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">BRLVLS</td>
-<td align="right">0.0484472</td>
-<td align="right">4</td>
-<td align="right">-15.7816767</td>
-<td align="right">0.0078091</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">BRLVLS</td>
-<td align="right">0.0096716</td>
-<td align="right">27</td>
-<td align="right">-2.4146129</td>
-<td align="right">0.0011384</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">DM</td>
-<td align="right">0.8157617</td>
-<td align="right">4</td>
-<td align="right">-334.7466632</td>
-<td align="right">0.1664016</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">DM</td>
-<td align="right">0.0020053</td>
-<td align="right">27</td>
-<td align="right">-14.6935281</td>
-<td align="right">0.0075602</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">HI</td>
-<td align="right">0.8523860</td>
-<td align="right">4</td>
-<td align="right">-6.3476943</td>
-<td align="right">0.0031529</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">HI</td>
-<td align="right">0.0645647</td>
-<td align="right">27</td>
-<td align="right">-1.0889273</td>
-<td align="right">0.0005537</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">logDYLD</td>
-<td align="right">0.9128293</td>
-<td align="right">4</td>
-<td align="right">-31.7062537</td>
-<td align="right">0.0157479</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">logDYLD</td>
-<td align="right">0.1270733</td>
-<td align="right">27</td>
-<td align="right">-5.1261249</td>
-<td align="right">0.0026098</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">logFYLD</td>
-<td align="right">0.8254112</td>
-<td align="right">4</td>
-<td align="right">-40.4750002</td>
-<td align="right">0.0200853</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">logFYLD</td>
-<td align="right">0.2684843</td>
-<td align="right">27</td>
-<td align="right">-11.9213372</td>
-<td align="right">0.0060552</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.9356043</td>
-<td align="right">4</td>
-<td align="right">-18.4227385</td>
-<td align="right">0.0091343</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.1687423</td>
-<td align="right">27</td>
-<td align="right">-7.8116959</td>
-<td align="right">0.0039504</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">GS</td>
-<td align="left">MCMDS</td>
-<td align="right">0.7636413</td>
-<td align="right">4</td>
-<td align="right">87.5299546</td>
-<td align="right">-0.0434427</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">PreGS</td>
-<td align="left">MCMDS</td>
-<td align="right">0.5075304</td>
-<td align="right">27</td>
-<td align="right">50.5545173</td>
-<td align="right">-0.0253250</td>
-</tr>
-</tbody>
-</table>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>model_meangetgvs <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Dataset"],"name":[1],"type":["chr"],"align":["left"]},{"label":["GeneticGroup"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Trait"],"name":[3],"type":["chr"],"align":["left"]},{"label":["r.squared"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["nobs"],"name":[5],"type":["int"],"align":["right"]},{"label":["InterceptEst"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["YearAccessionEst"],"name":[7],"type":["dbl"],"align":["right"]}],"data":[{"1":"AllGermplasm","2":"GS","3":"BCHROMO","4":"0.853200430","5":"4","6":"471.9497093","7":"-0.2343082663"},{"1":"AllGermplasm","2":"PreGS","3":"BCHROMO","4":"0.042932050","5":"28","6":"-113.5633194","7":"0.0566349557"},{"1":"AllGermplasm","2":"GS","3":"BRLVLS","4":"0.128056190","5":"4","6":"18.1115255","7":"-0.0089737448"},{"1":"AllGermplasm","2":"PreGS","3":"BRLVLS","4":"0.031219052","5":"28","6":"-3.9254210","7":"0.0019110322"},{"1":"AllGermplasm","2":"GS","3":"DM","4":"0.848049961","5":"4","6":"-367.8607283","7":"0.1825681722"},{"1":"AllGermplasm","2":"PreGS","3":"DM","4":"0.002651999","5":"28","6":"12.8247623","7":"-0.0064715124"},{"1":"AllGermplasm","2":"GS","3":"HI","4":"0.916954298","5":"4","6":"-5.9505790","7":"0.0029538242"},{"1":"AllGermplasm","2":"PreGS","3":"HI","4":"0.033999474","5":"28","6":"-0.6821122","7":"0.0003486781"},{"1":"AllGermplasm","2":"GS","3":"logDYLD","4":"0.967303668","5":"4","6":"-32.7297867","7":"0.0162451711"},{"1":"AllGermplasm","2":"PreGS","3":"logDYLD","4":"0.074643465","5":"28","6":"-3.9716902","7":"0.0020203724"},{"1":"AllGermplasm","2":"GS","3":"logFYLD","4":"0.765413215","5":"4","6":"-34.9962751","7":"0.0173631983"},{"1":"AllGermplasm","2":"PreGS","3":"logFYLD","4":"0.211165777","5":"28","6":"-10.0364112","7":"0.0051028148"},{"1":"AllGermplasm","2":"GS","3":"logTOPYLD","4":"0.433355275","5":"4","6":"-11.9159076","7":"0.0059094118"},{"1":"AllGermplasm","2":"PreGS","3":"logTOPYLD","4":"0.157427238","5":"28","6":"-6.9318689","7":"0.0035059070"},{"1":"AllGermplasm","2":"GS","3":"MCMDS","4":"0.719677046","5":"4","6":"72.2250873","7":"-0.0358507430"},{"1":"AllGermplasm","2":"PreGS","3":"MCMDS","4":"0.496833869","5":"28","6":"48.0679272","7":"-0.0240746537"},{"1":"WhiteRootClones","2":"GS","3":"BCHROMO","4":"0.057971202","5":"4","6":"39.1769308","7":"-0.0208431303"},{"1":"WhiteRootClones","2":"PreGS","3":"BCHROMO","4":"0.057348924","5":"27","6":"37.3227110","7":"-0.0201925316"},{"1":"WhiteRootClones","2":"GS","3":"BRLVLS","4":"0.048447230","5":"4","6":"-15.7816767","7":"0.0078090814"},{"1":"WhiteRootClones","2":"PreGS","3":"BRLVLS","4":"0.009671593","5":"27","6":"-2.4146129","7":"0.0011383560"},{"1":"WhiteRootClones","2":"GS","3":"DM","4":"0.815761731","5":"4","6":"-334.7466632","7":"0.1664016250"},{"1":"WhiteRootClones","2":"PreGS","3":"DM","4":"0.002005341","5":"27","6":"-14.6935281","7":"0.0075602252"},{"1":"WhiteRootClones","2":"GS","3":"HI","4":"0.852386038","5":"4","6":"-6.3476943","7":"0.0031528781"},{"1":"WhiteRootClones","2":"PreGS","3":"HI","4":"0.064564741","5":"27","6":"-1.0889273","7":"0.0005536966"},{"1":"WhiteRootClones","2":"GS","3":"logDYLD","4":"0.912829260","5":"4","6":"-31.7062537","7":"0.0157478927"},{"1":"WhiteRootClones","2":"PreGS","3":"logDYLD","4":"0.127073266","5":"27","6":"-5.1261249","7":"0.0026098121"},{"1":"WhiteRootClones","2":"GS","3":"logFYLD","4":"0.825411222","5":"4","6":"-40.4750002","7":"0.0200853459"},{"1":"WhiteRootClones","2":"PreGS","3":"logFYLD","4":"0.268484258","5":"27","6":"-11.9213372","7":"0.0060552161"},{"1":"WhiteRootClones","2":"GS","3":"logTOPYLD","4":"0.935604304","5":"4","6":"-18.4227385","7":"0.0091343274"},{"1":"WhiteRootClones","2":"PreGS","3":"logTOPYLD","4":"0.168742300","5":"27","6":"-7.8116959","7":"0.0039503899"},{"1":"WhiteRootClones","2":"GS","3":"MCMDS","4":"0.763641265","5":"4","6":"87.5299546","7":"-0.0434426676"},{"1":"WhiteRootClones","2":"PreGS","3":"MCMDS","4":"0.507530437","5":"27","6":"50.5545173","7":"-0.0253250056"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[32],"max":[32]},"pages":{}}}
+  </script>
+</div>
 <p>Compare slope estimates between “eras”</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>model_meangetgvs <span class="sc">%&gt;%</span> <span class="fu">select</span>(Dataset, GeneticGroup, Trait, YearAccessionEst) <span class="sc">%&gt;%</span> <span class="fu">spread</span>(GeneticGroup, </span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    YearAccessionEst) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Dataset</th>
-<th align="left">Trait</th>
-<th align="right">GS</th>
-<th align="right">PreGS</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">BCHROMO</td>
-<td align="right">-0.2343083</td>
-<td align="right">0.0566350</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">BRLVLS</td>
-<td align="right">-0.0089737</td>
-<td align="right">0.0019110</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">DM</td>
-<td align="right">0.1825682</td>
-<td align="right">-0.0064715</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">HI</td>
-<td align="right">0.0029538</td>
-<td align="right">0.0003487</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">logDYLD</td>
-<td align="right">0.0162452</td>
-<td align="right">0.0020204</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">logFYLD</td>
-<td align="right">0.0173632</td>
-<td align="right">0.0051028</td>
-</tr>
-<tr class="odd">
-<td align="left">AllGermplasm</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.0059094</td>
-<td align="right">0.0035059</td>
-</tr>
-<tr class="even">
-<td align="left">AllGermplasm</td>
-<td align="left">MCMDS</td>
-<td align="right">-0.0358507</td>
-<td align="right">-0.0240747</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">BCHROMO</td>
-<td align="right">-0.0208431</td>
-<td align="right">-0.0201925</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">BRLVLS</td>
-<td align="right">0.0078091</td>
-<td align="right">0.0011384</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">DM</td>
-<td align="right">0.1664016</td>
-<td align="right">0.0075602</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">HI</td>
-<td align="right">0.0031529</td>
-<td align="right">0.0005537</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">logDYLD</td>
-<td align="right">0.0157479</td>
-<td align="right">0.0026098</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">logFYLD</td>
-<td align="right">0.0200853</td>
-<td align="right">0.0060552</td>
-</tr>
-<tr class="odd">
-<td align="left">WhiteRootClones</td>
-<td align="left">logTOPYLD</td>
-<td align="right">0.0091343</td>
-<td align="right">0.0039504</td>
-</tr>
-<tr class="even">
-<td align="left">WhiteRootClones</td>
-<td align="left">MCMDS</td>
-<td align="right">-0.0434427</td>
-<td align="right">-0.0253250</td>
-</tr>
-</tbody>
-</table>
-<p>Save these estimates also to disk at: <code>output/model_meangetgvs_vs_year.csv</code></p>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    YearAccessionEst) <span class="sc">%&gt;%</span> rmarkdown<span class="sc">::</span><span class="fu">paged_table</span>()</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Dataset"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Trait"],"name":[2],"type":["chr"],"align":["left"]},{"label":["GS"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["PreGS"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"AllGermplasm","2":"BCHROMO","3":"-0.234308266","4":"0.0566349557"},{"1":"AllGermplasm","2":"BRLVLS","3":"-0.008973745","4":"0.0019110322"},{"1":"AllGermplasm","2":"DM","3":"0.182568172","4":"-0.0064715124"},{"1":"AllGermplasm","2":"HI","3":"0.002953824","4":"0.0003486781"},{"1":"AllGermplasm","2":"logDYLD","3":"0.016245171","4":"0.0020203724"},{"1":"AllGermplasm","2":"logFYLD","3":"0.017363198","4":"0.0051028148"},{"1":"AllGermplasm","2":"logTOPYLD","3":"0.005909412","4":"0.0035059070"},{"1":"AllGermplasm","2":"MCMDS","3":"-0.035850743","4":"-0.0240746537"},{"1":"WhiteRootClones","2":"BCHROMO","3":"-0.020843130","4":"-0.0201925316"},{"1":"WhiteRootClones","2":"BRLVLS","3":"0.007809081","4":"0.0011383560"},{"1":"WhiteRootClones","2":"DM","3":"0.166401625","4":"0.0075602252"},{"1":"WhiteRootClones","2":"HI","3":"0.003152878","4":"0.0005536966"},{"1":"WhiteRootClones","2":"logDYLD","3":"0.015747893","4":"0.0026098121"},{"1":"WhiteRootClones","2":"logFYLD","3":"0.020085346","4":"0.0060552161"},{"1":"WhiteRootClones","2":"logTOPYLD","3":"0.009134327","4":"0.0039503899"},{"1":"WhiteRootClones","2":"MCMDS","3":"-0.043442668","4":"-0.0253250056"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[16],"max":[16]},"pages":{}}}
+  </script>
+</div>
+<p>Save these estimates also to disk at: <strong><code>output/model_meangetgvs_vs_year.csv</code></strong></p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(model_meangetgvs, <span class="at">file =</span> here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;output&quot;</span>, <span class="st">&quot;model_meangetgvs_vs_year.csv&quot;</span>), </span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> F)</span></code></pre></div>
 <div id="plot-all-germplasm-vs.-year-1" class="section level3">
@@ -2497,6 +1651,43 @@ wolfemd
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">18</span>)) <span class="sc">+</span> <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span> </span>
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;meanGETGV vs. Year_Accession - All Germplasm&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Mean across all clones within Year_Accession&quot;</span>)</span></code></pre></div>
 <p><img src="figure/06-Results.Rmd/unnamed-chunk-31-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-31-1">
+Past versions of unnamed-chunk-31-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-31-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/4ac9fe338107729bfe9f4d1a7f5a8f8794a17717/docs/figure/06-Results.Rmd/unnamed-chunk-31-1.png" target="_blank">4ac9fe3</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-12-04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="plot-white-germplasm-vs.-year" class="section level3">
 <h3>Plot “white” germplasm vs. year</h3>
@@ -2509,6 +1700,43 @@ wolfemd
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="at">size =</span> <span class="dv">18</span>)) <span class="sc">+</span> <span class="fu">scale_color_viridis_d</span>() <span class="sc">+</span> </span>
 <span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;meanGETGV vs. Year_Accession - White rooted germplasm&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Mean across all clones within Year_Accession&quot;</span>)</span></code></pre></div>
 <p><img src="figure/06-Results.Rmd/unnamed-chunk-32-1.png" width="1152" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-32-1">
+Past versions of unnamed-chunk-32-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-32-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/wolfemd/IITA_2020GS/blob/4ac9fe338107729bfe9f4d1a7f5a8f8794a17717/docs/figure/06-Results.Rmd/unnamed-chunk-32-1.png" target="_blank">4ac9fe3</a>
+</td>
+<td>
+wolfemd
+</td>
+<td>
+2020-12-04
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -2540,20 +1768,20 @@ loaded via a namespace (and not attached):
  [1] Rcpp_1.0.5        lattice_0.20-41   lubridate_1.7.9.2 here_1.0.0       
  [5] ps_1.4.0          assertthat_0.2.1  rprojroot_2.0.2   digest_0.6.27    
  [9] R6_2.5.0          cellranger_1.1.0  backports_1.2.0   reprex_0.3.0     
-[13] evaluate_0.14     httr_1.4.2        highr_0.8         pillar_1.4.7     
-[17] rlang_0.4.9       readxl_1.3.1      rstudioapi_0.13   whisker_0.4      
-[21] Matrix_1.2-18     rmarkdown_2.5     splines_4.0.2     labeling_0.4.2   
-[25] munsell_0.5.0     broom_0.7.2       compiler_4.0.2    httpuv_1.5.4     
-[29] modelr_0.1.8      xfun_0.19         pkgconfig_2.0.3   mgcv_1.8-33      
-[33] htmltools_0.5.0   tidyselect_1.1.0  fansi_0.4.1       viridisLite_0.3.0
-[37] crayon_1.3.4      dbplyr_2.0.0      withr_2.3.0       later_1.1.0.1    
-[41] grid_4.0.2        nlme_3.1-150      jsonlite_1.7.1    gtable_0.3.0     
-[45] lifecycle_0.2.0   DBI_1.1.0         git2r_0.27.1      formatR_1.7      
-[49] scales_1.1.1      cli_2.2.0         stringi_1.5.3     farver_2.0.3     
-[53] fs_1.5.0          promises_1.1.1    xml2_1.3.2        ellipsis_0.3.1   
-[57] generics_0.1.0    vctrs_0.3.5       tools_4.0.2       glue_1.4.2       
-[61] hms_0.5.3         yaml_2.2.1        colorspace_2.0-0  rvest_0.3.6      
-[65] knitr_1.30        haven_2.3.1      </code></pre>
+[13] evaluate_0.14     httr_1.4.2        pillar_1.4.7      rlang_0.4.9      
+[17] readxl_1.3.1      rstudioapi_0.13   whisker_0.4       Matrix_1.2-18    
+[21] rmarkdown_2.5     splines_4.0.2     labeling_0.4.2    munsell_0.5.0    
+[25] broom_0.7.2       compiler_4.0.2    httpuv_1.5.4      modelr_0.1.8     
+[29] xfun_0.19         pkgconfig_2.0.3   mgcv_1.8-33       htmltools_0.5.0  
+[33] tidyselect_1.1.0  fansi_0.4.1       viridisLite_0.3.0 crayon_1.3.4     
+[37] dbplyr_2.0.0      withr_2.3.0       later_1.1.0.1     grid_4.0.2       
+[41] nlme_3.1-150      jsonlite_1.7.1    gtable_0.3.0      lifecycle_0.2.0  
+[45] DBI_1.1.0         git2r_0.27.1      formatR_1.7       scales_1.1.1     
+[49] cli_2.2.0         stringi_1.5.3     farver_2.0.3      fs_1.5.0         
+[53] promises_1.1.1    xml2_1.3.2        ellipsis_0.3.1    generics_0.1.0   
+[57] vctrs_0.3.5       tools_4.0.2       glue_1.4.2        hms_0.5.3        
+[61] yaml_2.2.1        colorspace_2.0-0  rvest_0.3.6       knitr_1.30       
+[65] haven_2.3.1      </code></pre>
 </div>
 </div>
 </div>
