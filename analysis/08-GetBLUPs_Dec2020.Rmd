@@ -4,6 +4,7 @@ author: "Marnin Wolfe"
 date: "2020-Dec-03"
 output: 
   workflowr::wflow_html:
+    toc: true
 editor_options:
   chunk_output_type: inline
 ---
@@ -68,7 +69,7 @@ Two-stage procedure:
 # activate multithread OpenBLAS for fast matrix algebra
 export OMP_NUM_THREADS=56
 ```
-```{r}
+```{r, message=F}
 rm(list=ls())
 library(tidyverse); library(magrittr);
 #source(here::here("code","gsFunctions.R"))

@@ -5,6 +5,7 @@ date: "2020-Dec-03"
 output: 
   workflowr::wflow_html:
     code_folding: hide
+    toc: true
 editor_options:
   chunk_output_type: inline
 ---
@@ -111,166 +112,26 @@ iita_gebvs %>%
 
 # Rate of gain {#rate_of_gain}
 
-List of trials from 2020 to Prasad and Ismail... should I download fresh data?
 ```{r, eval = F}
-dbdata<-readRDS(here::here("output","IITA_CleanedTrialData.rds"))
-trialsHarvested2019to2020<-dbdata %>% 
-  filter(studyYear>=2019) %>% 
-  group_by(studyYear,locationName,studyName,plantingDate,harvestDate) %>% 
-  summarize(Nhav=sum(!is.na(NOHAV)))
-trialsHarvested2019to2020 %>% write.csv(.,file=here::here("output","trials_uploaded_by_Nharvested_15Sep2020.csv"), row.names=F)
+# List of trials from 2020 to Prasad and Ismail... should I download fresh data?
+# dbdata<-readRDS(here::here("output","IITA_CleanedTrialData.rds"))
+# trialsHarvested2019to2020<-dbdata %>% 
+#   filter(studyYear>=2019) %>% 
+#   group_by(studyYear,locationName,studyName,plantingDate,harvestDate) %>% 
+#   summarize(Nhav=sum(!is.na(NOHAV)))
+# trialsHarvested2019to2020 %>% write.csv(.,file=here::here("output","trials_uploaded_by_Nharvested_15Sep2020.csv"), row.names=F)
 ```
 
+## GETGV vs. "Accession Year"
 
-## September 2020 GEBV
-
-```{r}
-library(tidyverse); library(magrittr);
-iita_gebvs<-read.csv(here::here("output","GEBV_IITA_ModelA_twostage_IITA_2020Sep21.csv"), stringsAsFactors = F)
-traits<-c("DM","logFYLD","logTOPYLD","MCMDS")
-
-ggcycletime<-readxl::read_xls(here::here("data","PedigreeGeneticGainCycleTime_aafolabi_01122020.xls"))
-table(ggcycletime$Accession %in% iita_gebvs$GID)
-```
-
-Need germplasmName field from raw trial data to match GEBV and cycle time
-```{r}
-library(tidyverse); library(magrittr);
-dbdata<-readRDS(here::here("output","IITA_ExptDesignsDetected.rds"))
-iita_gebvs %<>% 
-  left_join(dbdata %>% 
-  select(-MaxNOHAV) %>% unnest(TrialData) %>% 
-  distinct(germplasmName,GID)) %>% 
-  group_by(GID) %>% 
-  slice(1) %>% 
-  ungroup()
-table(ggcycletime$Accession %in% iita_gebvs$germplasmName)
-```
-
-```{r}
-table(ggcycletime$Year_Accession)
-iita_gebvs %<>% left_join(.,ggcycletime %>% rename(germplasmName=Accession) %>% mutate(Year_Accession=as.numeric(Year_Accession)))
-```
-
-```{r}
-iita_gebvs %<>% 
-  mutate(Year_Accession=case_when(grepl("2013_|TMS13",germplasmName)~2013,
-                                  grepl("TMS14",germplasmName)~2014,
-                                  grepl("TMS15",germplasmName)~2015,
-                                  grepl("TMS18",germplasmName)~2018,
-                                  !grepl("2013_|TMS13|TMS14|TMS15|TMS18",germplasmName)~Year_Accession)) 
-```
-
-```{r, fig.width=10, fig.height=5}
-iita_gebvs %>% 
-  ggplot(.,aes(x=TCHART,y=BCHROMO)) + geom_hex() +
-  theme_bw() + facet_wrap(~GeneticGroup, nrow=1) + theme(legend.position = 'none')
-```
-
-```{r, fig.height=10, fig.width=10}
-# iita_gebvs %>% 
-#   select(germplasmName,GeneticGroup,Year_Accession,any_of(traits)) %>% 
-#   pivot_longer(cols=any_of(traits),names_to = "Trait",values_to = "GEBV") %>% 
-#   ggplot(.,aes(x=Year_Accession,y=GEBV,color=GeneticGroup)) + 
-#   geom_point() + 
-#   facet_wrap(~Trait,scales='free_y', ncol=1) + 
-#   theme_bw() +
-# #  geom_hline(yintercept = 0, size=1.15, color='black') + 
-#   theme(axis.text.x = element_text(face = 'bold',angle = 0, size=12),
-#         axis.title.y = element_text(face = 'bold',size=14),
-#         #legend.position = 'none',
-#         strip.background.x = element_blank(),
-#         strip.text = element_text(face='bold',size=14)) + 
-#   scale_color_viridis_d()
-#  labs(x=NULL,y="Mean GEBVs")
-
-```
-```{r, fig.height=10}
-iita_gebvs %>% 
-  select(germplasmName,GeneticGroup,Year_Accession,any_of(traits)) %>% 
-  mutate(GeneticGroup=ifelse(Year_Accession>=2013,"GS","PreGS")) %>% 
-  pivot_longer(cols=any_of(traits),names_to = "Trait",values_to = "GEBV") %>% 
-  group_by(Trait,GeneticGroup,Year_Accession) %>% 
-  summarize(meanGEBV=mean(GEBV),
-            Nclones=n(),
-            stdErr=sd(GEBV)/sqrt(n()),
-            upperSE=meanGEBV+stdErr,
-            lowerSE=meanGEBV-stdErr) %>% 
-  ggplot(.,aes(x=Year_Accession,y=meanGEBV,color=GeneticGroup,size=Nclones)) + 
-  geom_point(size=4) + geom_smooth(method=lm, se=TRUE) + 
-  geom_linerange(aes(ymax=upperSE,
-                     ymin=lowerSE), color='gray40', size=1) + 
-  facet_wrap(~Trait,scales='free_y', ncol=1) + 
-  theme_bw() +
-  theme(axis.text = element_text(face = 'bold',angle = 0, size=14),
-        axis.title = element_text(face = 'bold',size=16),
-        strip.background.x = element_blank(),
-        strip.text = element_text(face='bold',size=18)) + 
-  scale_color_viridis_d()
-
-```
-
-```{r, fig.height=10, fig.width=8}
-iita_gebvs %>% 
-  select(germplasmName,GeneticGroup,Year_Accession,any_of(c(traits,"TCHART","BCHROMO"))) %>% 
-  mutate(GeneticGroup=ifelse(Year_Accession>=2013,"GS","PreGS")) %>% 
-  pivot_longer(cols=any_of(c(traits,"TCHART","BCHROMO")),names_to = "Trait",values_to = "GEBV") %>% 
-  mutate(Trait=factor(Trait,c(traits,"TCHART","BCHROMO"))) %>% 
-  group_by(Trait,GeneticGroup,Year_Accession) %>% 
-  summarize(meanGEBV=mean(GEBV),
-            Nclones=n(),
-            stdErr=sd(GEBV)/sqrt(n()),
-            upperSE=meanGEBV+stdErr,
-            lowerSE=meanGEBV-stdErr) %>% 
-  ggplot(.,aes(x=Year_Accession,y=meanGEBV,color=GeneticGroup,size=Nclones)) + 
-  geom_point(size=4) + geom_smooth(method=lm, se=TRUE) + 
-  geom_linerange(aes(ymax=upperSE,
-                     ymin=lowerSE), color='gray40', size=1) + 
-  facet_wrap(~Trait,scales='free_y', ncol=1) + 
-  theme_bw() +
-  theme(axis.text = element_text(face = 'bold',angle = 0, size=14),
-        axis.title = element_text(face = 'bold',size=16),
-        strip.background.x = element_blank(),
-        strip.text = element_text(face='bold',size=18)) + 
-  scale_color_viridis_d()
-```
-
-```{r, fig.height=10, fig.width=8}
-iita_gebvs %>% 
-  select(germplasmName,GeneticGroup,Year_Accession,any_of(c(traits,"TCHART","BCHROMO"))) %>% 
-  mutate(GeneticGroup=ifelse(Year_Accession>=2013,"GS","PreGS")) %>% 
-  filter(BCHROMO<5,TCHART<0.5) %>% 
-  pivot_longer(cols=any_of(c(traits,"TCHART","BCHROMO")),names_to = "Trait",values_to = "GEBV") %>% 
-  mutate(Trait=factor(Trait,c(traits,"TCHART","BCHROMO"))) %>% 
-  group_by(Trait,GeneticGroup,Year_Accession) %>% 
-  summarize(meanGEBV=mean(GEBV),
-            Nclones=n(),
-            stdErr=sd(GEBV)/sqrt(n()),
-            upperSE=meanGEBV+stdErr,
-            lowerSE=meanGEBV-stdErr) %>% 
-  ggplot(.,aes(x=Year_Accession,y=meanGEBV,color=GeneticGroup,size=Nclones)) + 
-  geom_point(size=4) + geom_smooth(method=lm, se=TRUE) + 
-  geom_linerange(aes(ymax=upperSE,
-                     ymin=lowerSE), color='gray40', size=1) + 
-  facet_wrap(~Trait,scales='free_y', ncol=1) + 
-  theme_bw() +
-  theme(axis.text = element_text(face = 'bold',angle = 0, size=14),
-        axis.title = element_text(face = 'bold',size=16),
-        strip.background.x = element_blank(),
-        strip.text = element_text(face='bold',size=18)) + 
-  scale_color_viridis_d()
-```
-
-## December 2020 GETGV
-
+Start by merging the "accession year" variable with the GETGVs.
 ```{r}
 library(tidyverse); library(magrittr);
 iita_getgvs<-read.csv(here::here("output","GETGV_IITA_ModelADE_twostage_IITA_2020Dec03.csv"), stringsAsFactors = F)
-#traits<-c("DM","logFYLD","logTOPYLD","MCMDS")
-traits<-c("MCMDS","DM","PLTHT","BRNHT1","BRLVLS","HI",
-          "logDYLD", # <-- logDYLD now included. 
-          "logFYLD","logTOPYLD","logRTNO","TCHART","LCHROMO","ACHROMO","BCHROMO")
-
+traits<-c("logDYLD","logFYLD","MCMDS","DM","BCHROMO",
+          "BRLVLS","HI","logTOPYLD")
+# traits<-c("MCMDS","DM","PLTHT","BRNHT1","BRLVLS","HI",
+#           "logDYLD", "logFYLD","logTOPYLD","logRTNO","TCHART","LCHROMO","ACHROMO","BCHROMO")
 ggcycletime<-readxl::read_xls(here::here("data","PedigreeGeneticGainCycleTime_aafolabi_01122020.xls"))
 # table(ggcycletime$Accession %in% iita_getgvs$GID)
 # FALSE 
@@ -305,21 +166,215 @@ write.csv(iita_getgvs, file = here::here("output","GETGV_IITA_ModelADE_twostage_
 
 ```
 
-### What is yellow?
+Key output is a file `output/GETGV_IITA_ModelADE_twostage_IITA_2020Dec03_withAccessionYear.csv` for use in downstream analyses.
+
+## What is yellow?
+
+```{r}
+rm(list=ls())
+library(tidyverse); library(magrittr);
+iita_getgvs<-read.csv(here::here("output",
+                                 "GETGV_IITA_ModelADE_twostage_IITA_2020Dec03_withAccessionYear.csv"),
+                      stringsAsFactors = F)
+
+traits<-c("logDYLD","logFYLD","MCMDS","DM","BCHROMO",
+          "BRLVLS","HI","logTOPYLD")
+```
+
+Plot B-value and decide on a threshold for removing "yellow" clones from the analysis.
+
+```{r, fig.width=10, fig.height=5}
+# iita_getgvs %>% 
+#   ggplot(.,aes(x=TCHART,y=BCHROMO)) + geom_hex() +
+#   theme_bw() + facet_wrap(~GeneticGroup, nrow=1) + theme(legend.position = 'none') + 
+#   geom_vline(xintercept = 0.5) + geom_hline(yintercept = 5) + 
+#   labs(title="Arbitrary suggested cut-offs for `white` rooted GETGVs", subtitle = "horiz. and vert. lines")
+```
+
 ```{r, fig.width=10, fig.height=5}
 iita_getgvs %>% 
-  ggplot(.,aes(x=TCHART,y=BCHROMO)) + geom_hex() +
-  theme_bw() + facet_wrap(~GeneticGroup, nrow=1) + theme(legend.position = 'none') + 
-  geom_vline(xintercept = 0.5) + geom_hline(yintercept = 5) + 
-  labs(title="Arbitrary suggested cut-offs for `white` rooted GETGVs", subtitle = "horiz. and vert. lines")
+  ggplot(.,aes(x=BCHROMO)) + geom_histogram() +
+  theme_bw() + #facet_wrap(~GeneticGroup, nrow=1) + 
+  theme(legend.position = 'none') + 
+  geom_vline(xintercept = 1, color='darkred') +  # geom_hline(yintercept = 5) + 
+  labs(title="Histogram of GETGV for chromometer B-value",
+       subtitle = "Cut-offs for `white` roots == 1")
 ```
-### Mean GETGV-by-Year
+
+## Subset years
+
+Remove clones between 2005 and 2012.
+
+Declare the "eras" as PreGS<2012 and GS>=2013.
+```{r}
+iita_getgvs %<>% 
+  filter(Year_Accession>2012 | Year_Accession<2005)
+
+iita_getgvs %<>% 
+  mutate(GeneticGroup=ifelse(Year_Accession>=2013,"GS","PreGS"))
+```
+
+## Analysis by raw GETGVs
+
+Number of clones for each "era" that
+```{r}
+iita_getgvs %>% 
+  select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
+  count(Nclone=GeneticGroup)
+```
+Number of white root clones (`BCHROMO<=1`).
+```{r}
+iita_getgvs %>% 
+  select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
+  filter(BCHROMO<=1) %>% 
+  count(NwhiteRoot=GeneticGroup)
+```
+
+Group by Era (Genetic Group) and fit a simple linear regression for each trait, i.e. `lm(GETGV ~ Year_Accession)`.
+
+Fit model to "all clones" and then to "white root clones only". 
+```{r}
+model_rawgetgvs<-iita_getgvs %>% 
+  select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
+  mutate(Dataset="AllGermplasm") %>% 
+  bind_rows(iita_getgvs %>% 
+              select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
+              filter(BCHROMO<=1) %>% 
+              mutate(Dataset="WhiteRootClones")) %>% 
+  pivot_longer(cols = all_of(traits), names_to = "Trait", values_to = "GETGV") %>% 
+  nest(data=c(GID,Year_Accession,GETGV)) %>% 
+  mutate(model=map(data,~lm(formula = "GETGV~Year_Accession", data = .)))
+```
+
+Extract the model effects, etc.
+```{r}
+model_rawgetgvs %<>% 
+  mutate(out=map(model,~broom::glance(.))) %>% 
+  unnest(out)
+model_rawgetgvs %<>% 
+  mutate(out=map(model,~broom::tidy(.)))
+model_rawgetgvs %<>% 
+  mutate(out=map(out,~select(.,term,estimate) %>% spread(term,estimate))) %>% 
+  unnest(out) %>% 
+  rename(InterceptEst=`(Intercept)`,
+         YearAccessionEst=Year_Accession) %>% 
+  select(Dataset,GeneticGroup,Trait,r.squared,nobs,InterceptEst,YearAccessionEst)
+```
+
+Basic summary of linear models
+```{r, rows.print=32}
+model_rawgetgvs %>% knitr::kable()
+```
+Compare slope estimates between "eras"
+```{r, rows.print=16}
+model_rawgetgvs %>% 
+  select(Dataset,GeneticGroup,Trait,YearAccessionEst) %>% 
+  spread(GeneticGroup,YearAccessionEst) %>% 
+  knitr::kable()
+```
+Add some summary of the raw data that went into the GETGV analyzed above.
+
+```{r}
+# summarize the raw plot data
+dbdata<-readRDS(here::here("output","IITA_ExptDesignsDetected_2020Dec03.rds")) %>% 
+  dplyr::select(-MaxNOHAV) %>% 
+  unnest(TrialData) %>% 
+  dplyr::select(programName,locationName,studyYear,TrialType,studyName,
+         CompleteBlocks,IncompleteBlocks,
+         yearInLoc,trialInLocYr,repInTrial,blockInRep,observationUnitDbId,
+         germplasmName,FullSampleName,GID,all_of(traits),PropNOHAV) %>% 
+  mutate(IncompleteBlocks=ifelse(IncompleteBlocks==TRUE,"Yes","No"),
+         CompleteBlocks=ifelse(CompleteBlocks==TRUE,"Yes","No")) %>% 
+  pivot_longer(cols = all_of(traits), names_to = "Trait", values_to = "Value") %>% 
+  filter(!is.na(Value),
+         !is.na(GID)) %>% 
+  nest(MultiTrialTraitData=c(-Trait))
+
+trainingdata_summary<-dbdata %>% 
+  mutate(NplotsTotal=map_dbl(MultiTrialTraitData,nrow),
+         nplot=map(MultiTrialTraitData,~count(.,TrialType) %>% mutate(TrialType=paste0("Nplots_",TrialType)) %>% 
+                     spread(TrialType,n) %>% 
+                     select(any_of(paste0("Nplots_",c("CrossingBlock","GeneticGain","CET","ExpCET","PYT","AYT","UYT","NCRP")))))) %>% 
+  unnest(nplot) %>% 
+  select(-MultiTrialTraitData) %>% 
+  # and add a summary of the BLUPs that result
+  # which were then later used for prediction
+  left_join(readRDS(file=here::here("output","iita_blupsForModelTraining_twostage_asreml_2020Dec03.rds")) %>% 
+              filter(Trait %in% traits) %>% 
+              mutate(NclonesWithBLUPs=map_dbl(blups,nrow)) %>% 
+              select(Trait,NclonesWithBLUPs,Vg,Ve,H2))
+```
+
+Print a summary of the raw plots and resulting BLUPs that went into the GETGV .
+```{r, rows.print=8, cols.print=14}
+trainingdata_summary %>% knitr::kable()
+```
+
+Write model summaries to disk: `output/model_rawgetgvs_vs_year.csv`.
+
+Write training data summary to disk: `output/training_data_summary.csv`
+
+```{r}
+write.csv(trainingdata_summary,file = here::here("output","training_data_summary.csv"), row.names = F)
+write.csv(model_rawgetgvs,file = here::here("output","model_rawgetgvs_vs_year.csv"), row.names = F)
+```
+
+### Plot all germplasm vs. year
+```{r, fig.height=10, fig.width=12}
+iita_getgvs %>% 
+  select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
+  pivot_longer(cols = all_of(traits), names_to = "Trait", values_to = "GETGV") %>% 
+  mutate(Trait=factor(Trait,traits)) %>% 
+  ggplot(.,aes(x=Year_Accession,y=GETGV,color=GeneticGroup)) + 
+  geom_point(size=1.25) + geom_smooth(method=lm, se=TRUE, size=1.5) + 
+  facet_wrap(~Trait,scales='free_y', ncol=2) + 
+  theme_bw() +
+  theme(axis.text = element_text(face = 'bold',angle = 0, size=14),
+        axis.title = element_text(face = 'bold',size=16),
+        strip.background.x = element_blank(),
+        strip.text = element_text(face='bold',size=18)) + 
+  scale_color_viridis_d() + 
+  labs(title = "Regression of raw GETGV vs. Year_Accession by 'era' [GS vs. PreGS]",
+       subtitle = "All Germplasm")
+```
+
+```{r, fig.height=10, fig.width=12}
+iita_getgvs %>% 
+  select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
+  filter(BCHROMO<=1) %>% 
+  pivot_longer(cols = all_of(traits), names_to = "Trait", values_to = "GETGV") %>% 
+  mutate(Trait=factor(Trait,traits)) %>% 
+  ggplot(.,aes(x=Year_Accession,y=GETGV,color=GeneticGroup)) + 
+  geom_point(size=1.25) + geom_smooth(method=lm, se=TRUE, size=1.5) + 
+  facet_wrap(~Trait,scales='free_y', ncol=2) + 
+  theme_bw() +
+  theme(axis.text = element_text(face = 'bold',angle = 0, size=14),
+        axis.title = element_text(face = 'bold',size=16),
+        strip.background.x = element_blank(),
+        strip.text = element_text(face='bold',size=18)) + 
+  scale_color_viridis_d() + 
+  labs(title = "Regression of raw GETGV vs. Year_Accession by 'era' [GS vs. PreGS]",
+       subtitle = "White Root Germplasm (BCHROMO<=1)")
+```
+
+## Analysis by mean GETGV-by-Year
+
+**I recommend using the analysis and maybe also the plots above.**  
+
+For completeness, below is an analysis and plots using the meanGETGV-by-year.
+
+Compute mean and std. error by Dataset ("all germplasm" vs. "white root clones only") and GeneticGroup ("GS" vs. "PreGS"). 
 ```{r}
 mean_getgvs<-iita_getgvs %>% 
-  select(germplasmName,GeneticGroup,Year_Accession,any_of(traits)) %>% 
-  mutate(GeneticGroup=ifelse(Year_Accession>=2013,"GS","PreGS")) %>% 
-  pivot_longer(cols=any_of(traits),names_to = "Trait",values_to = "GETGV") %>% 
-  group_by(Trait,GeneticGroup,Year_Accession) %>% 
+  select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
+  mutate(Dataset="AllGermplasm") %>% 
+  bind_rows(iita_getgvs %>% 
+              select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
+              filter(BCHROMO<=1) %>% 
+              mutate(Dataset="WhiteRootClones")) %>%  
+  select(Dataset,GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
+  pivot_longer(cols = all_of(traits), names_to = "Trait", values_to = "GETGV") %>% 
+  group_by(Dataset,Trait,GeneticGroup,Year_Accession) %>% 
   summarize(meanGETGV=mean(GETGV),
             Nclones=n(),
             stdErr=sd(GETGV)/sqrt(n()),
@@ -330,16 +385,48 @@ mean_getgvs<-iita_getgvs %>%
 write.csv(mean_getgvs, file = here::here("output","meanGETGVbyYear_IITA_2020Dec03.csv"), row.names = F)
 ```
 
-```{r}
-#traits<-c("logDYLD","logFYLD","MCMDS","DM","TCHART","BCHROMO")
-traits<-c("logDYLD","logFYLD","MCMDS","DM","TCHART","BCHROMO",
-          "PLTHT","BRNHT1","BRLVLS","HI","logTOPYLD","logRTNO","LCHROMO","ACHROMO")
+Group by Era (Genetic Group) and fit a simple linear regression for each trait, i.e. `lm(GETGV ~ Year_Accession)`.
 
+```{r}
+model_meangetgvs<-mean_getgvs %>% 
+  nest(data=c(-Dataset,-Trait,-GeneticGroup)) %>% 
+  mutate(model=map(data,~lm(formula = "meanGETGV~Year_Accession", data = .)))
 ```
+
+Extract the model effects, etc.
+```{r}
+model_meangetgvs %<>% 
+  mutate(out=map(model,~broom::glance(.))) %>% 
+  unnest(out) %>% 
+  mutate(out=map(model,~broom::tidy(.))) %>% 
+  mutate(out=map(out,~select(.,term,estimate) %>% spread(term,estimate))) %>% 
+  unnest(out) %>% 
+  rename(InterceptEst=`(Intercept)`,
+         YearAccessionEst=Year_Accession) %>% 
+  select(Dataset,GeneticGroup,Trait,r.squared,nobs,InterceptEst,YearAccessionEst)
+```
+
+Basic summary of linear models
+```{r, rows.print=32}
+model_meangetgvs %>% knitr::kable()
+```
+Compare slope estimates between "eras"
+```{r, rows.print=16}
+model_meangetgvs %>% 
+  select(Dataset,GeneticGroup,Trait,YearAccessionEst) %>% 
+  spread(GeneticGroup,YearAccessionEst) %>% 
+  knitr::kable()
+```
+Save these estimates also to disk at: `output/model_meangetgvs_vs_year.csv`
+```{r}
+write.csv(model_meangetgvs,file = here::here("output","model_meangetgvs_vs_year.csv"), row.names = F)
+```
+
 
 ### Plot all germplasm vs. year
 ```{r, fig.height=10, fig.width=12}
 mean_getgvs %>% 
+  filter(Dataset=="AllGermplasm") %>% 
   mutate(Trait=factor(Trait,traits)) %>% 
   ggplot(.,aes(x=Year_Accession,y=meanGETGV,color=GeneticGroup,size=Nclones)) + 
   geom_point(size=4) + geom_smooth(method=lm, se=TRUE) + 
@@ -351,27 +438,16 @@ mean_getgvs %>%
         axis.title = element_text(face = 'bold',size=16),
         strip.background.x = element_blank(),
         strip.text = element_text(face='bold',size=18)) + 
-  scale_color_viridis_d()
+  scale_color_viridis_d() + 
+  labs(title = "meanGETGV vs. Year_Accession - All Germplasm",
+       subtitle = "Mean across all clones within Year_Accession")
 ```
 
 ### Plot "white" germplasm vs. year
 
-```{r}
-mean_getgvs_whiteroots<-iita_getgvs %>% 
-  select(germplasmName,GeneticGroup,Year_Accession,any_of(traits)) %>% 
-  mutate(GeneticGroup=ifelse(Year_Accession>=2013,"GS","PreGS")) %>% 
-  filter(BCHROMO<=5, TCHART<=0.5) %>% 
-  pivot_longer(cols=any_of(traits),names_to = "Trait",values_to = "GETGV") %>% 
-  group_by(Trait,GeneticGroup,Year_Accession) %>% 
-  summarize(meanGETGV=mean(GETGV),
-            Nclones=n(),
-            stdErr=sd(GETGV)/sqrt(n()),
-            upperSE=meanGETGV+stdErr,
-            lowerSE=meanGETGV-stdErr) %>% 
-  ungroup()
-```
 ```{r, fig.height=10, fig.width=12}
-mean_getgvs_whiteroots %>% 
+mean_getgvs %>% 
+  filter(Dataset=="WhiteRootClones") %>% 
   mutate(Trait=factor(Trait,traits)) %>% 
   ggplot(.,aes(x=Year_Accession,y=meanGETGV,color=GeneticGroup,size=Nclones)) + 
   geom_point(size=4) + geom_smooth(method=lm, se=TRUE) + 
@@ -383,6 +459,7 @@ mean_getgvs_whiteroots %>%
         axis.title = element_text(face = 'bold',size=16),
         strip.background.x = element_blank(),
         strip.text = element_text(face='bold',size=18)) + 
-  scale_color_viridis_d() + labs(title="Mean GETGV vs. Accession Year of White-rooted Clones Only")
+  scale_color_viridis_d() + 
+  labs(title = "meanGETGV vs. Year_Accession - White rooted germplasm",
+       subtitle = "Mean across all clones within Year_Accession")
 ```
-

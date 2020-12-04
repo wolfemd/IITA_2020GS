@@ -4,6 +4,7 @@ author: "Marnin Wolfe"
 date: "2020-Dec-03"
 output: 
   workflowr::wflow_html:
+    toc: true
 editor_options:
   chunk_output_type: inline
 ---
@@ -74,7 +75,7 @@ metadata19 %>%
 
 # Read-in trial data
 
-```{r}
+```{r, message=F}
 rm(list=ls())
 library(tidyverse); library(magrittr);
 source(here::here("code","gsFunctions.R"))
@@ -92,13 +93,13 @@ dbdata_dec2020<-readDBdata(phenotypeFile = paste0("ftp://ftp.cassavabase.org/mar
                            metadataFile = here::here("output","all_iita_metadata_Dec2020.csv"))
 # dbdata_dec2020 %>% 
 #   filter(!is.na(plantingDate)) %>% count(studyName,studyYear,locationName)
-dbdata_dec2020 %>% select(studyYear,studyDbId)
+#dbdata_dec2020 %>% select(studyYear,studyDbId)
 # table(unique(dbdata_dec2020$studyName) %in% unique(dbdata_sep2020$studyName))
 # FALSE  TRUE 
 #    42   371 
 
 # 42 "new trials"
-table(dbdata_dec2020$observationUnitDbId %in% dbdata_sep2020$observationUnitDbId)
+#table(dbdata_dec2020$observationUnitDbId %in% dbdata_sep2020$observationUnitDbId)
  # FALSE   TRUE 
  #  5823 175964 
 
@@ -106,7 +107,7 @@ table(dbdata_dec2020$observationUnitDbId %in% dbdata_sep2020$observationUnitDbId
 
 # any of the "new" plots register as being for trials already in the sep data?
 ### yes, 1 trial (see below)
-table(unique(dbdata_dec2020$studyName[!dbdata_dec2020$observationUnitDbId %in% dbdata_sep2020$observationUnitDbId]) %in% unique(dbdata_sep2020$studyName))
+# table(unique(dbdata_dec2020$studyName[!dbdata_dec2020$observationUnitDbId %in% dbdata_sep2020$observationUnitDbId]) %in% unique(dbdata_sep2020$studyName))
 # FALSE  TRUE 
 #    42     1 
 
@@ -186,7 +187,7 @@ traitabbrevs<-tribble(~TraitAbbrev,~TraitName,
         "ACHROMO","a.chromometer.value.CO_334.0002066",
         "BCHROMO","b.chromometer.value.CO_334.0002064",
         "NOHAV","plant.stands.harvested.counting.CO_334.0000010")
-traitabbrevs
+traitabbrevs %>% rmarkdown::paged_table()
 ```
 
 Run function `renameAndSelectCols()` to rename columns and remove everything unecessary
