@@ -14,7 +14,6 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = F, tidy = T)
 ```
 
-
 # Cross-validation accuracy
 
 Conducted 5-fold x 5-reps of cross-validation ([here](04-CrossValidation.html)). Three traits only, MCMDS, logFYLD, DM.
@@ -30,6 +29,7 @@ cvresults<-readRDS(here::here("output","cvresults_ModelA_chunk1.rds")) %>%
              bind_rows(readRDS(here::here("output","cvresults_ModelADE_chunk3.rds"))) %>% 
              mutate(Model="ADE"))
 ```
+
 ```{r}
 cvresults %>% 
   select(Trait,repeats,id,VersionOfBLUPs,accGEBV,Model) %>% 
@@ -38,6 +38,7 @@ cvresults %>%
   theme_bw() + facet_wrap(~Trait, scales = 'free') + 
   scale_fill_viridis_d() + labs(title="GEBV: Compare 3-stage and 2-stage prediction pipelines")
 ```
+
 ```{r}
 cvresults %>% 
   select(Trait,repeats,id,VersionOfBLUPs,accGETGV,Model) %>% 
@@ -58,6 +59,7 @@ cvresults %>%
   theme_bw() + facet_wrap(~Trait,scales='free') + 
   scale_fill_viridis_d() + labs(y="Accuracy Difference (2-stage minus 3-stage)",title="GEBV")
 ```
+
 ```{r}
 cvresults %>% 
   select(Trait,Model,repeats,id,VersionOfBLUPs,accGETGV) %>% 
@@ -82,6 +84,7 @@ cvresults %>% filter(VersionOfBLUPs=="blups2stage") %>%
 # Genetic Gain
 
 ## September 2020
+
 ```{r, fig.height=7, fig.width=5}
 library(tidyverse); library(magrittr)
 iita_gebvs<-read.csv(here::here("output","GEBV_IITA_ModelA_twostage_IITA_2020Sep21.csv"), stringsAsFactors = F)
@@ -125,6 +128,7 @@ iita_gebvs %>%
 ## GETGV vs. "Accession Year"
 
 Start by merging the "accession year" variable with the GETGVs.
+
 ```{r}
 library(tidyverse); library(magrittr);
 iita_getgvs<-read.csv(here::here("output","GETGV_IITA_ModelADE_twostage_IITA_2020Dec03.csv"), stringsAsFactors = F)
@@ -166,7 +170,7 @@ write.csv(iita_getgvs, file = here::here("output","GETGV_IITA_ModelADE_twostage_
 
 ```
 
-Key output is a file `output/GETGV_IITA_ModelADE_twostage_IITA_2020Dec03_withAccessionYear.csv` for use in downstream analyses.
+Key output is a file **`output/GETGV_IITA_ModelADE_twostage_IITA_2020Dec03_withAccessionYear.csv`** for use in downstream analyses.
 
 ## What is yellow?
 
@@ -205,7 +209,8 @@ iita_getgvs %>%
 
 Remove clones between 2005 and 2012.
 
-Declare the "eras" as PreGS<2012 and GS>=2013.
+Declare the "eras" as PreGS\<2012 and GS\>=2013.
+
 ```{r}
 iita_getgvs %<>% 
   filter(Year_Accession>2012 | Year_Accession<2005)
@@ -217,12 +222,15 @@ iita_getgvs %<>%
 ## Analysis by raw GETGVs
 
 Number of clones for each "era" that
+
 ```{r}
 iita_getgvs %>% 
   select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
   count(Nclone=GeneticGroup)
 ```
+
 Number of white root clones (`BCHROMO<=1`).
+
 ```{r}
 iita_getgvs %>% 
   select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
@@ -232,7 +240,8 @@ iita_getgvs %>%
 
 Group by Era (Genetic Group) and fit a simple linear regression for each trait, i.e. `lm(GETGV ~ Year_Accession)`.
 
-Fit model to "all clones" and then to "white root clones only". 
+Fit model to "all clones" and then to "white root clones only".
+
 ```{r}
 model_rawgetgvs<-iita_getgvs %>% 
   select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
@@ -247,6 +256,7 @@ model_rawgetgvs<-iita_getgvs %>%
 ```
 
 Extract the model effects, etc.
+
 ```{r}
 model_rawgetgvs %<>% 
   mutate(out=map(model,~broom::glance(.))) %>% 
@@ -262,16 +272,20 @@ model_rawgetgvs %<>%
 ```
 
 Basic summary of linear models
+
 ```{r, rows.print=32}
-model_rawgetgvs %>% knitr::kable()
+model_rawgetgvs %>% rmarkdown::paged_table()
 ```
+
 Compare slope estimates between "eras"
+
 ```{r, rows.print=16}
 model_rawgetgvs %>% 
   select(Dataset,GeneticGroup,Trait,YearAccessionEst) %>% 
   spread(GeneticGroup,YearAccessionEst) %>% 
-  knitr::kable()
+  rmarkdown::paged_table()
 ```
+
 Add some summary of the raw data that went into the GETGV analyzed above.
 
 ```{r}
@@ -306,13 +320,14 @@ trainingdata_summary<-dbdata %>%
 ```
 
 Print a summary of the raw plots and resulting BLUPs that went into the GETGV .
+
 ```{r, rows.print=8, cols.print=14}
-trainingdata_summary %>% knitr::kable()
+trainingdata_summary %>% rmarkdown::paged_table()
 ```
 
-Write model summaries to disk: `output/model_rawgetgvs_vs_year.csv`.
+Write model summaries to disk: **`output/model_rawgetgvs_vs_year.csv`**.
 
-Write training data summary to disk: `output/training_data_summary.csv`
+Write training data summary to disk: **`output/training_data_summary.csv`**
 
 ```{r}
 write.csv(trainingdata_summary,file = here::here("output","training_data_summary.csv"), row.names = F)
@@ -320,6 +335,7 @@ write.csv(model_rawgetgvs,file = here::here("output","model_rawgetgvs_vs_year.cs
 ```
 
 ### Plot all germplasm vs. year
+
 ```{r, fig.height=10, fig.width=12}
 iita_getgvs %>% 
   select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
@@ -359,11 +375,12 @@ iita_getgvs %>%
 
 ## Analysis by mean GETGV-by-Year
 
-**I recommend using the analysis and maybe also the plots above.**  
+**I recommend using the analysis and maybe also the plots above.**
 
 For completeness, below is an analysis and plots using the meanGETGV-by-year.
 
-Compute mean and std. error by Dataset ("all germplasm" vs. "white root clones only") and GeneticGroup ("GS" vs. "PreGS"). 
+Compute mean and std. error by Dataset ("all germplasm" vs. "white root clones only") and GeneticGroup ("GS" vs. "PreGS").
+
 ```{r}
 mean_getgvs<-iita_getgvs %>% 
   select(GeneticGroup,GID,Year_Accession,all_of(traits)) %>% 
@@ -394,6 +411,7 @@ model_meangetgvs<-mean_getgvs %>%
 ```
 
 Extract the model effects, etc.
+
 ```{r}
 model_meangetgvs %<>% 
   mutate(out=map(model,~broom::glance(.))) %>% 
@@ -407,23 +425,28 @@ model_meangetgvs %<>%
 ```
 
 Basic summary of linear models
+
 ```{r, rows.print=32}
-model_meangetgvs %>% knitr::kable()
+model_meangetgvs %>% rmarkdown::paged_table()
 ```
+
 Compare slope estimates between "eras"
+
 ```{r, rows.print=16}
 model_meangetgvs %>% 
   select(Dataset,GeneticGroup,Trait,YearAccessionEst) %>% 
   spread(GeneticGroup,YearAccessionEst) %>% 
-  knitr::kable()
+  rmarkdown::paged_table()
 ```
-Save these estimates also to disk at: `output/model_meangetgvs_vs_year.csv`
+
+Save these estimates also to disk at: **`output/model_meangetgvs_vs_year.csv`**
+
 ```{r}
 write.csv(model_meangetgvs,file = here::here("output","model_meangetgvs_vs_year.csv"), row.names = F)
 ```
 
-
 ### Plot all germplasm vs. year
+
 ```{r, fig.height=10, fig.width=12}
 mean_getgvs %>% 
   filter(Dataset=="AllGermplasm") %>% 
